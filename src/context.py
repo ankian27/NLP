@@ -1,6 +1,7 @@
 import re
 import nltk
 
+porter_stemmer = nltk.stem.porter.PorterStemmer()
 class Context():
 
     """
@@ -18,6 +19,15 @@ class Context():
             self.target = target_re.search(context).group(2)
             self.context = re.sub(r'</?head>', '', context)
         else:
-            raise NotImplemenetedError('attempted to create context\
-            without <head> tagged target word')
-        self.tokens = nltk.word_tokenize(self.context)
+            self.target = target
+            self.context = context
+        self.tokens = []
+        for word in nltk.word_tokenize(self.context):
+            if '-' in word:
+                for word1 in word.split('-'):
+                    self.tokens.append(porter_stemmer.stem(word1.lower()))
+            else:
+                self.tokens.append(porter_stemmer.stem(word.lower()))
+        if target not in self.tokens:
+            print ' '.join(self.tokens)
+            raise 'could not find target word in tokens'
