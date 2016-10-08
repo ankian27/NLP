@@ -9,7 +9,8 @@ import re
 stemmer = PorterStemmer()
 sws = set(line.strip() for line in open('stopwords.txt', 'r'))
 non_alnum = re.compile('[\W_]+')
-split_re = re.compile(r'<head>.*</head>')
+split_re = re.compile(r'<head>(.*?)</head>')
+rm_head_re = re.compile(r'</?head>')
 
 def strip_non_ascii(string):
     ''' Returns the string without non ASCII characters'''
@@ -18,49 +19,42 @@ def strip_non_ascii(string):
 
 def tokenize(context, ctx_len):
     context = strip_non_ascii(context)
-    b4, after = split_re.split(context)
+    b4, target, after = split_re.split(context, 1)
+    after = rm_head_re.sub('', after)
+    #print "before: " + b4
+    #print "after: " + after
+    #print "target: " + target
     doc = []
     tmp1 = []
     tmp2 = []
     for word in nltk.word_tokenize(b4):
+        # nltk doesn't split hyphenated words for us
         if '-' in word:
             for word1 in word.split('-'):
-                if word1.lower() not in sws:
-                    tmp1.append(non_alnum.sub('', stemmer.stem(word1)))
-        elif any(char in word for char in string.punctuation + string.digits):
-            continue
+                    tmp1.append(word1)
         else:
-            if word.lower() not in sws:
-                tmp1.append(non_alnum.sub('', stemmer.stem(word)))
-    doc = doc[-ctx_len:]
+            tmp1.append(word)
     for word in nltk.word_tokenize(after):
+        # nltk doesn't split hyphenated words for us
         if '-' in word:
             for word1 in word.split('-'):
-                if word1.lower() not in sws:
-                    tmp2.append(non_alnum.sub('', stemmer.stem(word1)))
-        elif any(char in word for char in string.punctuation + string.digits):
-            continue
+                    tmp2.append(word1)
         else:
-            if word.lower() not in sws:
-                tmp2.append(non_alnum.sub('', stemmer.stem(word)))
+            tmp2.append(word)
 
     for word in reversed(tmp1):
-        if word:
-            doc.append(word.lower())
+        word = word.lower()
+        if word not in sws:
+            doc.append(word)
         if len(doc) >= ctx_len:
             break
+    doc.reverse()
+    doc.append(target.lower())
     for word in tmp2:
-        if word:
-            doc.append(word.lower())
+        word = word.lower()
+        if word not in sws:
+            doc.append(word)
         if len(doc) >= ctx_len*2:
             break
         
     return doc
-
-class Corp():
-
-    """
-    @param f: an xml file in sense2eval format
-    """
-    def __init__(self, corp):
-        return

@@ -24,12 +24,12 @@ the target word isn't marked with <head> tags.
 @param target: optional target word
 """
 def disam(f, target=None):
-    docs = []
-    counts = defaultdict(int)
-    for sense, ctx in getCtxes(f):
-        for word in tokenize(ctx, 10):
-            counts[word] += 1
-        docs.append((sense, tokenize(ctx, 500)))
+    remove_head_re = re.compile(r'</?head>')
+    target, pos  = f.split('-', 1)
+    with open(target + "." + pos[0] + ".lemma", 'w+') as f_ref:
+        for sense, ctx in getCtxes(f):
+            f_ref.write(remove_head_re.sub('', ctx) + '\n')
+    return
     top = []
     for word, count in counts.iteritems():
         top.append((word, count))
@@ -48,7 +48,7 @@ def disam(f, target=None):
         #corp.append(doc)
         corp.append(dictionary.doc2bow(doc))
     for doc in corp:
-        print str(len(doc)) + ' '.join(str(term) + ":" + str(count) for term, count in doc)
+        print str(len(doc)) + " " + ' '.join(str(term) + ":" + str(count) for term, count in doc)
     return
     for doc in corp:
         terms = defaultdict(int)

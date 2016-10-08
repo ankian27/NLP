@@ -37,45 +37,31 @@ def disam(f, target=None):
     features = set()
     for word, count in sorted(top, key=lambda tup: tup[1], reverse=True)[:50]:
         features.add(word)
+
+    # work around to make dictionary
     tmp = []
     tmp.append(list(features))
     dictionary = corpora.Dictionary(tmp)
+
     corp = []
     for i, tup in enumerate(docs):
         sense, doc = tup
-        doc = [word for word in doc if word in features]
-        docs[i] = (sense, doc)
+        doc = set(word for word in doc if word in features)
+        docs[i] = (sense, list(doc))
         #corp.append(doc)
         corp.append(dictionary.doc2bow(doc))
-    for doc in corp:
-        print str(len(doc)) + ' '.join(str(term) + ":" + str(count) for term, count in doc)
-    return
-    for doc in corp:
-        terms = defaultdict(int)
-        for word in doc:
-            terms[word] += 1
-        print str(len(terms)) + " " + ' '.join(str(term) + ":" + str(count) for term, count in terms.iteritems())
-    return
     index = Similarity('./', corp, num_features=len(dictionary))
     distances = []
     for sims in index:
         distances.append([1 - sim for sim in sims])
-    print distances
-    db = DBSCAN(eps=0.3, min_samples=10, metric="precomputed").fit(distances)
+    #print distances
+    db = DBSCAN(eps=0.5, min_samples=10, metric="precomputed").fit(distances)
     clusters = defaultdict(list)
     for i, label in enumerate(db.labels_):
         clusters[label].append(docs[i])
     for label, ctxes in clusters.iteritems():
         print str(label)
         print '\n'.join(sense + ": " + ' '.join(ctx) for sense, ctx in ctxes)
-#    corps = defaultdict(list)
-#    for doc in docs:
-#        corps[doc[0]].append(dictionary.doc2bow(doc[1]))
-#    indexes = {}
-#    for key, corp in corps.iteritems():
-#        indexes[key] = Similarity('./', corp, num_features=4630, num_best=2)
-#    for sense, text in docs:
-#        break
 
 if __name__ == '__main__':
     parser = optparse.OptionParser(description='Disambiguate a target word.')

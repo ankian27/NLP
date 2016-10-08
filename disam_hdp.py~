@@ -17,6 +17,15 @@ def getCtxes(f):
     for sense, ctx in ctx_re.findall(buf):
         yield sense, ctx.strip()
 
+def writeToHDP(f, corp):
+    target, pos = f.split('-', 1)
+    target = target.split('/')[-1]
+    with open("hdp-wsi-master/wsi_input/example/all/" + target + "." + pos[0] + ".lemma", 'w+') as f_ref:
+        for doc in corp:
+            f_ref.write(' '.join(word for word in doc) + "\n")
+            #hdp format
+            #print str(len(doc)) + " " + ' '.join(str(term) + ":" + str(count) for term, count in doc)
+
 """
 Disambiguates the given sense2eval xml file, f. The target parameter is only necessary if
 the target word isn't marked with <head> tags.
@@ -26,29 +35,36 @@ the target word isn't marked with <head> tags.
 def disam(f, target=None):
     docs = []
     counts = defaultdict(int)
+
+    # Process each context
     for sense, ctx in getCtxes(f):
-        for word in tokenize(ctx, 10):
+        # Get word counts for words that occur within X words of target
+        # word
+        for word in tokenize(ctx, 3):
             counts[word] += 1
+        # Save the entire tokenized context
         docs.append((sense, tokenize(ctx, 500)))
+
+    writeToHDP(f, [doc for sense, doc in docs])
     top = []
+    # Put word counts into a list so we can sort them
     for word, count in counts.iteritems():
         top.append((word, count))
-    #print sorted(top, key=lambda tup: tup[1], reverse=True)
     features = set()
+
+    # Get our feature words based on words with highest counts
     for word, count in sorted(top, key=lambda tup: tup[1], reverse=True)[:50]:
         features.add(word)
-    tmp = []
-    tmp.append(list(features))
-    dictionary = corpora.Dictionary(tmp)
+
+    # Remove any words from each context that are not feature words 
     corp = []
     for i, tup in enumerate(docs):
         sense, doc = tup
-        doc = [word for word in doc if word in features]
-        docs[i] = (sense, doc)
-        #corp.append(doc)
-        corp.append(dictionary.doc2bow(doc))
-    for doc in corp:
-        print str(len(doc)) + ' '.join(str(term) + ":" + str(count) for term, count in doc)
+        doc = set(word for word in doc if word in features)
+        docs[i] = (sense, list(doc))
+        corp.append(list(doc))
+        
+    # Write out hdp-wsi format
     return
     for doc in corp:
         terms = defaultdict(int)
@@ -68,14 +84,6 @@ def disam(f, target=None):
     for label, ctxes in clusters.iteritems():
         print str(label)
         print '\n'.join(sense + ": " + ' '.join(ctx) for sense, ctx in ctxes)
-#    corps = defaultdict(list)
-#    for doc in docs:
-#        corps[doc[0]].append(dictionary.doc2bow(doc[1]))
-#    indexes = {}
-#    for key, corp in corps.iteritems():
-#        indexes[key] = Similarity('./', corp, num_features=4630, num_best=2)
-#    for sense, text in docs:
-#        break
 
 if __name__ == '__main__':
     parser = optparse.OptionParser(description='Disambiguate a target word.')
