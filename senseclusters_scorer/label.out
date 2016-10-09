@@ -1,4 +1,5 @@
 ClusterID -> SenseID
-C0 -> television.f.1
-C1 -> television.f.2
-Score = 65.30
+C0 -> racket.n.3
+C1 -> racket.n.2
+C2 -> racket.n.5
+Score = 43.64

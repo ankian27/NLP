@@ -1,7 +1,6 @@
 from gensim import corpora
 from gensim.similarities.docsim import Similarity
 from nltk.stem.porter import PorterStemmer
-import xmltodict
 import string
 import nltk
 import re
