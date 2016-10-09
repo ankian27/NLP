@@ -48,9 +48,9 @@ if __name__ == '__main__':
     
     #writeCtxesToHDPWSI(sys.argv[1])
     #sys.exit(1)
+
     corp = []
     for sense, ctx in getCtxes(sys.argv[1]):
-        #print ctx
         corp.append(tokenize(ctx, 500))
         #print ' '.join(word for word in corp[-1])
     writeCorpToHDPWSI(sys.argv[1], corp)

@@ -1,0 +1,57 @@
+The script senseclusters_scorer.sh will allow you to score senseval-4 
+output files using the senseclusters scoring methodology. 
+
+If your system answer file for senseval-4 is myanswer.txt and the
+key file is senseinduction.key, then you run this script as follows:
+
+senseclusters_scorer.sh myanswer.txt senseinduction.key
+
+Note that your answer file may not include weights, it must just include 
+one answer per instance. 
+
+This script will create a number of files that end in the suffix *.out, 
+report.out will contain your results. 
+
+The senseclusters scoring methodology finds the maximally accurate 
+assignment of senses to clusters, where a 1 to 1 mapping from senses to 
+clusters is enforced. 
+
+For example, suppose you had discovered 4 clusters and there were 3 
+senses in the gold standard key. Suppose the following represents the
+confusion matrix that describes your result:
+
+	C1	C2	C3	C4
+S1      10       0      20       0
+S2       5      15       0       0
+S3      30       0       0      20
+
+There are 100 instances clustered across four clusters, where there are 
+three senses indicated in the gold standard data. 
+
+The senseclusters scoring methodology will find the most accurate 
+mapping of senses to clusters, in this case :
+
+	C3 	C2	C1
+S1      20 	 0	10    
+S2       0	15	 5     
+S3       0	 0	30    
+
+C3 -> S1
+C2 -> S2
+C1 -> S3
+
+Note that C4 does not map to any sense, and those instances are all 
+counted as being wrong. 
+
+In this case the accuracy is found by taking the sum along the diagonal 
+(20+15+30) = 65 and dividing that by the number of instances. So the 
+accuracy here is .65. Note that precision and recall are reported, but 
+in this case they are the same since the clustering algorithm clustered 
+all instances. If there were unclustered instances, that would be 
+reflected in the precision score.
+
+More details about the scoring method can be found in the perldoc for 
+label.pl 
+
+Ted Pedersen
+April 22, 2007

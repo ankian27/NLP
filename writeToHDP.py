@@ -7,7 +7,7 @@ import sys
 import re
 
 def getCtxes(f):
-    ctx_re = re.compile(r'<answer.*?senseid="([^"]*)"/>.*?<context>(.*?)</context>', re.MULTILINE | re.DOTALL)
+    ctx_re = re.compile(r'<answer.*?senseid="([^"]*)"[^/]*/>.*?<context>(.*?)</context>', re.MULTILINE | re.DOTALL)
     with open(f, 'r') as f_ref:
         buf = f_ref.read()
     for sense, ctx in ctx_re.findall(buf):

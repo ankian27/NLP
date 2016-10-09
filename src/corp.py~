@@ -8,6 +8,7 @@ import re
 
 stemmer = PorterStemmer()
 sws = set(line.strip() for line in open('stopwords.txt', 'r'))
+
 non_alnum = re.compile('[\W_]+')
 split_re = re.compile(r'<head>(.*?)</head>')
 rm_head_re = re.compile(r'</?head>')
@@ -44,7 +45,8 @@ def tokenize(context, ctx_len):
 
     for word in reversed(tmp1):
         word = word.lower()
-        if word not in sws:
+        if word.isalpha():
+        #if word not in sws and word.isalpha():
             doc.append(word)
         if len(doc) >= ctx_len:
             break
@@ -52,7 +54,8 @@ def tokenize(context, ctx_len):
     doc.append(target.lower())
     for word in tmp2:
         word = word.lower()
-        if word not in sws:
+        #if word not in sws and word.isalpha():
+        if word.isalpha():
             doc.append(word)
         if len(doc) >= ctx_len*2:
             break

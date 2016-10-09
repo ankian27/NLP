@@ -1,0 +1,6 @@
+The output in this file was created by running the following from the 
+directory where senseclusters_scorer.sh resides
+
+senseclusters_scorer.sh mfs-demo/mfs_test.key keys/senseinduction_test.key
+
+mv *.out mfs-demo

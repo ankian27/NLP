@@ -60,7 +60,7 @@ python ConvertToHDPDataFormat.py < $output_dir/docword.train.txt > \
     $output_dir/hdpdata.train.txt
 #run the topic model
 ./hdp/hdp --algorithm train --data $output_dir/hdpdata.train.txt --directory $output_dir \
-    --max_iter 300 --save_lag -1 --gamma_b $gamma_b --alpha_b $alpha_b
+    --max_iter 300 --save_lag -1 --gamma_b $gamma_b --alpha_b $alpha_b --random_seed 1
 
 #print the topic/sense distribution for each document
 python CalcHDPTopics.py -1 $output_dir/mode-word-assignments.dat \
@@ -68,7 +68,7 @@ python CalcHDPTopics.py -1 $output_dir/mode-word-assignments.dat \
 
 #print the induced topics/senses
 ./hdp/print.topics.R $output_dir/mode-topics.dat $output_dir/vocabs.txt \
-    $output_dir/topics.txt 5
+    $output_dir/topics.txt 10
 
 python hdp/ConvertTopicDisplayFormat.py < $output_dir/topics.txt > \
     $output_dir/topics.txt.tmp

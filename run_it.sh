@@ -17,3 +17,8 @@ cd hdp-wsi
 cd ..
 
 python postProcessing.py $1
+
+cd senseclusters_scorer/
+./senseclusters_scorer.sh key answers
+cat report.out
+cd ..

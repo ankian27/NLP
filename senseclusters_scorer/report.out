@@ -1,0 +1,14 @@
+            S0	      S1	      S2#	      S3#	   TOTAL	
+  C0:      445	      85	       0	       0	     530	(47.15)
+  C1:        0	     289	     134	     171	     594	(52.85)
+ TOTAL     445	     374	     134	     171	    1124
+         (39.59)   (33.27)   (11.92)   (15.21)
+Precision = 65.30(734/1124)
+Recall = 65.30(734/1124+0)
+F-Measure = 65.30
+
+Legend of Sense Tags
+S0 = television.f.1
+S1 = television.f.2
+S2 = television.f.3
+S3 = television.f.4
