@@ -11,6 +11,7 @@ topics = []
 # A string which is the name of the word and the first letter of it's pos
 # ex: abandon.v
 thing = None
+target_word = None
 
 def makeKey(f):
     global thing
@@ -20,7 +21,8 @@ def makeKey(f):
     mapping = {}
     cur_id = 1
     target, pos = f.split('-', 1)
-    thing = target.split('/')[-1] + "." + pos[0]
+    target_word = target.split('/')[-1]
+    thing = target_word + "." + pos[0]
     with open('senseclusters_scorer/key', 'w+') as key_ref:
         for i, (sense, ctx) in enumerate(ctx_re.findall(buf)):
             ctxes.append((sense, ctx))

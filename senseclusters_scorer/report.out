@@ -1,14 +1,18 @@
-            S0	      S1	      S2#	      S3#	   TOTAL	
-  C0:      445	      85	       0	       0	     530	(47.15)
-  C1:        0	     289	     134	     171	     594	(52.85)
- TOTAL     445	     374	     134	     171	    1124
-         (39.59)   (33.27)   (11.92)   (15.21)
-Precision = 65.30(734/1124)
-Recall = 65.30(734/1124+0)
-F-Measure = 65.30
+            S2	      S1	      S4	      S0#	      S3#	      S5#	      S6#	   TOTAL	
+  C0:       12	       7	       6	       4	       0	       0	       1	      30	(27.27)
+  C1:        3	      18	       9	       8	       0	       2	       0	      40	(36.36)
+  C2:        8	       3	      18	       1	       2	       6	       2	      40	(36.36)
+ TOTAL      23	      28	      33	      13	       2	       8	       3	     110
+         (20.91)   (25.45)   (30.00)   (11.82)   (1.82)   (7.27)   (2.73)
+Precision = 43.64(48/110)
+Recall = 43.64(48/110+0)
+F-Measure = 43.64
 
 Legend of Sense Tags
-S0 = television.f.1
-S1 = television.f.2
-S2 = television.f.3
-S3 = television.f.4
+S0 = racket.n.1
+S1 = racket.n.2
+S2 = racket.n.3
+S3 = racket.n.4
+S4 = racket.n.5
+S5 = racket.n.6
+S6 = racket.n.7

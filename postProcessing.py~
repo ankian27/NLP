@@ -11,10 +11,11 @@ topics = []
 # A string which is the name of the word and the first letter of it's pos
 # ex: abandon.v
 thing = None
+target_word = None
 
 def makeKey(f):
     global thing
-    ctx_re = re.compile(r'<answer.*?senseid="([^"]*)"/>.*?<context>(.*?)</context>', re.MULTILINE | re.DOTALL)
+    ctx_re = re.compile(r'<answer.*?senseid="([^"]*)"[^/]*/>.*?<context>(.*?)</context>', re.MULTILINE | re.DOTALL)
     with open(f, 'r') as f_ref:
         buf = f_ref.read()
     mapping = {}
