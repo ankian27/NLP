@@ -1,4 +1,75 @@
-Loading internal null logger. Install Log::Log4perl for logging messages
-Reading '/home/mactango/.cpan/Metadata'
-  Database was generated on Sat, 08 Oct 2016 20:53:30 GMT
-Algorithm::Munkres is up to date (0.08).
+
+CPAN.pm requires configuration, but most of it can be done automatically.
+If you answer 'no' below, you will enter an interactive dialog for each
+configuration option instead.
+
+Would you like to configure as much as possible automatically? [yes] Fetching with LWP:
+http://www.cpan.org/authors/01mailrc.txt.gz
+Reading '/root/.cpan/sources/authors/01mailrc.txt.gz'
+............................................................................DONE
+Fetching with LWP:
+http://www.cpan.org/modules/02packages.details.txt.gz
+Reading '/root/.cpan/sources/modules/02packages.details.txt.gz'
+  Database was generated on Sun, 09 Oct 2016 20:41:02 GMT
+.............
+  New CPAN.pm version (v2.14) available.
+  [Currently running version is v2.05]
+  You might want to try
+    install CPAN
+    reload cpan
+  to both upgrade CPAN.pm and run the new version without leaving
+  the current session.
+
+
+...............................................................DONE
+Fetching with LWP:
+http://www.cpan.org/modules/03modlist.data.gz
+Reading '/root/.cpan/sources/modules/03modlist.data.gz'
+DONE
+Writing /root/.cpan/Metadata
+Running install for module 'Algorithm::Munkres'
+Fetching with LWP:
+http://www.cpan.org/authors/id/T/TP/TPEDERSE/Algorithm-Munkres-0.08.tar.gz
+Fetching with LWP:
+http://www.cpan.org/authors/id/T/TP/TPEDERSE/CHECKSUMS
+Checksum for /root/.cpan/sources/authors/id/T/TP/TPEDERSE/Algorithm-Munkres-0.08.tar.gz ok
+'YAML' not installed, will not store persistent state
+Configuring T/TP/TPEDERSE/Algorithm-Munkres-0.08.tar.gz with Makefile.PL
+Checking if your kit is complete...
+Looks good
+Generating a Unix-style Makefile
+Writing Makefile for Algorithm::Munkres
+Writing MYMETA.yml and MYMETA.json
+  TPEDERSE/Algorithm-Munkres-0.08.tar.gz
+  /usr/bin/perl Makefile.PL INSTALLDIRS=site -- OK
+Running make for T/TP/TPEDERSE/Algorithm-Munkres-0.08.tar.gz
+cp lib/Algorithm/Munkres.pm blib/lib/Algorithm/Munkres.pm
+Manifying blib/man3/Algorithm::Munkres.3pm
+  TPEDERSE/Algorithm-Munkres-0.08.tar.gz
+  /usr/bin/make -- OK
+Running make test
+PERL_DL_NONLAZY=1 PERL_USE_UNSAFE_INC=1 /usr/bin/perl "-MExtUtils::Command::MM" "-MTest::Harness" "-e" "undef *Test::Harness::Switches; test_harness(0, 'blib/lib', 'blib/arch')" t/*.t
+t/DoubleInvoke.t .. ok
+t/Fractions.t ..... ok
+t/Horz_Matrix.t ... ok
+t/Ill_Formed.t .... ok
+t/LargeMatrix.t ... ok
+t/Negative.t ...... ok
+t/Normal.t ........ ok
+t/Obvious.t ....... ok
+t/Rect_Matrix1.t .. ok
+t/Rect_Matrix2.t .. ok
+t/Rect_Unit.t ..... ok
+t/Unit.t .......... ok
+t/Vert_Matrix.t ... ok
+All tests successful.
+Files=13, Tests=130,  0 wallclock secs ( 0.05 usr  0.02 sys +  0.26 cusr  0.02 csys =  0.35 CPU)
+Result: PASS
+  TPEDERSE/Algorithm-Munkres-0.08.tar.gz
+  /usr/bin/make test -- OK
+Running make install
+Installing /usr/local/share/perl/5.20.2/Algorithm/Munkres.pm
+Installing /usr/local/man/man3/Algorithm::Munkres.3pm
+Appending installation info to /usr/local/lib/x86_64-linux-gnu/perl/5.20.2/perllocal.pod
+  TPEDERSE/Algorithm-Munkres-0.08.tar.gz
+  /usr/bin/make install  -- OK

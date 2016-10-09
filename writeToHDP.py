@@ -2,7 +2,6 @@ from src.corp import tokenize
 from gensim import corpora
 from gensim.corpora.mmcorpus import MmCorpus
 from collections import defaultdict
-import xmltodict
 import sys
 import re
 
