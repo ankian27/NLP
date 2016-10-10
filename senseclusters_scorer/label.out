@@ -1,3 +1,8 @@
 ClusterID -> SenseID
+<<<<<<< HEAD
 C0 -> wear.v.1
 Score = 50.00
+=======
+C1 -> strike.v.1
+Score = 56.00
+>>>>>>> 22bacdf92f7684c0eb5fae4b54c85e0a2e77f753

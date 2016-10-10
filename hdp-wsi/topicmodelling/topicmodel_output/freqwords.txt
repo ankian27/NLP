@@ -1,6 +1,12 @@
+<<<<<<< HEAD
       100 wear
        43 tear
        43 tear_#1
        16 look
        13 dress
        11 need
+=======
+      110 strike
+       16 iran
+       14 union
+>>>>>>> 22bacdf92f7684c0eb5fae4b54c85e0a2e77f753
