@@ -1,1 +1,9 @@
+<<<<<<< HEAD
 shoot.v 100
+=======
+<<<<<<< HEAD
+wear.v 100
+=======
+strike.v 100
+>>>>>>> 22bacdf92f7684c0eb5fae4b54c85e0a2e77f753
+>>>>>>> 8215b0da6c4c4f84fe61e847e88acb3c1a4f8f14

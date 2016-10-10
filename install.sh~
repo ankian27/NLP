@@ -2,13 +2,24 @@
 
 sudo apt-get update
 
-
+# install CLI utilities
+# python-pip is the python package manager for installing python packages
+# libgsl and python-scipy are required by the hdp module
+# A few of the scripts in hdp-wsi are written in R, so we install r-base
+# csh is necessary for the cluster scorer
 sudo apt-get install python-dev python-pip csh perl libgsl0-dev python-scipy r-base
 
+# nltk has the 
 sudo pip install nltk
 sudo pip install gensim
 
+# Python packages
+# punkt contains the word tokenizer we use
 sudo python -m nltk.downloader -d /usr/share/nltk_data punkt
+# averaged_perceptron_tagger has the pos tagger
 sudo python -m nltk.downloader -d /usr/share/nltk_data averaged_perceptron_tagger
+# universal tagset has the pos tag types
+sudo python -m nltk.downloader -d /usr/share/nltk_data universal_tagset
 
+# Munkres is required for calculating the scores of 
 sudo cpan > install Algorithm::Munkres

@@ -54,7 +54,7 @@ class Definition(object):
 			if tag=='ADV':
 				adv.append(word)
 		
-		# Remove the additional '|' character from the strings.
+		# Remove the additional '|' character from the end of the strings.
 		self.noun=self.noun[:-1]		
 		self.verb=self.verb[:-1]
 		self.adj=self.adj[:-1]
@@ -68,7 +68,7 @@ class Definition(object):
 			param2 (string) : Terminal/Non-terminal string present on the right side of the production
 		'''
 
-		# Split the string based on '|' character
+		# Split the string based on '|' char as the separator
 		rules=right.split('|')
 		for rule in rules:
 			self.cfgRule[left].append(tuple(rule.split()))
@@ -85,8 +85,10 @@ class Definition(object):
 		rule = random.choice(self.cfgRule[symbol])
 		#Iterate of the symbols of each production rule
 		for sym in rule:
+			#This condition is true if the sym leads to other nonterminal symbols.
 			if sym in self.cfgRule:
 				definition += self.gen_def(sym)
+			#This is true if the sym leads to terminals. 
 			else:
 				definition += sym + ' '
 
@@ -100,7 +102,7 @@ class Definition(object):
 				# If a verb word has been used, removing it from the list of Verb words.
 				verb2 = filter(lambda a: a != sym, verb2)
 				self.verb=''
-
+				#Repopulating the noun and verb strings with the used word removed.
 				for words in noun2:
 					self.noun += words + '|'
 				self.noun=self.noun[:-1]	
