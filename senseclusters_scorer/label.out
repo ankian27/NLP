@@ -1,12 +1,3 @@
 ClusterID -> SenseID
-<<<<<<< HEAD
-C0 -> shoot.v.3
-C1 -> shoot.v.4
-Score = 58.00
-=======
-C0 -> abandon.v.1
-C1 -> abandon.v.2
-C2 -> abandon.v.5
-C3 -> abandon.v.4
-Score = 43.00
->>>>>>> 6250c306f063bd059a31044f92337225cedc986b
+C1 -> strike.v.1
+Score = 56.00

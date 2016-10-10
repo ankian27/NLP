@@ -1,12 +1,5 @@
 0
-<<<<<<< HEAD
-//	shoot.v.1	shoot.v.2	shoot.v.3	shoot.v.4	shoot.v.5
-C0:	18	4	28	0	0
-C1:	0	0	15	30	5
-=======
-//	abandon.v.1	abandon.v.10	abandon.v.2	abandon.v.3	abandon.v.4	abandon.v.5	abandon.v.6	abandon.v.7	abandon.v.8	abandon.v.9
-C0:	5	0	3	0	1	6	0	0	0	0
-C1:	6	0	19	5	3	10	0	0	0	0
-C2:	0	1	9	1	0	18	1	1	2	1
-C3:	0	0	4	0	1	3	0	0	0	0
->>>>>>> 6250c306f063bd059a31044f92337225cedc986b
+//	strike.v.1
+C0:	10
+C1:	56
+C2:	34
