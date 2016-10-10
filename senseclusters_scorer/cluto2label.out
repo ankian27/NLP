@@ -1,5 +1,4 @@
 0
-//	strike.v.1
-C0:	10
-C1:	56
-C2:	34
+//	shoot.v.1	shoot.v.2	shoot.v.3	shoot.v.4	shoot.v.5
+C0:	18	4	28	0	0
+C1:	0	0	15	30	5

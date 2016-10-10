@@ -1,1 +1,1 @@
-strike.v 100
+shoot.v 100

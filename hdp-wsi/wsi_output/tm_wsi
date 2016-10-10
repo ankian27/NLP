@@ -1,100 +1,100 @@
-strike.v strike.v.1 t.1/1.0000
-strike.v strike.v.2 t.1/1.0000
-strike.v strike.v.3 t.1/1.0000
-strike.v strike.v.4 t.1/1.0000
-strike.v strike.v.5 t.1/1.0000
-strike.v strike.v.6 t.1/1.0000
-strike.v strike.v.7 t.1/1.0000
-strike.v strike.v.8 t.1/1.0000
-strike.v strike.v.9 t.1/1.0000
-strike.v strike.v.10 t.1/1.0000
-strike.v strike.v.11 t.1/1.0000
-strike.v strike.v.12 t.1/1.0000
-strike.v strike.v.13 t.1/1.0000
-strike.v strike.v.14 t.1/1.0000
-strike.v strike.v.15 t.1/1.0000
-strike.v strike.v.16 t.1/1.0000
-strike.v strike.v.17 t.1/1.0000
-strike.v strike.v.18 t.1/1.0000
-strike.v strike.v.19 t.1/1.0000
-strike.v strike.v.20 t.1/1.0000
-strike.v strike.v.21 t.1/1.0000
-strike.v strike.v.22 t.1/1.0000
-strike.v strike.v.23 t.1/1.0000
-strike.v strike.v.24 t.1/1.0000
-strike.v strike.v.25 t.1/1.0000
-strike.v strike.v.26 t.1/1.0000
-strike.v strike.v.27 t.1/1.0000
-strike.v strike.v.28 t.1/1.0000
-strike.v strike.v.29 t.1/1.0000
-strike.v strike.v.30 t.1/1.0000
-strike.v strike.v.31 t.1/1.0000
-strike.v strike.v.32 t.1/1.0000
-strike.v strike.v.33 t.1/1.0000
-strike.v strike.v.34 t.1/1.0000
-strike.v strike.v.35 t.1/1.0000
-strike.v strike.v.36 t.1/1.0000
-strike.v strike.v.37 t.1/1.0000
-strike.v strike.v.38 t.1/1.0000
-strike.v strike.v.39 t.1/1.0000
-strike.v strike.v.40 t.1/1.0000
-strike.v strike.v.41 t.1/1.0000
-strike.v strike.v.42 t.1/1.0000
-strike.v strike.v.43 t.1/1.0000
-strike.v strike.v.44 t.1/1.0000
-strike.v strike.v.45 t.1/1.0000
-strike.v strike.v.46 t.1/1.0000
-strike.v strike.v.47 t.1/1.0000
-strike.v strike.v.48 t.1/1.0000
-strike.v strike.v.49 t.1/1.0000
-strike.v strike.v.50 t.1/1.0000
-strike.v strike.v.51 t.1/1.0000
-strike.v strike.v.52 t.1/1.0000
-strike.v strike.v.53 t.1/1.0000
-strike.v strike.v.54 t.1/1.0000
-strike.v strike.v.55 t.1/1.0000
-strike.v strike.v.56 t.1/1.0000
-strike.v strike.v.57 t.1/1.0000
-strike.v strike.v.58 t.1/1.0000
-strike.v strike.v.59 t.1/1.0000
-strike.v strike.v.60 t.1/1.0000
-strike.v strike.v.61 t.1/1.0000
-strike.v strike.v.62 t.1/1.0000
-strike.v strike.v.63 t.1/1.0000
-strike.v strike.v.64 t.1/1.0000
-strike.v strike.v.65 t.1/1.0000
-strike.v strike.v.66 t.1/1.0000
-strike.v strike.v.67 t.1/1.0000
-strike.v strike.v.68 t.1/1.0000
-strike.v strike.v.69 t.1/1.0000
-strike.v strike.v.70 t.1/1.0000
-strike.v strike.v.71 t.1/1.0000
-strike.v strike.v.72 t.1/1.0000
-strike.v strike.v.73 t.1/1.0000
-strike.v strike.v.74 t.1/1.0000
-strike.v strike.v.75 t.1/1.0000
-strike.v strike.v.76 t.1/1.0000
-strike.v strike.v.77 t.1/1.0000
-strike.v strike.v.78 t.1/1.0000
-strike.v strike.v.79 t.1/1.0000
-strike.v strike.v.80 t.1/1.0000
-strike.v strike.v.81 t.1/1.0000
-strike.v strike.v.82 t.1/1.0000
-strike.v strike.v.83 t.1/1.0000
-strike.v strike.v.84 t.1/1.0000
-strike.v strike.v.85 t.1/1.0000
-strike.v strike.v.86 t.1/1.0000
-strike.v strike.v.87 t.1/1.0000
-strike.v strike.v.88 t.1/1.0000
-strike.v strike.v.89 t.1/1.0000
-strike.v strike.v.90 t.1/1.0000
-strike.v strike.v.91 t.1/1.0000
-strike.v strike.v.92 t.1/1.0000
-strike.v strike.v.93 t.1/1.0000
-strike.v strike.v.94 t.1/1.0000
-strike.v strike.v.95 t.1/1.0000
-strike.v strike.v.96 t.1/1.0000
-strike.v strike.v.97 t.1/1.0000
-strike.v strike.v.98 t.1/1.0000
-strike.v strike.v.99 t.1/1.0000
-strike.v strike.v.100 t.1/1.0000
+shoot.v shoot.v.1 t.3/0.4286 t.4/0.4286 t.1/0.1429
+shoot.v shoot.v.2 t.4/0.5000 t.1/0.3750 t.3/0.1250
+shoot.v shoot.v.3 t.2/0.9167 t.4/0.0833
+shoot.v shoot.v.4 t.4/1.0000
+shoot.v shoot.v.5 t.1/0.6000 t.3/0.4000
+shoot.v shoot.v.6 t.4/0.4286 t.1/0.2857 t.3/0.2857
+shoot.v shoot.v.7 t.2/1.0000
+shoot.v shoot.v.8 t.2/0.6667 t.1/0.3333
+shoot.v shoot.v.9 t.1/1.0000
+shoot.v shoot.v.10 t.5/1.0000
+shoot.v shoot.v.11 t.4/1.0000
+shoot.v shoot.v.12 t.1/0.8750 t.4/0.1250
+shoot.v shoot.v.13 t.2/0.4444 t.3/0.4444 t.4/0.1111
+shoot.v shoot.v.14 t.1/0.6667 t.5/0.3333
+shoot.v shoot.v.15 t.4/0.6667 t.3/0.3333
+shoot.v shoot.v.16 t.5/0.9167 t.1/0.0833
+shoot.v shoot.v.17 t.1/1.0000
+shoot.v shoot.v.18 t.3/0.7500 t.1/0.2500
+shoot.v shoot.v.19 t.3/1.0000
+shoot.v shoot.v.20 t.1/1.0000
+shoot.v shoot.v.21 t.4/1.0000
+shoot.v shoot.v.22 t.1/0.6250 t.2/0.3750
+shoot.v shoot.v.23 t.3/1.0000
+shoot.v shoot.v.24 t.5/0.8333 t.3/0.1667
+shoot.v shoot.v.25 t.4/0.5000 t.1/0.2500 t.3/0.2500
+shoot.v shoot.v.26 t.3/1.0000
+shoot.v shoot.v.27 t.4/1.0000
+shoot.v shoot.v.28 t.1/1.0000
+shoot.v shoot.v.29 t.4/0.7143 t.3/0.2857
+shoot.v shoot.v.30 t.3/0.6000 t.1/0.4000
+shoot.v shoot.v.31 t.5/0.7500 t.3/0.2500
+shoot.v shoot.v.32 t.4/1.0000
+shoot.v shoot.v.33 t.5/0.6667 t.3/0.3333
+shoot.v shoot.v.34 t.3/1.0000
+shoot.v shoot.v.35 t.4/1.0000
+shoot.v shoot.v.36 t.1/0.6667 t.4/0.3333
+shoot.v shoot.v.37 t.3/0.4000 t.4/0.4000 t.1/0.2000
+shoot.v shoot.v.38 t.3/1.0000
+shoot.v shoot.v.39 t.4/1.0000
+shoot.v shoot.v.40 t.3/1.0000
+shoot.v shoot.v.41 t.4/1.0000
+shoot.v shoot.v.42 t.1/0.6000 t.3/0.4000
+shoot.v shoot.v.43 t.4/0.6667 t.1/0.3333
+shoot.v shoot.v.44 t.1/0.5556 t.2/0.4444
+shoot.v shoot.v.45 t.1/0.9000 t.4/0.1000
+shoot.v shoot.v.46 t.3/1.0000
+shoot.v shoot.v.47 t.1/0.5000 t.3/0.5000
+shoot.v shoot.v.48 t.3/1.0000
+shoot.v shoot.v.49 t.4/0.7500 t.3/0.2500
+shoot.v shoot.v.50 t.3/1.0000
+shoot.v shoot.v.51 t.3/0.8000 t.2/0.2000
+shoot.v shoot.v.52 t.3/1.0000
+shoot.v shoot.v.53 t.4/1.0000
+shoot.v shoot.v.54 t.4/0.8750 t.2/0.1250
+shoot.v shoot.v.55 t.3/0.6667 t.4/0.3333
+shoot.v shoot.v.56 t.4/0.6667 t.3/0.3333
+shoot.v shoot.v.57 t.4/0.6667 t.3/0.3333
+shoot.v shoot.v.58 t.1/0.5000 t.3/0.5000
+shoot.v shoot.v.59 t.3/1.0000
+shoot.v shoot.v.60 t.4/0.6667 t.3/0.3333
+shoot.v shoot.v.61 t.4/1.0000
+shoot.v shoot.v.62 t.3/1.0000
+shoot.v shoot.v.63 t.3/0.7500 t.4/0.2500
+shoot.v shoot.v.64 t.1/0.5000 t.3/0.5000
+shoot.v shoot.v.65 t.3/1.0000
+shoot.v shoot.v.66 t.3/1.0000
+shoot.v shoot.v.67 t.4/1.0000
+shoot.v shoot.v.68 t.4/0.7500 t.3/0.2500
+shoot.v shoot.v.69 t.3/1.0000
+shoot.v shoot.v.70 t.3/1.0000
+shoot.v shoot.v.71 t.4/1.0000
+shoot.v shoot.v.72 t.3/0.7500 t.2/0.2500
+shoot.v shoot.v.73 t.4/0.6000 t.3/0.4000
+shoot.v shoot.v.74 t.4/0.6000 t.3/0.4000
+shoot.v shoot.v.75 t.3/0.8000 t.1/0.2000
+shoot.v shoot.v.76 t.3/0.5000 t.4/0.5000
+shoot.v shoot.v.77 t.4/0.8000 t.1/0.2000
+shoot.v shoot.v.78 t.3/1.0000
+shoot.v shoot.v.79 t.3/0.6667 t.1/0.3333
+shoot.v shoot.v.80 t.3/0.9000 t.1/0.1000
+shoot.v shoot.v.81 t.4/0.9000 t.1/0.1000
+shoot.v shoot.v.82 t.3/1.0000
+shoot.v shoot.v.83 t.3/1.0000
+shoot.v shoot.v.84 t.3/1.0000
+shoot.v shoot.v.85 t.4/0.8571 t.3/0.1429
+shoot.v shoot.v.86 t.3/1.0000
+shoot.v shoot.v.87 t.3/0.4286 t.4/0.4286 t.1/0.1429
+shoot.v shoot.v.88 t.3/0.7143 t.4/0.2857
+shoot.v shoot.v.89 t.3/1.0000
+shoot.v shoot.v.90 t.4/1.0000
+shoot.v shoot.v.91 t.1/0.7500 t.4/0.2500
+shoot.v shoot.v.92 t.1/1.0000
+shoot.v shoot.v.93 t.3/1.0000
+shoot.v shoot.v.94 t.3/1.0000
+shoot.v shoot.v.95 t.1/1.0000
+shoot.v shoot.v.96 t.3/1.0000
+shoot.v shoot.v.97 t.3/0.6667 t.4/0.3333
+shoot.v shoot.v.98 t.3/1.0000
+shoot.v shoot.v.99 t.3/1.0000
+shoot.v shoot.v.100 t.3/1.0000

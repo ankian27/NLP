@@ -1,3 +1,4 @@
 ClusterID -> SenseID
-C1 -> strike.v.1
-Score = 56.00
+C0 -> shoot.v.3
+C1 -> shoot.v.4
+Score = 58.00
