@@ -122,7 +122,7 @@ class Definition(object):
 		'''
 
 		# Removes the target word from the set of topic words. As the definition should not contain the word itself.
- 		topics = [topic for topic in topics if target not in topic]
+                topics = filter(lambda topic: target not in topic, topics)
  		# Get the seperated Nouns, Verbs, Adjectives
  		self.noun, self.verb ,self.adj= self.get_Noun_Verb(topics)
  		# Represent CFG rules in python
