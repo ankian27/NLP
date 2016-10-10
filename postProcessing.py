@@ -1,4 +1,5 @@
 import src.config
+from src.DefinitionGeneration import Definition
 from collections import defaultdict
 import sys
 import re
@@ -35,6 +36,7 @@ senseclusters_scorer/key
 """
 def makeKey(f):
     global thing
+    global target_word
     ctx_re = re.compile(r'<answer.*?senseid="([^"]*)"[^/]*/>.*?<context>(.*?)</context>', re.MULTILINE | re.DOTALL)
     with open(f, 'r') as f_ref:
         buf = f_ref.read()
@@ -137,5 +139,7 @@ if __name__ == "__main__":
 
     writeAnswers()
     # Definition generation goes here
+    definition = Definition()
+    for i, topic in enumerate(topics):
+        print "Topic " + str(i) + " definition: " + definition.generate_Definition(topic, target_word)
 
-    def 

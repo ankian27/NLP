@@ -1,7 +1,13 @@
 import src.config
+from src.DefinitionGeneration import Definition
 from collections import defaultdict
 import sys
 import re
+from nltk.tag import pos_tag, map_tag
+from nltk import word_tokenize
+from nltk.util import ngrams
+from nltk.collocations import *
+from nltk.tokenize import RegexpTokenizer
 
 """
 Performs post processing on the results of the hdp-wsi tool. This includes parsing hdp-wsi's
@@ -125,8 +131,6 @@ if __name__ == "__main__":
     readAssignments("hdp-wsi/wsi_output/tm_wsi")
     makeKey(sys.argv[1])
 
-    for i, topic1 in enumerate(topics):
-        print "topic " + str(i) + " overlap: " + ' '.join(str(len(topic1 & topic2)) for topic2 in topics)
     for i, topic in enumerate(topics):
         print "topic " + str(i) + " words: " + ' '.join(word for word in topic)
         #print "senses: "
@@ -134,3 +138,7 @@ if __name__ == "__main__":
 
     writeAnswers()
     # Definition generation goes here
+    definition = Definition()
+    for i, topic in enumerate(topics):
+        print "Topic " + str(i) + " definition: " + definition.generate_Definition(topic, target_word)
+
