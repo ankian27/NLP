@@ -86,7 +86,7 @@ class Definition(object):
 		self.cfg_rule('S2', 'NP VP')
 		self.cfg_rule('NP', 'Det N')
 		self.cfg_rule('VP', 'V PRO NP')
-		self.cfg_rule('CONJ','or | and')
+		self.cfg_rule('CONJ','and')
 		self.cfg_rule('PRO','with | to')
 		self.cfg_rule('Det', 'a | the | is')
 		self.cfg_rule('N', self.noun)
