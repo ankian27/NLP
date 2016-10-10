@@ -2,17 +2,44 @@ from src.corp import tokenize
 from gensim import corpora
 from gensim.corpora.mmcorpus import MmCorpus
 from collections import defaultdict
-import xmltodict
 import sys
 import re
 
+"""
+A script to convert senseval2 xml formatted input file to a format that
+the hdp-wsi tool can process. Any special filtering on the input contexts
+is done here as well, because the hdp-wsi tool doesn't remove stopwords,
+convert to lowercase, etc...
+The filtering is done by the tokenize() function (the first import line)
+which is defined in src/corp.py
+"""
+
+"""
+A helper function which parses the given senseval2 formatted file without having to
+read the entire file into memory.
+@param f: a string which is the file path to the senseval2 formatted file
+@return: a generator which will return a tuple when called. The tuple has
+         the form (sense_id, context)
+"""
 def getCtxes(f):
-    ctx_re = re.compile(r'<answer.*?senseid="([^"]*)"/>.*?<context>(.*?)</context>', re.MULTILINE | re.DOTALL)
+    ctx_re = re.compile(r'<answer.*?senseid="([^"]*)"[^/]*/>.*?<context>(.*?)</context>', re.MULTILINE | re.DOTALL)
     with open(f, 'r') as f_ref:
         buf = f_ref.read()
     for sense, ctx in ctx_re.findall(buf):
         yield sense, ctx.strip()
 
+"""
+Writes a given corpus into the hdp-wsi tool's input folder in a format that the tool
+can understand. 
+@param f: the senseval2 file we initially read from. This parameter is only used to 
+          get the target word and POS. 
+@param corp: a list of lists which represent our corpus. Each list in corp should be
+             the tokenized form of the context. For example, a single list item in corp
+             would look like:
+             ['the', 'dog', 'barked', 'at', 'the', 'mouse']
+             Note that any preprocessing should already be done at this point (eg. removal
+             of stopwords or case-conversion)
+"""
 def writeCorpToHDPWSI(f, corp):
     target, pos = f.split('-', 1)
     target = target.split('/')[-1]
@@ -28,6 +55,14 @@ def writeCorpToHDPWSI(f, corp):
         f_ref.write(target + "." + pos[0] + " " + str(num_ctxes))
 
 
+"""
+A simplified version of the above function for when we don't want to do any preprocessing
+to the contexts of the senseval2 formatted file. This function takes the senseval2 file
+and writes it to the hdp-wsi tool's input directory in the format that the tool expects. We
+don't use this function currently, but we didn't want to get rid of it becasue of emotional
+attachment issues.
+@param f: a string which is the file path to the senseval2 file
+"""
 def writeCtxesToHDPWSI(f):
     target, pos = f.split('-', 1)
     target = target.split('/')[-1]
@@ -46,9 +81,6 @@ if __name__ == '__main__':
         print "usage: python writeToHDP.py <senseval2-xml-file>"
         sys.exit(1)
     
-    #writeCtxesToHDPWSI(sys.argv[1])
-    #sys.exit(1)
-
     corp = []
     for sense, ctx in getCtxes(sys.argv[1]):
         corp.append(tokenize(ctx, 500))
