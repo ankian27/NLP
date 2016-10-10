@@ -1,11 +1,12 @@
             S0	   TOTAL	
-  C0:       50	      50	(50.00)
-  C1:*      50	      50	(50.00)
+  C1:       56	      56	(56.00)
+  C0:*      10	      10	(10.00)
+  C2:*      34	      34	(34.00)
  TOTAL     100	     100
          (100.00)
-Precision = 100.00(50/50)
-Recall = 50.00(50/100+0)
-F-Measure = 66.67
+Precision = 100.00(56/56)
+Recall = 56.00(56/100+0)
+F-Measure = 71.79
 
 Legend of Sense Tags
-S0 = wear.v.1
+S0 = strike.v.1

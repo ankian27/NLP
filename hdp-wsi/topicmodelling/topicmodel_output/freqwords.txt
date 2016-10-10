@@ -1,6 +1,3 @@
-      100 wear
-       43 tear
-       43 tear_#1
-       16 look
-       13 dress
-       11 need
+      110 strike
+       16 iran
+       14 union
