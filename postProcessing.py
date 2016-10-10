@@ -2,6 +2,11 @@ import src.config
 from collections import defaultdict
 import sys
 import re
+from nltk.tag import pos_tag, map_tag
+from nltk import word_tokenize
+from nltk.util import ngrams
+from nltk.collocations import *
+from nltk.tokenize import RegexpTokenizer
 
 MIN_CLUSTER_SIZE=6
 
@@ -95,3 +100,5 @@ if __name__ == "__main__":
 
     writeAnswers()
     # Definition generation goes here
+
+    def 

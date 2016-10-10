@@ -1,19 +1,16 @@
-
-CPAN.pm requires configuration, but most of it can be done automatically.
-If you answer 'no' below, you will enter an interactive dialog for each
-configuration option instead.
-
-Would you like to configure as much as possible automatically? [yes] Fetching with LWP:
-http://www.cpan.org/authors/01mailrc.txt.gz
-Reading '/root/.cpan/sources/authors/01mailrc.txt.gz'
+Reading '/home/ankit/.cpan/Metadata'
+  Database was generated on Tue, 04 Oct 2016 02:17:02 GMT
+Fetching with LWP:
+http://mirror.uoregon.edu/CPAN/authors/01mailrc.txt.gz
+Reading '/home/ankit/.cpan/sources/authors/01mailrc.txt.gz'
 ............................................................................DONE
 Fetching with LWP:
-http://www.cpan.org/modules/02packages.details.txt.gz
-Reading '/root/.cpan/sources/modules/02packages.details.txt.gz'
-  Database was generated on Sun, 09 Oct 2016 20:41:02 GMT
+http://mirror.uoregon.edu/CPAN/modules/02packages.details.txt.gz
+Reading '/home/ankit/.cpan/sources/modules/02packages.details.txt.gz'
+  Database was generated on Tue, 04 Oct 2016 02:17:02 GMT
 .............
   New CPAN.pm version (v2.14) available.
-  [Currently running version is v2.05]
+  [Currently running version is v2.00]
   You might want to try
     install CPAN
     reload cpan
@@ -23,32 +20,30 @@ Reading '/root/.cpan/sources/modules/02packages.details.txt.gz'
 
 ...............................................................DONE
 Fetching with LWP:
-http://www.cpan.org/modules/03modlist.data.gz
-Reading '/root/.cpan/sources/modules/03modlist.data.gz'
+http://mirror.uoregon.edu/CPAN/modules/03modlist.data.gz
+Reading '/home/ankit/.cpan/sources/modules/03modlist.data.gz'
 DONE
-Writing /root/.cpan/Metadata
+Writing /home/ankit/.cpan/Metadata
 Running install for module 'Algorithm::Munkres'
+Running make for T/TP/TPEDERSE/Algorithm-Munkres-0.08.tar.gz
 Fetching with LWP:
-http://www.cpan.org/authors/id/T/TP/TPEDERSE/Algorithm-Munkres-0.08.tar.gz
+http://mirror.uoregon.edu/CPAN/authors/id/T/TP/TPEDERSE/Algorithm-Munkres-0.08.tar.gz
 Fetching with LWP:
-http://www.cpan.org/authors/id/T/TP/TPEDERSE/CHECKSUMS
-Checksum for /root/.cpan/sources/authors/id/T/TP/TPEDERSE/Algorithm-Munkres-0.08.tar.gz ok
-'YAML' not installed, will not store persistent state
-Configuring T/TP/TPEDERSE/Algorithm-Munkres-0.08.tar.gz with Makefile.PL
+http://mirror.uoregon.edu/CPAN/authors/id/T/TP/TPEDERSE/CHECKSUMS
+Checksum for /home/ankit/.cpan/sources/authors/id/T/TP/TPEDERSE/Algorithm-Munkres-0.08.tar.gz ok
+
+  CPAN.pm: Building T/TP/TPEDERSE/Algorithm-Munkres-0.08.tar.gz
+
 Checking if your kit is complete...
 Looks good
-Generating a Unix-style Makefile
 Writing Makefile for Algorithm::Munkres
 Writing MYMETA.yml and MYMETA.json
-  TPEDERSE/Algorithm-Munkres-0.08.tar.gz
-  /usr/bin/perl Makefile.PL INSTALLDIRS=site -- OK
-Running make for T/TP/TPEDERSE/Algorithm-Munkres-0.08.tar.gz
 cp lib/Algorithm/Munkres.pm blib/lib/Algorithm/Munkres.pm
 Manifying blib/man3/Algorithm::Munkres.3pm
   TPEDERSE/Algorithm-Munkres-0.08.tar.gz
   /usr/bin/make -- OK
 Running make test
-PERL_DL_NONLAZY=1 PERL_USE_UNSAFE_INC=1 /usr/bin/perl "-MExtUtils::Command::MM" "-MTest::Harness" "-e" "undef *Test::Harness::Switches; test_harness(0, 'blib/lib', 'blib/arch')" t/*.t
+PERL_DL_NONLAZY=1 /usr/bin/perl "-MExtUtils::Command::MM" "-e" "test_harness(0, 'blib/lib', 'blib/arch')" t/*.t
 t/DoubleInvoke.t .. ok
 t/Fractions.t ..... ok
 t/Horz_Matrix.t ... ok
@@ -63,13 +58,14 @@ t/Rect_Unit.t ..... ok
 t/Unit.t .......... ok
 t/Vert_Matrix.t ... ok
 All tests successful.
-Files=13, Tests=130,  0 wallclock secs ( 0.05 usr  0.02 sys +  0.26 cusr  0.02 csys =  0.35 CPU)
+Files=13, Tests=130,  1 wallclock secs ( 0.05 usr  0.00 sys +  0.16 cusr  0.01 csys =  0.22 CPU)
 Result: PASS
   TPEDERSE/Algorithm-Munkres-0.08.tar.gz
   /usr/bin/make test -- OK
 Running make install
-Installing /usr/local/share/perl/5.20.2/Algorithm/Munkres.pm
+Manifying blib/man3/Algorithm::Munkres.3pm
+Installing /usr/local/share/perl/5.18.2/Algorithm/Munkres.pm
 Installing /usr/local/man/man3/Algorithm::Munkres.3pm
-Appending installation info to /usr/local/lib/x86_64-linux-gnu/perl/5.20.2/perllocal.pod
+Appending installation info to /usr/local/lib/perl/5.18.2/perllocal.pod
   TPEDERSE/Algorithm-Munkres-0.08.tar.gz
   /usr/bin/make install  -- OK

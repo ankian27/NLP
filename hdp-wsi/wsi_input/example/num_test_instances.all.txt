@@ -1,1 +1,1 @@
-racket.n 110
+wear.v 100
