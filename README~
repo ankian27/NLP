@@ -140,6 +140,9 @@ HOW TO RUN
 Eg: To run our project on the file "date-noun-vatti001.xml", run as 
 	./runit.sh input/date-noun-vatti001.xml
 
+- You can also run the tool on every file in the input directory with the following command:
+	./runall.sh
+
 4) The reults of cluster creation, assigment of contexts to clusters, and the definitions generated for each cluster will be written in files in the output directory. See the section on output file format for an explanation of the format
 
 
