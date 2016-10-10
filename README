@@ -1,0 +1,134 @@
+____________________________________________________________________
+
+		    Team - Red Project Stage I  
+	Word sense disambiguation based on co-occurence matrices
+____________________________________________________________________
+
+Authors :  	Ankit Anand Gupta -
+		Brandon Paulsen -
+		Sai Ram Kowshik Vattipally -
+		Sandeep Vuppula -
+		
+
+
+*************
+CONTRIBUTIONS
+*************
+Ankit Anand Gupta :
+
+Brandon Paulsen :
+
+Sai Ram Kowshik Vattipally :
+
+Sandeep Vuppula :
+
+********
+CONTENTS
+********
+
+Contents in the Directory:
+* install.sh
+* runit.sh
+* README
+* postProcessing.py
+* writeToHDP.py
+* stopwords.txt ( The list of stop words we are excluding)
+* hdp-wsi ( Directory that contains HDP word sense induction python implementation)
+* senseclusters_scorer
+* src
+* test_data
+	abandon-verb-pauls658.xml
+	racket-noun-pauls658.xml
+	sidewalk-furnace-pauls658.xml
+	
+	wear-verb-vuppu008.xml
+	plot-noun-vuppu008.xml
+	television-food-vuppu008.xml
+
+	strike-verb-gupta299.xml
+	bat-noun-gupta299.xml
+	banana-wall-gupta299.xml
+
+	shoot-verb-vatti001.xml
+	date-noun-vatti001.xml
+	pigeon-car-vatti001-1.xml
+
+********************
+PROBLEM AND SOLUTION
+********************
+The problem we are trying to solve is creating a dictionary from raw data. The system takes a XML file containing a list of contexts each of which contain a target word within a <head></head> tag. Each instance is a sentence or a group of sentences that surround the target word which we intend to find the meaning of in the given context. The system we design is intended to group these contexts based on the sense of the target word in that particular context. Each of the resultant cluster will contain contexts where the target word is used in same sense. This step is called clustering.
+
+The input file may be of 2 kinds. The first one has only one target word which is either a noun or verb which has multiple senses. The second kind is where there are contexts that uses two different words that are conflated into a single word. In the first kind, we try to cluster the contexts based on various senses the target word we have. In the second one, we try to assign a sense to the conflated word and try to group the contexts into clusters such that each cluster might have same sense as each word that the conflated word is formed from. Note that we might generate more or less clusters than the number of words used for conflating the word.
+
+We then try to generate definitions of the target word in each cluster. The target word has different meanings(senses) in different contexts.
+
+
+Clustering:
+
+We first parse the XML input file and extract each of the contexts seperately. We then tokenize each of the context and convert all the tokens to lower case alphabet. The tokenizer breaks certain words into contractions(For example "isn't" becomes "is + n't"). We then remove a selected list of stop words and words that have punctuations and numbers in them ( eg: n't, T2000) from the contexts. Then the resultant contexts as given as an input to the Hdp-wsi(Hierarchical Dirichlet process-Word sense Induction) tool in a suitable format. ***. The hdp-wsi tool extracts topics(senses) from the contexts and assigns descriptor words to each topic. Then we assign each context to a topic based on how well the context matches the descriptor words that belong to a particular topic. Then each of these topics become our senses that we extract from the given contexts.
+
+
+
+
+* parse XMl and extract each context
+* Tokenise each context
+* convert tokens to lower case
+* remove stop words and words that have punctuation and numbers in them
+* output the context into fprmat that HDP-wsi tool can read
+* run the HDP tool
+* HDP extracts topics from the contexts and assigns descriptors words to each topic(senses)
+* Then we assign each contect to a topic base don how well the contect matches to the descriptor words
+* the topics become our sense clusters
+
+
+Definition generation:
+
+The topic words extracted in clustering will be used as the base words for definition generation. The 
+
+
+**********
+HOW TO RUN
+**********
+
+1) In terminal, navigate to the directory of project.
+2) Run install.sh.
+3) Run runit.sh with the input file as the first argument.
+	usage: "./runit.sh <senseval2-xml-file>"
+
+Eg: To run our project on the file "date-noun-vatti001.xml", run as 
+	./runit.sh test_data/date-noun-vatti001.xml
+
+4) The 
+*********
+CITATIONS
+*********
+
+1)Our main idea for clustering uses HDP (Hierarchical Dirichlet process), an algorithm developed by Yee Whye Teh, Michael I. Jordan, Matthew J. Beal and David Blei:
+ Hierarchical dirichlet processes
+(http://www.gatsby.ucl.ac.uk/~ywteh/research/npbayes/jasa2006.pdf)
+
+@article{teh2012hierarchical,
+  title={Hierarchical dirichlet processes},
+  author={Teh, Yee Whye and Jordan, Michael I and Beal, Matthew J and Blei, David M},
+  journal={Journal of the american statistical association},
+  year={2012},
+  publisher={Taylor \& Francis}
+}
+
+
+
+2) Our implementaion uses a python package developed by Jey Han Lau, Paul Cook, Diana McCarthy, David Newman and Timothy Baldwin that implemented HDP algorithm as outlined in the following paper: 
+Word sense induction for novel sense detection
+(http://www.ics.uci.edu/~newman/pubs/eacl2012.pdf)
+
+@inproceedings{lau2012word,
+  title={Word sense induction for novel sense detection},
+  author={Lau, Jey Han and Cook, Paul and McCarthy, Diana and Newman, David and Baldwin, Timothy},
+  booktitle={Proceedings of the 13th Conference of the European Chapter of the Association for Computational Linguistics},
+  pages={591--601},
+  year={2012},
+  organization={Association for Computational Linguistics}
+}
+
+
+
