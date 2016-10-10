@@ -20,19 +20,23 @@ fi
 rm hdp-wsi/wsi_input/example/all/* &> /dev/null
 
 # writeToHDP.py converts the given senseval2 xml file, and converts it into a format that can be processed by hdp-wsi. In addition, this script removes stop words from the contexts, and it converts everything to lowercase because the hdp-wsi tool does not do that for whatever reason. 
+echo "Converting $1 to hdp-wsi format"
 python writeToHDP.py $1
 
 cd hdp-wsi
 # Run word sense induction tool on the contexts we just gave it
-./run_wsi.sh
+echo "Running word sense induction"
+./run_wsi.sh &> /dev/null
 cd ..
 
 # Read the results from the word sense induction tool, and generate definition
-python postProcessing.py $1
+echo "Processing results from hdp-wsi"
+python postProcessing.py $1 &> /dev/null
 
 cd senseclusters_scorer/
 # calculate the precision of our clustering
-./senseclusters_scorer.sh key answers
+echo "Calculating sense cluster scores"
+./senseclusters_scorer.sh key answers &> /dev/null
 # print out the scores
 cat report.out
 cd ..

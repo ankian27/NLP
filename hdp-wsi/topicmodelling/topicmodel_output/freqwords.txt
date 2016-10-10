@@ -1,3 +1,4 @@
+<<<<<<< HEAD
       106 shoot
        37 going
        31 film
@@ -27,3 +28,66 @@
        11 money
        11 part
        11 times
+=======
+       57 abandon
+       49 abandoned
+       34 soon
+       29 thought
+       23 left
+       23 place
+       22 country
+       22 saw
+       21 took
+       21 mother
+       21 think
+       21 part
+       20 father
+       20 power
+       20 found
+       19 mind
+       19 ship
+       19 water
+       18 god
+       18 gave
+       18 night
+       17 house
+       17 put
+       17 hands
+       17 home
+       16 told
+       16 brought
+       16 john
+       16 course
+       16 death
+       16 hope
+       15 days
+       15 manner
+       15 heard
+       15 children
+       15 began
+       14 want
+       14 case
+       14 church
+       14 sister
+       13 seen
+       13 child
+       13 board
+       13 sea
+       13 vessel
+       13 moment
+       12 end
+       12 deck
+       12 things
+       12 white
+       12 england
+       12 women
+       12 able
+       12 present
+       11 expected
+       11 situation
+       11 land
+       11 hopes
+       11 means
+       11 lost
+       11 friends
+>>>>>>> 6250c306f063bd059a31044f92337225cedc986b

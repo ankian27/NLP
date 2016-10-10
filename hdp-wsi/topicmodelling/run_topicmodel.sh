@@ -6,7 +6,7 @@
 ############
 #hdp parameters
 gamma_b=0.1
-alpha_b=1.0
+alpha_b=0.94
 #topic model output directory
 output_dir="topicmodel_output"
 #stopword file to use
