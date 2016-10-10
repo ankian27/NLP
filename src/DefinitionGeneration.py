@@ -11,10 +11,12 @@ import random
 class Definition(object):
 	def __init__(self):
 		self.cfgRule=defaultdict(list)
+		self.noun = ''
+		self.verb = ''
 
 	def get_Noun_Verb(self, topics):
-		noun=''
-		verb=''
+		self.noun = ''
+		self.verb = ''
 		adj=[]
 		adv=[]
 		# det=['the','a','is','are',]
@@ -27,19 +29,19 @@ class Definition(object):
 			#print word ," ",tag
 			if tag=='NOUN':
 				# noun.append(word)
-				noun += word + '|'
+				self.noun += word + '|'
 			if tag=='VERB':
 				# verb.append(word)
-				verb += word+'|'
+				self.verb += word+'|'
 			if tag=='ADJ':
 				adj.append(word)
 			if tag=='ADV':
 				adv.append(word)
-		print noun, verb
-		noun=noun[:-1]
+		print self.noun, self.verb
+		self.noun=self.noun[:-1]
 		
-		verb=verb[:-1]
-		return noun, verb
+		self.verb=self.verb[:-1]
+		return self.noun, self.verb
 
 	def cfg_rule(self,left,right):
 
@@ -49,17 +51,36 @@ class Definition(object):
 
 	def gen_def(self, symbol):
 		definition = ''
+		#del_word
 		rule = random.choice(self.cfgRule[symbol])
 		for sym in rule:
 			if sym in self.cfgRule:
 				definition += self.gen_def(sym)
 			else:
 				definition += sym + ' '
-        	return definition
+
+				noun2=self.noun.split('|')
+				verb2=self.verb.split('|')
+				#print noun2, "  " ,verb2, " "
+				
+				noun2 = filter(lambda a: a != sym, noun2) 
+				self.noun=''
+				
+				verb2 = filter(lambda a: a != sym, verb2)
+				self.verb=''
+
+				for words in noun2:
+					self.noun += words + '|'
+				self.noun=self.noun[:-1]	
+				for words in verb2:
+					self.verb += words + '|'			
+				self.verb=self.verb[:-1]
+
+		return definition
 
 	def generate_Definition(self, topics, target):
  		topics = [topic for topic in topics if target not in topic]
- 		noun, verb = self.get_Noun_Verb(topics)
+ 		self.noun, self.verb = self.get_Noun_Verb(topics)
         	self.cfg_rule('S', 'S1 CONJ S2')
 		self.cfg_rule('S1', 'NP VP')
 		self.cfg_rule('S2', 'NP VP')
@@ -68,6 +89,6 @@ class Definition(object):
 		self.cfg_rule('CONJ','or | and')
 		self.cfg_rule('PRO','with | to')
 		self.cfg_rule('Det', 'a | the | is')
-		self.cfg_rule('N', noun)
-		self.cfg_rule('V', verb)
+		self.cfg_rule('N', self.noun)
+		self.cfg_rule('V', self.verb)
 		return self.gen_def('S')	

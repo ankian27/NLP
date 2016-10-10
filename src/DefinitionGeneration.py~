@@ -55,12 +55,12 @@ class Definition(object):
 				definition += self.gen_def(sym)
 			else:
 				definition += sym + ' '
-        return definition
+        	return definition
 
 	def generate_Definition(self, topics, target):
-        noun, verb = self.get_Noun_Verb(topics)
-        topics = [topic for topic in topics if target not in topic]
-        self.cfg_rule('S', 'S1 CONJ S2')
+ 		topics = [topic for topic in topics if target not in topic]
+ 		noun, verb = self.get_Noun_Verb(topics)
+        	self.cfg_rule('S', 'S1 CONJ S2')
 		self.cfg_rule('S1', 'NP VP')
 		self.cfg_rule('S2', 'NP VP')
 		self.cfg_rule('NP', 'Det N')
