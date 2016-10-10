@@ -1,12 +1,12 @@
-from gensim import corpora
-from gensim.similarities.docsim import Similarity
-from nltk.stem.porter import PorterStemmer
-import xmltodict
 import string
 import nltk
 import re
 
-stemmer = PorterStemmer()
+"""
+Contains the utility functions for processing contexts pulled from
+senseval2 formatted files.
+"""
+
 sws = set(line.strip() for line in open('stopwords.txt', 'r'))
 
 non_alnum = re.compile('[\W_]+')
@@ -18,13 +18,17 @@ def strip_non_ascii(string):
     stripped = (c for c in string if 0 < ord(c) < 127)
     return ''.join(stripped)
 
+"""
+Tokenizes the given context, performing any special processing
+on the file, specifically removing stopwords and converting all the words
+to lower case. In addition, we remove non-ascii characters from the contexts
+because they can break hdp-wsi, and we strip any head tags from the context.
+@param context: a raw context pulled a senseval2 formatted xml file
+"""
 def tokenize(context, ctx_len):
     context = strip_non_ascii(context)
     b4, target, after = split_re.split(context, 1)
     after = rm_head_re.sub('', after)
-    #print "before: " + b4
-    #print "after: " + after
-    #print "target: " + target
     doc = []
     tmp1 = []
     tmp2 = []
@@ -45,8 +49,7 @@ def tokenize(context, ctx_len):
 
     for word in reversed(tmp1):
         word = word.lower()
-        if word.isalpha():
-        #if word not in sws and word.isalpha():
+        if word not in sws and word.isalpha():
             doc.append(word)
         if len(doc) >= ctx_len:
             break
@@ -54,8 +57,7 @@ def tokenize(context, ctx_len):
     doc.append(target.lower())
     for word in tmp2:
         word = word.lower()
-        #if word not in sws and word.isalpha():
-        if word.isalpha():
+        if word not in sws and word.isalpha():
             doc.append(word)
         if len(doc) >= ctx_len*2:
             break
