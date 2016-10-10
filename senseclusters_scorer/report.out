@@ -1,11 +1,22 @@
-            S0	   TOTAL	
-  C0:       50	      50	(50.00)
-  C1:*      50	      50	(50.00)
- TOTAL     100	     100
-         (100.00)
-Precision = 100.00(50/50)
-Recall = 50.00(50/100+0)
-F-Measure = 66.67
+            S0	      S2	      S5	      S4	      S1#	      S3#	      S6#	      S7#	      S8#	      S9#	   TOTAL	
+  C0:        5	       3	       6	       1	       0	       0	       0	       0	       0	       0	      15	(15.00)
+  C1:        6	      19	      10	       3	       0	       5	       0	       0	       0	       0	      43	(43.00)
+  C2:        0	       9	      18	       0	       1	       1	       1	       1	       2	       1	      34	(34.00)
+  C3:        0	       4	       3	       1	       0	       0	       0	       0	       0	       0	       8	(8.00)
+ TOTAL      11	      35	      37	       5	       1	       6	       1	       1	       2	       1	     100
+         (11.00)   (35.00)   (37.00)   (5.00)   (1.00)   (6.00)   (1.00)   (1.00)   (2.00)   (1.00)
+Precision = 43.00(43/100)
+Recall = 43.00(43/100+0)
+F-Measure = 43.00
 
 Legend of Sense Tags
-S0 = wear.v.1
+S0 = abandon.v.1
+S1 = abandon.v.10
+S2 = abandon.v.2
+S3 = abandon.v.3
+S4 = abandon.v.4
+S5 = abandon.v.5
+S6 = abandon.v.6
+S7 = abandon.v.7
+S8 = abandon.v.8
+S9 = abandon.v.9

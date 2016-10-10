@@ -31,6 +31,7 @@ Contents in the Directory:
 * runit.sh
 * runall.sh
 * README
+* RESULTS
 * postProcessing.py
 * writeToHDP.py
 * stopwords.txt (The list of stop words we are excluding)
@@ -38,7 +39,6 @@ Contents in the Directory:
 * senseclusters_scorer
 * src
 	DefinitionGeneration.py
-	context.py
 	corp.py
 * output
 * input
@@ -134,11 +134,14 @@ HOW TO RUN
 
 1) In terminal, navigate to the directory of project.
 2) Run install.sh as "./install.sh". This simply installs all the necessary packages for running
-3) Run runit.sh with the input file as the first argument.
-	usage: "./runit.sh <senseval2-xml-file>"
+3) To run word sense induction on a single senseval2 xml file, simply execute:
+	./runit.sh <senseval2-xml-file>
 
 Eg: To run our project on the file "date-noun-vatti001.xml", run as 
 	./runit.sh input/date-noun-vatti001.xml
+
+- You can also run the tool on every file in the input directory with the following command:
+	./runall.sh
 
 4) The reults of cluster creation, assigment of contexts to clusters, and the definitions generated for each cluster will be written in files in the output directory. See the section on output file format for an explanation of the format
 

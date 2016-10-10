@@ -1,3 +1,4 @@
+import src.config
 from src.DefinitionGeneration import Definition
 from collections import defaultdict
 import sys
