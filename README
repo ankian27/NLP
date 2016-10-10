@@ -29,13 +29,17 @@ CONTENTS
 Contents in the Directory:
 * install.sh
 * runit.sh
+* runall.sh
 * README
 * postProcessing.py
 * writeToHDP.py
-* stopwords.txt ( The list of stop words we are excluding)
+* stopwords.txt (The list of stop words we are excluding)
 * hdp-wsi ( Directory that contains HDP word sense induction python implementation)
 * senseclusters_scorer
 * src
+	DefinitionGeneration.py
+	context.py
+	corp.py
 * output
 * input
 	abandon-verb-pauls658.xml
@@ -75,23 +79,11 @@ Hierarchical Dirichlet process (HDP) is a algorithm used for clustering already 
 
 The Dirichlet process can be represented as 
 
-DP(a_0,G_0)
+DP(a_0, G_0)
 
-Alpha(a_0) is the scaling parameter and aplha >= 0. In simple terms, alpha is the probability of a context being moved into a new cluster.
+*Alpha(a_0) is the scaling parameter and alpha >= 0. In simple terms, probability of a new cluster being generated is proportional to the a_0.
 
-Gamma(G_0) is the base probability measure. In other words, Gamma is the probability that a context goes into a newly generated cluster.
-
-
-
-* parse XMl and extract each context
-* Tokenise each context
-* convert tokens to lower case
-* remove stop words and words that have punctuation and numbers in them
-* output the context into fprmat that HDP-wsi tool can read
-* run the HDP tool
-* HDP extracts topics from the contexts and assigns descriptors words to each topic(senses)
-* Then we assign each contect to a topic base don how well the contect matches to the descriptor words
-* the topics become our sense clusters
+*Gamma(G_0) is the base probability measure. In other words, G_0 is the probability that a context goes into a newly generated cluster.
 
 _____________________
 Definition generation
@@ -114,6 +106,68 @@ Eg: To run our project on the file "date-noun-vatti001.xml", run as
 
 4) The reults will be displayed on the terminal.
 
+
+********
+EXAMPLES
+********
+-----------------
+INPUT FILE FORMAT
+-----------------
+The input can be a file either of the following two kinds:
+
+1)An XML with a single Noun or Verb tagged: (single word used in multiple senses)
+
+Example file format:
+--------------------
+
+<corpus lang="english">
+<lexelt item="line">
+<instance id="1">
+<answer instance="1" senseid="photograph or videograph a scene or a movie"/>
+<context>
+, " he says of his subjects. " When they look back, it's more than a portrait of them, it's a moment in place and time. " # As for Leon Borenzstein, he tells people who simply want to look good to go someplace else. But that doesn't stop him from getting clients. # " People are tired of sterile portraits, " he says. " They want something more creative. " # Whether they know it or not, apparently. When San Francisco fashion executive Naomi Mann hired Margretta Mitchell to <head>shoot</head> a family portrait, she asked for a couple of relatively straightforward photographs posed in the living room and garden. But Mitchell happened to snap the five Mann children grouped around a staircase while wearing big grins and goofy hats, and Mann liked it so much she bought that one instead. # " Even if you don't know our family, it speaks to you about who we are, " she says. " It's playful. It's funny. When I saw it, I said,
+</context>
+</instance>
+<instance id="2">
+<answer instance="2" senseid="photograph or videograph a scene or a movie"/>
+<context>
+o, Lesley Gore, fabulous woman, passed away over the weekend. And we also lost Louis Jourdan. Now do you remember a film called " Gigi? " Yes, and also was it " Octopussy, " was he also in that? Yes, he's, he was an amazing Frenchman. We also lost him this weekend. But the good news here is that Naya and Ryan, you both have a lot going on right now. Naya first, what's going on? Well, I am after this going to go and <head>shoot</head> a couple episodes of Lifetime's " Devious Maids. " So I'm excited about that, and it'll be cool to do something different, and all the ladies seem awesome. So I'm really looking forward to it. Yeah, they're all good girls. And what about you, Ryan? You can catch me on " General Hospital " as detective Nathan West. It's February, it's GH Fan February, so if you're a fan of the show, anything you
+</context>
+</instance>
+
+
+2) An XML with a Name-conflate pair: (two words conflated into one used in two different senses)
+
+
+Example file format:
+--------------------
+
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<corpus lang='english'>
+
+<lexelt item="p_c">
+
+<instance id="1">
+<answer instance="1" senseid="pigeon"/>
+<context>
+ the genome and tissues, as well as the potential parenting, of the band-tailed <head>p_c</head> Patagioenas fasciata. # I've joined forces with a sweep of other interested scientists    fixed. But it is getting prettier. Now traveling under the name of 
+</context>
+</instance>
+
+<instance id="2">
+<answer instance="2" senseid="pigeon"/>
+<context>
+to beat either in the field or for dollar value -- and splice them into the genome of a stem cell from a common rock <head>p_c</head> # Rock pigeon stem cells containing this doctored genome could be transformed into germ    , and I know they are coming in on my frequency 
+</context>
+</instance>
+
+
+******************
+OUTPUT FILE FORMAT
+******************
+
+
+
 *********
 CITATIONS
 *********
@@ -129,7 +183,6 @@ CITATIONS
   year={2012},
   publisher={Taylor \& Francis}
 }
-
 
 
 2) Our implementaion uses a python package developed by Jey Han Lau, Paul Cook, Diana McCarthy, David Newman and Timothy Baldwin that implemented HDP algorithm as outlined in the following paper: 
