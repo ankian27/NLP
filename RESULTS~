@@ -1,0 +1,223 @@
+input/abandon-verb-pauls658.xml
+Calculating sense cluster scores
+            S0	      S2	      S5	      S4	      S1#	      S3#	      S6#	      S7#	      S8#	      S9#	   TOTAL	
+  C0:        5	       3	       6	       1	       0	       0	       0	       0	       0	       0	      15	(15.00)
+  C1:        6	      19	      10	       3	       0	       5	       0	       0	       0	       0	      43	(43.00)
+  C2:        0	       9	      18	       0	       1	       1	       1	       1	       2	       1	      34	(34.00)
+  C3:        0	       4	       3	       1	       0	       0	       0	       0	       0	       0	       8	(8.00)
+ TOTAL      11	      35	      37	       5	       1	       6	       1	       1	       2	       1	     100
+         (11.00)   (35.00)   (37.00)   (5.00)   (1.00)   (6.00)   (1.00)   (1.00)   (2.00)   (1.00)
+Precision = 43.00(43/100)
+Recall = 43.00(43/100+0)
+F-Measure = 43.00
+
+Legend of Sense Tags
+S0 = abandon.v.1
+S1 = abandon.v.10
+S2 = abandon.v.2
+S3 = abandon.v.3
+S4 = abandon.v.4
+S5 = abandon.v.5
+S6 = abandon.v.6
+S7 = abandon.v.7
+S8 = abandon.v.8
+S9 = abandon.v.9
+input/banana-wall-gupta299.xml
+Calculating sense cluster scores
+            S0	      S2	      S1#	   TOTAL	
+  C0:      546	       0	       0	     546	(50.46)
+  C1:       45	     257	     234	     536	(49.54)
+ TOTAL     591	     257	     234	    1082
+         (54.62)   (23.75)   (21.63)
+Precision = 74.21(803/1082)
+Recall = 74.21(803/1082+0)
+F-Measure = 74.21
+
+Legend of Sense Tags
+S0 = banana.w.1
+S1 = banana.w.2
+S2 = banana.w.3
+input/bat-noun-gupta299.xml
+Calculating sense cluster scores
+            S0	      S1	   TOTAL	
+  C0:       50	       0	      50	(50.00)
+  C1:       48	       2	      50	(50.00)
+ TOTAL      98	       2	     100
+         (98.00)   (2.00)
+Precision = 52.00(52/100)
+Recall = 52.00(52/100+0)
+F-Measure = 52.00
+
+Legend of Sense Tags
+S0 = bat.n.1
+S1 = bat.n.2
+input/date-noun-vatti001.xml
+Calculating sense cluster scores
+            S0	      S5	      S1	      S2#	      S3#	      S4#	   TOTAL	
+  C0:       40	       0	       0	       0	       0	       0	      40	(40.00)
+  C1:       30	       0	       0	       0	       0	       0	      30	(30.00)
+  C2:        5	       3	      11	       3	       4	       4	      30	(30.00)
+ TOTAL      75	       3	      11	       3	       4	       4	     100
+         (75.00)   (3.00)   (11.00)   (3.00)   (4.00)   (4.00)
+Precision = 51.00(51/100)
+Recall = 51.00(51/100+0)
+F-Measure = 51.00
+
+Legend of Sense Tags
+S0 = date.n.1
+S1 = date.n.2
+S2 = date.n.3
+S3 = date.n.4
+S4 = date.n.5
+S5 = date.n.6
+input/line-noun-6senses.xml
+Calculating sense cluster scores
+            S0	      S5	      S1	      S2	      S3	      S6	      S4#	   TOTAL	
+  C0:      373	       0	       0	       0	       0	       0	       0	     373	(9.00)
+  C1:      213	       0	     161	       0	       0	       0	       0	     374	(9.02)
+  C2:        0	       0	     316	      33	       0	       0	       0	     349	(8.42)
+  C3:        0	       0	       0	     429	       0	       0	       0	     429	(10.35)
+  C4:        0	     371	       0	     829	     669	      41	     307	    2217	(53.47)
+  C5:        0	       0	       0	       0	       0	     404	       0	     404	(9.74)
+ TOTAL     586	     371	     477	    1291	     669	     445	     307	    4146
+         (14.13)   (8.95)   (11.51)   (31.14)   (16.14)   (10.73)   (7.40)
+Precision = 52.85(2191/4146)
+Recall = 52.85(2191/4146+0)
+F-Measure = 52.85
+
+Legend of Sense Tags
+S0 = line.n.1
+S1 = line.n.2
+S2 = line.n.3
+S3 = line.n.4
+S4 = line.n.5
+S5 = line.n.6
+S6 = line.n.7
+input/pigeon-car-vatti001-1.xml
+Calculating sense cluster scores
+            S1	      S2	      S0#	   TOTAL	
+  C0:      535	       0	     273	     808	(59.63)
+  C1:      156	     387	       4	     547	(40.37)
+ TOTAL     691	     387	     277	    1355
+         (51.00)   (28.56)   (20.44)
+Precision = 68.04(922/1355)
+Recall = 68.04(922/1355+0)
+F-Measure = 68.04
+
+Legend of Sense Tags
+S0 = pigeon.c.1
+S1 = pigeon.c.2
+S2 = pigeon.c.3
+input/plot-noun-vuppu008.xml
+Calculating sense cluster scores
+            S0	      S1	   TOTAL	
+  C0:       50	       0	      50	(50.00)
+  C2:       18	       2	      20	(20.00)
+  C1:*      30	       0	      30	(30.00)
+ TOTAL      98	       2	     100
+         (98.00)   (2.00)
+Precision = 74.29(52/70)
+Recall = 52.00(52/100+0)
+F-Measure = 61.18
+
+Legend of Sense Tags
+S0 = plot.n.1
+S1 = plot.n.2
+input/racket-noun-pauls658.xml
+Calculating sense cluster scores
+            S1	      S0	      S4	      S2#	      S3#	      S5#	   TOTAL	
+  C0:       10	       8	       6	       5	       0	       1	      30	(27.27)
+  C1:        9	      18	      11	       2	       0	       0	      40	(36.36)
+  C2:        2	       2	      20	      14	       2	       0	      40	(36.36)
+ TOTAL      21	      28	      37	      21	       2	       1	     110
+         (19.09)   (25.45)   (33.64)   (19.09)   (1.82)   (0.91)
+Precision = 43.64(48/110)
+Recall = 43.64(48/110+0)
+F-Measure = 43.64
+
+Legend of Sense Tags
+S0 = racket.n.1
+S1 = racket.n.2
+S2 = racket.n.3
+S3 = racket.n.4
+S4 = racket.n.5
+S5 = racket.n.6
+input/shoot-verb-vatti001.xml
+Calculating sense cluster scores
+            S0	      S1	      S2#	      S3#	      S4#	   TOTAL	
+  C0:       37	      13	       0	       0	       0	      50	(50.00)
+  C1:        0	      26	      19	       4	       1	      50	(50.00)
+ TOTAL      37	      39	      19	       4	       1	     100
+         (37.00)   (39.00)   (19.00)   (4.00)   (1.00)
+Precision = 63.00(63/100)
+Recall = 63.00(63/100+0)
+F-Measure = 63.00
+
+Legend of Sense Tags
+S0 = shoot.v.1
+S1 = shoot.v.2
+S2 = shoot.v.3
+S3 = shoot.v.4
+S4 = shoot.v.5
+input/sidewalk-furnace-4104533.xml
+Calculating sense cluster scores
+            S0	      S2	      S1#	      S3#	      S4#	      S5#	      S6#	   TOTAL	
+  C0:      182	     198	     145	       2	       1	       0	       2	     530	(44.80)
+  C1:        2	     240	       1	     185	     166	      23	      36	     653	(55.20)
+ TOTAL     184	     438	     146	     187	     167	      23	      38	    1183
+         (15.55)   (37.02)   (12.34)   (15.81)   (14.12)   (1.94)   (3.21)
+Precision = 35.67(422/1183)
+Recall = 35.67(422/1183+0)
+F-Measure = 35.67
+
+Legend of Sense Tags
+S0 = sidewalk.f.1
+S1 = sidewalk.f.2
+S2 = sidewalk.f.3
+S3 = sidewalk.f.4
+S4 = sidewalk.f.5
+S5 = sidewalk.f.6
+S6 = sidewalk.f.7
+input/strike-verb-gupta299.xml
+Calculating sense cluster scores
+            S0	   TOTAL	
+  C1:       56	      56	(56.00)
+  C0:*      10	      10	(10.00)
+  C2:*      34	      34	(34.00)
+ TOTAL     100	     100
+         (100.00)
+Precision = 100.00(56/56)
+Recall = 56.00(56/100+0)
+F-Measure = 71.79
+
+Legend of Sense Tags
+S0 = strike.v.1
+input/television-food-vuppu008.xml
+Calculating sense cluster scores
+            S0	      S1	      S2#	      S3#	   TOTAL	
+  C0:      439	      91	       0	       0	     530	(47.15)
+  C1:        0	     242	     148	     204	     594	(52.85)
+ TOTAL     439	     333	     148	     204	    1124
+         (39.06)   (29.63)   (13.17)   (18.15)
+Precision = 60.59(681/1124)
+Recall = 60.59(681/1124+0)
+F-Measure = 60.59
+
+Legend of Sense Tags
+S0 = television.f.1
+S1 = television.f.2
+S2 = television.f.3
+S3 = television.f.4
+input/wear-verb-vuppu008.xml
+Calculating sense cluster scores
+            S0	   TOTAL	
+  C0:       50	      50	(50.00)
+  C1:*      50	      50	(50.00)
+ TOTAL     100	     100
+         (100.00)
+Precision = 100.00(50/50)
+Recall = 50.00(50/100+0)
+F-Measure = 66.67
+
+Legend of Sense Tags
+S0 = wear.v.1
