@@ -3,8 +3,8 @@
 # Input : Topic words, Target word
 # Output: Sentence depicting the meaning of the target word
 
-# Example:  shoot set police movie director want money wanted saw left
-# Output : the target word from the set of topic words 	
+# Example: shoot woman love look movie director part lot money film
+# Output : money love with a movie and a director love with is lot 
 
 import nltk 
 from nltk.tag import pos_tag, map_tag
