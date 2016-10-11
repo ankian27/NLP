@@ -1,3 +1,7 @@
+/**
+@Author:Sandeep Vuppula
+*/
+
 Hierarchical Dirichlet process (HDP):
 
 HDP is an algorithm developed by Yee Whye Teh, Michael I. Jordan, Matthew J. Beal and David Blei:
