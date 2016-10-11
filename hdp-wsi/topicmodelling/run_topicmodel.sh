@@ -52,6 +52,7 @@ python MakeDocword.py "$output_dir/wordstream.train.txt" \
 #run hdp
 #compile the code
 cd hdp
+make clean
 make
 cd ..
 

@@ -1,6 +1,4 @@
 ClusterID -> SenseID
-C0 -> abandon.v.1
-C1 -> abandon.v.2
-C2 -> abandon.v.5
-C3 -> abandon.v.4
-Score = 43.00
+C0 -> sidewalk.f.1
+C1 -> sidewalk.f.3
+Score = 35.67

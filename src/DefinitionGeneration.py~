@@ -6,6 +6,8 @@
 # Example: shoot woman love look movie director part lot money film
 # Output : money love with a movie and a director love with is lot 
 
+# @AUTHORS: Ankit and Sandeep
+
 import nltk 
 from nltk.tag import pos_tag, map_tag
 from nltk import word_tokenize
@@ -122,7 +124,7 @@ class Definition(object):
 		'''
 
 		# Removes the target word from the set of topic words. As the definition should not contain the word itself.
-                topics = filter(lambda topic: target not in topic and 'xyz' not in topic, topics)
+                topics = filter(lambda topic: target not in topic, topics)
  		# Get the seperated Nouns, Verbs, Adjectives
  		self.noun, self.verb ,self.adj= self.get_Noun_Verb(topics)
  		# Represent CFG rules in python

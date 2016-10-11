@@ -14,6 +14,8 @@ output and generating definitions. In addition, we experimented with absorbing t
 clusters into the larger clusters because the hdp-wsi consistently produced many more
 senses than there actually were, but this actually hurt precision for reasons we don't
 understand.
+
+@AUTHOR: Brandon Paulsen
 """
 
 # No longer used. See the doc for collapseSmallClusters()
