@@ -265,7 +265,7 @@ The topic words are chosen largely based on frequency, so the contexts where ban
 ----------------------
 Worst Performing Word|
 ----------------------
-The word that performed the worst was the name conflate pair for sidewalk and furnace with an F-score of 35.67. This is largely due to the number of clusters formed. hdp-wsi found 7 different topics (which correspond to senses), and several of them seem to be strongly related. The authors noted this type of sensitivity hdp-wsi seems Looking at the topic words for each topic supports this hypothesis. 
+The word that performed the worst was the name conflate pair for sidewalk and furnace with an F-score of 35.67. This is largely due to the number of clusters formed. hdp-wsi found 7 different topics (which correspond to senses), and several of them seem to be related. The high number of topics found seems to indicate that the topic can be too sensitive at times (or not sensitive enough, for example: wear only has a single cluster). The authors noted this type of hyper-sensitivity in their paper. Looking at the topic words for each topic supports this hypothesis that hdp is being overly sensitive. 
 
 topic 0 words: steel blast electric process furnaces arc iron carbon furnace
 topic 1 words: furnace temperature gas air water heat solar valley creek
@@ -274,3 +274,5 @@ topic 3 words: city streets sidewalks pedestrian street traffic roads sidewalk p
 topic 4 words: steel blast century pig cast coal iron works coke
 topic 5 words: neighborhood inches started pattern xyz walked noticed sidewalk counting boing
 topic 6 words: surfing art called located design pewee riding similar museum
+
+Notice that the topic words of topics 0, 1, and 3 all seem to indicate the furnace sense of our conflated word, and the other topic words indicate the sidewalk sense of the conflated word.
