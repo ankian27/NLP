@@ -1,3 +1,4 @@
+#Author: Ankit Anand Gupta, Sandeep Vuppula
 #This class is used to generate the defitions for each cluster. The idea of definiton generation is that, we can derive the definition of a word by using the context words neighbouring the target word in a given context. The topics are given by the hdp are used to get the topic words. The topic words along with the target_word(the noun/verb/nameconflate pair) is given as input to the program and the output is a sentence generated using those topic words. The sentence gerneated using our approach adheres to the syntactic structure of the enlgish grammar and is more than 10 words. The syntactic structure of the english grammar is represented here in the form of Context Free Grammars(CFG). A CFG is a set of recursive rules(or productions) which are used to generate string patterns. We give the target word as one of the input because if the target word is present in the set of topic words  we want to remove it from the defintion. The execution of the program is as follows:
 
 # Input : Topic words, Target word
@@ -26,7 +27,9 @@ class Definition(object):
 		self.adj  = ''
 
 	def get_Noun_Verb(self, topics):
-		"""The function is used to seperate the Nouns, Verbs and Adjectives in the given set of topic words.
+		"""
+		Author: Ankit Anand Gupta
+		The function is used to seperate the Nouns, Verbs and Adjectives in the given set of topic words.
 		We use the Parts of Speech Tagger from the Natural Language Toolkit to tag the POS for each word in the set of topic words.
 		Args:
 			param1 (set) : Set of topic words
@@ -62,7 +65,9 @@ class Definition(object):
 		return self.noun, self.verb ,self.adj
 
 	def cfg_rule(self,left,right):
-		'''The function is used to map the Context Free Grammar production rules for the english grammar to python representation
+		'''
+		#Authour: Sandeep Vuppula
+		The function is used to map the Context Free Grammar production rules for the english grammar to python representation
 		Args:
 			param1 (string) : Non-terminal String present on the left side of the production
 			param2 (string) : Terminal/Non-terminal string present on the right side of the production
@@ -74,7 +79,9 @@ class Definition(object):
 			self.cfgRule[left].append(tuple(rule.split()))
 
 	def gen_def(self, symbol):
-		'''The function is used to generate the definition of a sentence recursively using the CFG rules
+		'''
+		#Author: Sandeep Vuppula
+		The function is used to generate the definition of a sentence recursively using the CFG rules
 		Args:
 			param1 (string): Start symbol of the CFG rule
 		Returns:
@@ -113,7 +120,9 @@ class Definition(object):
 		return definition
 
 	def generate_Definition(self, topics, target):
-		'''This function which is control the flow of program. It makes calls to the functions to produce the CFG rules and to generate the definition of the cluster
+		'''
+		#Author: Ankit Anand Gupta
+		This function which is control the flow of program. It makes calls to the functions to produce the CFG rules and to generate the definition of the cluster
 		Args:
 			param1 (set) : Set of topic words
 			param2 (string): The target word for which the definition has to be generated.
