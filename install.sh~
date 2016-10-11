@@ -9,8 +9,9 @@ sudo apt-get update
 # csh is necessary for the cluster scorer
 sudo apt-get install python-dev python-pip csh perl libgsl0-dev python-scipy r-base
 
-# nltk has the 
+# nltk has the all the context processing tool 
 sudo pip install nltk
+# hdp-wsi depends on gensim
 sudo pip install gensim
 
 # Python packages

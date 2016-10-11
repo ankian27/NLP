@@ -12,6 +12,8 @@ is done here as well, because the hdp-wsi tool doesn't remove stopwords,
 convert to lowercase, etc...
 The filtering is done by the tokenize() function (the first import line)
 which is defined in src/corp.py
+
+@AUTHOR: Brandon Paulsen
 """
 
 """

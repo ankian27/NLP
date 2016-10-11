@@ -59,8 +59,8 @@ def writeCorpToHDPWSI(f, corp):
 A simplified version of the above function for when we don't want to do any preprocessing
 to the contexts of the senseval2 formatted file. This function takes the senseval2 file
 and writes it to the hdp-wsi tool's input directory in the format that the tool expects. We
-don't use this function currently, but we didn't want to get rid of it becasue of emotional
-attachment issues.
+don't use this function currently, but we didn't want to get rid of it becasue of brandon is
+emotionally attached to the code he writes.
 @param f: a string which is the file path to the senseval2 file
 """
 def writeCtxesToHDPWSI(f):

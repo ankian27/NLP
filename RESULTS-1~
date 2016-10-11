@@ -1,3 +1,7 @@
+/**
+@AUTHOR: Brandon Paulsen
+*/
+
 ----------------------------------
 abandon-verb-pauls658.xml results|
 ----------------------------------
@@ -247,3 +251,26 @@ F-Measure = 66.67
 
 Legend of Sense Tags
 S0 = wear.v.1
+
+---------------------
+Best Performing Word|
+---------------------
+According to the precision measure, wear performed the best with 100% precision, however this is clearly because we only found one cluster for wear. The name conflate pair of banana and wall is what we considered to be the best performing because it had the best F-measure (74.21).
+We believe the reason for this relatively high score is because the context words that are found when talking about bananas is extremely different than the context words for wall. The topic words for the clusters found for the banana wall conflate data support this hypothesis. The topic words were:
+topic 0 words: door room floor wall street journal end think today
+topic 1 words: butter apple cup ice chocolate republic bread banana cream
+topic 2 words: set food banana beer fruit republic leaves eat
+The topic words are chosen largely based on frequency, so the contexts where banana is the original words will often have other mentions to food, whereas this is not the case when talking about walls. Thus we get very distinct sets of topic words.
+
+----------------------
+Worst Performing Word|
+----------------------
+The word that performed the worst was the name conflate pair for sidewalk and furnace with an F-score of 35.67. This is largely due to the number of clusters formed. hdp-wsi found 7 different topics (which correspond to senses), and several of them seem to be strongly related. hdp-wsi seems Looking at the topic words for each topic supports this hypothesis. 
+
+topic 0 words: steel blast electric process furnaces arc iron carbon furnace
+topic 1 words: furnace temperature gas air water heat solar valley creek
+topic 2 words: building city house street place car front white side
+topic 3 words: city streets sidewalks pedestrian street traffic roads sidewalk public
+topic 4 words: steel blast century pig cast coal iron works coke
+topic 5 words: neighborhood inches started pattern xyz walked noticed sidewalk counting boing
+topic 6 words: surfing art called located design pewee riding similar museum

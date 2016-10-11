@@ -5,6 +5,8 @@ import re
 """
 Contains the utility functions for processing contexts pulled from
 senseval2 formatted files.
+
+@AUTHOR: Brandon Paulsen
 """
 
 sws = set(line.strip() for line in open('stopwords.txt', 'r'))

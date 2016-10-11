@@ -24,6 +24,9 @@ on the file, specifically removing stopwords and converting all the words
 to lower case. In addition, we remove non-ascii characters from the contexts
 because they can break hdp-wsi, and we strip any head tags from the context.
 @param context: a raw context pulled a senseval2 formatted xml file
+@param ctx_len: the number of tokens on each side of the target to include in
+                the returned tokenized context
+@return: a list of tokens representing the tokenized context
 """
 def tokenize(context, ctx_len):
     context = strip_non_ascii(context)

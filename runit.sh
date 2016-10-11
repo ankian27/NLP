@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# @AUTHOR: Brandon Pauslen
 # Attempts to induce the senses of a given target word given many contexts with the target word. The contexts should have at least 25 words to both the left and right of the target word for the system to work well. 
 
 # Assertions about the input file:
@@ -34,7 +35,7 @@ cd ..
 
 # Read the results from the word sense induction tool, and generate definition
 #echo "Processing results from hdp-wsi"
-python postProcessing.py $1 &> /dev/null
+python postProcessing.py $1 # > /dev/null
 
 cd senseclusters_scorer/
 # calculate the precision of our clustering

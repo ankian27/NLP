@@ -14,13 +14,13 @@ Authors :  	Ankit Anand Gupta -
 *************
 CONTRIBUTIONS
 *************
-Ankit Anand Gupta : 
+Ankit Anand Gupta : Came up with the idea for context free grammar for definition generation. Wrote the code in src/DefinitionGenerator.py in collaboration with Sandeep.
 
-Brandon Paulsen : 
+Brandon Paulsen : Wrote the majority of the code in writeToHDP.py, postProcessing.py, and corp.py. In addition, figured out how to work with the hdp-wsi tool.
 
-Sai Ram Kowshik Vattipally :
+Sai Ram Kowshik Vattipally : Wrote most of the README, including the parts that describe how HDP works, and the instructions for use.
 
-Sandeep Vuppula :
+Sandeep Vuppula : Worked with Ankit on DefinitionGeneration.py. Also tested other tools which we decided to not use because hdp-wsi was giving us better results.
 
 ********
 CONTENTS
@@ -31,6 +31,7 @@ Contents in the Directory:
 * runit.sh
 * runall.sh
 * README
+* RESULTS
 * postProcessing.py
 * writeToHDP.py
 * stopwords.txt (The list of stop words we are excluding)
@@ -38,7 +39,6 @@ Contents in the Directory:
 * senseclusters_scorer
 * src
 	DefinitionGeneration.py
-	context.py
 	corp.py
 * output
 * input
@@ -63,15 +63,14 @@ PROBLEM AND SOLUTION
 ********************
 The problem we are trying to solve is creating a dictionary from raw data. The system takes a XML file containing a list of contexts each of which contain a target word within a <head></head> tag. Each instance is a sentence or a group of sentences that surround the target word which we intend to find the meaning of in the given context. The system we design is intended to group these contexts based on the sense of the target word in that particular context. Each of the resultant cluster will contain contexts where the target word is used in same sense. This step is called clustering.
 
+To perform clustering, we use a pre-existing tool called hdp-wsi. The approach taken by hdp-wsi is based on topic modeling, so in addition to clustering the target word and contexts into related senses, hdp-wsi gives us several "topic" words associated with each cluster. From these topic words we generate sentences which are the definitions of the target word in each cluster.
+
 The input file may be of 2 kinds. The first one has only one target word which is either a noun or verb which has multiple senses. The second kind is where there are contexts that uses two different words that are conflated into a single word. In the first kind, we try to cluster the contexts based on various senses the target word we have. In the second one, we try to assign a sense to the conflated word and try to group the contexts into clusters such that each cluster might have same sense as each word that the conflated word is formed from. Note that we might generate more or less clusters than the number of words used for conflating the word.
-
-We then try to generate definitions of the target word in each cluster. The target word has different meanings(senses) in different contexts.
-
 __________
 Clustering
 __________
 
-We first parse the XML input file and extract each of the contexts seperately. We then tokenize each of the context and convert all the tokens to lower case alphabet. The tokenizer breaks certain words into contractions(For example "isn't" becomes "is + n't"). We then remove a selected list of stop words and words that have punctuations and numbers in them ( eg: n't, T2000) from the contexts. Then the resultant contexts as given as an input to the Hdp-wsi(Hierarchical Dirichlet process-Word sense Induction) tool in a suitable format. ***. The hdp-wsi tool extracts topics(senses) from the contexts and assigns descriptor words to each topic. Then we assign each context to a topic based on how well the context matches the descriptor words that belong to a particular topic. Then each of these topics become our senses that we extract from the given contexts.
+We first parse the XML input file and extract each of the contexts seperately. We then tokenize each of the context and convert all the tokens to lower case alphabet. The tokenizer breaks certain words into contractions(For example "isn't" becomes "is + n't"). We then remove a selected list of stop words and words that have punctuations and numbers in them ( eg: n't, T2000) from the contexts because we have found that the presence of these words leads to poorer clustering. Then the resultant contexts as given as an input to the Hdp-wsi(Hierarchical Dirichlet process-Word sense Induction) tool in a suitable format. ***. The hdp-wsi tool extracts topics(senses) from the contexts and assigns descriptor words to each topic. Then we assign each context to a topic based on how well the context matches the descriptor words that belong to a particular topic. Then each of these topics become our senses that we extract from the given contexts.
 
 Working of HDP:
 
@@ -85,6 +84,7 @@ DP(a_0, G_0)
 
 *Gamma(G_0) is the base probability measure. In other words, G_0 is the probability that a context goes into a newly generated cluster.
 
+We found that the default parameters for the hdp-wsi consistently produced too many clusters. To try and combat this, we lowered the alpha value. Overall this improved our precision, however it drastically reduced the precision for the sidewalk-furnace conflate pair. We have yet to understand why.
 _____________________
 Definition generation
 _____________________
@@ -133,11 +133,14 @@ HOW TO RUN
 
 1) In terminal, navigate to the directory of project.
 2) Run install.sh as "./install.sh". This simply installs all the necessary packages for running
-3) Run runit.sh with the input file as the first argument.
-	usage: "./runit.sh <senseval2-xml-file>"
+3) To run word sense induction on a single senseval2 xml file, simply execute:
+	./runit.sh <senseval2-xml-file>
 
 Eg: To run our project on the file "date-noun-vatti001.xml", run as 
 	./runit.sh input/date-noun-vatti001.xml
+
+- You can also run the tool on every file in the input directory with the following command:
+	./runall.sh
 
 4) The reults of cluster creation, assigment of contexts to clusters, and the definitions generated for each cluster will be written in files in the output directory. See the section on output file format for an explanation of the format
 
@@ -242,7 +245,7 @@ CITATIONS
 }
 
 
-2) Our implementaion uses a python package developed by Jey Han Lau, Paul Cook, Diana McCarthy, David Newman and Timothy Baldwin that implemented HDP algorithm as outlined in the following paper: 
+2) Our implementaion uses a python package developed by Jey Han Lau, Paul Cook, Diana McCarthy, David Newman and Timothy Baldwin that that utilizes the HDP implementation of the previous authors to perform WSI: 
 Word sense induction for novel sense detection
 (http://www.ics.uci.edu/~newman/pubs/eacl2012.pdf)
 
