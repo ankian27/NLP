@@ -14,13 +14,13 @@ Authors :  	Ankit Anand Gupta -
 *************
 CONTRIBUTIONS
 *************
-Ankit Anand Gupta : Came up with the idea for context free grammar for definition generation. Wrote the code in src/DefinitionGenerator.py in collaboration with Sandeep.
+Ankit Anand Gupta : Came up with the idea for context free grammar for definition generation. Wrote the code in src/DefinitionGenerator.py in collaboration with Sandeep. Implemented and tried the k-means clustering approach and worked on tf-idf implementation with Sandeep.
 
 Brandon Paulsen : Wrote the majority of the code in writeToHDP.py, postProcessing.py, and corp.py. In addition, figured out how to work with the hdp-wsi tool.
 
-Sai Ram Kowshik Vattipally : Wrote most of the README, including the parts that describe how HDP works, and the instructions for use.
+Sai Ram Kowshik Vattipally : Wrote most of the README, including the parts that describe how HDP works, and the instructions for use. He also wrote most of the install.sh and runall.sh and runit.sh scripts
 
-Sandeep Vuppula : Worked with Ankit on DefinitionGeneration.py. Also tested other tools which we decided to not use because hdp-wsi was giving us better results.
+Sandeep Vuppula : Worked with Ankit on DefinitionGeneration.py. Also tested other tools which we decided to not use because hdp-wsi was giving us better results. Implemented and tried the HCA and worked on tf-idf with Ankit.
 
 ********
 CONTENTS
