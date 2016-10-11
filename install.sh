@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# @AUTHOR: Brandon Paulsen
+
 sudo apt-get update
 
 # install CLI utilities

@@ -23,4 +23,4 @@ sudo python -m nltk.downloader -d /usr/share/nltk_data averaged_perceptron_tagge
 sudo python -m nltk.downloader -d /usr/share/nltk_data universal_tagset
 
 # Munkres is required for calculating the scores of 
-sudo cpan > install Algorithm::Munkres
+sudo perl -MCPAN -e 'install Algorithm::Munkres'
