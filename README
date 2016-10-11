@@ -4,10 +4,10 @@ ____________________________________________________________________
 	Word sense disambiguation based on co-occurence matrices
 ____________________________________________________________________
 
-Authors :  	Ankit Anand Gupta -
-		Brandon Paulsen -
-		Sai Ram Kowshik Vattipally -
-		Sandeep Vuppula -
+Authors :  	Ankit Anand Gupta 
+		Brandon Paulsen 
+		Sai Ram Kowshik Vattipally 
+		Sandeep Vuppula 
 		
 
 
@@ -18,9 +18,9 @@ Ankit Anand Gupta : Came up with the idea for context free grammar for definitio
 
 Brandon Paulsen : Wrote the majority of the code in writeToHDP.py, postProcessing.py, and corp.py. In addition, figured out how to work with the hdp-wsi tool.
 
-Sai Ram Kowshik Vattipally : Wrote most of the README, including the parts that describe how HDP works, and the instructions for use. He also wrote most of the install.sh and runall.sh and runit.sh scripts
+Sai Ram Kowshik Vattipally : Wrote most of the README, including the parts that describe how HDP works, and the instructions for use. He also wrote most of the install.sh and runall.sh and runit.sh scripts. He also installed the Testbed for testing our project on Debian VM.
 
-Sandeep Vuppula : Worked with Ankit on DefinitionGeneration.py. Also tested other tools which we decided to not use because hdp-wsi was giving us better results. Implemented and tried the HCA and worked on tf-idf with Ankit.
+Sandeep Vuppula : Worked on DefinitionGeneration.py in collaboration with Ankit. Also tested other tools which we decided to not use because hdp-wsi was giving us better results. Implemented and tried the HCA algorithm and worked on tf-idf with Ankit. Came up with N-Gram approach for definition genration which was later found to be relatively ineffective.
 
 ********
 CONTENTS
@@ -153,6 +153,9 @@ EXAMPLES
 -----------------
 INPUT FILE FORMAT
 -----------------
+
+The input files are taken from the directory: ./input/
+
 The input can be a file either of the following two kinds:
 
 1)An XML with a single Noun or Verb tagged: (single word used in multiple senses)
@@ -205,6 +208,8 @@ to beat either in the field or for dollar value -- and splice them into the geno
 ******************
 OUTPUT FILE FORMAT
 ******************
+
+The output files are saved in the following directory: ./output/
 
 runit.sh will generate two output files for a given input file: one that shows the assignments of contexts into clusters, and one that shows the definition for each cluster. The assignment file should be named <target-word>-<pos>-assignments.xml. This is a senseval2 formatted file which is basically a list of instances where each instance has a context, and a cluster ID. The output file is identical to the input file, except that the senseid attributes for each instance have been replaced with a number which denotes membership to a specific cluster. The number is the ID of the cluster that the context belongs to. In addition, the instance's retain the same ID as the had in the original input file. In the following example, the instance with id=2 in the input file has been assigned to cluster 1.
 
