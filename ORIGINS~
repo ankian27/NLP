@@ -28,5 +28,4 @@ Word sense induction for novel sense detection
   organization={Association for Computational Linguistics}
 }
 
-The code for the above paper has been taken from the Git Repository: https://github.com/jhlau/hdp-wsi
-It includes the HDP implementation created by the authors of the first papaer
+The code for HDP has been taken from the Git Repository: https://github.com/jhlau/hdp-wsi

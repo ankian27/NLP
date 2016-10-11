@@ -58,12 +58,16 @@ Contents in the Directory:
 	date-noun-vatti001.xml
 	pigeon-car-vatti001-1.xml
 
+	line-noun-6sense.xml
+
 ********************
 PROBLEM AND SOLUTION
 ********************
-The problem we are trying to solve is creating a dictionary from raw data. The system takes a XML file containing a list of contexts each of which contain a target word within a <head></head> tag. Each instance is a sentence or a group of sentences that surround the target word which we intend to find the meaning of in the given context. The system we design is intended to group these contexts based on the sense of the target word in that particular context. Each of the resultant cluster will contain contexts where the target word is used in same sense. This step is called clustering.
+The problem we are trying to solve is to create a definitions for the different senses of a target word, given several instances of the target word. This also includes discovering how many senses of the target word are present in the given instances. The system takes a XML file containing a list of contexts each of which contain the target word within a <head></head> tag. Each instance is a sentence or a group of sentences that surround the target word which we intend to find the meaning of in the given context. The system we design is intended to group these contexts based on the sense of the target word in that particular context. Each of the resultant cluster will contain contexts where the target word is used in same sense. This step is called clustering.
 
-To perform clustering, we use a pre-existing tool called hdp-wsi. The approach taken by hdp-wsi is based on topic modeling, so in addition to clustering the target word and contexts into related senses, hdp-wsi gives us several "topic" words associated with each cluster. From these topic words we generate sentences which are the definitions of the target word in each cluster.
+To perform clustering, we use a pre-existing tool called hdp-wsi. hdp-wsi is a tool designed to perform word sense induction, including discovering the number of senses of the target word, so the bulk of the work is done by this tool. The main things we made for this project were scripts to convert a senseval2 file into a format the can be processed by hdp-wsi, and a definition generator. hdp-wsi does not remove stopwords (though it seems like it should), so we also wrote scripts to tokenize the contexts and remove stopwords. 
+
+The approach taken by hdp-wsi is based on topic modeling, so in addition to clustering the target word and contexts into related senses, hdp-wsi gives us several "topic" words associated with each cluster. From these topic words we generate sentences which are the definitions of the target word in each cluster. The core of our definition generation system is a context free grammar created by ankit which defines a simple sentence structure. We then take the topic words from hdp-wsi, POS tag them, and then generate random sentences using our context free grammar. These sentences are then joined together with conjuctions until we have at least a 10 word definition.
 
 The input file may be of 2 kinds. The first one has only one target word which is either a noun or verb which has multiple senses. The second kind is where there are contexts that uses two different words that are conflated into a single word. In the first kind, we try to cluster the contexts based on various senses the target word we have. In the second one, we try to assign a sense to the conflated word and try to group the contexts into clusters such that each cluster might have same sense as each word that the conflated word is formed from. Note that we might generate more or less clusters than the number of words used for conflating the word.
 __________
@@ -84,8 +88,7 @@ DP(a_0, G_0)
 
 *Gamma(G_0) is the base probability measure. In other words, G_0 is the probability that a context goes into a newly generated cluster.
 
-We found that the default parameters for the hdp-wsi consistently produced too many clusters. To try and combat this, we lowered the alpha value. Overall this improved our precision, however it drastically reduced the precision for the sidewalk-furnace conflate pair. We have yet to understand why.
-
+We found that the default parameters for the hdp-wsi consistently produced too many clusters. To try and combat this, we lowered the alpha value. Overall this improved our precision, however it drastically reduced the precision for the sidewalk-furnace conflate pair. We have yet to understand why. In addition, the implementation of hdp that is used by the authors of hdp-wsi uses a random seed value which makes the clustering and topic word generation non-deterministic (we get different results each time we run; We've seen the precision vary by up to 15%). This is not ideal for testing modifications, so we fixed the random seed value to 1. This value was chosen arbitrarily, and it could have been any value. The important thing is that we set it to 1, and then did not change it.
 
 _____________________
 Definition generation
