@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# @AUTHOR: Brandon Paulsen
+# @AUTHOR: Sai Vattipally
 
 sudo apt-get update
 
