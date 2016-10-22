@@ -1,17 +1,11 @@
-            S0	      S2	      S1#	      S3#	      S4#	      S5#	      S6#	   TOTAL	
-  C0:      182	     198	     145	       2	       1	       0	       2	     530	(44.80)
-  C1:        2	     240	       1	     185	     166	      23	      36	     653	(55.20)
- TOTAL     184	     438	     146	     187	     167	      23	      38	    1183
-         (15.55)   (37.02)   (12.34)   (15.81)   (14.12)   (1.94)   (3.21)
-Precision = 35.67(422/1183)
-Recall = 35.67(422/1183+0)
-F-Measure = 35.67
+            S0	   TOTAL	
+  C0:       50	      50	(50.00)
+  C1:*      50	      50	(50.00)
+ TOTAL     100	     100
+         (100.00)
+Precision = 100.00(50/50)
+Recall = 50.00(50/100+0)
+F-Measure = 66.67
 
 Legend of Sense Tags
-S0 = sidewalk.f.1
-S1 = sidewalk.f.2
-S2 = sidewalk.f.3
-S3 = sidewalk.f.4
-S4 = sidewalk.f.5
-S5 = sidewalk.f.6
-S6 = sidewalk.f.7
+S0 = wear.v.1
