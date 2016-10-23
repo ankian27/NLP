@@ -1,3 +1,4 @@
+<<<<<<< HEAD
             S0	      S1	   TOTAL	
   C0:       30	      20	      50	(50.00)
   C1:        0	      50	      50	(50.00)
@@ -10,3 +11,16 @@ F-Measure = 80.00
 Legend of Sense Tags
 S0 = wear.v.1
 S1 = wear.v.2
+=======
+            S0	   TOTAL	
+  C0:       50	      50	(50.00)
+  C1:*      50	      50	(50.00)
+ TOTAL     100	     100
+         (100.00)
+Precision = 100.00(50/50)
+Recall = 50.00(50/100+0)
+F-Measure = 66.67
+
+Legend of Sense Tags
+S0 = wear.v.1
+>>>>>>> 8131c049c2e3b47767b612d9874486c10f9dd9ca

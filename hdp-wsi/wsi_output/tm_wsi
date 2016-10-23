@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 wear.v wear.v.1 t.1/0.8000 t.2/0.2000
 wear.v wear.v.2 t.1/1.0000
 wear.v wear.v.3 t.1/0.6667 t.2/0.3333
@@ -40,10 +41,55 @@ wear.v wear.v.39 t.1/0.7500 t.2/0.2500
 wear.v wear.v.40 t.2/1.0000
 wear.v wear.v.41 t.1/0.7500 t.2/0.2500
 wear.v wear.v.42 t.2/1.0000
+=======
+wear.v wear.v.1 t.1/1.0000
+wear.v wear.v.2 t.1/1.0000
+wear.v wear.v.3 t.1/1.0000
+wear.v wear.v.4 t.1/1.0000
+wear.v wear.v.5 t.1/1.0000
+wear.v wear.v.6 t.1/1.0000
+wear.v wear.v.7 t.1/1.0000
+wear.v wear.v.8 t.1/1.0000
+wear.v wear.v.9 t.1/1.0000
+wear.v wear.v.10 t.1/1.0000
+wear.v wear.v.11 t.1/1.0000
+wear.v wear.v.12 t.1/1.0000
+wear.v wear.v.13 t.1/1.0000
+wear.v wear.v.14 t.1/1.0000
+wear.v wear.v.15 t.1/1.0000
+wear.v wear.v.16 t.1/1.0000
+wear.v wear.v.17 t.1/1.0000
+wear.v wear.v.18 t.1/1.0000
+wear.v wear.v.19 t.1/1.0000
+wear.v wear.v.20 t.1/1.0000
+wear.v wear.v.21 t.1/1.0000
+wear.v wear.v.22 t.1/1.0000
+wear.v wear.v.23 t.1/1.0000
+wear.v wear.v.24 t.1/1.0000
+wear.v wear.v.25 t.1/1.0000
+wear.v wear.v.26 t.1/1.0000
+wear.v wear.v.27 t.1/1.0000
+wear.v wear.v.28 t.1/1.0000
+wear.v wear.v.29 t.1/1.0000
+wear.v wear.v.30 t.1/1.0000
+wear.v wear.v.31 t.1/1.0000
+wear.v wear.v.32 t.1/1.0000
+wear.v wear.v.33 t.1/1.0000
+wear.v wear.v.34 t.1/1.0000
+wear.v wear.v.35 t.1/1.0000
+wear.v wear.v.36 t.1/1.0000
+wear.v wear.v.37 t.1/1.0000
+wear.v wear.v.38 t.1/1.0000
+wear.v wear.v.39 t.1/1.0000
+wear.v wear.v.40 t.1/1.0000
+wear.v wear.v.41 t.1/1.0000
+wear.v wear.v.42 t.1/1.0000
+>>>>>>> 8131c049c2e3b47767b612d9874486c10f9dd9ca
 wear.v wear.v.43 t.1/1.0000
 wear.v wear.v.44 t.1/1.0000
 wear.v wear.v.45 t.1/1.0000
 wear.v wear.v.46 t.1/1.0000
+<<<<<<< HEAD
 wear.v wear.v.47 t.3/0.6667 t.2/0.3333
 wear.v wear.v.48 t.2/1.0000
 wear.v wear.v.49 t.2/1.0000
@@ -98,3 +144,59 @@ wear.v wear.v.97 t.2/1.0000
 wear.v wear.v.98 t.2/0.8000 t.1/0.2000
 wear.v wear.v.99 t.2/1.0000
 wear.v wear.v.100 t.2/1.0000
+=======
+wear.v wear.v.47 t.1/1.0000
+wear.v wear.v.48 t.1/1.0000
+wear.v wear.v.49 t.1/1.0000
+wear.v wear.v.50 t.1/1.0000
+wear.v wear.v.51 t.1/1.0000
+wear.v wear.v.52 t.1/1.0000
+wear.v wear.v.53 t.1/1.0000
+wear.v wear.v.54 t.1/1.0000
+wear.v wear.v.55 t.1/1.0000
+wear.v wear.v.56 t.1/1.0000
+wear.v wear.v.57 t.1/1.0000
+wear.v wear.v.58 t.1/1.0000
+wear.v wear.v.59 t.1/1.0000
+wear.v wear.v.60 t.1/1.0000
+wear.v wear.v.61 t.1/1.0000
+wear.v wear.v.62 t.1/1.0000
+wear.v wear.v.63 t.1/1.0000
+wear.v wear.v.64 t.1/1.0000
+wear.v wear.v.65 t.1/1.0000
+wear.v wear.v.66 t.1/1.0000
+wear.v wear.v.67 t.1/1.0000
+wear.v wear.v.68 t.1/1.0000
+wear.v wear.v.69 t.1/1.0000
+wear.v wear.v.70 t.1/1.0000
+wear.v wear.v.71 t.1/1.0000
+wear.v wear.v.72 t.1/1.0000
+wear.v wear.v.73 t.1/1.0000
+wear.v wear.v.74 t.1/1.0000
+wear.v wear.v.75 t.1/1.0000
+wear.v wear.v.76 t.1/1.0000
+wear.v wear.v.77 t.1/1.0000
+wear.v wear.v.78 t.1/1.0000
+wear.v wear.v.79 t.1/1.0000
+wear.v wear.v.80 t.1/1.0000
+wear.v wear.v.81 t.1/1.0000
+wear.v wear.v.82 t.1/1.0000
+wear.v wear.v.83 t.1/1.0000
+wear.v wear.v.84 t.1/1.0000
+wear.v wear.v.85 t.1/1.0000
+wear.v wear.v.86 t.1/1.0000
+wear.v wear.v.87 t.1/1.0000
+wear.v wear.v.88 t.1/1.0000
+wear.v wear.v.89 t.1/1.0000
+wear.v wear.v.90 t.1/1.0000
+wear.v wear.v.91 t.1/1.0000
+wear.v wear.v.92 t.1/1.0000
+wear.v wear.v.93 t.1/1.0000
+wear.v wear.v.94 t.1/1.0000
+wear.v wear.v.95 t.1/1.0000
+wear.v wear.v.96 t.1/1.0000
+wear.v wear.v.97 t.1/1.0000
+wear.v wear.v.98 t.1/1.0000
+wear.v wear.v.99 t.1/1.0000
+wear.v wear.v.100 t.1/1.0000
+>>>>>>> 8131c049c2e3b47767b612d9874486c10f9dd9ca

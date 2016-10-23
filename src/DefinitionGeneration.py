@@ -7,21 +7,23 @@
 # Example: shoot woman love look movie director part lot money film
 # Output : money love with a movie and a director love with is lot 
 
+#The Natural Language Toolkit(NLTK), is an open source toolkit of python modules for natural language processing (NLP) for English language. 
 import nltk 
-from nltk.tag import pos_tag, map_tag
-from nltk import word_tokenize
-from nltk.util import ngrams
-from nltk.collocations import *
-from nltk.tokenize import RegexpTokenizer
-from collections import defaultdict
-import random
+from nltk.tag import pos_tag, map_tag # Function to assign tags to individual tokens and return tagged tokens.
+from nltk import word_tokenize # Function to split string of words into individual tokens
+from nltk.util import ngrams #Function to return the ngrams generated.
+from collections import defaultdict #Creates a default dictionary which gives a default value for non-existent key.
+import random #Randomly choose an item from a list of items.
 
 class Definition(object):
 	def __init__(self):
 		""" The function __init__ is a constructor in python which accepts the instance of a class of the object itself as a parameter.
 		The constructur is used to initialize the cfgRule(Context Free Grammar rules), nouns, verbs and adjectives for each instance.
 		"""
+
+		# Create default dictionary
 		self.cfgRule=defaultdict(list)
+		# Variables to store list of NOUN, VERB and ADJECTIVEs
 		self.noun = ''
 		self.verb = ''
 		self.adj  = ''
@@ -46,7 +48,8 @@ class Definition(object):
 		# The default tags are converted to simplified tags. Example: NN->NOUN
 		simplifiedTags=[(word, map_tag('en-ptb', 'universal', tag)) for word, tag in posTagged]
 		
-		# Seperate Nouns, Verbs and Adjectives by parsing simplifiedTags and assigns to the respective variables.
+		# Seperate Nouns, Verbs and Adjectives by parsing simplifiedTags and assign to the respective variables.
+		# The NOUN words are separated by "|" delimiter
 		for word, tag in simplifiedTags:			
 			if tag=='NOUN':
 				self.noun += word + '|'
@@ -73,8 +76,9 @@ class Definition(object):
 			param2 (string) : Terminal/Non-terminal string present on the right side of the production
 		'''
 
-		# Split the string based on '|' char as the separator
+		# Split the string of Nouns, Verbs, Adjectives appended with "|"
 		rules=right.split('|')
+		# For each rule of the production, create a tuple and append it to its respective rule in the CFG list.
 		for rule in rules:
 			self.cfgRule[left].append(tuple(rule.split()))
 
@@ -97,9 +101,10 @@ class Definition(object):
 				definition += self.gen_def(sym)
 			#This is true if the sym leads to terminals. 
 			else:
-				definition += sym + ' '
+				definition += sym + ' ' # Append the word and the space for the definition.
 
-				noun2=self.noun.split('|')
+				# Form a list of nouns and verbs by splitting the string formed above in the function get_Noun_Verb.
+				noun2=self.noun.split('|') 
 				verb2=self.verb.split('|')
 				
 				# Filtering out the already used words. 
@@ -135,6 +140,17 @@ class Definition(object):
  		# Get the seperated Nouns, Verbs, Adjectives
  		self.noun, self.verb ,self.adj= self.get_Noun_Verb(topics)
  		# Represent CFG rules in python
+ 		# S 	 -> S1 CONJ S2
+		# S1 	 -> NP VP
+		# S2 	 -> NP VP
+		# NP 	 -> Det N
+		# VP 	 -> V PRO ADJ NP
+		# PRO  	 -> with | to
+		# Det    -> a | the | is
+		# N 	 -> Noun words list
+		# V 	 -> Verb words list
+		# ADJ    -> Adjective words list
+		# CONJ   -> and
 		self.cfg_rule('S', 'S1 CONJ S2')
 		self.cfg_rule('S1', 'NP VP')
 		self.cfg_rule('S2', 'NP VP')
