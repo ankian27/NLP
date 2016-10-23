@@ -45,6 +45,9 @@ can understand.
 def writeCorpToHDPWSI(f, corp):
     target, pos = f.split('-', 1)
     target = target.split('/')[-1]
+    if "noun" not in pos and "verb" not in pos:
+        target = "xyz"
+        pos = "noun"
     num_ctxes = 0
     with open("hdp-wsi/wsi_input/example/all/" + target + "." + pos[0] + ".lemma", 'w+') as f_ref:
         for doc in corp:
@@ -82,9 +85,14 @@ if __name__ == '__main__':
     if len(sys.argv) < 2:
         print "usage: python writeToHDP.py <senseval2-xml-file>"
         sys.exit(1)
-    
+    f = sys.argv[1]
+    target, pos = f.split('-', 1)
+    target = target.split('/')[-1]
+    if "noun" not in pos and "verb" not in pos:
+        target = "xyz"
+        pos = "noun"
     corp = []
     for sense, ctx in getCtxes(sys.argv[1]):
-        corp.append(tokenize(ctx, 500))
+        corp.append(tokenize(ctx, 500, target))
         #print ' '.join(word for word in corp[-1])
     writeCorpToHDPWSI(sys.argv[1], corp)

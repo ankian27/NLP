@@ -216,18 +216,6 @@ Had servants seen him they wotild assume he was eavesdropping, but he was not. H
 Meanwhile, the financial world is getting even more fast-paced, opaque, and downright mysterious. The same week Schapiro spoke at the SEC roundtable, an algorithm consumed 10 percent of the bandwidth of the US stock market. It " ran like a <head>bat</head> out of hell on crystal meth with a red bull chaser, to mix a few metaphors, " Leinweber wrote on his Forbes blog. " It generated 4% of U.S. stock market quote activity
 </context>
 </instance>
-<instance id="36">
-<answer instance="36" senseid="1"/>
-<context>
-They observed which <head>bat</head>s had frequent body contact, isolated them, and recorded the sounds they emitted, presuming the lonely <head>bat</head>s would be calling for their buddies. Then, the team took separated <head>bat</head>s into playback experiments where a <head>bat</head> hung at a perch and listened to different types of recorded contact calls: from <head>bat</head> " buddies, " with which the isolated <head>bat</head> either had or did not have body contact, and from " strangers,
-</context>
-</instance>
-<instance id="37">
-<answer instance="37" senseid="1"/>
-<context>
-calling for their buddies. Then, the team took separated <head>bat</head>s into playback experiments where a <head>bat</head> hung at a perch and listened to different types of recorded contact calls: from <head>bat</head> " buddies, " with which the isolated <head>bat</head> either had or did not have body contact, and from " strangers
-</context>
-</instance>
 <instance id="38">
 <answer instance="38" senseid="1"/>
 <context>
@@ -346,6 +334,12 @@ But the haphazard way in which his wife's body was disposed of, weighed down by 
 <answer instance="57" senseid="1"/>
 <context>
 Miami Marlins in 1999 who reached Class AA, and the middle brother, Jeff, a third-round pick of the Tigers in 2004 who had a nine-game cup of coffee in the majors in 2010. But mostly Frazier's swing is self-taught. " My dad gave me a <head>bat</head> when I was real little, " he said. " He said,' Here you go, swing.' I was just trying to chop it down and hit it as hard as I could. It's all about comfort, and it's all about being relaxed. " This year's success -- which has made Frazier an attractive trade chip on a fourth-place club
+</context>
+</instance>
+<instance id="58">
+<answer instance="58" senseid="1"/>
+<context>
+This summer in Cincinnati, he'll get a whole lot more folks asking, too. 6629 Pete Rose, his stomach protruding and his hair dyed dark brown to cover the gray, hobbled onto the stage at historic Taft Theater on Saturday night and picked up a <head>bat</head>, prompting the crowd to scream, rise and chant his name. It was as if it was 1985 -- the year Rose eclipsed Ty Cobb's record and became baseball's all-time hits king -- all over again with the crowd of about 850, mostly wearing Reds memorabilia or personalized Rose jerseys, celebrating as if Pope Francis had walked through the doors.
 </context>
 </instance>
 <instance id="59">
@@ -576,6 +570,12 @@ In Ultimate Frisbee, for example, when a disc hits the fence, it sets off an ala
 He lost his grip on the <head>bat</head>, which only made contact with the ball after it had left his hands before traveling over the left-field wall in Cincinnati. " I'd throw my helmet at it if I have to, " he said. A sixth-inning at-<head>bat</head> vs. the New York Mets' Noah Syndergaard on June 26 illustrated his approach.
 </context>
 </instance>
+<instance id="97">
+<answer instance="97" senseid="1"/>
+<context>
+The first boy to catch three consecutive fly balls won, and perhaps not surprisingly the game evolved to include, just every so often, contact between something other than the <head>bat</head> and the ball. Football became the natural progression. # In some strange way, Gordy's having five sons might have made all the difference. Baseball is a game of fathers and sons, but football is a game of brothers.
+</context>
+</instance>
 <instance id="98">
 <answer instance="98" senseid="1"/>
 <context>
@@ -588,16 +588,16 @@ He had tried to teach the sport to Russians - a task far more difficult than his
 The Weinsteins' big horse in this year's race, " The Imitation Game, " opened on Friday, two months after winning the Toronto International Film Festival's audience award, and doubtlessly riding that awards momentum. " A great way to start a campaign, getting that stamp right off the <head>bat</head>, " Mr. Glasser said. Away from Hollywood's glare, the nominations can have arguably more resonant effects. Within days of the nomination
 </context>
 </instance>
-<instance id="58">
-<answer instance="58" senseid="2"/>
+<instance id="36">
+<answer instance="36" senseid="2"/>
 <context>
-This summer in Cincinnati, he'll get a whole lot more folks asking, too. 6629 Pete Rose, his stomach protruding and his hair dyed dark brown to cover the gray, hobbled onto the stage at historic Taft Theater on Saturday night and picked up a <head>bat</head>, prompting the crowd to scream, rise and chant his name. It was as if it was 1985 -- the year Rose eclipsed Ty Cobb's record and became baseball's all-time hits king -- all over again with the crowd of about 850, mostly wearing Reds memorabilia or personalized Rose jerseys, celebrating as if Pope Francis had walked through the doors.
+They observed which <head>bat</head>s had frequent body contact, isolated them, and recorded the sounds they emitted, presuming the lonely <head>bat</head>s would be calling for their buddies. Then, the team took separated <head>bat</head>s into playback experiments where a <head>bat</head> hung at a perch and listened to different types of recorded contact calls: from <head>bat</head> " buddies, " with which the isolated <head>bat</head> either had or did not have body contact, and from " strangers,
 </context>
 </instance>
-<instance id="97">
-<answer instance="97" senseid="2"/>
+<instance id="37">
+<answer instance="37" senseid="2"/>
 <context>
-The first boy to catch three consecutive fly balls won, and perhaps not surprisingly the game evolved to include, just every so often, contact between something other than the <head>bat</head> and the ball. Football became the natural progression. # In some strange way, Gordy's having five sons might have made all the difference. Baseball is a game of fathers and sons, but football is a game of brothers.
+calling for their buddies. Then, the team took separated <head>bat</head>s into playback experiments where a <head>bat</head> hung at a perch and listened to different types of recorded contact calls: from <head>bat</head> " buddies, " with which the isolated <head>bat</head> either had or did not have body contact, and from " strangers
 </context>
 </instance>
 </lexelt>

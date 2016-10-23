@@ -19,7 +19,12 @@ understand.
 """
 
 # No longer used. See the doc for collapseSmallClusters()
-#MIN_CLUSTER_SIZE=6
+MIN_CLUSTER_SIZE=6
+# If two clusters have atleast this many topic words in common, then
+# combine them
+CLUSTER_SIM=3
+# Minimum number of clusters to keep. Don't collapse below this point
+MIN_CLUSTERS=2
 
 ctx_assignments = []
 ctxes = []
@@ -48,6 +53,9 @@ def makeKey(f):
     target, pos = f.split('-', 1)
     pos = re.split('[.-]', pos)[0]
     target_word = target.split('/')[-1]
+    if "noun" not in pos and "verb" not in pos:
+        pos = "noun"
+        target_word = "xyz"
     thing = target_word + "." + pos[0]
     with open('senseclusters_scorer/key', 'w+') as key_ref:
         for i, (sense_id, sense, ctx) in enumerate(ctx_re.findall(buf)):
@@ -129,6 +137,7 @@ this because it ended up hurting precision, but we are leaving it in because of 
 emotional attachment issues.
 """
 def collapseSmallClusters():
+    print "collapse small clusters"
     for i, topic1 in enumerate(topics):
         if len(ctx_assignments[i]) < MIN_CLUSTER_SIZE:
             print "small cluster: " + str(i)
@@ -149,6 +158,27 @@ def collapseSmallClusters():
             return True
     return False
 
+def collapseSimilarClusters():
+    print "collapse sim clusters"
+    for i, topic1 in enumerate(topics):
+        best = -1
+        best_id = -1
+        for j, topic2 in enumerate(topics):
+            if topic1 is topic2:
+                continue
+            elif len(topic1 & topic2) > best and len(topic1 & topic2) >= CLUSTER_SIM:
+                    print "new best: " + str(j)
+                    best = len(topic1 & topic2)
+                    best_id = j
+        if best_id == -1: continue
+        print "merging topic " + str(i) + " with topic " + str(best_id)
+        ctx_assignments[best_id].extend(ctx_assignments[i])
+        topics[best_id] |= topics[i]
+        del ctx_assignments[i]
+        del topics[i]
+        return True
+    return False
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print "usage: python postProcessing.py <senseval2-xml-file>"
@@ -157,9 +187,13 @@ if __name__ == "__main__":
     readTopics("hdp-wsi/wsi_output/tm_wsi.topics")
     readAssignments("hdp-wsi/wsi_output/tm_wsi")
     makeKey(sys.argv[1])
-
+    while len(topics) > MIN_CLUSTERS:
+        if not collapseSmallClusters(): break
+    while len(topics) > MIN_CLUSTERS:
+        if not collapseSimilarClusters(): break
     for i, topic in enumerate(topics):
         print "topic " + str(i) + " words: " + ' '.join(word for word in topic)
+        print ' '.join(str(len(topic & topic1)) for topic1 in topics)
         #print "senses: "
         #print ', '.join(ctxes[i][0] for i in ctx_assignments[i])
 

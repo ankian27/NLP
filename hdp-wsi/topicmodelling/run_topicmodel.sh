@@ -12,7 +12,7 @@ output_dir="topicmodel_output"
 #stopword file to use
 stopword_file="stopwords.txt"
 #minimum vocab frequency to filter
-voc_minfreq=10
+voc_minfreq=7
 
 ######
 #main#

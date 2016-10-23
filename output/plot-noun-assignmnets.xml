@@ -132,6 +132,12 @@ That's why I think religious preoccupation with abortion is largely about contro
 A number of experienced British intelligence agents, reportedly hand-picked by Churchill himself, had been pulled from their stations around the globe and reassigned to Ireland to bolster the flagging intelligence operation at Dublin Castle. Collins conceived a <head>plot</head> to kill all of them in a single spectacular attack. Despite the agents' supposed skill in remaining anonymous, Collins' staff knew their names, addresses and favorite haunts.
 </context>
 </instance>
+<instance id="23">
+<answer instance="23" senseid="1"/>
+<context>
+MIT students devised one of the fist concepts for a class project in 1967. Instructed to stop a 640-meter object barreling (hypothetically) toward Earth, the students formulated a <head>plot</head> to obliterate or deflect it with a sequence of six nuclear bombs. Blowing up a large rock, however, could just as easily splinter it into many small hazardous objects, all still on a course for Earth -- a shotgun blast instead of a single bullet.
+</context>
+</instance>
 <instance id="24">
 <answer instance="24" senseid="1"/>
 <context>
@@ -214,12 +220,6 @@ As it happens, a contemporary chronicler reported that a month after Cangrande's
 <answer instance="37" senseid="1"/>
 <context>
 Like most of Leprohon's earlier novels, The Dead Witness closes with a marriage between two characters, Lillian and her neighbour, Colonel Neville Atherton, which the narrative imbues with the material and symbolic power to resolve contradictions. By contrast to those earlier novels, however, in which the marriage <head>plot</head> often enjoys narrative priority, The Dead Witness subordinates its marriage plan to a horrific contest between two women, Lillian and her housekeeper, Mrs. Stokely, which centres on their competition to become matriarch of Tremaine Court.
-</context>
-</instance>
-<instance id="38">
-<answer instance="38" senseid="1"/>
-<context>
-In 2010, the ray gun was shipped to Afghanistan where prevention of civilian casualties is seen as key to success. But it was sent right back because American commanders were afraid the Afghan people would see it as a torture device or a <head>plot</head> to sterilize Afghan men. The current program manager, Colonel Tracy Tafolla, is trying again to send it to Afghanistan but it remains it tough sell. COL. TRACY TAFOLLA, USMC: Can't see it, can't hear it, can't smell i
 </context>
 </instance>
 <instance id="39">
@@ -504,42 +504,6 @@ It was calculated that the BST would be good enough to directly resolve the spec
 This is assumed to be rather a confounding effect of the positive relation between milk yields and concentrate amounts, which is the immanent goal and effect of concentrate feeding. In the <head>plot</head> of the principal component analysis, the milk composition was not situated on the same axis as feeding parameters, faecal particles and milk yield, which indicates that neither the chosen approach was able to predict milk composition, nor that the latter is somehow related to fibre digestibility.
 </context>
 </instance>
-<instance id="87">
-<answer instance="87" senseid="1"/>
-<context>
-In addition, there was no significant difference in the mean scores based on gender (p-value = 0.734). However, the test for differences in nationality of the student became significant, with an F value of 6.304 with a corresponding p-value of 0.012. Therefore, the mean emotional intelligence score of the American students was higher than the mean emotional intelligence score of the Chinese students. Group means are in Table 4 and Figure 3 below displays a <head>plot</head> of this result.  The next item studied was interaction with the nationality of the student and the GPA of the student. No significant interaction appeared (p-value = 0.653). In addition, there was no significant difference between students of both nationalities (p-value = 0.102). However, the test for the three levels of the GPA was significant, with an F value of 7.257 and a corresponding p-value of 0.001
-</context>
-</instance>
-<instance id="88">
-<answer instance="88" senseid="1"/>
-<context>
-Significant curvilinear associations in the final models suggest that the strength of the association between risk and protective factors and alcohol use was not consistent across levels of risk for some risk and protective factors in certain grade -- gender subsamples (Table 3). Figure 1 provides an example <head>plot</head> of the curvilinear association, depicting the antisocial peers factor predicting alcohol use for 8th-grade girls in the CTC-ND data set. The figure shows how the positive association between the risk factor and alcohol use eventually levels off at about 1 on the risk and protective factor scale, which corresponds to the 90th percentile of antisocial peers risk; the association becomes positive again at roughly the 97th percentile of risk.
-</context>
-</instance>
-<instance id="89">
-<answer instance="89" senseid="1"/>
-<context>
-For these analyses, we examined sensitivity (accuracy in correctly classifying students who fail the criterion assessment, i.e., correctly identifying true positives), specificity (accuracy in classifying students who pass the criterion assessment, i.e., correctly identifying true negatives), and area under the curve (an index of overall accuracy based on a <head>plot</head> of sensitivity and specificity).  We also investigated whether classification accuracy could be improved by using alternative cut scores on SEL, as well as how accuracy compared with paper-based LNF, LSF, and WRF (first-grade analyses).
-</context>
-</instance>
-<instance id="90">
-<answer instance="90" senseid="1"/>
-<context>
-Third, based on the strong functional link between CDH13 and adiponectin, we looked up the GWIS result of SNPs in the ADIPOQ gene, the adiponectin precursor protein, for interaction with PM10 on decline in FEF25-75% and made a regional association <head>plot</head> of the ADIPOQ locus using the software LocusZoom (Pruim et al. 2010).  Results  Baseline characteristics of the SAPALDIA cohort study participants included in the current GWIS analysis of the discovery and replication sample are presented in Table 1. We observed a highly comparable distribution of sex, age, baseline body mass index, weight change during follow-up, baseline lung function level, and average PM10 exposure at baseline and during follow-up
-</context>
-</instance>
-<instance id="91">
-<answer instance="91" senseid="1"/>
-<context>
-We observed significant association signals with a group of 13 SNPs, interacting with cumulative PM10 exposure on annual decline in FEF25-75%, at a single locus on chromosome 16 (Figure 1A). The quantile-quantile <head>plot</head> of interaction p-values showed evidence for a higher number of significant signals than expected by chance (Figure 1B). Based on the lambda observed (? = 1.0476), adequate genomic control of the genome-wide associations had been applied.
-</context>
-</instance>
-<instance id="92">
-<answer instance="92" senseid="1"/>
-<context>
-Genome-wide interactions between cumulative PM10 exposure on annual decline in FEF25-75% in the discovery sample (n = 763) of the SAPALDIA cohort study. (A) Manhattan <head>plot</head> of the negative log of the p-values (pint) of 2,198,793 SNPs used for interaction association testing. CDH13 SNP cluster with interaction p-values reaching genome-wide significance are above the line and SNPs in the CDH13 locus are highlighted in green.
-</context>
-</instance>
 <instance id="93">
 <answer instance="93" senseid="1"/>
 <context>
@@ -564,12 +528,6 @@ All things considered, mass spectrometry probably gives you more informational b
 It is important to ensure that the proportional hazards assumption is reasonable before fitting the model. If the data do not follow this assumption, the estimates of relative potency and its variability may be biased or misleading. The validity of the assumption can be assessed visually by examining either the Kaplan-Meier <head>plot</head> of the estimated survivor function or the log-cumulative hazard graph. The Kaplan-Meier graph is standard in most statistical software packages that are capable of survival analysis.
 </context>
 </instance>
-<instance id="97">
-<answer instance="97" senseid="1"/>
-<context>
-Oral reading in Grade 2 accounted for less than 10% of the variance in the Grade 3 phonemic awareness tasks. Correlations between the mean fixation counts on the phonemic awareness targets and the sentences appear in Table 3, and the scatter <head>plot</head> of that relationship appears in Figure 3. The number of fixations on the phonemic awareness last-sound target in Grade 2 accounted for 51% of the variance in the number of fixations during silent reading in Grade 3 (see Figure 3) and 46% of the variance in oral reading speed in Grade 3.
-</context>
-</instance>
 <instance id="98">
 <answer instance="98" senseid="1"/>
 <context>
@@ -582,22 +540,64 @@ Obvious bursts of terrible behavior containing hundreds of duplicate ACKs, multi
 This gourmet favorite commands a high price at the supermarket, but-great news for gardeners-asparagus is no prima donna to grow. Plant it in the rich, well-drained soil you are creating in your organic garden, give it a little extra attention at first, and you will have healthy, high-yielding, delicious asparagus for at least 20 years from a single planting. When you consider that a modest <head>plot</head> of 25 plants will give you as much as 400 pounds of spears over the lifetime of the plants, well, how can you afford not to grow asparagus? Variety Choices A productive and long-lived asparagus patch starts with planting the right variety for your conditions.
 </context>
 </instance>
-<instance id="100">
-<answer instance="100" senseid="1"/>
+<instance id="38">
+<answer instance="38" senseid="2"/>
 <context>
-The results are " turbulent " standing-wave patterns, such as the one shown in the figure. The fraction of chaotic solutions is just the fraction of phase space in which Einstein's type (b) motion occurs.  Figure 5. Chaotic wavefunction of the stadium billiard. In this <head>plot</head> of the probability density, red areas are regions of high density and blue areas are regions of low density. The paucity of regions of parallel nodal lines indicates that the smooth wavefronts required for the EBK procedure to work are lacking.
+In 2010, the ray gun was shipped to Afghanistan where prevention of civilian casualties is seen as key to success. But it was sent right back because American commanders were afraid the Afghan people would see it as a torture device or a <head>plot</head> to sterilize Afghan men. The current program manager, Colonel Tracy Tafolla, is trying again to send it to Afghanistan but it remains it tough sell. COL. TRACY TAFOLLA, USMC: Can't see it, can't hear it, can't smell i
 </context>
 </instance>
-<instance id="23">
-<answer instance="23" senseid="2"/>
+<instance id="88">
+<answer instance="88" senseid="2"/>
 <context>
-MIT students devised one of the fist concepts for a class project in 1967. Instructed to stop a 640-meter object barreling (hypothetically) toward Earth, the students formulated a <head>plot</head> to obliterate or deflect it with a sequence of six nuclear bombs. Blowing up a large rock, however, could just as easily splinter it into many small hazardous objects, all still on a course for Earth -- a shotgun blast instead of a single bullet.
+Significant curvilinear associations in the final models suggest that the strength of the association between risk and protective factors and alcohol use was not consistent across levels of risk for some risk and protective factors in certain grade -- gender subsamples (Table 3). Figure 1 provides an example <head>plot</head> of the curvilinear association, depicting the antisocial peers factor predicting alcohol use for 8th-grade girls in the CTC-ND data set. The figure shows how the positive association between the risk factor and alcohol use eventually levels off at about 1 on the risk and protective factor scale, which corresponds to the 90th percentile of antisocial peers risk; the association becomes positive again at roughly the 97th percentile of risk.
+</context>
+</instance>
+<instance id="91">
+<answer instance="91" senseid="2"/>
+<context>
+We observed significant association signals with a group of 13 SNPs, interacting with cumulative PM10 exposure on annual decline in FEF25-75%, at a single locus on chromosome 16 (Figure 1A). The quantile-quantile <head>plot</head> of interaction p-values showed evidence for a higher number of significant signals than expected by chance (Figure 1B). Based on the lambda observed (? = 1.0476), adequate genomic control of the genome-wide associations had been applied.
+</context>
+</instance>
+<instance id="92">
+<answer instance="92" senseid="2"/>
+<context>
+Genome-wide interactions between cumulative PM10 exposure on annual decline in FEF25-75% in the discovery sample (n = 763) of the SAPALDIA cohort study. (A) Manhattan <head>plot</head> of the negative log of the p-values (pint) of 2,198,793 SNPs used for interaction association testing. CDH13 SNP cluster with interaction p-values reaching genome-wide significance are above the line and SNPs in the CDH13 locus are highlighted in green.
+</context>
+</instance>
+<instance id="97">
+<answer instance="97" senseid="2"/>
+<context>
+Oral reading in Grade 2 accounted for less than 10% of the variance in the Grade 3 phonemic awareness tasks. Correlations between the mean fixation counts on the phonemic awareness targets and the sentences appear in Table 3, and the scatter <head>plot</head> of that relationship appears in Figure 3. The number of fixations on the phonemic awareness last-sound target in Grade 2 accounted for 51% of the variance in the number of fixations during silent reading in Grade 3 (see Figure 3) and 46% of the variance in oral reading speed in Grade 3.
+</context>
+</instance>
+<instance id="100">
+<answer instance="100" senseid="2"/>
+<context>
+The results are " turbulent " standing-wave patterns, such as the one shown in the figure. The fraction of chaotic solutions is just the fraction of phase space in which Einstein's type (b) motion occurs.  Figure 5. Chaotic wavefunction of the stadium billiard. In this <head>plot</head> of the probability density, red areas are regions of high density and blue areas are regions of low density. The paucity of regions of parallel nodal lines indicates that the smooth wavefronts required for the EBK procedure to work are lacking.
 </context>
 </instance>
 <instance id="85">
 <answer instance="85" senseid="2"/>
 <context>
 The mean emotional intelligence score of the 243 American students was 123.79 with a standard deviation of 15.328. The mean of the 166 Chinese students was 120.01 with a standard deviation of 14.322. Therefore, the mean emotional intelligence score of the American students was higher than the mean score of the Chinese students. ANOVA results are in Table 3, the group means are in Table 4 and Figure 1 displays a <head>plot</head> of this result. Two-way ANOVA results indicate significant interaction between the nationality of the student and the age (traditional or nontraditional) of the student (Table 3).
+</context>
+</instance>
+<instance id="87">
+<answer instance="87" senseid="2"/>
+<context>
+In addition, there was no significant difference in the mean scores based on gender (p-value = 0.734). However, the test for differences in nationality of the student became significant, with an F value of 6.304 with a corresponding p-value of 0.012. Therefore, the mean emotional intelligence score of the American students was higher than the mean emotional intelligence score of the Chinese students. Group means are in Table 4 and Figure 3 below displays a <head>plot</head> of this result.  The next item studied was interaction with the nationality of the student and the GPA of the student. No significant interaction appeared (p-value = 0.653). In addition, there was no significant difference between students of both nationalities (p-value = 0.102). However, the test for the three levels of the GPA was significant, with an F value of 7.257 and a corresponding p-value of 0.001
+</context>
+</instance>
+<instance id="89">
+<answer instance="89" senseid="2"/>
+<context>
+For these analyses, we examined sensitivity (accuracy in correctly classifying students who fail the criterion assessment, i.e., correctly identifying true positives), specificity (accuracy in classifying students who pass the criterion assessment, i.e., correctly identifying true negatives), and area under the curve (an index of overall accuracy based on a <head>plot</head> of sensitivity and specificity).  We also investigated whether classification accuracy could be improved by using alternative cut scores on SEL, as well as how accuracy compared with paper-based LNF, LSF, and WRF (first-grade analyses).
+</context>
+</instance>
+<instance id="90">
+<answer instance="90" senseid="2"/>
+<context>
+Third, based on the strong functional link between CDH13 and adiponectin, we looked up the GWIS result of SNPs in the ADIPOQ gene, the adiponectin precursor protein, for interaction with PM10 on decline in FEF25-75% and made a regional association <head>plot</head> of the ADIPOQ locus using the software LocusZoom (Pruim et al. 2010).  Results  Baseline characteristics of the SAPALDIA cohort study participants included in the current GWIS analysis of the discovery and replication sample are presented in Table 1. We observed a highly comparable distribution of sex, age, baseline body mass index, weight change during follow-up, baseline lung function level, and average PM10 exposure at baseline and during follow-up
 </context>
 </instance>
 </lexelt>

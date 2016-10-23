@@ -1,0 +1,433 @@
+input/abandon-verb-pauls658.xml
+collapse small clusters
+small cluster: 2
+new best: 0
+new best: 4
+merging topic 2 with topic 4
+collapse small clusters
+small cluster: 2
+new best: 0
+merging topic 2 with topic 0
+collapse small clusters
+small cluster: 6
+new best: 0
+new best: 2
+merging topic 6 with topic 2
+collapse small clusters
+small cluster: 6
+new best: 0
+merging topic 6 with topic 0
+collapse small clusters
+collapse sim clusters
+new best: 2
+merging topic 0 with topic 2
+collapse sim clusters
+new best: 1
+merging topic 0 with topic 1
+collapse sim clusters
+new best: 1
+merging topic 0 with topic 1
+collapse sim clusters
+new best: 1
+merging topic 0 with topic 1
+collapse sim clusters
+topic 0 words: deck child soon son brought course human church vessel prince boat horse death father crew board white friend gave means part words hands hopes continued women case marriage common henry abandon signes called england want house fish mind heard manner sea home ship saw end sail able children poor christian power nature night french water put land carried thy country side thought place mother think left
+66 2
+topic 1 words: thinking god began mind days leaving things abandon john present
+2 10
+Calculating sense cluster scores
+            S0	      S1	   TOTAL	
+  C1:       40	       3	      43	(43.00)
+  C2:       24	      10	      34	(34.00)
+  C0:*      14	       1	      15	(15.00)
+  C3:*       8	       0	       8	(8.00)
+ TOTAL      86	      14	     100
+         (86.00)   (14.00)
+Precision = 64.94(50/77)
+Recall = 50.00(50/100+0)
+F-Measure = 56.50
+
+Legend of Sense Tags
+S0 = abandon.v.1
+S1 = abandon.v.2
+input/banana-wall-gupta299.xml
+collapse small clusters
+collapse sim clusters
+new best: 3
+merging topic 2 with topic 3
+collapse sim clusters
+topic 0 words: door room floor wall xyz street journal think today
+9 1 1
+topic 1 words: butter banana cup peanut xyz ice chocolate chips milk cream
+1 10 2
+topic 2 words: workers shirt family farmers soil xyz jeans american banana beer fruit republic leaves local eat grower
+1 2 16
+Calculating sense cluster scores
+            S0	      S1	      S2#	   TOTAL	
+  C0:      546	       0	       0	     546	(50.46)
+  C1:       31	     260	     245	     536	(49.54)
+ TOTAL     577	     260	     245	    1082
+         (53.33)   (24.03)   (22.64)
+Precision = 74.49(806/1082)
+Recall = 74.49(806/1082+0)
+F-Measure = 74.49
+
+Legend of Sense Tags
+S0 = xyz.n.1
+S1 = xyz.n.2
+S2 = xyz.n.3
+input/bat-noun-gupta299.xml
+collapse small clusters
+small cluster: 1
+new best: 0
+merging topic 1 with topic 0
+collapse small clusters
+collapse sim clusters
+topic 0 words: bat hit room took big head hand game going baseball contact swing bats species red
+15
+Calculating sense cluster scores
+            S0	   TOTAL	
+  C0:       50	      50	(50.00)
+  C1:*      50	      50	(50.00)
+ TOTAL     100	     100
+         (100.00)
+Precision = 100.00(50/50)
+Recall = 50.00(50/100+0)
+F-Measure = 66.67
+
+Legend of Sense Tags
+S0 = bat.n.1
+input/date-noun-vatti001.xml
+collapse small clusters
+small cluster: 1
+new best: 0
+new best: 2
+new best: 4
+merging topic 1 with topic 4
+collapse small clusters
+small cluster: 2
+new best: 0
+new best: 3
+merging topic 2 with topic 3
+collapse small clusters
+small cluster: 4
+new best: 0
+new best: 1
+new best: 3
+merging topic 4 with topic 3
+collapse small clusters
+small cluster: 4
+new best: 0
+new best: 1
+new best: 3
+merging topic 4 with topic 3
+collapse small clusters
+collapse sim clusters
+new best: 3
+merging topic 1 with topic 3
+collapse sim clusters
+new best: 2
+merging topic 1 with topic 2
+collapse sim clusters
+topic 0 words: woman house knew later thought going want night date think
+10 1
+topic 1 words: set figure national period library evidence palm learning standards fluency information end finally health online tacca main public notice selling patient students number early date women water reading look study tree days websites times patients place found studies black
+1 39
+Calculating sense cluster scores
+            S0	      S1	   TOTAL	
+  C0:       40	       0	      40	(40.00)
+  C2:        0	      30	      30	(30.00)
+  C1:*      16	      14	      30	(30.00)
+ TOTAL      56	      44	     100
+         (56.00)   (44.00)
+Precision = 100.00(70/70)
+Recall = 70.00(70/100+0)
+F-Measure = 82.35
+
+Legend of Sense Tags
+S0 = date.n.1
+S1 = date.n.2
+input/line-noun-6senses.xml
+collapse small clusters
+collapse sim clusters
+new best: 2
+merging topic 1 with topic 2
+collapse sim clusters
+new best: 2
+new best: 3
+merging topic 1 with topic 3
+collapse sim clusters
+new best: 2
+merging topic 1 with topic 2
+collapse sim clusters
+topic 0 words: draw end big telephone water phone call president line boat
+10 2 1 0
+topic 1 words: quarter stores business food marketing company million share sales telephone unit computer toys brands line fine market toy based ibm personal computers beatrice products machines international introduced software
+2 28 2 0
+topic 2 words: plant auto cars sales ford chrysler car line model
+1 2 9 0
+topic 3 words: cincinnati district decision douglas bag inflation popular laundry clothes
+0 0 0 9
+Calculating sense cluster scores
+            S3	      S0	      S1	      S2	   TOTAL	
+  C0:        0	     373	       0	       0	     373	(9.00)
+  C3:        0	     397	      32	       0	     429	(10.35)
+  C4:        0	       0	    2217	       0	    2217	(53.47)
+  C5:        7	       0	      94	     303	     404	(9.74)
+  C1:*       0	     374	       0	       0	     374	(9.02)
+  C2:*       0	     349	       0	       0	     349	(8.42)
+ TOTAL       7	    1493	    2343	     303	    4146
+         (0.17)   (36.01)   (56.51)   (7.31)
+Precision = 85.22(2917/3423)
+Recall = 70.36(2917/4146+0)
+F-Measure = 77.08
+
+Legend of Sense Tags
+S0 = line.n.1
+S1 = line.n.2
+S2 = line.n.3
+S3 = line.n.4
+input/pigeon-car-vatti001-1.xml
+collapse small clusters
+collapse sim clusters
+new best: 2
+merging topic 1 with topic 2
+collapse sim clusters
+new best: 2
+merging topic 1 with topic 2
+collapse sim clusters
+topic 0 words: police house xyz night gas drive street car front open
+10 2
+topic 1 words: voiceover head passenger bus xyz droppings peas known birds dna ace caught pigeon cells genome homing night forge white rice bird
+2 21
+Calculating sense cluster scores
+            S0	      S1	   TOTAL	
+  C0:      620	     188	     808	(59.63)
+  C1:        7	     540	     547	(40.37)
+ TOTAL     627	     728	    1355
+         (46.27)   (53.73)
+Precision = 85.61(1160/1355)
+Recall = 85.61(1160/1355+0)
+F-Measure = 85.61
+
+Legend of Sense Tags
+S0 = xyz.n.1
+S1 = xyz.n.2
+input/plot-noun-vuppu008.xml
+collapse small clusters
+small cluster: 1
+new best: 0
+new best: 2
+merging topic 1 with topic 2
+collapse small clusters
+collapse sim clusters
+topic 0 words: plot land garden city house kill small called
+8 1
+topic 1 words: plot interaction risk figure grade intelligence students significant table association mean
+1 11
+Calculating sense cluster scores
+            S0	      S1	   TOTAL	
+  C0:       50	       0	      50	(50.00)
+  C2:       10	      10	      20	(20.00)
+  C1:*      30	       0	      30	(30.00)
+ TOTAL      90	      10	     100
+         (90.00)   (10.00)
+Precision = 85.71(60/70)
+Recall = 60.00(60/100+0)
+F-Measure = 70.59
+
+Legend of Sense Tags
+S0 = plot.n.1
+S1 = plot.n.2
+input/racket-noun-pauls658.xml
+collapse small clusters
+small cluster: 3
+new best: 0
+new best: 2
+merging topic 3 with topic 2
+collapse small clusters
+small cluster: 4
+new best: 0
+new best: 1
+merging topic 4 with topic 1
+collapse small clusters
+small cluster: 4
+new best: 0
+merging topic 4 with topic 0
+collapse small clusters
+small cluster: 4
+new best: 0
+merging topic 4 with topic 0
+collapse small clusters
+small cluster: 4
+new best: 0
+new best: 2
+merging topic 4 with topic 2
+collapse small clusters
+collapse sim clusters
+new best: 1
+merging topic 0 with topic 1
+collapse sim clusters
+new best: 1
+merging topic 0 with topic 1
+collapse sim clusters
+topic 0 words: love point private front table open tennis father rackets going match opponent interests head north government squash sampras game part known women high balls yakuza played small making called grip give modern states player racket hit special united end fingers politicians film net side play ball mother hand protection york court racketeering early later face players american enterprise think
+59 2
+topic 1 words: cut police show big heard going including night racket trying
+2 10
+Calculating sense cluster scores
+            S0	      S1	   TOTAL	
+  C1:       29	      11	      40	(36.36)
+  C2:       17	      23	      40	(36.36)
+  C0:*      23	       7	      30	(27.27)
+ TOTAL      69	      41	     110
+         (62.73)   (37.27)
+Precision = 65.00(52/80)
+Recall = 47.27(52/110+0)
+F-Measure = 54.74
+
+Legend of Sense Tags
+S0 = racket.n.1
+S1 = racket.n.2
+input/shoot-verb-vatti001.xml
+collapse small clusters
+small cluster: 4
+new best: 0
+new best: 2
+merging topic 4 with topic 2
+collapse small clusters
+small cluster: 4
+new best: 0
+new best: 2
+merging topic 4 with topic 2
+collapse small clusters
+collapse sim clusters
+new best: 3
+merging topic 2 with topic 3
+collapse sim clusters
+topic 0 words: shoot shot room scene dead going want hands think today
+10 1 2
+topic 1 words: shoot police couple later gun times looking left called told
+1 10 1
+topic 2 words: set love show color photo deer video yes film turn movie give going music lot money red star big million commercial director game part line wanted shoot unidentified hour thing stand kill
+2 1 32
+Calculating sense cluster scores
+            S0	      S2	      S1#	   TOTAL	
+  C0:       32	       0	      18	      50	(50.00)
+  C1:        0	      44	       6	      50	(50.00)
+ TOTAL      32	      44	      24	     100
+         (32.00)   (44.00)   (24.00)
+Precision = 76.00(76/100)
+Recall = 76.00(76/100+0)
+F-Measure = 76.00
+
+Legend of Sense Tags
+S0 = shoot.v.1
+S1 = shoot.v.2
+S2 = shoot.v.3
+input/sidewalk-furnace-4104533.xml
+collapse small clusters
+small cluster: 5
+new best: 0
+new best: 6
+merging topic 5 with topic 6
+collapse small clusters
+small cluster: 5
+new best: 0
+merging topic 5 with topic 0
+collapse small clusters
+collapse sim clusters
+new best: 3
+merging topic 1 with topic 3
+collapse sim clusters
+topic 0 words: control added process xyz ada furnaces county part mill blast abraham steel river abandoned able according actually production iron act furnace coke system
+23 2 1 1
+topic 1 words: death creek xyz sidewalks allowed valley segways furnace segway
+2 9 2 1
+topic 2 words: city buildings area festival house xyz streets sidewalks street traffic car front moving sidewalk white road left
+1 2 17 1
+topic 3 words: high temperature xyz gas heating air water glass heat solar
+1 1 1 10
+Calculating sense cluster scores
+            S0	      S2	      S1#	      S3#	   TOTAL	
+  C0:      311	     164	      53	       2	     530	(44.80)
+  C1:        3	     513	       0	     137	     653	(55.20)
+ TOTAL     314	     677	      53	     139	    1183
+         (26.54)   (57.23)   (4.48)   (11.75)
+Precision = 69.65(824/1183)
+Recall = 69.65(824/1183+0)
+F-Measure = 69.65
+
+Legend of Sense Tags
+S0 = xyz.n.1
+S1 = xyz.n.2
+S2 = xyz.n.3
+S3 = xyz.n.4
+input/strike-verb-gupta299.xml
+collapse small clusters
+collapse sim clusters
+topic 0 words: iran union going strike security local
+6
+Calculating sense cluster scores
+            S0	   TOTAL	
+  C1:       56	      56	(56.00)
+  C0:*      10	      10	(10.00)
+  C2:*      34	      34	(34.00)
+ TOTAL     100	     100
+         (100.00)
+Precision = 100.00(56/56)
+Recall = 56.00(56/100+0)
+F-Measure = 71.79
+
+Legend of Sense Tags
+S0 = strike.v.1
+input/television-food-vuppu008.xml
+collapse small clusters
+collapse sim clusters
+new best: 2
+merging topic 1 with topic 2
+collapse sim clusters
+topic 0 words: television show media xyz watching watch hours radio news children
+10 1 2
+topic 1 words: eating restaurant food xyz author administration days fast high going health drug home small found part eat
+1 17 1
+topic 2 words: television xyz number early american officials issues growing presidential concern
+2 1 10
+Calculating sense cluster scores
+            S0	      S1	      S2#	   TOTAL	
+  C0:      483	      47	       0	     530	(47.15)
+  C1:        0	     517	      77	     594	(52.85)
+ TOTAL     483	     564	      77	    1124
+         (42.97)   (50.18)   (6.85)
+Precision = 88.97(1000/1124)
+Recall = 88.97(1000/1124+0)
+F-Measure = 88.97
+
+Legend of Sense Tags
+S0 = xyz.n.1
+S1 = xyz.n.2
+S2 = xyz.n.3
+input/wear-verb-vuppu008.xml
+collapse small clusters
+small cluster: 2
+new best: 0
+merging topic 2 with topic 0
+collapse small clusters
+collapse sim clusters
+new best: 1
+merging topic 0 with topic 1
+collapse sim clusters
+topic 0 words: sure shoes show water wear need dress look high natural shirt tear top system uniform going small red
+18
+Calculating sense cluster scores
+            S0	   TOTAL	
+  C0:       50	      50	(50.00)
+  C1:*      50	      50	(50.00)
+ TOTAL     100	     100
+         (100.00)
+Precision = 100.00(50/50)
+Recall = 50.00(50/100+0)
+F-Measure = 66.67
+
+Legend of Sense Tags
+S0 = wear.v.1
