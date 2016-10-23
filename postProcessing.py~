@@ -158,6 +158,12 @@ def collapseSmallClusters():
             return True
     return False
 
+
+"""
+Similar to the above function, but collapses together clusters that have at least CLUSTER_SIM
+topic words in common. This function should be called until it returns false, or there are
+only MIN_CLUSTERS left.
+"""
 def collapseSimilarClusters():
     print "collapse sim clusters"
     for i, topic1 in enumerate(topics):
@@ -187,8 +193,10 @@ if __name__ == "__main__":
     readTopics("hdp-wsi/wsi_output/tm_wsi.topics")
     readAssignments("hdp-wsi/wsi_output/tm_wsi")
     makeKey(sys.argv[1])
-    while len(topics) > MIN_CLUSTERS: if not collapseSmallClusters(): break
-    while len(topics) > MIN_CLUSTERS: if not collapseSimilarClusters(): break
+    while len(topics) > MIN_CLUSTERS:
+        if not collapseSmallClusters(): break
+    while len(topics) > MIN_CLUSTERS:
+        if not collapseSimilarClusters(): break
     for i, topic in enumerate(topics):
         print "topic " + str(i) + " words: " + ' '.join(word for word in topic)
         print ' '.join(str(len(topic & topic1)) for topic1 in topics)

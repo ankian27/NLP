@@ -158,6 +158,12 @@ def collapseSmallClusters():
             return True
     return False
 
+
+"""
+Similar to the above function, but collapses together clusters that have at least CLUSTER_SIM
+topic words in common. This function should be called until it returns false, or there are
+only MIN_CLUSTERS clusters left.
+"""
 def collapseSimilarClusters():
     print "collapse sim clusters"
     for i, topic1 in enumerate(topics):

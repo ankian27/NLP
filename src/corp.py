@@ -28,6 +28,10 @@ because they can break hdp-wsi, and we strip any head tags from the context.
 @param context: a raw context pulled a senseval2 formatted xml file
 @param ctx_len: the number of tokens on each side of the target to include in
                 the returned tokenized context
+@param target_word: the target word for this context. hdp-wsi relies on the
+                    exact target word appearing in the context (without
+                    any affixes), so we replace the word between the
+                    <head> tags with the canonical target_word.
 @return: a list of tokens representing the tokenized context
 """
 def tokenize(context, ctx_len, target_word):

@@ -30,7 +30,7 @@ because they can break hdp-wsi, and we strip any head tags from the context.
                 the returned tokenized context
 @return: a list of tokens representing the tokenized context
 """
-def tokenize(context, ctx_len, target):
+def tokenize(context, ctx_len, target_word):
     context = strip_non_ascii(context)
     b4, target, after = split_re.split(context, 1)
     after = rm_head_re.sub('', after)
@@ -59,7 +59,7 @@ def tokenize(context, ctx_len, target):
         if len(doc) >= ctx_len:
             break
     doc.reverse()
-    doc.append(target.lower())
+    doc.append(target_word.lower())
     for word in tmp2:
         word = word.lower()
         if word not in sws and word.isalpha():
