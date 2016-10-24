@@ -132,6 +132,21 @@ POS_TAGs	: [ ('woman', u'NOUN'),
 Definition  : money love with a movie and a director love with is lot 
 
 
+Point-by-Point Code Reference:
+------------------------------
+Section I : get_Noun_Verb()
+			The function is used to seperate the Nouns, Verbs and Adjectives in the given set of topic words.
+			We use the Parts of Speech Tagger from the Natural Language Toolkit to tag the POS for each word in the set of topic words.
+			It takes a set of topic words, assigns respective POS tags to each of those words. And then for each tag(Noun/Verb/Adjective), it forms a string of  words seperated by '|'
+Section II: cfg_rule()
+			The function is used to map the Context Free Grammar production rules for the english grammar to python representation.
+			It takes a rule of the form "PRO  -> with | to" and splits the rules on the right hand side based on "|". Then it appends the rules present on the right side to the rule present on the left.
+Section III: gen_def()
+			The function is used to generate the definition of a sentence recursively using the CFG rules. It chooses a production rule randomly from the list and then recursively gen_def() function is called. In order to avoid the same word being picked twice, we remove the word from the list of Nouns/Verbs/Adjectives once it is used.
+Section IV: generate_Definition()
+			This is the main class which drives the definition generation. First it takes a list of topic words and removes the target word from the list. Later it retrieves the Noun/Verb/Adjective words in the form of concatenated string separated by "|".  Then it takes the production rules and maps them as Array item -> set of tuples. Then gen_def() function proceeds to generate the definition based on the set of topic words.
+
+
 **********
 HOW TO RUN
 **********

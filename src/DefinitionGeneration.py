@@ -29,7 +29,7 @@ class Definition(object):
 		self.adj  = ''
 
 	def get_Noun_Verb(self, topics):
-		"""
+		"""Section I:
 		Author: Ankit Anand Gupta
 		The function is used to seperate the Nouns, Verbs and Adjectives in the given set of topic words.
 		We use the Parts of Speech Tagger from the Natural Language Toolkit to tag the POS for each word in the set of topic words.
@@ -68,7 +68,7 @@ class Definition(object):
 		return self.noun, self.verb ,self.adj
 
 	def cfg_rule(self,left,right):
-		'''
+		'''Section II:
 		#Authour: Sandeep Vuppula
 		The function is used to map the Context Free Grammar production rules for the english grammar to python representation
 		Args:
@@ -83,7 +83,7 @@ class Definition(object):
 			self.cfgRule[left].append(tuple(rule.split()))
 
 	def gen_def(self, symbol):
-		'''
+		'''Section III:
 		#Author: Sandeep Vuppula
 		The function is used to generate the definition of a sentence recursively using the CFG rules
 		Args:
@@ -125,7 +125,7 @@ class Definition(object):
 		return definition
 
 	def generate_Definition(self, topics, target):
-		'''
+		'''Section IV:
 		#Author: Ankit Anand Gupta
 		This function which is control the flow of program. It makes calls to the functions to produce the CFG rules and to generate the definition of the cluster
 		Args:
