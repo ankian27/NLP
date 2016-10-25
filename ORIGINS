@@ -29,4 +29,18 @@ Word sense induction for novel sense detection
 }
 
 The code for the above paper has been taken from the Git Repository: https://github.com/jhlau/hdp-wsi
-It includes the HDP implementation created by the authors of the first papaer
+It includes the HDP implementation created by the authors of the first paper
+
+NLTK: (URL: http://www.nltk.org/ )
+Natural Lanaguage toolkit is a open-source python library which provides APIs that supports many natural language processing applications such as stemming, POS tagging, tokenizing etc. It is one of the most commonly used library for NLP applications. 
+
+Functions we used from the NLTK:
+*pos_tag, map_tag: (part of nltk.tag) Off-the-shelf taggers available in nltk.tag package. These use the Penn Treebank tagset.
+*word_tokenize: A tokenizer that divides a given string into sub strings.
+*ngrams: (part of nltk.util) A library that contains functions to work on various types of ngrams.
+*nltk.collocations: A library that contains functions to work on collocations - Words that appear frequently in a corpora.
+*RegexpTokenizer: (part of nltk.tokenize) A python class that contains functions to tokenize a given string using a regular expressions or a set of seperators between tokens.
+
+Gensim: (URL: https://radimrehurek.com/gensim/)
+Gensim is a python framework for vector space modelling. It contains many functions that support unsupervised semantic modelling from plain text.
+*MmCorpus: gensim library containing tools for working with corpus in the Matrix Market format.
