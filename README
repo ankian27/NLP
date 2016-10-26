@@ -117,11 +117,11 @@ DP(a_0, G_0)
 
 We found that the default parameters for the hdp-wsi consistently produced too many clusters. To try and combat this, we lowered the alpha value. Overall this improved our precision, however it drastically reduced the precision for the sidewalk-furnace conflate pair. We have yet to understand why. 
 
-The original implementation of Hdp-wsi (python module) is tested on SemEval-2007 and SemEval-2010 WSI datasets. The datasets are similar in structure to the data we are using.
-Similar to the case in the word sense induction part of the paper, we consider each sentence or a given group of sentences containing the target word as a single "document". 
-
 In addition, the implementation of hdp that is used by the authors of hdp-wsi uses a random seed value which makes the clustering and topic word generation non-deterministic (we get different results each time we run; We've seen the precision vary by up to 15%). This is not ideal for testing modifications, so we fixed the random seed value to 1. This value was chosen arbitrarily, and it could have been any value. The important thing is that we set it to 1, and then did not change it.
 
+The original implementation of Hdp-wsi (python module) is tested on SemEval-2007 and SemEval-2010 WSI datasets. The datasets are similar in structure to the data we are using.
+Similar to the case in the word sense induction part of the paper, we consider each sentence or a given group of sentences containing the target word as a single "document" and there was usually at least 1 sentence before and after the sentence containing the target word. The dataset for WSI in the hdp-wsi paper was the SemEval-2010 data set which consists of about 160,000 instances of about 100 target words. This is about an average of 1600 instances per word, where as our data has exactly 100 instances per word. We think that the relative poor performance of our sense clustering algorithm is due to the smaller size of our dataset ( by a factor of 16) compared to the dataset used to test the hdp-wsi implementaion by the authors of the hdp-wsi paper.
+Also its interesting to note that although the test instances were the same, the authors used additional data extracted from English ukWaC(a web corpus) as training data saying that the original dataset is too small to induce any meaningful senses. They do the topic modelling based on a lot more training data than the said 100 instances but finally run the test only on the "official" 100 instances.
 _____________________
 Definition generation
 _____________________
