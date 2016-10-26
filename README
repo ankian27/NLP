@@ -111,7 +111,12 @@ DP(a_0, G_0)
 
 *Gamma(G_0) is the base probability measure. In other words, G_0 is the probability that a context goes into a newly generated cluster.
 
-We found that the default parameters for the hdp-wsi consistently produced too many clusters. To try and combat this, we lowered the alpha value. Overall this improved our precision, however it drastically reduced the precision for the sidewalk-furnace conflate pair. We have yet to understand why. In addition, the implementation of hdp that is used by the authors of hdp-wsi uses a random seed value which makes the clustering and topic word generation non-deterministic (we get different results each time we run; We've seen the precision vary by up to 15%). This is not ideal for testing modifications, so we fixed the random seed value to 1. This value was chosen arbitrarily, and it could have been any value. The important thing is that we set it to 1, and then did not change it.
+We found that the default parameters for the hdp-wsi consistently produced too many clusters. To try and combat this, we lowered the alpha value. Overall this improved our precision, however it drastically reduced the precision for the sidewalk-furnace conflate pair. We have yet to understand why. 
+
+The original implementation of Hdp-wsi (python module) is tested on SemEval-2007 and SemEval-2010 WSI datasets. The datasets are similar in structure to the data we are using.
+Similar to the case in the word sense induction part of the paper, we consider each sentence or a given group of sentences containing the target word as a single "document". 
+
+In addition, the implementation of hdp that is used by the authors of hdp-wsi uses a random seed value which makes the clustering and topic word generation non-deterministic (we get different results each time we run; We've seen the precision vary by up to 15%). This is not ideal for testing modifications, so we fixed the random seed value to 1. This value was chosen arbitrarily, and it could have been any value. The important thing is that we set it to 1, and then did not change it.
 
 _____________________
 Definition generation
