@@ -9,9 +9,11 @@ senseval2 formatted files.
 @AUTHOR: Brandon Paulsen
 """
 
+# read the stopwords into set
 sws = set(line.strip() for line in open('stopwords.txt', 'r'))
 
-non_alnum = re.compile('[\W_]+')
+# used to the split the raw context into two seperate sections: the
+# context before the target word, and the context after the target word
 split_re = re.compile(r'<head>(.*?)</head>')
 rm_head_re = re.compile(r'</?head>')
 
@@ -21,6 +23,7 @@ def strip_non_ascii(string):
     return ''.join(stripped)
 
 """
+FUN2
 Tokenizes the given context, performing any special processing
 on the file, specifically removing stopwords and converting all the words
 to lower case. In addition, we remove non-ascii characters from the contexts

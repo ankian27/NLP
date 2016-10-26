@@ -17,6 +17,7 @@ which is defined in src/corp.py
 """
 
 """
+FUN1
 A helper function which parses the given senseval2 formatted file without having to
 read the entire file into memory.
 @param f: a string which is the file path to the senseval2 formatted file
@@ -24,6 +25,7 @@ read the entire file into memory.
          the form (sense_id, context)
 """
 def getCtxes(f):
+    #RE1
     ctx_re = re.compile(r'<answer.*?senseid="([^"]*)"[^/]*/>.*?<context>(.*?)</context>', re.MULTILINE | re.DOTALL)
     with open(f, 'r') as f_ref:
         buf = f_ref.read()
@@ -85,14 +87,29 @@ if __name__ == '__main__':
     if len(sys.argv) < 2:
         print "usage: python writeToHDP.py <senseval2-xml-file>"
         sys.exit(1)
-    print "hi"
+    f = sys.argv[1]
+    # COM1
+    # Get the target word from the file name
     target, pos = f.split('-', 1)
     target = target.split('/')[-1]
     if "noun" not in pos and "verb" not in pos:
+        # COM2
+        # This is a name conflate pair. The target word is xyz instead of
+        # what we find in the file name
         target = "xyz"
         pos = "noun"
+    # COM3
+    # Convert input file into list of tokenized documents
+    # Each document is converted into a list of tokens, so corp ends up
+    # looking something like this:
+    # [
+    #  ["hello", "world"],
+    #  ["my", "name", "is", "brandon"],
+    #  ...
+    # ]
     corp = []
     for sense, ctx in getCtxes(sys.argv[1]):
         corp.append(tokenize(ctx, 500, target))
         #print ' '.join(word for word in corp[-1])
+    # Write the tokenized document to the hdp-wsi input directory
     writeCorpToHDPWSI(sys.argv[1], corp)

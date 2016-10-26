@@ -86,7 +86,7 @@ for line in topicdoc_file:
 
         #add the topic to the target word's list of topics if word id matches
         # in general this doesn't seem to be used because they always
-        # set the target word as -1 as a CL arg
+        # set the target word as -1
         if word_id == target_word:
             if topic_id not in tw_topics:
                 tw_topics[topic_id] = 0
