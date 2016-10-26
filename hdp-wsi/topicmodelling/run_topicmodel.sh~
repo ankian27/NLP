@@ -5,14 +5,14 @@
 #parameters#
 ############
 #hdp parameters
-gamma_b=0.1
+gamma_b=0.2
 alpha_b=0.94
 #topic model output directory
 output_dir="topicmodel_output"
 #stopword file to use
 stopword_file="stopwords.txt"
 #minimum vocab frequency to filter
-voc_minfreq=10
+voc_minfreq=7
 
 ######
 #main#

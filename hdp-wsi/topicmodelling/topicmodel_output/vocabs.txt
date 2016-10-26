@@ -1,5 +1,4 @@
 dress
-<<<<<<< HEAD
 going
 high
 look
@@ -17,10 +16,4 @@ tear_#1
 top
 uniform
 water
-=======
-look
-need
-tear
-tear_#1
->>>>>>> 8131c049c2e3b47767b612d9874486c10f9dd9ca
 wear

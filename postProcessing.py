@@ -212,6 +212,12 @@ if __name__ == "__main__":
     # Make the key for senseclusters_scorer
     makeKey(sys.argv[1])
 
+    for i, topic in enumerate(topics):
+        print "topic " + str(i) + " words: " + ' '.join(word for word in topic)
+        print ' '.join(str(len(topic & topic1)) for topic1 in topics)
+        #print "senses: "
+        #print ', '.join(ctxes[i][0] for i in ctx_assignments[i])
+
     while len(topics) > 2:
         if not collapseSmallClusters(): break
     while len(topics) > 2:

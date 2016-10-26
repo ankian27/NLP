@@ -40,7 +40,7 @@ python postProcessing.py $1 # > /dev/null
 cd senseclusters_scorer/
 # calculate the precision of our clustering
 echo "Calculating sense cluster scores"
-./senseclusters_scorer.sh key answers &> /dev/null
+./senseclusters_scorer.sh key answers # &> /dev/null
 # print out the scores
 cat report.out
 cd ..

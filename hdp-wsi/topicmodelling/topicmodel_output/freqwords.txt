@@ -4,7 +4,6 @@
        16 look
        13 dress
        11 need
-<<<<<<< HEAD
        10 water
        10 small
         9 top
@@ -18,5 +17,3 @@
         8 going
         8 red
         8 system
-=======
->>>>>>> 8131c049c2e3b47767b612d9874486c10f9dd9ca

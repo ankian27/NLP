@@ -82,7 +82,7 @@ def writeAnswers():
     global pos
     with open('senseclusters_scorer/answers', 'w+') as ans_ref:
         for i, ctx_is in enumerate(ctx_assignments):
-            for ctx_i in ctx_is: # TODO: need to change ctx_id to the actual id (not the list index)
+            for ctx_i in ctx_is:
                 ans_ref.write(thing + " " + thing + "." + str(ctxes[ctx_i][2]) + " " + thing + "." + str(i + 1) + "\n")
     with open('output/' + target_word + '-' + pos + '-assignmnets.xml', 'w+') as f_ref:
         f_ref.write('<corpus lang="english">\n<lexelt item="LEXELT">\n')
@@ -211,6 +211,13 @@ if __name__ == "__main__":
     # COM5
     # Make the key for senseclusters_scorer
     makeKey(sys.argv[1])
+
+    for i, topic in enumerate(topics):
+        print "topic " + str(i) + " words: " + ' '.join(word for word in topic)
+        print ' '.join(str(len(topic & topic1)) for topic1 in topics)
+        #print "senses: "
+        #print ', '.join(ctxes[i][0] for i in ctx_assignments[i])
+
 
     while len(topics) > 2:
         if not collapseSmallClusters(): break
