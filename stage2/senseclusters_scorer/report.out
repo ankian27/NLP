@@ -1,0 +1,12 @@
+            S0	      S1	   TOTAL	
+  C0:       30	      20	      50	(50.00)
+  C1:        0	      50	      50	(50.00)
+ TOTAL      30	      70	     100
+         (30.00)   (70.00)
+Precision = 80.00(80/100)
+Recall = 80.00(80/100+0)
+F-Measure = 80.00
+
+Legend of Sense Tags
+S0 = wear.v.1
+S1 = wear.v.2

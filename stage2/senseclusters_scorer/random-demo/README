@@ -1,0 +1,13 @@
+The output in this file was created by running the following from the 
+directory where senseclusters_scorer.sh resides
+
+senseclusters_scorer.sh random-demo/random10.txt keys/senseinduction.key
+
+mv *.out random-demo
+
+The random answer files were generated as follows....
+
+perl randgen.pl ../keys/senseinduction.key > randomX.txt
+
+where X is the value of upperlimit, where upperlimit is set in randgen 
+and determines the number of random clusters per word
