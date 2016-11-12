@@ -13,9 +13,11 @@ from sklearn.preprocessing import StandardScaler
 
 
 model_file = 'models/3_parts_of_wiki_lowercase'
-MIN_VOC_FREQ = 5
+MIN_VOC_FREQ = 9
+TAR_WINDOW = 2
+WORD_VEC_SIZE = 5
 
-def getCtxes( f):
+def get_ctxes( f):
     #RE1
     ctx_re = re.compile(r'<answer.*?senseid="([^"]*)"[^/]*/>.*?<context>(.*?)</context>', re.MULTILINE | re.DOTALL)
     with open(f, 'rb') as f_ref:
@@ -28,24 +30,30 @@ def get_tokens(file_name, target_word, model, stopwords):
     rm_head_re = re.compile(r'</?head>')
     ctx_tokens = []
     senses = []
-    for sense, ctx in getCtxes(file_name):
-        ctx = rename_re.sub(r' \1 ', ctx, 1)
+    for sense, ctx in get_ctxes(file_name):
+        ctx = rename_re.sub(' ' + target_word + 'target ', ctx, 1)
         ctx = rm_head_re.sub('', ctx)
         ctx = filter(lambda c: 0 < ord(c) < 127, ctx)
-        tokens = set()
+        tokens = []
         for token in nltk.word_tokenize(ctx):
             if not token: 
                 continue 
             elif not any(c.isalpha() for c in token):
                 continue
-            elif '\'' in token:
+            elif '\'' in token or '.' in token:
                 continue
             elif '-' in token:
                 # nltk doesn't split hyphenated words for us
-                tokens |= set(t.lower() for t in token.split('-'))
+                tokens.extend([t.lower() for t in token.split('-')])
             else:
-                tokens.add(token.lower())
-        ctx_tokens.append(filter(lambda x: x in model and x not in stopwords and target_word not in x, tokens))
+                tokens.append(token.lower())
+        # index function will throw an error if we don't find the target
+        # word
+        target_word_i = tokens.index(target_word + 'target')
+        ctx_tokens.append(set(filter(lambda x: x in model and x not in stopwords and target_word not in x, tokens)))
+        # add the nearest 2 words to the target word to the ctx
+        ctx_tokens[-1].update(tokens[target_word_i - TAR_WINDOW:target_word_i])
+        ctx_tokens[-1].update(tokens[target_word_i + 1:target_word_i + TAR_WINDOW + 1])
         senses.append(sense)
     return ctx_tokens, senses
 
@@ -76,16 +84,26 @@ def build_vocab(ctxes):
     for ctx_tokens in ctxes:
         for token in ctx_tokens:
             word_counts[token] += 1
-    #words = [(word, count) for word, count in word_counts.iteritems()]
-    #words = filter(lambda x: x[1] > 4, words)
-    #words = sorted(words, key=lambda x: x[1])
-    #print '\n'.join(word + ': ' + str(count) for word, count in words)
-    return set(word for word, count in word_counts.iteritems() if count >= MIN_VOC_FREQ)
+#    words = [(word, count) for word, count in word_counts.iteritems()]
+#    words = filter(lambda x: x[1] >= MIN_VOC_FREQ, words)
+#    words = sorted(words, key=lambda x: x[1])
+#    print '\n'.join(word + ': ' + str(count) for word, count in words)
+    vocab = set(word for word, count in word_counts.iteritems() if count >= MIN_VOC_FREQ)
+    word_counts = {word: count for word, count in word_counts.iteritems() if word in vocab}
+    return vocab, word_counts
 
-def reduce_ctxes(ctxes, vocab):
+'''
+ctxes is a list of sets of words.
+'''
+def reduce_ctxes(ctxes, vocab, counts):
     reduced_ctxes = []
     for ctx_tokens in ctxes:
-        reduced_ctxes.append(filter(lambda token: token in vocab, ctx_tokens))
+        context_words = []
+        for token in ctx_tokens:
+            if token in vocab:
+                context_words.append((token, counts[token]))
+        context_words = sorted(context_words, key=lambda x: x[1], reverse=True)
+        reduced_ctxes.append(set(word for word, _ in context_words[0:WORD_VEC_SIZE]))
     return reduced_ctxes
 
 def main(file_name):
@@ -105,9 +123,9 @@ def main(file_name):
     # ctxes[i]
     ctxes, senses = get_tokens(file_name, target_word, model, stopwords)
 
-    vocab = build_vocab(ctxes)
+    vocab, counts = build_vocab(ctxes)
 
-    reduced_ctxes = reduce_ctxes(ctxes, vocab)
+    reduced_ctxes = reduce_ctxes(ctxes, vocab, counts)
     for i, r_ctx in enumerate(reduced_ctxes):
         print 'ctx id: ' + str(i) + ' ' + ' '.join(r_ctx)
 
