@@ -13,7 +13,7 @@ from sklearn.preprocessing import StandardScaler
 
 
 model_file = 'models/3_parts_of_wiki_lowercase'
-MIN_VOC_FREQ = 9
+MIN_VOC_FREQ = 1
 TAR_WINDOW = 2
 WORD_VEC_SIZE = 5
 
@@ -68,9 +68,9 @@ def cos_sim2dist(similarity):
 
 def calc_distances(ctxes, model):
     distances = []
-    for ctx1 in ctx_tokens:
+    for ctx1 in ctxes:
         distances.append([])
-        for ctx2 in ctx_tokens:
+        for ctx2 in ctxes:
             distances[-1].append(cos_sim2dist(model.n_similarity(ctx1, ctx2)))
     return distances
 
@@ -117,7 +117,10 @@ def main(file_name):
         pos = "noun"
     
     model = Word2Vec.load(model_file)
+
+    # read the stopwords into a set
     stopwords = set(line.strip() for line in open('stopwords.txt', 'r'))
+
     # ctxes is a list of lists of tokens
     # senses is a list sense strings, where sense[i] is the sense of
     # ctxes[i]
@@ -128,13 +131,18 @@ def main(file_name):
     reduced_ctxes = reduce_ctxes(ctxes, vocab, counts)
     for i, r_ctx in enumerate(reduced_ctxes):
         print 'ctx id: ' + str(i) + ' ' + ' '.join(r_ctx)
+    return
+    distances = calc_distances(reduced_ctxes, model)
+    #for l in distances:
+        #print l
 
-#    clusters = defaultdict(list)
-#    for i, label in enumerate(db.labels_):
-#        clusters[label].append(senses[i])
-#    for label, ctxes in clusters.iteritems():
-#        print str(label)
-#        print ' '.join(ctxes)
+    db = DBSCAN(eps=0.3, min_samples=10, metric='precomputed', n_jobs=-1).fit(distances) 
+    clusters = defaultdict(list)
+    for i, label in enumerate(db.labels_):
+        clusters[label].append(senses[i])
+    for label, ctxes in clusters.iteritems():
+        print str(label)
+        print ' '.join(ctxes)
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:

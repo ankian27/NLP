@@ -1,0 +1,1 @@
+- remove words with low PPMI (or PMI, not sure yet) AND high counts. Maybe define a MAX_VOC_FREQ of 60 or .6 * num_instances

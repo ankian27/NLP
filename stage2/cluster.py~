@@ -13,11 +13,11 @@ from sklearn.preprocessing import StandardScaler
 
 
 model_file = 'models/3_parts_of_wiki_lowercase'
-MIN_VOC_FREQ = 9
+MIN_VOC_FREQ = 1
 TAR_WINDOW = 2
-WORD_VEC_SIZE = 5
+WORD_VEC_SIZE = 2
 
-def get_ctxes( f):
+def get_ctxes(f):
     #RE1
     ctx_re = re.compile(r'<answer.*?senseid="([^"]*)"[^/]*/>.*?<context>(.*?)</context>', re.MULTILINE | re.DOTALL)
     with open(f, 'rb') as f_ref:
@@ -49,11 +49,11 @@ def get_tokens(file_name, target_word, model, stopwords):
                 tokens.append(token.lower())
         # index function will throw an error if we don't find the target
         # word
-        target_word_i = tokens.index(target_word + 'target')
+        #target_word_i = tokens.index(target_word + 'target')
         ctx_tokens.append(set(filter(lambda x: x in model and x not in stopwords and target_word not in x, tokens)))
         # add the nearest 2 words to the target word to the ctx
-        ctx_tokens[-1].update(tokens[target_word_i - TAR_WINDOW:target_word_i])
-        ctx_tokens[-1].update(tokens[target_word_i + 1:target_word_i + TAR_WINDOW + 1])
+        #ctx_tokens[-1].update(tokens[target_word_i - TAR_WINDOW:target_word_i])
+        #ctx_tokens[-1].update(tokens[target_word_i + 1:target_word_i + TAR_WINDOW + 1])
         senses.append(sense)
     return ctx_tokens, senses
 
@@ -68,9 +68,9 @@ def cos_sim2dist(similarity):
 
 def calc_distances(ctxes, model):
     distances = []
-    for ctx1 in ctx_tokens:
+    for ctx1 in ctxes:
         distances.append([])
-        for ctx2 in ctx_tokens:
+        for ctx2 in ctxes:
             distances[-1].append(cos_sim2dist(model.n_similarity(ctx1, ctx2)))
     return distances
 
@@ -117,7 +117,10 @@ def main(file_name):
         pos = "noun"
     
     model = Word2Vec.load(model_file)
+
+    # read the stopwords into a set
     stopwords = set(line.strip() for line in open('stopwords.txt', 'r'))
+
     # ctxes is a list of lists of tokens
     # senses is a list sense strings, where sense[i] is the sense of
     # ctxes[i]
@@ -128,13 +131,18 @@ def main(file_name):
     reduced_ctxes = reduce_ctxes(ctxes, vocab, counts)
     for i, r_ctx in enumerate(reduced_ctxes):
         print 'ctx id: ' + str(i) + ' ' + ' '.join(r_ctx)
+    return
+    distances = calc_distances(reduced_ctxes, model)
+    #for l in distances:
+        #print l
 
-#    clusters = defaultdict(list)
-#    for i, label in enumerate(db.labels_):
-#        clusters[label].append(senses[i])
-#    for label, ctxes in clusters.iteritems():
-#        print str(label)
-#        print ' '.join(ctxes)
+    db = DBSCAN(eps=0.3, min_samples=10, metric='precomputed', n_jobs=-1).fit(distances) 
+    clusters = defaultdict(list)
+    for i, label in enumerate(db.labels_):
+        clusters[label].append(senses[i])
+    for label, ctxes in clusters.iteritems():
+        print str(label)
+        print ' '.join(ctxes)
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
