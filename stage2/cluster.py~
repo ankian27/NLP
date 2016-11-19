@@ -12,12 +12,13 @@ from sklearn.datasets.samples_generator import make_blobs
 from sklearn.preprocessing import StandardScaler
 
 
-model_file = 'models/3_parts_of_wiki_lowercase'
-MIN_VOC_FREQ = 1
+model_file = 'models/GoogleNews-vectors-negative300.bin'
+MIN_VOC_FREQ = 2
+# Not currently being used
 TAR_WINDOW = 2
-WORD_VEC_SIZE = 2
+WORD_VEC_SIZE = 3
 
-def get_ctxes(f):
+def get_ctxes( f):
     #RE1
     ctx_re = re.compile(r'<answer.*?senseid="([^"]*)"[^/]*/>.*?<context>(.*?)</context>', re.MULTILINE | re.DOTALL)
     with open(f, 'rb') as f_ref:
@@ -25,7 +26,7 @@ def get_ctxes(f):
     for sense, ctx in ctx_re.findall(buf):
         yield sense, ctx.strip()
 
-def get_tokens(file_name, target_word, model, stopwords):
+def tokenize_ctxes(file_name, target_word, model, stopwords):
     rename_re = re.compile(r'<head>(.*?)</head>')
     rm_head_re = re.compile(r'</?head>')
     ctx_tokens = []
@@ -34,7 +35,7 @@ def get_tokens(file_name, target_word, model, stopwords):
         ctx = rename_re.sub(' ' + target_word + 'target ', ctx, 1)
         ctx = rm_head_re.sub('', ctx)
         ctx = filter(lambda c: 0 < ord(c) < 127, ctx)
-        tokens = []
+        tokens = defaultdict(int)
         for token in nltk.word_tokenize(ctx):
             if not token: 
                 continue 
@@ -44,13 +45,15 @@ def get_tokens(file_name, target_word, model, stopwords):
                 continue
             elif '-' in token:
                 # nltk doesn't split hyphenated words for us
-                tokens.extend([t.lower() for t in token.split('-')])
+                for t in token.split('-'):
+                    tokens[t] += 1
             else:
-                tokens.append(token.lower())
+                tokens[token] += 1
         # index function will throw an error if we don't find the target
         # word
         #target_word_i = tokens.index(target_word + 'target')
-        ctx_tokens.append(set(filter(lambda x: x in model and x not in stopwords and target_word not in x, tokens)))
+        tokens = {k:v for k, v in tokens.iteritems() if k in model and k not in stopwords and target_word not in k}
+        ctx_tokens.append(tokens)
         # add the nearest 2 words to the target word to the ctx
         #ctx_tokens[-1].update(tokens[target_word_i - TAR_WINDOW:target_word_i])
         #ctx_tokens[-1].update(tokens[target_word_i + 1:target_word_i + TAR_WINDOW + 1])
@@ -106,6 +109,35 @@ def reduce_ctxes(ctxes, vocab, counts):
         reduced_ctxes.append(set(word for word, _ in context_words[0:WORD_VEC_SIZE]))
     return reduced_ctxes
 
+def word_stats(ctxes):
+    total_count = 0
+    word_counts = defaultdict(int)
+    ctx_word_counts = []
+    for ctx in ctxes:
+        tot_ctx_words = 0
+        for word, count in ctx.iteritems():
+            total_count += count
+            word_counts[word] += count
+            tot_ctx_words += count
+        ctx_word_counts.append(count)
+    return total_count, word_counts, ctx_word_counts
+
+def calc_ppmis(ctxes, N, word_counts, ctx_counts):
+    ctx_pmis = []
+    N = float(N)
+    for i, ctx in enumerate(ctxes):
+        ctx_pmi = []
+        for word, count in ctx.iteritems():
+            if word_counts[word] < MIN_VOC_FREQ:
+                continue
+            p_xy = float(float(count)/N)
+            p_x = float(float(word_counts[word])/N)
+            p_y = float(float(ctx_counts[i])/N)
+            pmi = float(p_xy/(p_x*p_y))
+            ctx_pmi.append((word, pmi))
+        ctx_pmis.append(sorted(ctx_pmi, key=lambda x: x[1], reverse=True))
+    return ctx_pmis
+
 def main(file_name):
     target_word, pos = file_name.split('-', 1)
     target_word = target_word.split('/')[-1]
@@ -115,31 +147,39 @@ def main(file_name):
         # what we find in the file name
         target = "xyz"
         pos = "noun"
-    
+    print "Loading model..."
     model = Word2Vec.load(model_file)
-
+    print "Model loaded."
     # read the stopwords into a set
     stopwords = set(line.strip() for line in open('stopwords.txt', 'r'))
 
     # ctxes is a list of lists of tokens
     # senses is a list sense strings, where sense[i] is the sense of
     # ctxes[i]
-    ctxes, senses = get_tokens(file_name, target_word, model, stopwords)
+    ctxes, senses = tokenize_ctxes(file_name, target_word, model, stopwords)
+    N, word_counts, ctx_counts = word_stats(ctxes)
+    ctx_pmis = calc_ppmis(ctxes, N, word_counts, ctx_counts)
 
-    vocab, counts = build_vocab(ctxes)
+    ctx_vecs = []
+    for ctx in ctx_pmis:
+        ctx_vecs.append([word for word, _ in ctx[:WORD_VEC_SIZE]])
+    #for vec in ctx_vecs:
+        #print vec
+    #overwriting the previous word_counts here
+    word_counts = defaultdict(int)
+    for ctx in ctx_vecs:
+        for token in ctx:
+            word_counts[token] += 1
+    counts = [(word, count) for word, count in word_counts.iteritems()]
+    counts = sorted(counts, key=lambda x: x[1], reverse=True)
+    #print '\n'.join(word + ': ' + str(count) for word, count in counts)
+    vocab = [word for word, _ in counts]
+    distances = calc_distances(vocab, model)
 
-    reduced_ctxes = reduce_ctxes(ctxes, vocab, counts)
-    for i, r_ctx in enumerate(reduced_ctxes):
-        print 'ctx id: ' + str(i) + ' ' + ' '.join(r_ctx)
-    return
-    distances = calc_distances(reduced_ctxes, model)
-    #for l in distances:
-        #print l
-
-    db = DBSCAN(eps=0.3, min_samples=10, metric='precomputed', n_jobs=-1).fit(distances) 
+    db = DBSCAN(eps=0.2, min_samples=10, metric='precomputed', n_jobs=-1).fit(distances) 
     clusters = defaultdict(list)
     for i, label in enumerate(db.labels_):
-        clusters[label].append(senses[i])
+        clusters[label].append(vocab[i])
     for label, ctxes in clusters.iteritems():
         print str(label)
         print ' '.join(ctxes)
