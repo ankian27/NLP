@@ -4,7 +4,8 @@ import re
 import nltk
 from collections import defaultdict
 from gensim.models import Word2Vec
-from sklearn.cluster import DBSCAN
+from sklearn.cluster import KMeans
+from sklearn.cluster import AgglomerativeClustering
 import numpy as np
 
 from sklearn import metrics
@@ -13,10 +14,11 @@ from sklearn.preprocessing import StandardScaler
 
 
 model_file = 'models/GoogleNews-vectors-negative300.bin'
+#model_file = 'models/3_parts_of_wiki_lowercase'
 MIN_VOC_FREQ = 2
 # Not currently being used
 TAR_WINDOW = 2
-WORD_VEC_SIZE = 3
+WORD_VEC_SIZE = 5
 
 def get_ctxes( f):
     #RE1
@@ -26,7 +28,10 @@ def get_ctxes( f):
     for sense, ctx in ctx_re.findall(buf):
         yield sense, ctx.strip()
 
-def tokenize_ctxes(file_name, target_word, model, stopwords):
+"""
+Convert the contexts in a sense2val file into a tokenized list. Also returns the senses associated with each context.
+"""
+def tokenize_ctxes(file_name, target_word, model, stopwords, window_size):
     rename_re = re.compile(r'<head>(.*?)</head>')
     rm_head_re = re.compile(r'</?head>')
     ctx_tokens = []
@@ -35,9 +40,20 @@ def tokenize_ctxes(file_name, target_word, model, stopwords):
         ctx = rename_re.sub(' ' + target_word + 'target ', ctx, 1)
         ctx = rm_head_re.sub('', ctx)
         ctx = filter(lambda c: 0 < ord(c) < 127, ctx)
-        tokens = defaultdict(int)
+        tokens = []
+        # Convert the context into an ordered list of tokens. The following
+        # types of tokens are removed in this step:
+        # - stopwords
+        # - tokens consisting of only punctuation
+        # - tokens with no alphabetical characters
+        # - tokens with a '.' in them (this indicates an acronym which
+        #   is generally not useful)
+        # - tokens with single quote in them (these are usually the
+        #   second half of a conjuction, for example "n't" or "'ve"
+        #   which are not usually useful)
         for token in nltk.word_tokenize(ctx):
-            if not token: 
+            token = token.lower()
+            if not token or token in stopwords: 
                 continue 
             elif not any(c.isalpha() for c in token):
                 continue
@@ -46,17 +62,14 @@ def tokenize_ctxes(file_name, target_word, model, stopwords):
             elif '-' in token:
                 # nltk doesn't split hyphenated words for us
                 for t in token.split('-'):
-                    tokens[t] += 1
+                    if t:
+                    	tokens.append(t)
             else:
-                tokens[token] += 1
+                tokens.append(token)
         # index function will throw an error if we don't find the target
         # word
-        #target_word_i = tokens.index(target_word + 'target')
-        tokens = {k:v for k, v in tokens.iteritems() if k in model and k not in stopwords and target_word not in k}
-        ctx_tokens.append(tokens)
-        # add the nearest 2 words to the target word to the ctx
-        #ctx_tokens[-1].update(tokens[target_word_i - TAR_WINDOW:target_word_i])
-        #ctx_tokens[-1].update(tokens[target_word_i + 1:target_word_i + TAR_WINDOW + 1])
+        target_word_i = tokens.index(target_word + 'target')
+        ctx_tokens.append(tokens[target_word_i - window_size:target_word_i] + tokens[target_word_i + 1:target_word_i + window_size + 1])
         senses.append(sense)
     return ctx_tokens, senses
 
@@ -74,7 +87,10 @@ def calc_distances(ctxes, model):
     for ctx1 in ctxes:
         distances.append([])
         for ctx2 in ctxes:
-            distances[-1].append(cos_sim2dist(model.n_similarity(ctx1, ctx2)))
+            if isinstance(ctx2, str):
+                distances[-1].append(1 - model.similarity(ctx1, ctx2))
+            else:
+                distances[-1].append(1 - model.n_similarity(ctx1, ctx2))
     return distances
 
 '''
@@ -148,7 +164,8 @@ def main(file_name):
         target = "xyz"
         pos = "noun"
     print "Loading model..."
-    model = Word2Vec.load(model_file)
+    model = Word2Vec.load_word2vec_format(model_file, binary=True)
+    #model = Word2Vec.load(model_file)
     print "Model loaded."
     # read the stopwords into a set
     stopwords = set(line.strip() for line in open('stopwords.txt', 'r'))
@@ -166,20 +183,23 @@ def main(file_name):
     #for vec in ctx_vecs:
         #print vec
     #overwriting the previous word_counts here
-    word_counts = defaultdict(int)
-    for ctx in ctx_vecs:
-        for token in ctx:
-            word_counts[token] += 1
-    counts = [(word, count) for word, count in word_counts.iteritems()]
-    counts = sorted(counts, key=lambda x: x[1], reverse=True)
+    #word_counts = defaultdict(int)
+    #for ctx in ctx_vecs:
+        #for token in ctx:
+            #word_counts[token] += 1
+    #counts = [(word, count) for word, count in word_counts.iteritems()]
+    #counts = sorted(counts, key=lambda x: x[1], reverse=True)
     #print '\n'.join(word + ': ' + str(count) for word, count in counts)
-    vocab = [word for word, _ in counts]
-    distances = calc_distances(vocab, model)
+    #vocab = [word for word, _ in counts]
+    #print vocab
+    #return
+    distances = calc_distances(ctx_vecs, model)
 
-    db = DBSCAN(eps=0.2, min_samples=10, metric='precomputed', n_jobs=-1).fit(distances) 
+    #db = DBSCAN(eps=0.4, min_samples=3, metric='precomputed', n_jobs=-1).fit(distances)
+    db = AgglomerativeClustering(n_clusters = 3).fit(distances)
     clusters = defaultdict(list)
     for i, label in enumerate(db.labels_):
-        clusters[label].append(vocab[i])
+        clusters[label].append(senses[i])
     for label, ctxes in clusters.iteritems():
         print str(label)
         print ' '.join(ctxes)
