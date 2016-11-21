@@ -41,7 +41,7 @@ def tokenize_ctxes(file_name, target_word, stopwords, window_size):
         # - tokens with single quote in them (these are usually the
         #   second half of a conjuction, for example "n't" or "'ve"
         #   which are not usually useful)
-        for token in nltk.word_tokenize(ctx):
+        for token, tag in nltk.pos_tag(nltk.word_tokenize(ctx)):
             token = token.lower()
             if not token or token in stopwords: 
                 continue 
@@ -53,12 +53,14 @@ def tokenize_ctxes(file_name, target_word, stopwords, window_size):
                 # nltk doesn't split hyphenated words for us
                 for t in token.split('-'):
                     if t:
-                    	tokens.append(t)
+                    	tokens.append((t, nltk.map_tag('en-ptb', 'universal', tag)))
             else:
-                tokens.append(token)
+                tokens.append((token, nltk.map_tag('en-ptb', 'universal', tag)))
         # index function will throw an error if we don't find the target
         # word
-        target_word_i = tokens.index(target_word + 'target')
+        target_word_i = 0
+        while tokens[target_word_i][0] != target_word + 'target':
+            target_word_i += 1
         ctx_tokens.append(tokens[target_word_i - window_size:target_word_i] + tokens[target_word_i + 1:target_word_i + window_size + 1])
         senses.append(sense)
     return ctx_tokens, senses
@@ -79,17 +81,23 @@ def make_context_vecs(ctxes, model):
         vecs.append(vec)
     return vecs
 
-def print_clusters(cluster, labels):
-    clusters = defaultdict(list)
+def get_clusters(cluster, senses, ctxes):
+    clusters = []
+    # cluster.label -> index in clusters
+    clusterlabel_to_index = {}
     for i, label in enumerate(cluster.labels_):
-        clusters[label].append(labels[i])
-    for label, ctxes in clusters.iteritems():
-        print str(label)
-        print ' '.join(ctxes)
+        if label not in clusterlabel_to_index:
+            clusterlabel_to_index[label] = len(clusters)
+            clusters.append([])
+        clusters[clusterlabel_to_index[label]].append((senses[i], ctxes[i]))
+    return clusters
 
-if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        print "usage: python def_gen.py <senseval2-xml-file>"
+def print_clusters(clusters):
+    for i, cluster in enumerate(clusters):
+        print 'Cluster ' + str(i)
+        print '----------'
+        print '\n'.join(' '.join(context) for _, context in cluster)
+
 def main(file_name):
     target_word, pos = file_name.split('-', 1)
     target_word = target_word.split('/')[-1]
@@ -107,18 +115,22 @@ def main(file_name):
     # ctxes is a list of lists of tokens
     # senses is a list sense strings, where sense[i] is the sense of
     # ctxes[i]
-    ctxes, senses = tokenize_ctxes(file_name, target_word, stopwords, WINDOW_SIZE)
-
-    ctx_vecs = make_context_vecs(ctxes, model)
+    pos_ctxes, senses = tokenize_ctxes(file_name, target_word, stopwords, WINDOW_SIZE)
+    raw_ctxes = []
+    for ctx in pos_ctxes:
+        raw_ctxes.append([word for word, _ in ctx])
+    ctx_vecs = make_context_vecs(raw_ctxes, model)
 
     #for i, context in enumerate(ctxes):
-        #print 'Context ' + str(i) + '| sense: ' + senses[i] + ' | words: ' + ' '.join(context)
+        #print 'Context ' + str(i) + '| sense: ' + senses[i] + ' | words: ' + ' '.join(str(item) for item in context)
     #for vec in ctx_vecs:
         #print vec
 
-    ap = AffinityPropagation(damping=0.5, convergence_iter=15, max_iter=200).fit(ctx_vecs)
+    ap = AffinityPropagation(damping=0.5, convergence_iter=15, max_iter=300).fit(ctx_vecs)
 
-    print_clusters(ap, senses)
+    clusters = get_clusters(ap, senses, raw_ctxes)
+
+    print_clusters(clusters)
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
