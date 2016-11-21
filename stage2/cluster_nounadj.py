@@ -1,26 +1,17 @@
 import sys
-import math
 import re
+import math
 import nltk
 from collections import defaultdict
 from gensim.models import Word2Vec
-from sklearn.cluster import KMeans
-from sklearn.cluster import AgglomerativeClustering
-import numpy as np
+from sklearn.cluster import DBSCAN
 
-from sklearn import metrics
-from sklearn.datasets.samples_generator import make_blobs
-from sklearn.preprocessing import StandardScaler
-
-
-model_file = 'models/GoogleNews-vectors-negative300.bin'
-#model_file = 'models/3_parts_of_wiki_lowercase'
+model_file = 'models/3_parts_of_wiki_lowercase'
+WINDOW_SIZE = 10
 MIN_VOC_FREQ = 2
-# Not currently being used
-TAR_WINDOW = 2
 WORD_VEC_SIZE = 5
 
-def get_ctxes( f):
+def get_ctxes(f):
     #RE1
     ctx_re = re.compile(r'<answer.*?senseid="([^"]*)"[^/]*/>.*?<context>(.*?)</context>', re.MULTILINE | re.DOTALL)
     with open(f, 'rb') as f_ref:
@@ -31,7 +22,7 @@ def get_ctxes( f):
 """
 Convert the contexts in a sense2val file into a tokenized list. Also returns the senses associated with each context.
 """
-def tokenize_ctxes(file_name, target_word, model, stopwords, window_size):
+def tokenize_ctxes(file_name, target_word, stopwords, window_size):
     rename_re = re.compile(r'<head>(.*?)</head>')
     rm_head_re = re.compile(r'</?head>')
     ctx_tokens = []
@@ -44,6 +35,7 @@ def tokenize_ctxes(file_name, target_word, model, stopwords, window_size):
         # Convert the context into an ordered list of tokens. The following
         # types of tokens are removed in this step:
         # - stopwords
+        # - the target word itself
         # - tokens consisting of only punctuation
         # - tokens with no alphabetical characters
         # - tokens with a '.' in them (this indicates an acronym which
@@ -53,7 +45,7 @@ def tokenize_ctxes(file_name, target_word, model, stopwords, window_size):
         #   which are not usually useful)
         for token in nltk.word_tokenize(ctx):
             token = token.lower()
-            if not token or token in stopwords: 
+            if not token or token in stopwords or (target_word in token and token != target_word + 'target'): 
                 continue 
             elif not any(c.isalpha() for c in token):
                 continue
@@ -73,57 +65,34 @@ def tokenize_ctxes(file_name, target_word, model, stopwords, window_size):
         senses.append(sense)
     return ctx_tokens, senses
 
-def cos_sim2dist(similarity):
-    if similarity > 1:
-        sim = 1
-    elif similarity < -1:
-        sim = -1
-    else:
-        sim = similarity
-    return (math.acos(sim)/math.pi)
+def tokenize_nounadj(file_name, target_word, stopwords, window_size):
+    rename_re = re.compile(r'<head>(.*?)</head>')
+    rm_head_re = re.compile(r'</?head>')
+    ctx_tokens = []
+    senses = []
+    for sense, ctx in get_ctxes(file_name):
+        ctx = rename_re.sub(' ' + target_word + 'target ', ctx, 1)
+        ctx = rm_head_re.sub('', ctx)
+        ctx = filter(lambda c: 0 < ord(c) < 127, ctx)
 
-def calc_distances(ctxes, model):
-    distances = []
-    for ctx1 in ctxes:
-        distances.append([])
-        for ctx2 in ctxes:
-            if isinstance(ctx2, str):
-                distances[-1].append(1 - model.similarity(ctx1, ctx2))
-            else:
-                distances[-1].append(1 - model.n_similarity(ctx1, ctx2))
-    return distances
+        tagged_ctx = nltk.pos_tag(nltk.word_tokenize(ctx))
+        simpletags_ctx = [(word, nltk.map_tag('en-ptb', 'universal', tag)) for word, tag in tagged_ctx]
+        target_word_i = 0
+        while simpletags_ctx[target_word_i][0] != target_word + 'target':
+            target_word_i += 1
 
-'''
-returns a set of words which encompasses the vocab extracted from the ctxes.
-'''
-def build_vocab(ctxes):
-    # word-by-document matrix
-    matrix = []
-    word_counts = defaultdict(int)
-    for ctx_tokens in ctxes:
-        for token in ctx_tokens:
-            word_counts[token] += 1
-#    words = [(word, count) for word, count in word_counts.iteritems()]
-#    words = filter(lambda x: x[1] >= MIN_VOC_FREQ, words)
-#    words = sorted(words, key=lambda x: x[1])
-#    print '\n'.join(word + ': ' + str(count) for word, count in words)
-    vocab = set(word for word, count in word_counts.iteritems() if count >= MIN_VOC_FREQ)
-    word_counts = {word: count for word, count in word_counts.iteritems() if word in vocab}
-    return vocab, word_counts
+        nounadjs = set()
+        for token, pos in simpletags_ctx[target_word_i - window_size:target_word_i] + simpletags_ctx[target_word_i + 1:target_word_i + window_size + 1]:
+            if pos == 'NOUN' or pos == 'ADJ':
+                if '-' in token:
+                    for word in token.split('-'):
+                        nounadjs.add(word.lower())
+                else:
+                    nounadjs.add(token.lower())
+        ctx_tokens.append(nounadjs)
+        senses.append(sense)
 
-'''
-ctxes is a list of sets of words.
-'''
-def reduce_ctxes(ctxes, vocab, counts):
-    reduced_ctxes = []
-    for ctx_tokens in ctxes:
-        context_words = []
-        for token in ctx_tokens:
-            if token in vocab:
-                context_words.append((token, counts[token]))
-        context_words = sorted(context_words, key=lambda x: x[1], reverse=True)
-        reduced_ctxes.append(set(word for word, _ in context_words[0:WORD_VEC_SIZE]))
-    return reduced_ctxes
+    return ctx_tokens, senses
 
 def word_stats(ctxes):
     total_count = 0
@@ -154,6 +123,18 @@ def calc_ppmis(ctxes, N, word_counts, ctx_counts):
         ctx_pmis.append(sorted(ctx_pmi, key=lambda x: x[1], reverse=True))
     return ctx_pmis
 
+def calc_distances(ctxes, model):
+    distances = []
+    for ctx1 in ctxes:
+        distances.append([])
+        for ctx2 in ctxes:
+            if isinstance(ctx2, str):
+                distances[-1].append(1 - model.similarity(ctx1, ctx2))
+            else:
+                distances[-1].append(1 - model.n_similarity(ctx1, ctx2))
+    return distances
+
+
 def main(file_name):
     target_word, pos = file_name.split('-', 1)
     target_word = target_word.split('/')[-1]
@@ -163,40 +144,43 @@ def main(file_name):
         # what we find in the file name
         target = "xyz"
         pos = "noun"
-    print "Loading model..."
-    model = Word2Vec.load_word2vec_format(model_file, binary=True)
-    #model = Word2Vec.load(model_file)
-    print "Model loaded."
-    # read the stopwords into a set
+
     stopwords = set(line.strip() for line in open('stopwords.txt', 'r'))
+
+    model = Word2Vec.load(model_file)
 
     # ctxes is a list of lists of tokens
     # senses is a list sense strings, where sense[i] is the sense of
     # ctxes[i]
-    ctxes, senses = tokenize_ctxes(file_name, target_word, model, stopwords)
-    N, word_counts, ctx_counts = word_stats(ctxes)
-    ctx_pmis = calc_ppmis(ctxes, N, word_counts, ctx_counts)
+    ctxes, senses = tokenize_nounadj(file_name, target_word, stopwords, WINDOW_SIZE)
+    for i, ctx in enumerate(ctxes):
+        ctxes[i] = filter(lambda x: x in model, ctx)
+        #print 'context ' + str(i) + ' ' + ' '.join(ctx)
 
-    ctx_vecs = []
-    for ctx in ctx_pmis:
-        ctx_vecs.append([word for word, _ in ctx[:WORD_VEC_SIZE]])
-    #for vec in ctx_vecs:
-        #print vec
-    #overwriting the previous word_counts here
-    #word_counts = defaultdict(int)
-    #for ctx in ctx_vecs:
-        #for token in ctx:
-            #word_counts[token] += 1
-    #counts = [(word, count) for word, count in word_counts.iteritems()]
-    #counts = sorted(counts, key=lambda x: x[1], reverse=True)
-    #print '\n'.join(word + ': ' + str(count) for word, count in counts)
-    #vocab = [word for word, _ in counts]
-    #print vocab
-    #return
-    distances = calc_distances(ctx_vecs, model)
+#    ctxes_bow = []
+#    for ctx in ctxes:
+#        bow = defaultdict(int)
+#        for word in ctx:
+#            bow[word] += 1
+#        ctxes_bow.append(bow)
 
-    #db = DBSCAN(eps=0.4, min_samples=3, metric='precomputed', n_jobs=-1).fit(distances)
-    db = AgglomerativeClustering(n_clusters = 3).fit(distances)
+    #for i, context in enumerate(ctxes):
+        #print 'Context ' + str(i) + '| sense: ' + senses[i] + ' | words: ' + ' '.join(context)
+
+    #N, word_counts, ctx_counts = word_stats(ctxes_bow)
+    #ctx_pmis = calc_ppmis(ctxes_bow, N, word_counts, ctx_counts)
+
+    #wcs_list = []
+    #for word, count in word_counts.iteritems():
+        #wcs_list.append((word, count))
+    #wcs_list = sorted(wcs_list, key=lambda x: x[1], reverse=True)
+    #vocab = [x[0] for x in filter(lambda x: x[0] in model, wcs_list)]
+    #print '\n'.join(word + ': ' + str(count) for word, count in wcs_list)
+    
+    distances = calc_distances(ctxes, model)
+    
+    db = DBSCAN(eps=0.5, min_samples=10, metric='precomputed', n_jobs=-1).fit(distances)
+
     clusters = defaultdict(list)
     for i, label in enumerate(db.labels_):
         clusters[label].append(senses[i])
@@ -204,8 +188,16 @@ def main(file_name):
         print str(label)
         print ' '.join(ctxes)
 
+    return
+
+    ctx_vecs = []
+    for ctx in ctx_pmis:
+        ctx_vecs.append([word for word, _ in ctx[:WORD_VEC_SIZE]])
+        print ctx_vecs[-1]
+
+
 if __name__ == '__main__':
     if len(sys.argv) != 2:
-        print "usage: python writeToHDP.py <senseval2-xml-file>"
+        print "usage: python def_gen.py <senseval2-xml-file>"
         sys.exit(1)
     main(sys.argv[1])
