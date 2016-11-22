@@ -4,11 +4,15 @@ import nltk
 from collections import defaultdict
 from gensim.models import Word2Vec
 from sklearn.cluster import AffinityPropagation
+from sklearn.cluster import DBSCAN
+from scipy.spatial.distance import pdist
+import numpy as np
 
 model_file = 'models/3_parts_of_wiki_lowercase'
 WINDOW_SIZE = 10
 MIN_VOC_FREQ = 2
 WORD_VEC_SIZE = 5
+MIN_CLUSTER_SIZE = 10
 
 def get_ctxes(f):
     #RE1
@@ -68,18 +72,42 @@ def tokenize_ctxes(file_name, target_word, stopwords, window_size):
 def make_context_vecs(ctxes, model):
     vecs = []
     for ctx in ctxes:
+        if len(ctx) == 0:
+            vecs.append(model['the'] - model['the'])
+            continue
+        weight = float(float(1)/float(len(ctx)))
+        #weight = float(1)
         vec = None
-        #weight = float(float(1)/float(len(ctx)))
-        weight = float(1)
         for word in ctx:
-            if word not in model:
-                continue
             if vec is None:
                 vec = model[word]*weight
             else:
                 vec += model[word]*weight
         vecs.append(vec)
     return vecs
+
+def word_stats_lists(ctxes):
+    total_count = 0
+    word_counts = defaultdict(int)
+    for ctx in ctxes:
+        tot_ctx_words = 0
+        total_count += len(ctx)
+        for word in ctx:
+            word_counts[word] += 1
+    return total_count, word_counts
+
+def calc_distances(ctxes, model):
+    distances = []
+    for ctx1 in ctxes:
+        distances.append([])
+        for ctx2 in ctxes:
+            if len(ctx1) == 0 or len(ctx2) == 0:
+                distances[-1].append(float(1))
+            elif isinstance(ctx2, str):
+                distances[-1].append(1 - model.similarity(ctx1, ctx2))
+            else:
+                distances[-1].append(1 - model.n_similarity(ctx1, ctx2))
+    return distances
 
 def get_clusters(cluster, senses, ctxes):
     clusters = []
@@ -95,8 +123,11 @@ def get_clusters(cluster, senses, ctxes):
 def print_clusters(clusters):
     for i, cluster in enumerate(clusters):
         print 'Cluster ' + str(i)
-        print '\n'.join(' '.join(context) for _, context in cluster)
+        print '----------'
+        print '\n'.join(sense for sense, context in cluster)
 
+#def combine_clusters(clusters, MIN_CLUSTER_SIZE):
+    
 def main(file_name):
     target_word, pos = file_name.split('-', 1)
     target_word = target_word.split('/')[-1]
@@ -118,14 +149,26 @@ def main(file_name):
     raw_ctxes = []
     for ctx in pos_ctxes:
         raw_ctxes.append([word for word, _ in ctx])
-    ctx_vecs = make_context_vecs(raw_ctxes, model)
 
-    #for i, context in enumerate(ctxes):
-        #print 'Context ' + str(i) + '| sense: ' + senses[i] + ' | words: ' + ' '.join(str(item) for item in context)
-    #for vec in ctx_vecs:
-        #print vec
+    N, word_counts_dict = word_stats_lists(raw_ctxes)
+    word_counts_list = []
+    for word, count in word_counts_dict.iteritems():
+        word_counts_list.append((word, count))
+    # sort if we are printing
+    #word_counts_list = sorted(word_counts_list, key=lambda x: x[1], reverse=True)
+    vocab = set(word for word, count in word_counts_list if count >= MIN_VOC_FREQ)
 
-    ap = AffinityPropagation(damping=0.5, convergence_iter=15, max_iter=300).fit(ctx_vecs)
+    final_ctxes = []
+    for ctx in raw_ctxes:
+        final_ctxes.append(filter(lambda x: x in model x in vocab, ctx))
+
+    ctx_vecs = make_context_vecs(final_ctxes, model)
+    pref = np.max(pdist(ctx_vecs))
+    pref = float(-1) * pref * pref
+    print pref
+    #distances = calc_distances(final_ctxes, model)
+    ap = AffinityPropagation(damping=0.5, convergence_iter=15, max_iter=300, preference=pref).fit(ctx_vecs)
+    #db = DBSCAN(eps=0.3, min_samples=3, metric='precomputed', n_jobs=-1).fit(distances)
 
     clusters = get_clusters(ap, senses, raw_ctxes)
 
