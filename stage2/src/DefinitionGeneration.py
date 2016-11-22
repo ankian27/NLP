@@ -14,6 +14,7 @@ from nltk import word_tokenize # Function to split string of words into individu
 from nltk.util import ngrams #Function to return the ngrams generated.
 from collections import defaultdict #Creates a default dictionary which gives a default value for non-existent key.
 import random #Randomly choose an item from a list of items.
+import gensim
 
 class Definition(object):
 	def __init__(self):
@@ -123,6 +124,28 @@ class Definition(object):
 				self.verb=self.verb[:-1]
 
 		return definition
+
+		def processs(self, ctxes):
+		noun = []
+		verb = []
+		adjective = []
+		for tup in ctxes:
+			if tup[0] == "noun":
+				noun.append((tup[1],tup[2]))
+			if tup[0] == "verb":
+				noun.append((tup[1], tup[2]))
+			if tup[0] == "adjective":
+				noun.append((tup[1], tup[2]))
+			else:
+				continue
+		noun.sort(key=lambda tup: tup[1])
+		verb.sort(key=lambda tup: tup[1])
+		adjective.sort(key=lambda tup: tup[1])
+
+	def createPartOne(self, noun, verb, adjective):
+		# model = gensim.models.Word2Vec.load_word2vec_format('/home/sandeep/Downloads/GoogleNews-vectors-negative300.bin', binary=True)
+		word = self.model.most_similar(positive=[noun[len(noun)-1], verb[len(verb)-1], adjective[len(adjective)-1]], topn = 1)
+		return word
 
 	def generate_Definition(self, topics, target):
 		'''Section IV:
