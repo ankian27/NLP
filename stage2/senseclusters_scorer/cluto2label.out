@@ -1,4 +1,5 @@
 0
-//	wear.v.1	wear.v.2
-C0:	30	20
-C1:	0	50
+//	racket.n.1	racket.n.2	racket.n.3
+C0:	28	14	16
+C1:	0	18	0
+C2:	2	8	24

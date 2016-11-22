@@ -130,7 +130,7 @@ def make_answers(cluster_obj, target_word, pos):
     thing = target_word + '.' + pos[0].lower()
     with open('senseclusters_scorer/answers', 'w+') as ans_ref:
         for i, label in enumerate(cluster_obj.labels_):
-            ans_ref.write(thing + " " + thing + "." + str(i) + " " + thing + "." + str(label + 1) + "\n")
+            ans_ref.write(thing + " " + thing + "." + str(i) + " " + thing + "." + str(label) + "\n")
 
 def get_clusters(cluster, senses, ctxes):
     clusters = []
