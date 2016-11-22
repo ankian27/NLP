@@ -7,6 +7,7 @@ from sklearn.cluster import AffinityPropagation
 from sklearn.cluster import DBSCAN
 from scipy.spatial.distance import pdist
 import numpy as np
+from src.DefinitionGeneration import Definition
 
 model_file = 'models/3_parts_of_wiki_lowercase'
 WINDOW_SIZE = 10
@@ -169,6 +170,7 @@ def main(file_name):
 
     clusters = get_clusters(ap, senses, final_ctxes_pos)
 
+    definition = Definition(model)
     for i, cluster in enumerate(clusters):
         word_counts = defaultdict(int)
         for _, context in cluster:
@@ -179,9 +181,12 @@ def main(file_name):
         for (word, pos), count in word_counts.iteritems():
             word_counts_list.append((word, pos, count))
         word_counts_list = sorted(word_counts_list, key=lambda x: x[2], reverse=True)
-        print 'Cluster ' + str(i)
-        print '---------'
-        print '\n'.join(word + ' ' + pos + ' ' + str(count) for word, pos, count in word_counts_list)
+        # print 'Cluster ' + str(i)
+        # print '---------'
+        # print '\n'.join(word + ' ' + pos + ' ' + str(count) for word, pos, count in word_counts_list)
+        defPhrase = definition.process(word_counts_list)
+        print defPhrase
+
 
 
 if __name__ == '__main__':

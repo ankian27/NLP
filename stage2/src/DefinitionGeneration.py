@@ -17,7 +17,7 @@ import random #Randomly choose an item from a list of items.
 import gensim
 
 class Definition(object):
-	def __init__(self):
+	def __init__(self,model):
 		""" The function __init__ is a constructor in python which accepts the instance of a class of the object itself as a parameter.
 		The constructur is used to initialize the cfgRule(Context Free Grammar rules), nouns, verbs and adjectives for each instance.
 		"""
@@ -28,6 +28,7 @@ class Definition(object):
 		self.noun = ''
 		self.verb = ''
 		self.adj  = ''
+		self.model = model
 
 	def get_Noun_Verb(self, topics):
 		"""Section I:
@@ -125,29 +126,75 @@ class Definition(object):
 
 		return definition
 
-		def processs(self, ctxes):
-		noun = []
-		verb = []
-		adjective = []
+	def process(self, ctxes):
+		nounString = ''
+		verbString = ''
+		adjString = ''
+		nouns = []
+		verbs = []
+		adjectives = []
+		#(word,POS,count)
 		for tup in ctxes:
-			if tup[0] == "noun":
-				noun.append((tup[1],tup[2]))
-			if tup[0] == "verb":
-				noun.append((tup[1], tup[2]))
-			if tup[0] == "adjective":
-				noun.append((tup[1], tup[2]))
+			if tup[1] == "NOUN":
+				nouns.append((tup[0],tup[2]))
+				# nounString += tup[0] + '|'
+			if tup[1] == "VERB":
+				verbs.append((tup[0], tup[2]))
+				# verbString += tup[0] + '|'
+			if tup[1] == "ADJ":
+				adjectives.append((tup[0], tup[2]))
+				# adjString += tup[0] + '|'
 			else:
 				continue
-		noun.sort(key=lambda tup: tup[1])
-		verb.sort(key=lambda tup: tup[1])
-		adjective.sort(key=lambda tup: tup[1])
+		nouns.sort(key=lambda tup: tup[1], reverse = True) #word, count
+		verbs.sort(key=lambda tup: tup[1], reverse = True)
+		adjectives.sort(key=lambda tup: tup[1], reverse = True)
 
-	def createPartOne(self, noun, verb, adjective):
-		# model = gensim.models.Word2Vec.load_word2vec_format('/home/sandeep/Downloads/GoogleNews-vectors-negative300.bin', binary=True)
-		word = self.model.most_similar(positive=[noun[len(noun)-1], verb[len(verb)-1], adjective[len(adjective)-1]], topn = 1)
-		return word
+		
+		for i,noun in enumerate(nouns):
+			if i>4: break
+			nounString += noun[0] + '|'
+		for i,verb in enumerate(verbs):
+			if i>4: break
+			verbString += verb[0] + '|'
+		for i,adj in enumerate(adjectives):
+			if i>4: break
+			adjString += adj[0] + '|'
 
-	def generate_Definition(self, topics, target):
+		nounString =nounString[:-1]		
+		verbString=verbString[:-1]
+		adjString=adjString[:-1]
+		
+
+
+		# nounList = []
+		# verbList =[]
+		# adjList = []
+		# for word,count in nouns:
+		# 	nounList.append(word)
+		# for word,count in adjectives:
+		# 	adjList.append(word)
+		# for word,count in verbs:
+		# 	verbList.append(word)
+
+		# print("*****")
+		# print (self.createPartOne(nouns[0][0], verbs[0][0], adjectives[0][0]))
+		# print (self.generate_Definition(nounString, verbString, adjString))
+		# print("*****")
+		# self.createPartOne(nouns[0][0], verbs[0][0], adjectives[0][0])
+
+		return 'It is a part of ' + self.createPartOne(nouns, verbs, adjectives)+'. '+ self.generate_Definition(nounString, verbString, adjString)
+		
+
+	def createPartOne(self, nouns, verbs, adjectives):
+		word = self.model.most_similar(positive=[nouns[0][0], nouns[1][0], nouns[2][0]], topn = 1)
+
+		print nouns[0][0], nouns[1][0], nouns[2][0]
+
+		return word[0][0]
+
+	# def generate_Definition(self, topics, target):
+	def generate_Definition(self, nounString, verbString, adjString):
 		'''Section IV:
 		#Author: Ankit Anand Gupta
 		This function which is control the flow of program. It makes calls to the functions to produce the CFG rules and to generate the definition of the cluster
@@ -159,9 +206,9 @@ class Definition(object):
 		'''
 
 		# Removes the target word from the set of topic words. As the definition should not contain the word itself.
-                topics = filter(lambda topic: target not in topic, topics)
+                # topics = filter(lambda topic: target not in topic, topics)
  		# Get the seperated Nouns, Verbs, Adjectives
- 		self.noun, self.verb ,self.adj= self.get_Noun_Verb(topics)
+ 		# self.noun, self.verb ,self.adj= self.get_Noun_Verb(topics)
  		# Represent CFG rules in python
  		# S 	 -> S1 CONJ S2
 		# S1 	 -> NP VP
@@ -182,8 +229,8 @@ class Definition(object):
 		self.cfg_rule('CONJ','and')
 		self.cfg_rule('PRO','with | to')
 		self.cfg_rule('Det', 'a | the | is')
-		self.cfg_rule('N', self.noun)
-		self.cfg_rule('V', self.verb)
-		self.cfg_rule('ADJ', self.adj)
+		self.cfg_rule('N', nounString)
+		self.cfg_rule('V', verbString)
+		self.cfg_rule('ADJ', adjString)
 		# Generate sentence and return it.
 		return self.gen_def('S')	
