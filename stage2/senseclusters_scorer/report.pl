@@ -545,7 +545,7 @@ printf "%6s"," ";
 foreach (@senses)
 {
     printf "%3s", " ";    
-    printf("(%2.2f)",$col_marginals{$_}/$total*100," ");
+    printf("(%2.2f)%s",$col_marginals{$_}/$total*100," ");
 }
 
 my $precision = $hits/$attempted*100;
