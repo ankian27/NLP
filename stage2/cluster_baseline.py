@@ -12,7 +12,6 @@ model_file = 'models/3_parts_of_wiki_lowercase'
 WINDOW_SIZE = 10
 MIN_VOC_FREQ = 2
 WORD_VEC_SIZE = 5
-MIN_CLUSTER_SIZE = 10
 
 def get_ctxes(f):
     #RE1
@@ -124,7 +123,8 @@ def print_clusters(clusters):
     for i, cluster in enumerate(clusters):
         print 'Cluster ' + str(i)
         print '----------'
-        print '\n'.join(sense for sense, context in cluster)
+        for sense, context in cluster:
+            print sense + ': ' + ', '.join('(' + word + ', ' + pos + ')' for word, pos in context)
 
 #def combine_clusters(clusters, MIN_CLUSTER_SIZE):
     
@@ -154,25 +154,35 @@ def main(file_name):
     word_counts_list = []
     for word, count in word_counts_dict.iteritems():
         word_counts_list.append((word, count))
-    # sort if we are printing
-    #word_counts_list = sorted(word_counts_list, key=lambda x: x[1], reverse=True)
     vocab = set(word for word, count in word_counts_list if count >= MIN_VOC_FREQ)
 
     final_ctxes = []
-    for ctx in raw_ctxes:
+    final_ctxes_pos = []
+    for i, ctx in enumerate(raw_ctxes):
         final_ctxes.append(filter(lambda x: x in model and x in vocab, ctx))
+        final_ctxes_pos.append(filter(lambda x: x[0] in model and x[0] in vocab, pos_ctxes[i]))
 
     ctx_vecs = make_context_vecs(final_ctxes, model)
     pref = np.max(pdist(ctx_vecs))
     pref = float(-1) * pref * pref
-    print pref
-    #distances = calc_distances(final_ctxes, model)
     ap = AffinityPropagation(damping=0.5, convergence_iter=15, max_iter=300, preference=pref).fit(ctx_vecs)
-    #db = DBSCAN(eps=0.3, min_samples=3, metric='precomputed', n_jobs=-1).fit(distances)
 
-    clusters = get_clusters(ap, senses, raw_ctxes)
+    clusters = get_clusters(ap, senses, final_ctxes_pos)
 
-    print_clusters(clusters)
+    for i, cluster in enumerate(clusters):
+        word_counts = defaultdict(int)
+        for _, context in cluster:
+            # word is the (word, pos) tuple
+            for word in context:
+                word_counts[word] += 1
+        word_counts_list = []
+        for (word, pos), count in word_counts.iteritems():
+            word_counts_list.append((word, pos, count))
+        word_counts_list = sorted(word_counts_list, key=lambda x: x[2], reverse=True)
+        print 'Cluster ' + str(i)
+        print '---------'
+        print '\n'.join(word + ' ' + pos + ' ' + str(count) for word, pos, count in word_counts_list)
+
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
