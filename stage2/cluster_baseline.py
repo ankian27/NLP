@@ -1,6 +1,7 @@
 import sys
 import re
 import nltk
+import os
 from collections import defaultdict
 from gensim.models import Word2Vec
 from sklearn.cluster import AffinityPropagation
@@ -153,6 +154,7 @@ def print_clusters(clusters):
 #def combine_clusters(clusters, MIN_CLUSTER_SIZE):
     
 def main(file_name):
+    print 'Processing ' + file_name
     target_word, pos = file_name.split('-', 1)
     target_word = target_word.split('/')[-1]
     if "noun" not in pos and "verb" not in pos:
@@ -210,12 +212,15 @@ def main(file_name):
         defPhrase = definition.process(word_counts_list)
         print defPhrase
 
+    os.system('rm senseclusters_scorer/answers*; rm senseclusters_scorer/key*')
     make_answers(ap, target_word, pos)
     make_key(file_name, target_word, pos)
-
+    os.system('cd senseclusters_scorer; ./senseclusters_scorer.sh answers key; cd ..')
+    os.system('cat senseclusters_scorer/report.out')
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
-        print "usage: python def_gen.py <senseval2-xml-file>"
+        print "usage: python def_gen.py <input-dir>"
         sys.exit(1)
-    main(sys.argv[1])
+    for f_name in os.listdir(sys.argv[1]):
+    	main(sys.argv[1] + '/' + f_name)
