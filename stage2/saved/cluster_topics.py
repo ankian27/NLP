@@ -1,5 +1,4 @@
 import sys, re, nltk, os, math, traceback
-from src.file_processing import *
 from collections import defaultdict
 from gensim.models import Word2Vec
 from sklearn.cluster import AffinityPropagation
@@ -10,13 +9,22 @@ from src.DefinitionGeneration import Definition
 
 model_file = 'models/Google'
 WINDOW_SIZE = 10
-MIN_VOC_FREQ = 0.001
-WORD_VEC_SIZE = 3
+MIN_VOC_FREQ = 2
+TOP_N = 50
+WORD_VEC_SIZE = 5
+
+def get_ctxes(f):
+    #RE1
+    ctx_re = re.compile(r'<answer.*?senseid="([^"]*)"[^/]*/>.*?<context>(.*?)</context>', re.MULTILINE | re.DOTALL)
+    with open(f, 'rb') as f_ref:
+        buf = f_ref.read()
+    for sense, ctx in ctx_re.findall(buf):
+        yield sense, ctx.strip()
 
 """
 Convert the contexts in a sense2val file into a tokenized list. Also returns the senses associated with each context.
 """
-def tokenize_ctxes(file_name, target_word, stopwords, window_size, conflate_word1=None, conflate_word2=None):
+def tokenize_ctxes(file_name, target_word, stopwords, window_size):
     rename_re = re.compile(r'<head>(.*?)</head>')
     rm_head_re = re.compile(r'</?head>')
     ctx_tokens = []
@@ -41,10 +49,6 @@ def tokenize_ctxes(file_name, target_word, stopwords, window_size, conflate_word
             token = token.lower()
             if not token or token in stopwords: 
                 continue 
-            elif conflate_word1 and conflate_word1 in token:
-                continue
-            elif conflate_word2 and conflate_word2 in token:
-                continue
             elif target_word in token and token != target_word + 'target':
                 continue
             elif not any(c.isalpha() for c in token):
@@ -107,7 +111,27 @@ def calc_distances(ctxes, model):
                 distances[-1].append(1 - model.n_similarity(ctx1, ctx2))
     return distances
 
-def get_clusters(cluster, senses, ctxes):
+def make_key(f, target_word, pos):
+    thing = target_word + '.' + pos[0].lower()
+    ctx_re = re.compile(r'<instance id="[0-9]+">.*?<answer.*?senseid="([^"]*)"[^/]*/>.*?<context>.*?</context>', re.MULTILINE | re.DOTALL)
+    with open(f, 'rb') as f_ref:
+        buf = f_ref.read()
+    mapping = {}
+    cur_id = 1
+    with open('senseclusters_scorer/key', 'w+') as key_ref:
+        for i, sense in enumerate(ctx_re.findall(buf)):
+            if sense not in mapping:
+                mapping[sense] = cur_id
+                cur_id += 1
+            key_ref.write(thing + " " + thing + "." + str(i) + " " + thing + "." + str(mapping[sense]) + "\n")
+
+def make_answers(cluster_obj, target_word, pos):
+    thing = target_word + '.' + pos[0].lower()
+    with open('senseclusters_scorer/answers', 'w+') as ans_ref:
+        for i, label in enumerate(cluster_obj.labels_):
+            ans_ref.write(thing + " " + thing + "." + str(i) + " " + thing + "." + str(label + 1) + "\n")
+
+def get_clusters(cluster, words):
     # each item is a list of contexts representing a cluster
     clusters = []
     # cluster.label -> index in clusters
@@ -116,7 +140,7 @@ def get_clusters(cluster, senses, ctxes):
         if label not in clusterlabel_to_index:
             clusterlabel_to_index[label] = len(clusters)
             clusters.append([])
-        clusters[clusterlabel_to_index[label]].append((senses[i], ctxes[i]))
+        clusters[clusterlabel_to_index[label]].append(words[i])
     return clusters
 
 def print_clusters(clusters):
@@ -128,19 +152,21 @@ def print_clusters(clusters):
 
 def main(file_name, model):
     print 'Processing ' + file_name
-    target_word, pos, conflate_word1, conflate_word2 = do_filename(file_name)
+    target_word, pos = file_name.split('-', 1)
+    target_word = target_word.split('/')[-1]
+    if "noun" not in pos and "verb" not in pos:
+        # COM2
+        # This is a name conflate pair. The target word is xyz instead of
+        # what we find in the file name
+        target = "xyz"
+        pos = "noun"
+
     stopwords = set(line.strip() for line in open('stopwords.txt', 'r'))
 
     # ctxes is a list of lists of tokens
     # senses is a list sense strings, where sense[i] is the sense of
     # ctxes[i]
-    pos_ctxes, senses = tokenize_ctxes(file_name, target_word, stopwords, WINDOW_SIZE, conflate_word1, conflate_word2)
-
-    # Only use nounds and adjs
-    # filtering out certain POSes should be done here on the pos_ctxes
-    #for i in range(len(pos_ctxes)):
-        #pos_ctxes[i] = filter(lambda x: "NOUN" in x[1] or "ADJ" in x[1], pos_ctxes[i])
-
+    pos_ctxes, senses = tokenize_ctxes(file_name, target_word, stopwords, WINDOW_SIZE)
     raw_ctxes = []
     for ctx in pos_ctxes:
         raw_ctxes.append([word for word, _ in ctx])
@@ -148,63 +174,30 @@ def main(file_name, model):
     N, word_counts_dict = word_stats_lists(raw_ctxes)
     word_counts_list = []
     for word, count in word_counts_dict.iteritems():
-        word_counts_list.append((word, count))
-    
-    #count_thresh = math.floor(float(N)*MIN_VOC_FREQ)
+        if word in model:
+            word_counts_list.append((word, count))
 
-    #print "Count thresh: " + str(float(N)*0.001)
-    #print '\n'.join('(' + word + ', ' + str(count) + ')' for word, count in sorted(word_counts_list, reverse=True, key=lambda x: x[1]))
+    top_n = sorted(word_counts_list, reverse=True, key=lambda x: x[1])[:TOP_N]
+    print '\n'.join('(' + word + ', ' + str(count) + ')' for word, count in top_n)
 
-    # sort the words by count
-    count_sorted_raw_ctxes = []
-    count_sorted_pos_ctxes = []
-    for i, ctx in enumerate(raw_ctxes):
-        count_sorted_raw_ctxes.append(sorted(ctx, reverse=True, key=lambda x: word_counts_dict[x]))
-        count_sorted_pos_ctxes.append(sorted(pos_ctxes[i], reverse=True, key=lambda x: word_counts_dict[x[0]]))
+    word_embeddings = [model[word] for word, _ in top_n]
 
-    # get the top words by count or take the top WORD_VEC_SIZE words
-    final_ctxes = []
-    final_ctxes_pos = []
-    for i, ctx in enumerate(count_sorted_raw_ctxes):
-        if len(ctx) > 0:
-            final_ctxes.append(filter(lambda x: x in model, ctx)[:WORD_VEC_SIZE])
-            final_ctxes_pos.append(filter(lambda x: x in model, count_sorted_pos_ctxes[i])[:WORD_VEC_SIZE])
-        else:
-            final_ctxes.append([])
-            final_ctxes_pos.append([])
-
-    ctx_vecs = make_context_vecs(final_ctxes, model)
-    pref = np.max(pdist(ctx_vecs))
+    pref = np.max(pdist(word_embeddings))
     pref = float(-1) * pref * pref
-    ap = AffinityPropagation(damping=0.5, convergence_iter=15, max_iter=300, preference=pref).fit(ctx_vecs)
+    ap = AffinityPropagation(damping=0.5, convergence_iter=15, max_iter=300, preference=pref).fit(word_embeddings)
 
-    clusters = get_clusters(ap, senses, final_ctxes_pos)
+    clusters = get_clusters(ap, [word for word, _ in top_n])
 
-    print_clusters(clusters)
-    return
+    for cluster in clusters:
+        print "Cluster"
+        print "-------"
+        print '\n'.join(cluster)
 
-#    definition = Definition(model)
-#    for i, cluster in enumerate(clusters):
-#        word_counts = defaultdict(int)
-#        for _, context in cluster:
-#            # word is the (word, pos) tuple
-#            for word in context:
-#                word_counts[word] += 1
-#        word_counts_list = []
-#        for (word, pos), count in word_counts.iteritems():
-#            word_counts_list.append((word, pos, count))
-#        word_counts_list = sorted(word_counts_list, key=lambda x: x[2], reverse=True)
-#        # print 'Cluster ' + str(i)
-#        # print '---------'
-#        # print '\n'.join(word + ' ' + pos + ' ' + str(count) for word, pos, count in word_counts_list)
-#        defPhrase = definition.process(word_counts_list)
-#        print defPhrase
-
-    os.system('rm senseclusters_scorer/answers*; rm senseclusters_scorer/key*')
-    make_answers(ap, target_word, pos)
-    make_key(file_name, target_word, pos)
-    os.system('cd senseclusters_scorer; ./senseclusters_scorer.sh answers key; cd ..')
-    os.system('cat senseclusters_scorer/report.out')
+#    os.system('rm senseclusters_scorer/answers*; rm senseclusters_scorer/key*')
+#    make_answers(ap, target_word, pos)
+#    make_key(file_name, target_word, pos)
+#    os.system('cd senseclusters_scorer; ./senseclusters_scorer.sh answers key; cd ..')
+#    os.system('cat senseclusters_scorer/report.out')
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
@@ -216,12 +209,8 @@ if __name__ == '__main__':
     #model = None
     print "Model loaded"
 
-    try:
-    	main(sys.argv[1].rstrip('/'), model)
-    except Exception:
-        traceback.print_exc()
-#    for f_name in os.listdir(sys.argv[1]):
-#        try:
-#    	    main(sys.argv[1].rstrip('/') + '/' + f_name, model)
-#        except Exception:
-#            traceback.print_exc()
+    for f_name in os.listdir(sys.argv[1]):
+        try:
+    	    main(sys.argv[1].rstrip('/') + '/' + f_name, model)
+        except Exception:
+            traceback.print_exc()
