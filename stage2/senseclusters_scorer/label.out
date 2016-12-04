@@ -1,4 +1,4 @@
 ClusterID -> SenseID
-C0 -> xyz.n.2
-C2 -> xyz.n.1
-Score = 60.00
+C0 -> xyz.n.1
+C1 -> xyz.n.2
+Score = 77.00
