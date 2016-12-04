@@ -182,14 +182,14 @@ class Definition(object):
 		# print (self.generate_Definition(nounString, verbString, adjString))
 		# print("*****")
 		# self.createPartOne(nouns[0][0], verbs[0][0], adjectives[0][0])
-
+		print [nouns[0][0], nouns[1][0], nouns[2][0]]
 		return 'It is a part of ' + self.createPartOne(nouns, verbs, adjectives)+'. '+ self.generate_Definition(nounString, verbString, adjString)
 		
 
 	def createPartOne(self, nouns, verbs, adjectives):
 		word = self.model.most_similar(positive=[nouns[0][0], nouns[1][0], nouns[2][0]], topn = 1)
 
-		print nouns[0][0], nouns[1][0], nouns[2][0]
+		# print nouns[0][0], nouns[1][0], nouns[2][0]
 
 		return word[0][0]
 
