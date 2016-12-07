@@ -193,7 +193,7 @@ class Definition(object):
 	def createPartOne(self, nouns, verbs, adjectives):
 		if not nouns:
 			return 'unknown'
-		word = self.model.most_similar(positive=[noun[0] for noun in nouns[:5]], topn = 1)
+		word = self.model.most_similar(positive=[noun[0] for noun in nouns], topn = 1)
 
 		# print nouns[0][0], nouns[1][0], nouns[2][0]
 

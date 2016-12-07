@@ -1,0 +1,283 @@
+            S1	      S0	   TOTAL	
+  C0:      637	     103	     740	(62.55)
+  C1:       15	     426	     441	(37.28)
+  C2:*       1	       1	       2	(0.17)
+ TOTAL     653	     530	    1183
+         (55.20)    (44.80) 
+Precision = 90.01(1063/1181)
+Recall = 89.86(1063/1183+0)
+F-Measure = 89.93
+
+Legend of Sense Tags
+S0 = xyz.n.1
+S1 = xyz.n.2
+Loading model
+Model loaded
+noun
+It is a part of avenue. the public street left a public road 
+noun
+It is a part of furnace. a pedestrian iron make a urban steel 
+noun
+It is a part of unknown. the high city called the small blast 
+            S1	      S0	   TOTAL	
+  C0:      532	     296	     828	(76.52)
+  C1:        4	     250	     254	(23.48)
+ TOTAL     536	     546	    1082
+         (49.54)    (50.46) 
+Precision = 72.27(782/1082)
+Recall = 72.27(782/1082+0)
+F-Measure = 72.27
+
+Legend of Sense Tags
+S0 = xyz.n.1
+S1 = xyz.n.2
+noun
+It is a part of foyer. the american street think a big street 
+noun
+It is a part of custard. a big butter want the small chocolate 
+            S2	      S1	      S0#	   TOTAL	
+  C0:       13	      22	      10	      45	(45.00)
+  C1:       21	      34	       0	      55	(55.00)
+ TOTAL      34	      56	      10	     100
+         (34.00)    (56.00)    (10.00) 
+Precision = 47.00(47/100)
+Recall = 47.00(47/100+0)
+F-Measure = 47.00
+
+Legend of Sense Tags
+S0 = strike.v.1
+S1 = strike.v.2
+S2 = strike.v.3
+verb
+Something you do with day. the wide zone think the single zone 
+verb
+Something you do with workers. the ready night mean a high students 
+            S0	      S1	   TOTAL	
+  C0:       37	       6	      43	(43.00)
+  C1:       13	      44	      57	(57.00)
+ TOTAL      50	      50	     100
+         (50.00)    (50.00) 
+Precision = 81.00(81/100)
+Recall = 81.00(81/100+0)
+F-Measure = 81.00
+
+Legend of Sense Tags
+S0 = shoot.v.1
+S1 = shoot.v.2
+verb
+Something you do with movies. a afraid scene looking the hour movie 
+verb
+Something you do with pistol. a bad guy kill a red deer 
+            S0	      S1	   TOTAL	
+  C0:       44	       6	      50	(50.00)
+  C1:        6	      44	      50	(50.00)
+ TOTAL      50	      50	     100
+         (50.00)    (50.00) 
+Precision = 88.00(88/100)
+Recall = 88.00(88/100+0)
+F-Measure = 88.00
+
+Legend of Sense Tags
+S0 = wear.v.1
+S1 = wear.v.2
+verb
+Something you do with trousers. a white jeans look a simple dress 
+verb
+Something you do with photovoltaics. the american jeans tear a sure dress 
+            S0	      S1	   TOTAL	
+  C0:       27	      16	      43	(43.00)
+  C1:       14	      34	      48	(48.00)
+  C2:*       9	       0	       9	(9.00)
+ TOTAL      50	      50	     100
+         (50.00)    (50.00) 
+Precision = 67.03(61/91)
+Recall = 61.00(61/100+0)
+F-Measure = 63.87
+
+Legend of Sense Tags
+S0 = bat.n.1
+S1 = bat.n.2
+noun
+It is a part of bedroom. the nose voice found a nose house 
+noun
+It is a part of puck. a red player getting the loud game 
+noun
+It is a part of organisms. the red ball thrifty the black house 
+            S0	      S1	      S2	   TOTAL	
+  C0:       22	       1	       6	      29	(26.36)
+  C1:        0	      30	       1	      31	(28.18)
+  C2:        8	       9	      33	      50	(45.45)
+ TOTAL      30	      40	      40	     110
+         (27.27)    (36.36)    (36.36) 
+Precision = 77.27(85/110)
+Recall = 77.27(85/110+0)
+F-Measure = 77.27
+
+Legend of Sense Tags
+S0 = racket.n.1
+S1 = racket.n.2
+S2 = racket.n.3
+noun
+It is a part of authorities. the private police writing the private government 
+noun
+It is a part of racquet. a seeking government covered the interest ball 
+noun
+It is a part of man. a seeking tennis depending a big player 
+            S0	      S1	   TOTAL	
+  C1:      289	      37	     326	(24.06)
+  C3:      137	     254	     391	(28.86)
+  C0:*     164	     250	     414	(30.55)
+  C2:*     165	       5	     170	(12.55)
+  C4:*      53	       1	      54	(3.99)
+ TOTAL     808	     547	    1355
+         (59.63)    (40.37) 
+Precision = 75.73(543/717)
+Recall = 40.07(543/1355+0)
+F-Measure = 52.41
+
+Legend of Sense Tags
+S0 = xyz.n.1
+S1 = xyz.n.2
+noun
+It is a part of roundabout. a sure thing called a sure city 
+noun
+It is a part of parrots. the tiny gas tell a true bird 
+noun
+It is a part of genes. the tailed bird known the big bird 
+noun
+It is a part of balcony. the bad coop find a american dna 
+noun
+It is a part of onions. the band blood produce the bad street 
+            S0	      S1	      S2	   TOTAL	
+  C0:       35	       0	       2	      37	(37.00)
+  C1:       15	      29	       2	      46	(46.00)
+  C2:        0	       1	      16	      17	(17.00)
+ TOTAL      50	      30	      20	     100
+         (50.00)    (30.00)    (20.00) 
+Precision = 80.00(80/100)
+Recall = 80.00(80/100+0)
+F-Measure = 80.00
+
+Legend of Sense Tags
+S0 = plot.n.1
+S1 = plot.n.2
+S2 = plot.n.3
+noun
+It is a part of prosecutor. the key murder kill a american murder 
+noun
+It is a part of gardens. the healthy murder lived the soviet land 
+noun
+It is a part of correlation. the significant officials believed the soviet leader 
+            S0	      S1	      S2	   TOTAL	
+  C0:       29	       1	       4	      34	(34.00)
+  C1:       10	      28	       3	      41	(41.00)
+  C2:        1	       1	      23	      25	(25.00)
+ TOTAL      40	      30	      30	     100
+         (40.00)    (30.00)    (30.00) 
+Precision = 80.00(80/100)
+Recall = 80.00(80/100+0)
+F-Measure = 80.00
+
+Legend of Sense Tags
+S0 = date.n.1
+S1 = date.n.2
+S2 = date.n.3
+noun
+It is a part of coursework. the online students published a early days 
+noun
+It is a part of day. the early department published a smooth days 
+noun
+It is a part of bushes. a sexy students published a sweet hand 
+            S1	      S2	      S0#	      S3#	   TOTAL	
+  C0:       27	      14	       6	       8	      55	(55.00)
+  C1:       16	      20	       9	       0	      45	(45.00)
+ TOTAL      43	      34	      15	       8	     100
+         (43.00)    (34.00)    (15.00)    (8.00) 
+Precision = 47.00(47/100)
+Recall = 47.00(47/100+0)
+F-Measure = 47.00
+
+Legend of Sense Tags
+S0 = abandon.v.1
+S1 = abandon.v.2
+S2 = abandon.v.3
+S3 = abandon.v.4
+verb
+Something you do with stepmother. the unhappy friends cried a prudent country 
+verb
+Something you do with liberties. the prudent power cried the safe rights 
+            S2	      S1	      S0	      S3#	   TOTAL	
+  C0:     2334	     340	    1530	    2234	    6438	(64.38)
+  C1:      166	    2159	     969	     266	    3560	(35.60)
+  C2:        0	       1	       1	       0	       2	(0.02)
+ TOTAL    2500	    2500	    2500	    2500	   10000
+         (25.00)    (25.00)    (25.00)    (25.00) 
+Precision = 44.94(4494/10000)
+Recall = 44.94(4494/10000+0)
+F-Measure = 44.94
+
+Legend of Sense Tags
+S0 = pmss.n.1
+S1 = pmss.n.2
+S2 = pmss.n.3
+S3 = pmss.n.4
+noun
+It is a part of ex-president. a late president found the german military 
+noun
+It is a part of prosecution. the 19th law found a 19th military 
+noun
+It is a part of unknown. the german case won the british president 
+            S1	      S0	   TOTAL	
+  C0:      516	     135	     651	(57.92)
+  C1:       78	     395	     473	(42.08)
+ TOTAL     594	     530	    1124
+         (52.85)    (47.15) 
+Precision = 81.05(911/1124)
+Recall = 81.05(911/1124+0)
+F-Measure = 81.05
+
+Legend of Sense Tags
+S0 = xyz.n.1
+S1 = xyz.n.2
+noun
+It is a part of families. the small water took a local children 
+noun
+It is a part of television. the local family going a italian family 
+            S1	      S0	      S4	      S2	      S5	      S3	   TOTAL	
+  C0:      175	       4	     561	     128	      64	     173	    1105	(26.65)
+  C1:      117	     339	      48	     142	     208	     125	     979	(23.61)
+  C2:       26	       3	     748	      10	       7	      68	     862	(20.79)
+  C3:        3	       1	     300	       1	       0	       6	     311	(7.50)
+  C4:       50	      12	     551	      66	     117	      41	     837	(20.19)
+  C7:        3	      11	       8	       2	       2	      14	      40	(0.96)
+  C5:*       0	       2	       1	       0	       5	       2	      10	(0.24)
+  C6:*       0	       1	       0	       0	       1	       0	       2	(0.05)
+ TOTAL     374	     373	    2217	     349	     404	     429	    4146
+         (9.02)    (9.00)    (53.47)    (8.42)    (9.74)    (10.35) 
+Precision = 33.72(1394/4134)
+Recall = 33.62(1394/4146+0)
+F-Measure = 33.67
+
+Legend of Sense Tags
+S0 = line.n.1
+S1 = line.n.2
+S2 = line.n.3
+S3 = line.n.4
+S4 = line.n.5
+S5 = line.n.6
+noun
+It is a part of retailer. a /s telephone expected the fine sales 
+noun
+It is a part of barge. the /s telephone draw a public boat 
+noun
+It is a part of companies. the personal business makes a fine sales 
+noun
+It is a part of mainframes. a powerful products including the public end 
+noun
+It is a part of vehicle. a /s products introduced a compatible market 
+noun
+It is a part of leroy. a well cars born a strong boat 
+noun
+It is a part of high-pitched. a public cars increased a shrill telephone 
+noun
+It is a part of jacaltenango. a /s sound prompt a /s soapbox 

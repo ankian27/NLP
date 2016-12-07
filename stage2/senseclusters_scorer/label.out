@@ -1,17 +1,8 @@
 ClusterID -> SenseID
-<<<<<<< HEAD
-<<<<<<< HEAD
-C2 -> pigeon.n.2
-C4 -> pigeon.n.1
-Score = 31.37
-=======
-=======
->>>>>>> b6f78d3dca6d1c6cd1681036188e34544ceba195
-C0 -> line.n.6
-C1 -> line.n.5
-C2 -> line.n.4
-Score = 54.56
-<<<<<<< HEAD
->>>>>>> b6f78d3dca6d1c6cd1681036188e34544ceba195
-=======
->>>>>>> b6f78d3dca6d1c6cd1681036188e34544ceba195
+C0 -> line.n.2
+C1 -> line.n.1
+C2 -> line.n.5
+C3 -> line.n.3
+C4 -> line.n.6
+C7 -> line.n.4
+Score = 33.62

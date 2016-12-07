@@ -42,7 +42,6 @@ pref value is if we want to hard code a preference value. Its primary purpose is
 debugging/fine-tuning.
 """
 def cluster_tfidfs(file_name, model, pref=None):
-    print 'Processing ' + file_name
     target_word, pos, conflate_word1, conflate_word2 = do_filename(file_name)
     stopwords = set(line.strip() for line in open('stopwords.txt', 'r'))
 
@@ -133,24 +132,31 @@ def cluster_tfidfs(file_name, model, pref=None):
                 final_cluster.append(best_match)
     else:
         final_cluster = best_cluster
+
     score_cluster(final_cluster, file_name, target_word, pos)
 
-#    definition = Definition(model)
-#    for i, cluster in enumerate(clusters):
-#        word_counts = defaultdict(int)
-#        for _, context in cluster:
-#            # word is the (word, pos) tuple
-#            for word in context:
-#                word_counts[word] += 1
-#        word_counts_list = []
-#        for (word, pos), count in word_counts.iteritems():
-#            word_counts_list.append((word, pos, count))
-#        word_counts_list = sorted(word_counts_list, key=lambda x: x[2], reverse=True)
-#        # print 'Cluster ' + str(i)
-#        # print '---------'
-#        # print '\n'.join(word + ' ' + pos + ' ' + str(count) for word, pos, count in word_counts_list)
-#        defPhrase = definition.process(word_counts_list)
-#        print defPhrase
+    final_clusters = get_clusters(final_cluster)
+    defgen_mode = Word2Vec.load('models/3_parts_of_wiki_lowercase')
+    definition = Definition(defgen_model, pos)
+    for i, cluster in enumerate(final_clusters):
+        word_counts = defaultdict(int)
+        doc_counts = defaultdict(int)
+        for instance_id in cluster:
+            # word is the (word, pos) tuple
+            seen = set()
+            for word in pos_ctxes[instance_id]:
+                if word[0] in :
+                    word_counts[word] += 1
+                    seen.add(word)
+            for word in seen:
+                doc_counts[word] += 1
+        word_counts_list = []
+        for (word, pos), count in word_counts.iteritems():
+            word_counts_list.append((word, pos, count))
+        word_counts_list = sorted(word_counts_list, key=lambda x: x[2], reverse=True)
+        defPhrase = definition.process(word_counts_list, doc_counts)
+        print defPhrase
+    sys.stdout.flush()
 
 if __name__ == '__main__':
 
