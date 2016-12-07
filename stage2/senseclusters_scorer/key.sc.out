@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <instance id="pigeon.n.0"/> <sense id="pigeon.n.1"/>
 <instance id="pigeon.n.1"/> <sense id="pigeon.n.1"/>
 <instance id="pigeon.n.2"/> <sense id="pigeon.n.1"/>
@@ -1355,6 +1356,8 @@
 <instance id="pigeon.n.1353"/> <sense id="pigeon.n.2"/>
 <instance id="pigeon.n.1354"/> <sense id="pigeon.n.2"/>
 =======
+=======
+>>>>>>> b6f78d3dca6d1c6cd1681036188e34544ceba195
 <instance id="line.n.0"/> <sense id="line.n.1"/>
 <instance id="line.n.1"/> <sense id="line.n.1"/>
 <instance id="line.n.2"/> <sense id="line.n.1"/>
@@ -5501,4 +5504,7 @@
 <instance id="line.n.4143"/> <sense id="line.n.6"/>
 <instance id="line.n.4144"/> <sense id="line.n.6"/>
 <instance id="line.n.4145"/> <sense id="line.n.6"/>
+<<<<<<< HEAD
+>>>>>>> b6f78d3dca6d1c6cd1681036188e34544ceba195
+=======
 >>>>>>> b6f78d3dca6d1c6cd1681036188e34544ceba195
