@@ -1,0 +1,196 @@
+            S2	      S1	      S0#	   TOTAL	
+  C0:       13	      22	      10	      45	(45.00)
+  C1:       21	      34	       0	      55	(55.00)
+ TOTAL      34	      56	      10	     100
+         (34.00)    (56.00)    (10.00) 
+Precision = 47.00(47/100)
+Recall = 47.00(47/100+0)
+F-Measure = 47.00
+
+Legend of Sense Tags
+S0 = strike.v.1
+S1 = strike.v.2
+S2 = strike.v.3
+            S0	      S1	   TOTAL	
+  C0:       37	       6	      43	(43.00)
+  C1:       13	      44	      57	(57.00)
+ TOTAL      50	      50	     100
+         (50.00)    (50.00) 
+Precision = 81.00(81/100)
+Recall = 81.00(81/100+0)
+F-Measure = 81.00
+
+Legend of Sense Tags
+S0 = shoot.v.1
+S1 = shoot.v.2
+            S0	      S1	   TOTAL	
+  C0:       44	       6	      50	(50.00)
+  C1:        6	      44	      50	(50.00)
+ TOTAL      50	      50	     100
+         (50.00)    (50.00) 
+Precision = 88.00(88/100)
+Recall = 88.00(88/100+0)
+F-Measure = 88.00
+
+Legend of Sense Tags
+S0 = wear.v.1
+S1 = wear.v.2
+            S0	      S1	   TOTAL	
+  C0:       27	      16	      43	(43.00)
+  C1:       14	      34	      48	(48.00)
+  C2:*       9	       0	       9	(9.00)
+ TOTAL      50	      50	     100
+         (50.00)    (50.00) 
+Precision = 67.03(61/91)
+Recall = 61.00(61/100+0)
+F-Measure = 63.87
+
+Legend of Sense Tags
+S0 = bat.n.1
+S1 = bat.n.2
+            S0	      S1	      S2	   TOTAL	
+  C0:       22	       1	       6	      29	(26.36)
+  C1:        0	      30	       1	      31	(28.18)
+  C2:        8	       9	      33	      50	(45.45)
+ TOTAL      30	      40	      40	     110
+         (27.27)    (36.36)    (36.36) 
+Precision = 77.27(85/110)
+Recall = 77.27(85/110+0)
+F-Measure = 77.27
+
+Legend of Sense Tags
+S0 = racket.n.1
+S1 = racket.n.2
+S2 = racket.n.3
+            S0	      S1	      S2	   TOTAL	
+  C0:       35	       0	       2	      37	(37.00)
+  C1:       15	      29	       2	      46	(46.00)
+  C2:        0	       1	      16	      17	(17.00)
+ TOTAL      50	      30	      20	     100
+         (50.00)    (30.00)    (20.00) 
+Precision = 80.00(80/100)
+Recall = 80.00(80/100+0)
+F-Measure = 80.00
+
+Legend of Sense Tags
+S0 = plot.n.1
+S1 = plot.n.2
+S2 = plot.n.3
+            S0	      S1	      S2	   TOTAL	
+  C0:       29	       1	       4	      34	(34.00)
+  C1:       10	      28	       3	      41	(41.00)
+  C2:        1	       1	      23	      25	(25.00)
+ TOTAL      40	      30	      30	     100
+         (40.00)    (30.00)    (30.00) 
+Precision = 80.00(80/100)
+Recall = 80.00(80/100+0)
+F-Measure = 80.00
+
+Legend of Sense Tags
+S0 = date.n.1
+S1 = date.n.
+ TOTAL      43	      34	      15	       8	     100
+         (43.00)    (34.00)    (15.00)    (8.00) 
+Precision = 47.00(47/100)
+Recall = 47.00(47/100+0)
+F-Measure = 47.00
+
+Legend of Sense Tags
+S0 = abandon.v.1
+S1 = abandon.v.2
+S2 = abandon.v.3
+S3 = abandon.v.4
+Loading model
+Model loaded
+Processing input/sidewalk-furnace-pauls658.xml
+Processing input/banana-wall-gupta299.xml
+Processing input/strike-verb-gupta299.xml
+1.01289650264
+0.0
+-1.01289650264
+-2.02579300528
+-3.03868950792
+-4.05158601056
+-5.0644825132
+-6.07737901584
+-7.09027551848
+-8.10317202112
+Processing input/shoot-verb-vatti001.xml
+0.868272153623
+0.0
+-0.868272153623
+-1.73654430725
+-2.60481646087
+-3.47308861449
+-4.34136076811
+-5.20963292174
+-6.07790507536
+-6.94617722898
+Processing input/wear-verb-vuppu008.xml
+1.07007888377
+0.0
+-1.07007888377
+-2.14015776755
+-3.21023665132
+-4.2803155351
+-5.35039441887
+-6.42047330264
+-7.49055218642
+-8.56063107019
+Processing input/bat-noun-gupta299.xml
+1.09647805777
+0.0
+-1.09647805777
+-2.19295611555
+-3.28943417332
+-4.38591223109
+-5.48239028886
+-6.57886834664
+-7.67534640441
+-8.77182446218
+Processing input/racket-noun-pauls658.xml
+1.16055476519
+0.0
+-1.16055476519
+-2.32110953037
+-3.48166429556
+-4.64221906075
+-5.80277382593
+-6.96332859112
+-8.12388335631
+-9.28443812149
+Processing input/pigeon-car-vatti001-1.xml
+Processing input/plot-noun-vuppu008.xml
+0.978196687082
+0.0
+-0.978196687082
+-1.95639337416
+-2.93459006125
+-3.91278674833
+-4.89098343541
+-5.86918012249
+-6.84737680957
+-7.82557349665
+Processing input/date-noun-vatti001.xml
+1.51689869519
+0.0
+-1.51689869519
+-3.03379739037
+-4.55069608556
+-6.06759478075
+-7.58449347593
+-9.10139217112
+-10.6182908663
+-12.1351895615
+Processing input/abandon-verb-pauls658.xml
+0.891075278354
+0.0
+-0.891075278354
+-1.78215055671
+-2.67322583506
+-3.56430111341
+-4.45537639177
+-5.34645167012
+-6.23752694848
+-7.12860222683
+Processing input/television-food-vuppu008.xml

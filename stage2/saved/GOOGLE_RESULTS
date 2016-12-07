@@ -1,0 +1,245 @@
+nounds and adjs only, vec size 15, tfidf weighted, no count thresh
+
+Loading model
+            S1	      S0	      S2	   TOTAL	
+  C0:       25	       6	       6	      37	(37.00)
+  C2:       17	       4	       5	      26	(26.00)
+  C3:        1	       0	      22	      23	(23.00)
+  C1:*      13	       0	       1	      14	(14.00)
+ TOTAL      56	      10	      34	     100
+         (56.00)    (10.00)    (34.00) 
+Precision = 59.30(51/86)
+Recall = 51.00(51/100+0)
+F-Measure = 54.84
+
+Legend of Sense Tags
+S0 = strike.v.1
+S1 = strike.v.2
+S2 = strike.v.3
+            S0	      S1	   TOTAL	
+  C1:       23	       1	      24	(24.00)
+  C2:        6	      42	      48	(48.00)
+  C0:*      21	       7	      28	(28.00)
+ TOTAL      50	      50	     100
+         (50.00)    (50.00) 
+Precision = 90.28(65/72)
+Recall = 65.00(65/100+0)
+F-Measure = 75.58
+
+Legend of Sense Tags
+S0 = shoot.v.1
+S1 = shoot.v.2
+            S0	      S1	   TOTAL	
+  C0:       45	       4	      49	(49.00)
+  C1:        5	      46	      51	(51.00)
+ TOTAL      50	      50	     100
+         (50.00)    (50.00) 
+Precision = 91.00(91/100)
+Recall = 91.00(91/100+0)
+F-Measure = 91.00
+
+Legend of Sense Tags
+S0 = wear.v.1
+S1 = wear.v.2
+            S0	      S1	   TOTAL	
+  C0:       26	      12	      38	(38.00)
+  C2:       20	      38	      58	(58.00)
+  C1:*       4	       0	       4	(4.00)
+ TOTAL      50	      50	     100
+         (50.00)    (50.00) 
+Precision = 66.67(64/96)
+Recall = 64.00(64/100+0)
+F-Measure = 65.31
+
+Legend of Sense Tags
+S0 = bat.n.1
+S1 = bat.n.2
+            S2	      S1	      S0	   TOTAL	
+  C0:       40	       9	      30	      79	(71.82)
+  C1:        0	      23	       0	      23	(20.91)
+  C2:        0	       8	       0	       8	(7.27)
+ TOTAL      40	      40	      30	     110
+         (36.36)    (36.36)    (27.27) 
+Precision = 57.27(63/110)
+Recall = 57.27(63/110+0)
+F-Measure = 57.27
+
+Legend of Sense Tags
+S0 = racket.n.1
+S1 = racket.n.2
+S2 = racket.n.3
+            S0	      S1	      S2	   TOTAL	
+  C0:       21	       0	       0	      21	(21.00)
+  C1:       12	      19	       0	      31	(31.00)
+  C4:        0	       0	      18	      18	(18.00)
+  C2:*      17	       0	       0	      17	(17.00)
+  C3:*       0	      11	       2	      13	(13.00)
+ TOTAL      50	      30	      20	     100
+         (50.00)    (30.00)    (20.00) 
+Precision = 82.86(58/70)
+Recall = 58.00(58/100+0)
+F-Measure = 68.24
+
+Legend of Sense Tags
+S0 = plot.n.1
+S1 = plot.n.2
+S2 = plot.n.3
+            S0	      S2	      S1#	   TOTAL	
+  C0:       40	       9	      29	      78	(78.00)
+  C1:        0	      21	       1	      22	(22.00)
+ TOTAL      40	      30	      30	     100
+         (40.00)    (30.00)    (30.00) 
+Precision = 61.00(61/100)
+Recall = 61.00(61/100+0)
+F-Measure = 61.00
+
+Legend of Sense Tags
+S0 = date.n.1
+S1 = date.n.2
+S2 = date.n.3
+            S1	      S2	      S0	      S3#	   TOTAL	
+  C0:       12	       3	       2	       3	      20	(20.00)
+  C1:       14	      19	       4	       2	      39	(39.00)
+  C2:       17	      12	       9	       3	      41	(41.00)
+ TOTAL      43	      34	      15	       8	     100
+         (43.00)    (34.00)    (15.00)    (8.00) 
+Precision = 40.00(40/100)
+Recall = 40.00(40/100+0)
+F-Measure = 40.00
+
+Legend of Sense Tags
+S0 = abandon.v.1
+S1 = abandon.v.2
+S2 = abandon.v.3
+S3 = abandon.v.4
+            S1	      S5	      S4	      S0	      S3	      S2	   TOTAL	
+  C0:       87	      38	     141	      12	      78	      44	     400	(9.65)
+  C1:       68	     178	      60	      56	      47	      70	     479	(11.55)
+  C2:       11	      18	     405	      16	       8	      37	     495	(11.94)
+  C3:        1	       2	       4	     129	       1	       3	     140	(3.38)
+  C4:       24	      15	      11	      14	     112	      15	     191	(4.61)
+  C5:       60	      96	      43	      80	      18	      84	     381	(9.19)
+ C10:*       2	       0	      90	       4	       0	      26	     122	(2.94)
+ C11:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C12:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C13:*       1	       3	      90	       1	      14	       4	     113	(2.73)
+ C14:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C15:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C16:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C17:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C18:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C19:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C20:*      70	      18	      76	       3	      32	      29	     228	(5.50)
+ C21:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C22:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C23:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C24:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C25:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C26:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C27:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C28:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C29:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C30:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C31:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C32:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C33:*       2	       0	     176	       1	       2	       0	     181	(4.37)
+ C34:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C35:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C36:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C37:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C38:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ C39:*      23	      11	     340	       0	      75	      12	     461	(11.12)
+ C40:*       1	       0	       0	       0	       0	       0	       1	(0.02)
+ C41:*       1	       0	       0	       0	       0	       0	       1	(0.02)
+ C42:*       1	       0	       0	       0	       0	       0	       1	(0.02)
+ C43:*       3	       0	     150	       0	       7	       0	     160	(3.86)
+ C44:*       1	       0	       0	       0	       0	       0	       1	(0.02)
+ C45:*       1	       0	       0	       0	       0	       0	       1	(0.02)
+ C46:*       1	       0	       0	       0	       0	       0	       1	(0.02)
+ C47:*       1	       0	       0	       0	       0	       0	       1	(0.02)
+ C48:*       1	       0	       0	       0	       0	       0	       1	(0.02)
+ C49:*       0	       3	     215	       0	       1	       8	     227	(5.48)
+ C50:*       0	       0	       0	       0	       0	       1	       1	(0.02)
+ C51:*       0	       0	       0	       0	       0	       1	       1	(0.02)
+ C52:*       0	       0	       0	       0	       0	       1	       1	(0.02)
+ C53:*       0	       0	       0	       0	       0	       1	       1	(0.02)
+ C54:*       0	       0	       0	       0	       8	       0	       8	(0.19)
+ C55:*       0	       0	       0	       0	       1	       0	       1	(0.02)
+ C56:*       0	       0	       0	       0	       1	       0	       1	(0.02)
+ C57:*       0	       0	       0	       0	       1	       0	       1	(0.02)
+ C58:*       0	       0	       0	       0	       1	       0	       1	(0.02)
+ C59:*       0	       0	       0	       0	       1	       0	       1	(0.02)
+  C6:*       2	       2	     110	      25	       0	       2	     141	(3.40)
+ C60:*       0	       0	       0	       0	       1	       0	       1	(0.02)
+ C61:*       0	       0	       0	       0	       1	       0	       1	(0.02)
+ C62:*       0	       0	       0	       0	       1	       0	       1	(0.02)
+ C63:*       0	       0	       0	       0	       1	       0	       1	(0.02)
+ C64:*       0	       0	       0	       0	       1	       0	       1	(0.02)
+ C65:*       0	       0	       0	       0	       1	       0	       1	(0.02)
+ C66:*       0	       0	       0	       0	       1	       0	       1	(0.02)
+ C67:*       0	       0	       0	       0	       1	       0	       1	(0.02)
+ C68:*       0	       0	       0	       0	       1	       0	       1	(0.02)
+ C69:*       0	       0	       0	       0	       1	       0	       1	(0.02)
+  C7:*       5	       3	     281	       1	       5	       8	     303	(7.31)
+ C70:*       0	       0	       0	       0	       1	       0	       1	(0.02)
+ C71:*       0	       0	       0	       0	       1	       0	       1	(0.02)
+ C72:*       0	       0	       0	       0	       1	       0	       1	(0.02)
+ C73:*       0	       0	       0	       0	       1	       0	       1	(0.02)
+ C74:*       0	       0	       0	       0	       1	       0	       1	(0.02)
+ C75:*       0	       0	       1	       0	       0	       0	       1	(0.02)
+ C76:*       0	       0	       1	       0	       0	       0	       1	(0.02)
+ C77:*       0	       0	       1	       0	       0	       0	       1	(0.02)
+ C78:*       0	       0	       1	       0	       0	       0	       1	(0.02)
+ C79:*       0	       0	       1	       0	       0	       0	       1	(0.02)
+  C8:*       7	      14	      14	       5	       1	       3	      44	(1.06)
+ C80:*       0	       0	       1	       0	       0	       0	       1	(0.02)
+ C81:*       0	       0	       1	       0	       0	       0	       1	(0.02)
+ C82:*       0	       0	       1	       0	       0	       0	       1	(0.02)
+ C83:*       0	       0	       1	       0	       0	       0	       1	(0.02)
+ C84:*       0	       0	       1	       0	       0	       0	       1	(0.02)
+ C85:*       0	       0	       1	       0	       0	       0	       1	(0.02)
+ C86:*       0	       1	       0	       0	       0	       0	       1	(0.02)
+ C87:*       0	       1	       0	       0	       0	       0	       1	(0.02)
+ C88:*       0	       1	       0	       0	       0	       0	       1	(0.02)
+  C9:*       0	       0	       0	       1	       0	       0	       1	(0.02)
+ TOTAL     374	     404	    2217	     373	     429	     349	    4146
+         (9.02)    (9.74)    (53.47)    (9.00)    (10.35)    (8.42) 
+Precision = 47.70(995/2086)
+Recall = 24.00(995/4146+0)
+F-Measure = 31.93
+
+Legend of Sense Tags
+S0 = line.n.1
+S1 = line.n.2
+S2 = line.n.3
+S3 = line.n.4
+S4 = line.n.5
+S5 = line.n.6
+Loading model
+Model loaded
+Processing input/sidewalk-furnace-pauls658.xml
+Skipping conflate file
+Processing input/banana-wall-gupta299.xml
+Skipping conflate file
+Processing input/strike-verb-gupta299.xml
+Pref: -6.26200310123
+Processing input/shoot-verb-vatti001.xml
+Pref: -5.30085813417
+Processing input/wear-verb-vuppu008.xml
+Pref: -7.62737618341
+Processing input/bat-noun-gupta299.xml
+Pref: -5.79162672906
+Processing input/racket-noun-pauls658.xml
+Pref: -5.45221030468
+Processing input/pigeon-car-vatti001-1.xml
+Skipping conflate file
+Processing input/plot-noun-vuppu008.xml
+Pref: -5.81647139293
+Processing input/date-noun-vatti001.xml
+Pref: -6.501913276
+Processing input/abandon-verb-pauls658.xml
+Pref: -6.26543888209
+Processing input/television-food-vuppu008.xml
+Skipping conflate file
+Processing input/line-noun-6senses.xml
+Pref: -34.6287957425

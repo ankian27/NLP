@@ -15,9 +15,10 @@ from nltk.util import ngrams #Function to return the ngrams generated.
 from collections import defaultdict #Creates a default dictionary which gives a default value for non-existent key.
 import random #Randomly choose an item from a list of items.
 import gensim
+import operator
 
 class Definition(object):
-	def __init__(self,model):
+	def __init__(self,model,pos):
 		""" The function __init__ is a constructor in python which accepts the instance of a class of the object itself as a parameter.
 		The constructur is used to initialize the cfgRule(Context Free Grammar rules), nouns, verbs and adjectives for each instance.
 		"""
@@ -29,6 +30,7 @@ class Definition(object):
 		self.verb = ''
 		self.adj  = ''
 		self.model = model
+		self.pos = pos
 
 	def get_Noun_Verb(self, topics):
 		"""Section I:
@@ -126,26 +128,42 @@ class Definition(object):
 
 		return definition
 
-	def process(self, ctxes):
+	def process(self, ctxes, doc_counts):
+		print self.pos
+		# doc_counts = sorted(doc_counts, key=lambda x: x[1], reverse=True)
+		doc_counts = sorted(doc_counts.items(), key=operator.itemgetter(1),reverse=True)
+		# print doc_counts
 		nounString = ''
 		verbString = ''
 		adjString = ''
 		nouns = []
 		verbs = []
 		adjectives = []
-		#(word,POS,count)
-		for tup in ctxes:
-			if tup[1] == "NOUN":
-				nouns.append((tup[0],tup[2]))
-				# nounString += tup[0] + '|'
-			if tup[1] == "VERB":
-				verbs.append((tup[0], tup[2]))
-				# verbString += tup[0] + '|'
-			if tup[1] == "ADJ":
-				adjectives.append((tup[0], tup[2]))
-				# adjString += tup[0] + '|'
+
+		for (word,pos), count in doc_counts	:
+			if pos == "NOUN":
+				nouns.append((word,count))
+			if pos == "VERB":
+				verbs.append((word,count))
+			if pos == "ADJ":
+				adjectives.append((word,count))
 			else:
 				continue
+
+		#(word,POS,count)
+		# for tup in ctxes:
+		# 	if tup[1] == "NOUN":
+		# 		nouns.append((tup[0],tup[2]))
+		# 		# nounString += tup[0] + '|'
+		# 	if tup[1] == "VERB":
+		# 		verbs.append((tup[0], tup[2]))
+		# 		# verbString += tup[0] + '|'
+		# 	if tup[1] == "ADJ":
+		# 		adjectives.append((tup[0], tup[2]))
+		# 		# adjString += tup[0] + '|'
+		# 	else:
+		# 		continue
+
 		nouns.sort(key=lambda tup: tup[1], reverse = True) #word, count
 		verbs.sort(key=lambda tup: tup[1], reverse = True)
 		adjectives.sort(key=lambda tup: tup[1], reverse = True)
@@ -182,12 +200,16 @@ class Definition(object):
 		# print (self.generate_Definition(nounString, verbString, adjString))
 		# print("*****")
 		# self.createPartOne(nouns[0][0], verbs[0][0], adjectives[0][0])
-		print [nouns[0][0], nouns[1][0], nouns[2][0]]
-		return 'It is a part of ' + self.createPartOne(nouns, verbs, adjectives)+'. '+ self.generate_Definition(nounString, verbString, adjString)
+		print [nouns[0][0], nouns[1][0], nouns[2][0], nouns[3][0], nouns[4][0]]
+		# print [verbs[0][0], verbs[1][0], verbs[3][0]]
+		if "noun" in self.pos:
+			return 'It is a part of ' + self.createPartOne(nouns, verbs, adjectives)+'. '+ self.generate_Definition(nounString, verbString, adjString)
+		else:
+			return 'Something you do with ' + self.createPartOne(nouns, verbs, adjectives)+'. '+ self.generate_Definition(nounString, verbString, adjString)
 		
 
 	def createPartOne(self, nouns, verbs, adjectives):
-		word = self.model.most_similar(positive=[nouns[0][0], nouns[1][0], nouns[2][0]], topn = 1)
+		word = self.model.most_similar(positive=[nouns[0][0], nouns[1][0], nouns[2][0],nouns[3][0],nouns[4][0]], topn = 1)
 
 		# print nouns[0][0], nouns[1][0], nouns[2][0]
 
@@ -221,14 +243,17 @@ class Definition(object):
 		# V 	 -> Verb words list
 		# ADJ    -> Adjective words list
 		# CONJ   -> and
-		self.cfg_rule('S', 'S1 CONJ S2')
+		# self.cfg_rule('S', 'S1 CONJ S2')
+		self.cfg_rule('S', 'S1')
 		self.cfg_rule('S1', 'NP VP')
-		self.cfg_rule('S2', 'NP VP')
-		self.cfg_rule('NP', 'Det N')
-		self.cfg_rule('VP', 'V PRO ADJ NP')
+		# self.cfg_rule('S2', 'NP VP')
+		self.cfg_rule('NP', 'Det ADJ N')
+		# self.cfg_rule('VP', 'V PRO ADJ NP')
+		# self.cfg_rule('VP', 'V PRO NP')
+		self.cfg_rule('VP', 'V NP')
 		self.cfg_rule('CONJ','and')
 		self.cfg_rule('PRO','with | to')
-		self.cfg_rule('Det', 'a | the | is')
+		self.cfg_rule('Det', 'a | the ')
 		self.cfg_rule('N', nounString)
 		self.cfg_rule('V', verbString)
 		self.cfg_rule('ADJ', adjString)
