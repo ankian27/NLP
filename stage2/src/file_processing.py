@@ -65,10 +65,10 @@ def make_key(f, target_word, pos):
                 cur_id += 1
             key_ref.write(thing + " " + thing + "." + str(i) + " " + thing + "." + str(mapping[sense]) + "\n")
 
-def make_answers(cluster_obj, target_word, pos):
+def make_answers(labels, target_word, pos):
     thing = target_word + '.' + pos[0].lower()
     with open('senseclusters_scorer/answers', 'w+') as ans_ref:
-        for i, label in enumerate(cluster_obj.labels_):
+        for i, label in enumerate(labels):
             ans_ref.write(thing + " " + thing + "." + str(i) + " " + thing + "." + str(label + 1) + "\n")
 
 

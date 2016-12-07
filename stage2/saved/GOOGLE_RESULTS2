@@ -1,0 +1,117 @@
+nouns and adjs only, vec size 15, no weighting, no count thresh
+
+            S2	      S1	      S0#	   TOTAL	
+  C0:       31	      41	      10	      82	(82.00)
+  C1:        3	      15	       0	      18	(18.00)
+ TOTAL      34	      56	      10	     100
+         (34.00)    (56.00)    (10.00) 
+Precision = 46.00(46/100)
+Recall = 46.00(46/100+0)
+F-Measure = 46.00
+
+Legend of Sense Tags
+S0 = strike.v.1
+S1 = strike.v.2
+S2 = strike.v.3
+            S0	      S1	   TOTAL	
+  C0:       30	       3	      33	(33.00)
+  C1:       20	      47	      67	(67.00)
+ TOTAL      50	      50	     100
+         (50.00)    (50.00) 
+Precision = 77.00(77/100)
+Recall = 77.00(77/100+0)
+F-Measure = 77.00
+
+Legend of Sense Tags
+S0 = shoot.v.1
+S1 = shoot.v.2
+            S0	      S1	   TOTAL	
+  C0:       28	       3	      31	(31.00)
+  C2:        9	      25	      34	(34.00)
+  C1:*      13	      22	      35	(35.00)
+ TOTAL      50	      50	     100
+         (50.00)    (50.00) 
+Precision = 81.54(53/65)
+Recall = 53.00(53/100+0)
+F-Measure = 64.24
+
+Legend of Sense Tags
+S0 = wear.v.1
+S1 = wear.v.2
+            S0	      S1#	   TOTAL	
+  C0:       50	      50	     100	(100.00)
+ TOTAL      50	      50	     100
+         (50.00)    (50.00) 
+Precision = 50.00(50/100)
+Recall = 50.00(50/100+0)
+F-Measure = 50.00
+
+Legend of Sense Tags
+S0 = bat.n.1
+S1 = bat.n.2
+            S1	      S0#	      S2#	   TOTAL	
+  C0:       40	      30	      40	     110	(100.00)
+ TOTAL      40	      30	      40	     110
+         (36.36)    (27.27)    (36.36) 
+Precision = 36.36(40/110)
+Recall = 36.36(40/110+0)
+F-Measure = 36.36
+
+Legend of Sense Tags
+S0 = racket.n.1
+S1 = racket.n.2
+S2 = racket.n.3
+            S0	      S1	      S2#	   TOTAL	
+  C0:       47	       2	      14	      63	(63.00)
+  C1:        3	      28	       6	      37	(37.00)
+ TOTAL      50	      30	      20	     100
+         (50.00)    (30.00)    (20.00) 
+Precision = 75.00(75/100)
+Recall = 75.00(75/100+0)
+F-Measure = 75.00
+
+Legend of Sense Tags
+S0 = plot.n.1
+S1 = plot.n.2
+S2 = plot.n.3
+            S0	      S2	      S1#	   TOTAL	
+  C0:       39	       6	      21	      66	(66.00)
+  C1:        1	      24	       9	      34	(34.00)
+ TOTAL      40	      30	      30	     100
+         (40.00)    (30.00)    (30.00) 
+Precision = 63.00(63/100)
+Recall = 63.00(63/100+0)
+F-Measure = 63.00
+
+Legend of Sense Tags
+S0 = date.n.1
+S1 = date.n.2
+S2 = date.n.3
+            S1	      S2	      S0#	      S3#	   TOTAL	
+  C0:       25	      17	       8	       7	      57	(57.00)
+  C1:       18	      17	       7	       1	      43	(43.00)
+ TOTAL      43	      34	      15	       8	     100
+         (43.00)    (34.00)    (15.00)    (8.00) 
+Precision = 42.00(42/100)
+Recall = 42.00(42/100+0)
+F-Measure = 42.00
+
+Legend of Sense Tags
+S0 = abandon.v.1
+S1 = abandon.v.2
+S2 = abandon.v.3
+S3 = abandon.v.4
+            S1	      S2	      S0#	      S3#	   TOTAL	
+  C0:       25	      17	       8	       7	      57	(57.00)
+  C1:       18	      17	       7	       1	      43	(43.00)
+ TOTAL      43	      34	      15	       8	     100
+         (43.00)    (34.00)    (15.00)    (8.00) 
+Precision = 42.00(42/100)
+Recall = 42.00(42/100+0)
+F-Measure = 42.00
+
+Legend of Sense Tags
+S0 = abandon.v.1
+S1 = abandon.v.2
+S2 = abandon.v.3
+S3 = abandon.v.4
