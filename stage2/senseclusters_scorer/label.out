@@ -1,4 +1,5 @@
 ClusterID -> SenseID
-C0 -> abandon.v.2
-C1 -> abandon.v.3
-Score = 47.00
+C0 -> line.n.6
+C1 -> line.n.5
+C2 -> line.n.4
+Score = 54.56

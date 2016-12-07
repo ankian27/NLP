@@ -1,3 +1,29 @@
+            S0	      S1	   TOTAL	
+  C0:      425	      20	     445	(37.62)
+  C1:      104	     632	     736	(62.21)
+  C2:*       1	       1	       2	(0.17)
+ TOTAL     530	     653	    1183
+         (44.80)    (55.20) 
+Precision = 89.50(1057/1181)
+Recall = 89.35(1057/1183+0)
+F-Measure = 89.42
+
+Legend of Sense Tags
+S0 = xyz.n.1
+S1 = xyz.n.2
+            S0	      S1	   TOTAL	
+  C1:      237	       3	     240	(22.18)
+  C2:      174	     293	     467	(43.16)
+  C0:*     135	     240	     375	(34.66)
+ TOTAL     546	     536	    1082
+         (50.46)    (49.54) 
+Precision = 74.96(530/707)
+Recall = 48.98(530/1082+0)
+F-Measure = 59.25
+
+Legend of Sense Tags
+S0 = xyz.n.1
+S1 = xyz.n.2
             S2	      S1	      S0#	   TOTAL	
   C0:       13	      22	      10	      45	(45.00)
   C1:       21	      34	       0	      55	(55.00)
@@ -62,6 +88,18 @@ Legend of Sense Tags
 S0 = racket.n.1
 S1 = racket.n.2
 S2 = racket.n.3
+            S1	      S0	   TOTAL	
+  C0:      531	     364	     895	(66.05)
+  C1:       16	     444	     460	(33.95)
+ TOTAL     547	     808	    1355
+         (40.37)    (59.63) 
+Precision = 71.96(975/1355)
+Recall = 71.96(975/1355+0)
+F-Measure = 71.96
+
+Legend of Sense Tags
+S0 = xyz.n.1
+S1 = xyz.n.2
             S0	      S1	      S2	   TOTAL	
   C0:       35	       0	       2	      37	(37.00)
   C1:       15	      29	       2	      46	(46.00)
@@ -88,7 +126,11 @@ F-Measure = 80.00
 
 Legend of Sense Tags
 S0 = date.n.1
-S1 = date.n.
+S1 = date.n.2
+S2 = date.n.3
+            S1	      S2	      S0#	      S3#	   TOTAL	
+  C0:       27	      14	       6	       8	      55	(55.00)
+  C1:       16	      20	       9	       0	      45	(45.00)
  TOTAL      43	      34	      15	       8	     100
          (43.00)    (34.00)    (15.00)    (8.00) 
 Precision = 47.00(47/100)
@@ -100,97 +142,63 @@ S0 = abandon.v.1
 S1 = abandon.v.2
 S2 = abandon.v.3
 S3 = abandon.v.4
+            S2	      S1	      S0	      S3#	   TOTAL	
+  C0:     2258	     357	    1245	    1918	    5778	(57.78)
+  C1:      242	    2142	    1254	     582	    4220	(42.20)
+  C2:        0	       1	       1	       0	       2	(0.02)
+ TOTAL    2500	    2500	    2500	    2500	   10000
+         (25.00)    (25.00)    (25.00)    (25.00) 
+Precision = 44.01(4401/10000)
+Recall = 44.01(4401/10000+0)
+F-Measure = 44.01
+
+Legend of Sense Tags
+S0 = pmss.n.1
+S1 = pmss.n.2
+S2 = pmss.n.3
+S3 = pmss.n.4
+            S1	      S0	   TOTAL	
+  C0:      542	     171	     713	(63.43)
+  C1:       52	     359	     411	(36.57)
+ TOTAL     594	     530	    1124
+         (52.85)    (47.15) 
+Precision = 80.16(901/1124)
+Recall = 80.16(901/1124+0)
+F-Measure = 80.16
+
+Legend of Sense Tags
+S0 = xyz.n.1
+S1 = xyz.n.2
+            S5	      S4	      S3	      S0#	      S1#	      S2#	   TOTAL	
+  C0:      368	     329	     223	     357	     268	     270	    1815	(43.78)
+  C1:       34	    1880	     192	       5	     103	      77	    2291	(55.26)
+  C2:        2	       8	      14	      11	       3	       2	      40	(0.96)
+ TOTAL     404	    2217	     429	     373	     374	     349	    4146
+         (9.74)    (53.47)    (10.35)    (9.00)    (9.02)    (8.42) 
+Precision = 54.56(2262/4146)
+Recall = 54.56(2262/4146+0)
+F-Measure = 54.56
+
+Legend of Sense Tags
+S0 = line.n.1
+S1 = line.n.2
+S2 = line.n.3
+S3 = line.n.4
+S4 = line.n.5
+S5 = line.n.6
 Loading model
 Model loaded
 Processing input/sidewalk-furnace-pauls658.xml
 Processing input/banana-wall-gupta299.xml
 Processing input/strike-verb-gupta299.xml
-1.01289650264
-0.0
--1.01289650264
--2.02579300528
--3.03868950792
--4.05158601056
--5.0644825132
--6.07737901584
--7.09027551848
--8.10317202112
 Processing input/shoot-verb-vatti001.xml
-0.868272153623
-0.0
--0.868272153623
--1.73654430725
--2.60481646087
--3.47308861449
--4.34136076811
--5.20963292174
--6.07790507536
--6.94617722898
 Processing input/wear-verb-vuppu008.xml
-1.07007888377
-0.0
--1.07007888377
--2.14015776755
--3.21023665132
--4.2803155351
--5.35039441887
--6.42047330264
--7.49055218642
--8.56063107019
 Processing input/bat-noun-gupta299.xml
-1.09647805777
-0.0
--1.09647805777
--2.19295611555
--3.28943417332
--4.38591223109
--5.48239028886
--6.57886834664
--7.67534640441
--8.77182446218
 Processing input/racket-noun-pauls658.xml
-1.16055476519
-0.0
--1.16055476519
--2.32110953037
--3.48166429556
--4.64221906075
--5.80277382593
--6.96332859112
--8.12388335631
--9.28443812149
 Processing input/pigeon-car-vatti001-1.xml
 Processing input/plot-noun-vuppu008.xml
-0.978196687082
-0.0
--0.978196687082
--1.95639337416
--2.93459006125
--3.91278674833
--4.89098343541
--5.86918012249
--6.84737680957
--7.82557349665
 Processing input/date-noun-vatti001.xml
-1.51689869519
-0.0
--1.51689869519
--3.03379739037
--4.55069608556
--6.06759478075
--7.58449347593
--9.10139217112
--10.6182908663
--12.1351895615
 Processing input/abandon-verb-pauls658.xml
-0.891075278354
-0.0
--0.891075278354
--1.78215055671
--2.67322583506
--3.56430111341
--4.45537639177
--5.34645167012
--6.23752694848
--7.12860222683
+Processing input/pmss-noun-4senses.txt
 Processing input/television-food-vuppu008.xml
+Processing input/line-noun-6senses.xml
