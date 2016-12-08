@@ -1,44 +1,48 @@
             S1	      S0	   TOTAL	
-  C0:      641	     136	     777	(65.68)
-  C1:       11	     393	     404	(34.15)
+  C0:      597	      83	     680	(57.48)
+  C1:       55	     446	     501	(42.35)
   C2:*       1	       1	       2	(0.17)
  TOTAL     653	     530	    1183
          (55.20)    (44.80) 
-Precision = 87.55(1034/1181)
-Recall = 87.40(1034/1183+0)
-F-Measure = 87.48
+Precision = 88.31(1043/1181)
+Recall = 88.17(1043/1183+0)
+F-Measure = 88.24
 
 Legend of Sense Tags
 S0 = xyz.n.1
 S1 = xyz.n.2
+Loading model
+Model loaded
 
 Cluster 0
 ----------
 Top 10 words for cluster: 
-[('street', u'NOUN', 95), ('city', u'NOUN', 64), ('streets', u'NOUN', 36), ('road', u'NOUN', 31), ('creek', u'NOUN', 30), ('house', u'NOUN', 29), ('traffic', u'NOUN', 28), ('front', u'NOUN', 28), ('pedestrian', u'ADJ', 26), ('buildings', u'NOUN', 24)]
-[('street', 79), ('city', 61), ('streets', 33), ('front', 28), ('road', 26)]
-It is a part of sidewalk. the public front called the urban road 
+[('street', u'NOUN', 93), ('city', u'NOUN', 56), ('streets', u'NOUN', 34), ('road', u'NOUN', 30), ('house', u'NOUN', 29), ('traffic', u'NOUN', 27), ('pedestrian', u'ADJ', 26), ('front', u'NOUN', 26), ('creek', u'NOUN', 25), ('avenue', u'NOUN', 24)]
+[('street', 77), ('city', 53), ('streets', 31), ('front', 26), ('road', 25)]
+It is a part of sidewalk. the pedestrian front called the white street 
 Cluster 1
 ----------
 Top 10 words for cluster: 
-[('iron', u'NOUN', 183), ('blast', u'NOUN', 123), ('steel', u'NOUN', 96), ('electric', u'ADJ', 61), ('process', u'NOUN', 51), ('production', u'NOUN', 51), ('heat', u'NOUN', 45), ('coke', u'NOUN', 45), ('carbon', u'NOUN', 43), ('arc', u'NOUN', 41)]
-[('iron', 112), ('blast', 106), ('steel', 73), ('process', 43), ('production', 42)]
-It is a part of open_hearth_furnace. a industrial road called the industrial road 
+[('iron', u'NOUN', 192), ('blast', u'NOUN', 132), ('steel', u'NOUN', 101), ('electric', u'ADJ', 62), ('production', u'NOUN', 54), ('process', u'NOUN', 52), ('temperature', u'NOUN', 46), ('coke', u'NOUN', 46), ('heat', u'NOUN', 45), ('air', u'NOUN', 44)]
+[('iron', 121), ('blast', 114), ('steel', 78), ('production', 45), ('process', 44)]
+Something you do with open_hearth_furnace. the electric blast produce the industrial blast 
 Cluster 2
 ----------
 Top 10 words for cluster: 
 []
 []
-It is a part of unknown. the road smelting the solar streets 
+Something you do with unknown. the a 
+--End--
 
-            S1	      S0	   TOTAL	
-  C0:      534	     324	     858	(79.30)
-  C1:        2	     222	     224	(20.70)
- TOTAL     536	     546	    1082
-         (49.54)    (50.46) 
-Precision = 69.87(756/1082)
-Recall = 69.87(756/1082+0)
-F-Measure = 69.87
+
+            S0	      S1	   TOTAL	
+  C0:      241	       3	     244	(22.55)
+  C1:      305	     533	     838	(77.45)
+ TOTAL     546	     536	    1082
+         (50.46)    (49.54) 
+Precision = 71.53(774/1082)
+Recall = 71.53(774/1082+0)
+F-Measure = 71.53
 
 Legend of Sense Tags
 S0 = xyz.n.1
@@ -47,15 +51,17 @@ S1 = xyz.n.2
 Cluster 0
 ----------
 Top 10 words for cluster: 
-[('street', u'NOUN', 122), ('republic', u'NOUN', 63), ('room', u'NOUN', 38), ('journal', u'NOUN', 31), ('door', u'NOUN', 30), ('today', u'NOUN', 28), ('night', u'NOUN', 27), ('floor', u'NOUN', 26), ('end', u'NOUN', 26), ('want', u'VERB', 25)]
-[('street', 117), ('republic', 56), ('room', 37), ('journal', 31), ('door', 29)]
-It is a part of doorway. the flat room think the black room 
+[('cream', u'NOUN', 35), ('butter', u'NOUN', 31), ('ice', u'NOUN', 28), ('chips', u'NOUN', 24), ('fruit', u'NOUN', 23), ('milk', u'NOUN', 23), ('apple', u'NOUN', 22), ('chocolate', u'NOUN', 22), ('cup', u'NOUN', 20), ('make', u'VERB', 18)]
+[('cream', 32), ('butter', 29), ('ice', 27), ('chocolate', 22), ('milk', 21)]
+It is a part of chocolate_morsels. a fat milk put a fat chocolate 
 Cluster 1
 ----------
 Top 10 words for cluster: 
-[('cream', u'NOUN', 32), ('butter', u'NOUN', 30), ('ice', u'NOUN', 25), ('chips', u'NOUN', 24), ('milk', u'NOUN', 23), ('chocolate', u'NOUN', 22), ('apple', u'NOUN', 21), ('fruit', u'NOUN', 20), ('cup', u'NOUN', 19), ('peanut', u'NOUN', 18)]
-[('cream', 29), ('butter', 28), ('ice', 24), ('chocolate', 22), ('milk', 21)]
-It is a part of chocolate_morsels. the black chocolate make a american street 
+[('street', u'NOUN', 122), ('republic', u'NOUN', 62), ('room', u'NOUN', 38), ('journal', u'NOUN', 31), ('door', u'NOUN', 30), ('night', u'NOUN', 27), ('today', u'NOUN', 27), ('floor', u'NOUN', 26), ('end', u'NOUN', 26), ('want', u'VERB', 25)]
+[('street', 117), ('republic', 55), ('room', 37), ('journal', 31), ('door', 29)]
+Something you do with doorway. a big journal want the flat republic 
+--End--
+
 
             S2	      S1	      S0#	   TOTAL	
   C0:       13	      22	      10	      45	(45.00)
@@ -76,13 +82,15 @@ Cluster 0
 Top 10 words for cluster: 
 [('tomorrow', u'NOUN', 5), ('night', u'NOUN', 4), ('things', u'NOUN', 4), ('wide', u'ADJ', 4), ('think', u'VERB', 4), ('biri', u'NOUN', 3), ('zone', u'NOUN', 3), ('getting', u'VERB', 3), ('told', u'VERB', 3), ('game', u'NOUN', 3)]
 [('tomorrow', 5), ('night', 4), ('zone', 3), ('game', 3), ('arm', 3)]
-Something you do with tonight. the white game think the wide arm 
+Something you do with tonight. a white zone think a single tomorrow 
 Cluster 1
 ----------
 Top 10 words for cluster: 
 [('union', u'NOUN', 11), ('iran', u'NOUN', 8), ('nuclear', u'ADJ', 6), ('military', u'ADJ', 6), ('jobs', u'NOUN', 5), ('security', u'NOUN', 5), ('students', u'NOUN', 4), ('teachers', u'NOUN', 4), ('today', u'NOUN', 4), ('forces', u'NOUN', 4)]
 [('union', 9), ('iran', 4), ('west', 3), ('jobs', 3), ('students', 3)]
-Something you do with EMMC_nurses. a local game going a american night 
+Something you do with EMMC_nurses. a nuclear union killed a local iran 
+--End--
+
 
             S0	      S1	   TOTAL	
   C0:       37	       6	      43	(43.00)
@@ -102,13 +110,15 @@ Cluster 0
 Top 10 words for cluster: 
 [('film', u'NOUN', 14), ('movie', u'NOUN', 13), ('lot', u'NOUN', 10), ('going', u'VERB', 10), ('photo', u'NOUN', 5), ('place', u'NOUN', 5), ('scene', u'NOUN', 5), ('make', u'VERB', 5), ('video', u'NOUN', 4), ('color', u'NOUN', 4)]
 [('film', 12), ('movie', 9), ('lot', 7), ('scene', 5), ('video', 4)]
-Something you do with movies. the ready film make the hour movie 
+Something you do with movies. a hour film asked a hour film 
 Cluster 1
 ----------
 Top 10 words for cluster: 
 [('gun', u'NOUN', 10), ('going', u'VERB', 9), ('rifle', u'NOUN', 8), ('killed', u'VERB', 6), ('guy', u'NOUN', 6), ('deer', u'NOUN', 5), ('kill', u'VERB', 5), ('police', u'NOUN', 5), ('times', u'NOUN', 5), ('commercial', u'ADJ', 4)]
 [('gun', 10), ('rifle', 6), ('times', 5), ('deer', 4), ('guy', 4)]
-Something you do with pistol. a dead rifle think a difficult scene 
+Something you do with pistol. the young times kill the dead deer 
+--End--
+
 
             S0	      S1	   TOTAL	
   C0:       44	       6	      50	(50.00)
@@ -128,13 +138,15 @@ Cluster 0
 Top 10 words for cluster: 
 [('dress', u'NOUN', 9), ('shirt', u'NOUN', 6), ('want', u'VERB', 5), ('uniform', u'NOUN', 5), ('makes', u'VERB', 5), ('red', u'ADJ', 4), ('jeans', u'NOUN', 4), ('cap', u'NOUN', 4), ('wanted', u'VERB', 4), ('color', u'NOUN', 4)]
 [('dress', 6), ('shirt', 5), ('uniform', 4), ('kind', 3), ('jeans', 3)]
-Something you do with Ralph_Lauren_polo_shirt. a simple uniform looks a sure uniform 
+Something you do with Ralph_Lauren_polo_shirt. a white jeans look a sure kind 
 Cluster 1
 ----------
 Top 10 words for cluster: 
 [('tear', u'NOUN', 22), ('tear', u'VERB', 19), ('normal', u'ADJ', 4), ('need', u'VERB', 4), ('high', u'ADJ', 4), ('sports', u'NOUN', 4), ('save', u'VERB', 3), ('suffer', u'VERB', 3), ('reach', u'VERB', 3), ('technology', u'NOUN', 3)]
 [('tear', 22), ('technology', 3), ('wood', 3), ('study', 3), ('power', 3)]
-Something you do with Aluminium_smelting. a tear jeans save a physical power 
+Something you do with Aluminium_smelting. a tear wood suffer the tear power 
+--End--
+
 
             S0	      S1	   TOTAL	
   C0:       27	      16	      43	(43.00)
@@ -155,19 +167,21 @@ Cluster 0
 Top 10 words for cluster: 
 [('hand', u'NOUN', 7), ('house', u'NOUN', 5), ('room', u'NOUN', 5), ('walked', u'VERB', 4), ('looked', u'VERB', 4), ('took', u'VERB', 4), ('small', u'ADJ', 4), ('red', u'ADJ', 3), ('arms', u'NOUN', 3), ('vera', u'NOUN', 3)]
 [('hand', 5), ('house', 4), ('room', 4), ('arms', 3), ('voice', 3)]
-It is a part of upstairs. a small house walked the red voice 
+It is a part of upstairs. a nose house walked the small arms 
 Cluster 1
 ----------
 Top 10 words for cluster: 
 [('game', u'NOUN', 6), ('hit', u'VERB', 6), ('contact', u'NOUN', 5), ('head', u'NOUN', 5), ('player', u'NOUN', 4), ('swing', u'VERB', 4), ('ball', u'NOUN', 4), ('hell', u'NOUN', 4), ('going', u'VERB', 4), ('getting', u'VERB', 3)]
 [('contact', 5), ('game', 5), ('head', 5), ('player', 4), ('ball', 4)]
-It is a part of play. the black hand walked the loud arms 
+Something you do with play. the tight game hit the real player 
 Cluster 2
 ----------
 Top 10 words for cluster: 
 [('plants', u'NOUN', 5), ('viruses', u'NOUN', 3), ('species', u'NOUN', 2), ('infect', u'VERB', 2), ('species', u'VERB', 2), ('host', u'NOUN', 2), ('harbor', u'VERB', 2), ('genetic', u'ADJ', 2), ('told', u'VERB', 2), ('system', u'NOUN', 2)]
 [('species', 2), ('host', 2), ('plants', 2), ('system', 2), ('viruses', 2)]
-It is a part of insect_vectors. the big head species the red viruses 
+Something you do with insect_vectors. a only plants infect the genetic viruses 
+--End--
+
 
             S0	      S1	      S2	   TOTAL	
   C0:       22	       1	       6	      29	(26.36)
@@ -189,28 +203,32 @@ Cluster 0
 Top 10 words for cluster: 
 [('protection', u'NOUN', 8), ('enterprise', u'NOUN', 6), ('politicians', u'NOUN', 4), ('numbers', u'NOUN', 4), ('oscar', u'NOUN', 4), ('police', u'NOUN', 4), ('tapes', u'NOUN', 3), ('ui', u'NOUN', 3), ('rise', u'NOUN', 3), ('gangster', u'NOUN', 3)]
 [('protection', 7), ('numbers', 3), ('gangster', 3), ('government', 3), ('police', 3)]
-It is a part of cops. the early numbers involves a seeking police 
+It is a part of cops. the early protection govern a early numbers 
 Cluster 1
 ----------
 Top 10 words for cluster: 
 [('tennis', u'NOUN', 23), ('ball', u'NOUN', 11), ('grip', u'NOUN', 9), ('players', u'NOUN', 9), ('player', u'NOUN', 7), ('table', u'ADJ', 6), ('modern', u'ADJ', 5), ('played', u'VERB', 5), ('court', u'NOUN', 5), ('borg', u'NOUN', 4)]
 [('tennis', 17), ('grip', 8), ('players', 7), ('player', 7), ('ball', 7)]
-It is a part of game. the seeking players hit the seeking player 
+Something you do with game. the common ball known a common grip 
 Cluster 2
 ----------
 Top 10 words for cluster: 
 [('going', u'VERB', 8), ('make', u'VERB', 8), ('heard', u'VERB', 7), ('think', u'VERB', 6), ('louder', u'NOUN', 5), ('night', u'NOUN', 4), ('making', u'VERB', 4), ('trying', u'VERB', 4), ('father', u'NOUN', 4), ('terrible', u'ADJ', 4)]
 [('night', 4), ('thing', 3), ('colonel', 3), ('heart', 3), ('father', 3)]
-It is a part of dad. a seeking numbers going a seeking numbers 
+Something you do with dad. the big colonel make the lower heart 
+--End--
 
-            S1	      S0	   TOTAL	
-  C0:      533	     464	     997	(73.58)
-  C1:       14	     344	     358	(26.42)
- TOTAL     547	     808	    1355
-         (40.37)    (59.63) 
-Precision = 64.72(877/1355)
-Recall = 64.72(877/1355+0)
-F-Measure = 64.72
+
+            S0	      S1	   TOTAL	
+  C1:      369	      16	     385	(28.41)
+  C2:      119	     340	     459	(33.87)
+  C0:*     226	     189	     415	(30.63)
+  C3:*      94	       2	      96	(7.08)
+ TOTAL     808	     547	    1355
+         (59.63)    (40.37) 
+Precision = 84.00(709/844)
+Recall = 52.32(709/1355+0)
+F-Measure = 64.48
 
 Legend of Sense Tags
 S0 = xyz.n.1
@@ -219,15 +237,29 @@ S1 = xyz.n.2
 Cluster 0
 ----------
 Top 10 words for cluster: 
-[('head', u'NOUN', 50), ('night', u'NOUN', 43), ('white', u'ADJ', 42), ('ace', u'NOUN', 42), ('city', u'NOUN', 35), ('caught', u'VERB', 34), ('make', u'VERB', 32), ('heart', u'NOUN', 32), ('voiceover', u'NOUN', 32), ('house', u'NOUN', 31)]
-[('head', 50), ('night', 40), ('ace', 34), ('city', 31), ('house', 28)]
-It is a part of evening. a black ace make the big night 
+[('voiceover', u'NOUN', 28), ('make', u'VERB', 23), ('head', u'NOUN', 20), ('mr', u'NOUN', 19), ('want', u'VERB', 19), ('called', u'VERB', 17), ('story', u'NOUN', 14), ('research', u'NOUN', 14), ('learn', u'VERB', 14), ('part', u'NOUN', 14)]
+[('voiceover', 24), ('head', 20), ('mr', 19), ('part', 14), ('story', 12)]
+It is a part of Mrs._Northman. a true voiceover make the true voiceover 
 Cluster 1
 ----------
 Top 10 words for cluster: 
-[('passenger', u'NOUN', 124), ('bird', u'NOUN', 76), ('birds', u'NOUN', 65), ('cells', u'NOUN', 40), ('genome', u'NOUN', 38), ('peas', u'NOUN', 32), ('dna', u'NOUN', 32), ('species', u'NOUN', 28), ('tailed', u'ADJ', 24), ('white', u'ADJ', 24)]
-[('passenger', 102), ('bird', 68), ('birds', 57), ('genome', 38), ('cells', 34)]
-It is a part of mammal. a open night known the open cells 
+[('bird', u'NOUN', 82), ('birds', u'NOUN', 71), ('passenger', u'NOUN', 50), ('white', u'ADJ', 34), ('peas', u'NOUN', 30), ('droppings', u'NOUN', 30), ('species', u'NOUN', 26), ('duck', u'NOUN', 20), ('chicken', u'NOUN', 19), ('side', u'NOUN', 18)]
+[('bird', 74), ('birds', 63), ('passenger', 44), ('droppings', 30), ('peas', 24)]
+Something you do with geese. the tiny peas lost a high bird 
+Cluster 2
+----------
+Top 10 words for cluster: 
+[('night', u'NOUN', 30), ('head', u'NOUN', 22), ('heart', u'NOUN', 22), ('street', u'NOUN', 21), ('city', u'NOUN', 21), ('police', u'NOUN', 20), ('caught', u'VERB', 20), ('white', u'ADJ', 20), ('miles', u'NOUN', 18), ('ace', u'NOUN', 18)]
+[('night', 29), ('head', 22), ('street', 21), ('police', 20), ('heart', 18)]
+Something you do with Teenager_stabbed. a black police took a black heart 
+Cluster 3
+----------
+Top 10 words for cluster: 
+[('passenger', u'NOUN', 76), ('cells', u'NOUN', 36), ('genome', u'NOUN', 34), ('dna', u'NOUN', 32), ('stem', u'NOUN', 20), ('rock', u'NOUN', 17), ('museum', u'NOUN', 16), ('cell', u'NOUN', 14), ('band', u'ADJ', 14), ('tailed', u'ADJ', 14)]
+[('passenger', 60), ('genome', 34), ('dna', 30), ('cells', 30), ('rock', 17)]
+Something you do with mitochondrial_genome. the passenger rock synthesize a band genome 
+--End--
+
 
             S0	      S1	      S2	   TOTAL	
   C0:       35	       0	       2	      37	(37.00)
@@ -249,19 +281,21 @@ Cluster 0
 Top 10 words for cluster: 
 [('kill', u'VERB', 12), ('officials', u'NOUN', 4), ('qaeda', u'NOUN', 3), ('support', u'NOUN', 3), ('leader', u'NOUN', 3), ('john', u'NOUN', 3), ('murder', u'NOUN', 3), ('husband', u'NOUN', 3), ('matt', u'NOUN', 3), ('blow', u'VERB', 3)]
 [('leader', 3), ('murder', 3), ('officials', 3), ('ambassador', 3), ('intelligence', 3)]
-It is a part of diplomat. the soviet murder kill a soviet murder 
+It is a part of diplomat. the american murder killed a alleged intelligence 
 Cluster 1
 ----------
 Top 10 words for cluster: 
 [('land', u'NOUN', 19), ('small', u'ADJ', 9), ('house', u'NOUN', 7), ('plants', u'NOUN', 6), ('garden', u'NOUN', 5), ('grow', u'VERB', 5), ('called', u'VERB', 5), ('cabin', u'NOUN', 4), ('acre', u'ADJ', 4), ('wanted', u'VERB', 4)]
 [('land', 17), ('house', 7), ('plants', 5), ('garden', 4), ('city', 4)]
-It is a part of gardens. the soviet leader lived a soviet garden 
+Something you do with gardens. a acre garden lived a large plants 
 Cluster 2
 ----------
 Top 10 words for cluster: 
 [('interaction', u'NOUN', 7), ('figure', u'NOUN', 5), ('results', u'NOUN', 4), ('significant', u'ADJ', 4), ('number', u'NOUN', 4), ('decline', u'NOUN', 3), ('student', u'NOUN', 3), ('association', u'NOUN', 3), ('table', u'ADJ', 3), ('spectrum', u'NOUN', 3)]
 [('interaction', 6), ('figure', 5), ('decline', 3), ('association', 3), ('results', 3)]
-It is a part of Bracketed_figures. a key results predicting a key leader 
+Something you do with Bracketed_figures. a significant decline assessed the annual results 
+--End--
+
 
             S0	      S1	      S2	   TOTAL	
   C0:       29	       1	       4	      34	(34.00)
@@ -283,19 +317,21 @@ Cluster 0
 Top 10 words for cluster: 
 [('rti', u'NOUN', 5), ('fluency', u'NOUN', 5), ('health', u'NOUN', 4), ('provided', u'VERB', 4), ('students', u'NOUN', 4), ('studies', u'NOUN', 4), ('construction', u'NOUN', 4), ('study', u'NOUN', 4), ('proposed', u'VERB', 4), ('published', u'VERB', 4)]
 [('studies', 4), ('study', 4), ('students', 3), ('department', 3), ('days', 3)]
-It is a part of undergraduates. the library studies paid a public study 
+It is a part of undergraduates. a public study received the online studies 
 Cluster 1
 ----------
 Top 10 words for cluster: 
 [('make', u'VERB', 6), ('woman', u'NOUN', 5), ('thought', u'VERB', 4), ('want', u'VERB', 4), ('knew', u'VERB', 4), ('asked', u'VERB', 4), ('play', u'VERB', 4), ('hand', u'NOUN', 4), ('ask', u'VERB', 4), ('think', u'VERB', 4)]
 [('woman', 5), ('hand', 4), ('night', 3), ('days', 3), ('side', 3)]
-It is a part of day. a married woman thought the early hand 
+Something you do with day. the married days going a married night 
 Cluster 2
 ----------
 Top 10 words for cluster: 
 [('palm', u'NOUN', 20), ('tree', u'NOUN', 6), ('sweet', u'ADJ', 4), ('trees', u'NOUN', 3), ('endured', u'VERB', 3), ('seeds', u'NOUN', 3), ('palms', u'NOUN', 3), ('bowl', u'NOUN', 3), ('warm', u'ADJ', 3), ('transmission', u'NOUN', 2)]
 [('palm', 18), ('tree', 4), ('trees', 3), ('palms', 3), ('night', 2)]
-It is a part of pine_trees. the free tree make the warm days 
+Something you do with pine_trees. a striped tree houses a main tree 
+--End--
+
 
             S1	      S2	      S0#	      S3#	   TOTAL	
   C0:       27	      14	       6	       8	      55	(55.00)
@@ -317,25 +353,26 @@ Cluster 0
 Top 10 words for cluster: 
 [('mind', u'NOUN', 5), ('left', u'VERB', 5), ('live', u'VERB', 5), ('mother', u'NOUN', 5), ('hands', u'NOUN', 4), ('country', u'NOUN', 4), ('despair', u'NOUN', 4), ('friends', u'NOUN', 4), ('began', u'VERB', 4), ('home', u'NOUN', 3)]
 [('mind', 5), ('mother', 4), ('country', 4), ('despair', 4), ('friends', 4)]
-Something you do with unconditional_Cam_Newton. the prudent despair live the early mind 
+Something you do with unconditional_Cam_Newton. a present country began a generous despair 
 Cluster 1
 ----------
 Top 10 words for cluster: 
 [('john', u'NOUN', 5), ('rights', u'NOUN', 4), ('place', u'NOUN', 4), ('child', u'NOUN', 4), ('direction', u'NOUN', 3), ('india', u'NOUN', 3), ('liberty', u'NOUN', 3), ('justice', u'NOUN', 3), ('voluntary', u'ADJ', 3), ('side', u'NOUN', 3)]
 [('rights', 4), ('place', 4), ('john', 3), ('power', 3), ('union', 3)]
-Something you do with unions. the generous friends began a safe union 
+Something you do with unions. the bad union assure a voluntary rights 
+--End--
 
-            S3	      S1	      S0	      S2	   TOTAL	
-  C0:     1712	     107	     603	    1151	    3573	(35.73)
-  C1:      191	    2272	     523	     388	    3374	(33.74)
-  C2:      467	      63	    1273	     383	    2186	(21.86)
-  C3:      130	      57	     100	     578	     865	(8.65)
-  C4:*       0	       1	       1	       0	       2	(0.02)
+
+            S3	      S2	      S1	      S0	   TOTAL	
+  C0:     2115	     240	     133	    1288	    3776	(37.76)
+  C1:      210	    2163	     223	     426	    3022	(30.22)
+  C2:      175	      97	    2143	     785	    3200	(32.00)
+  C3:        0	       0	       1	       1	       2	(0.02)
  TOTAL    2500	    2500	    2500	    2500	   10000
          (25.00)    (25.00)    (25.00)    (25.00) 
-Precision = 58.36(5835/9998)
-Recall = 58.35(5835/10000+0)
-F-Measure = 58.36
+Precision = 64.22(6422/10000)
+Recall = 64.22(6422/10000+0)
+F-Measure = 64.22
 
 Legend of Sense Tags
 S0 = pmss.n.1
@@ -346,41 +383,38 @@ S3 = pmss.n.4
 Cluster 0
 ----------
 Top 10 words for cluster: 
-[('sen', u'NOUN', 410), ('hun', u'NOUN', 402), ('president', u'NOUN', 388), ('government', u'NOUN', 290), ('party', u'NOUN', 247), ('power', u'NOUN', 241), ('country', u'NOUN', 235), ('military', u'NOUN', 235), ('minister', u'NOUN', 179), ('marcos', u'NOUN', 177)]
-[('sen', 368), ('president', 364), ('hun', 356), ('government', 276), ('power', 235)]
-It is a part of Pervaiz_Ashraf. the stubborn power told the sure power 
+[('president', u'NOUN', 470), ('sen', u'NOUN', 454), ('hun', u'NOUN', 443), ('military', u'NOUN', 434), ('government', u'NOUN', 419), ('country', u'NOUN', 272), ('minister', u'NOUN', 267), ('party', u'NOUN', 264), ('power', u'NOUN', 261), ('marcos', u'NOUN', 212)]
+[('president', 444), ('sen', 411), ('military', 398), ('hun', 396), ('government', 393)]
+It is a part of By_Ko_Kyoung. a latin president called the latin president 
 Cluster 1
 ----------
 Top 10 words for cluster: 
-[('court', u'NOUN', 732), ('case', u'NOUN', 582), ('plaintiff', u'NOUN', 300), ('lawyers', u'NOUN', 296), ('law', u'NOUN', 284), ('lawyer', u'NOUN', 270), ('lawsuit', u'NOUN', 249), ('judge', u'NOUN', 244), ('attorney', u'NOUN', 238), ('suit', u'NOUN', 225)]
-[('court', 613), ('case', 523), ('lawyers', 266), ('lawyer', 253), ('law', 253)]
-It is a part of attorneys. the stubborn law give the sure court 
+[('skeleton', u'NOUN', 246), ('found', u'NOUN', 244), ('bones', u'NOUN', 168), ('city', u'NOUN', 148), ('women', u'NOUN', 145), ('olympic', u'NOUN', 131), ('games', u'NOUN', 120), ('million', u'NOUN', 112), ('human', u'NOUN', 110), ('museum', u'NOUN', 109)]
+[('skeleton', 238), ('found', 222), ('bones', 156), ('city', 138), ('olympic', 115)]
+Something you do with luge_bobsleigh. the union bones found a european bones 
 Cluster 2
 ----------
 Top 10 words for cluster: 
-[('death', u'NOUN', 313), ('police', u'NOUN', 252), ('convicted', u'NOUN', 214), ('military', u'NOUN', 209), ('prison', u'NOUN', 177), ('killed', u'NOUN', 146), ('government', u'NOUN', 132), ('rapists', u'NOUN', 128), ('crimes', u'NOUN', 110), ('drug', u'NOUN', 106)]
-[('death', 262), ('police', 223), ('convicted', 205), ('military', 186), ('prison', 153)]
-It is a part of jail. a convinced government won a latin convicted 
+[('court', u'NOUN', 773), ('case', u'NOUN', 574), ('law', u'NOUN', 298), ('plaintiff', u'NOUN', 296), ('lawyers', u'NOUN', 294), ('judge', u'NOUN', 262), ('lawyer', u'NOUN', 256), ('death', u'NOUN', 250), ('lawsuit', u'NOUN', 243), ('attorney', u'NOUN', 234)]
+[('court', 649), ('case', 515), ('law', 266), ('lawyers', 264), ('plaintiff', 248)]
+Something you do with attorneys. the real law told a real plaintiff 
 Cluster 3
 ----------
 Top 10 words for cluster: 
-[('olympic', u'NOUN', 127), ('women', u'NOUN', 120), ('games', u'NOUN', 107), ('luge', u'NOUN', 105), ('skeleton', u'NOUN', 102), ('shea', u'NOUN', 92), ('oly', u'NOUN', 85), ('bobsled', u'NOUN', 85), ('lake', u'NOUN', 82), ('city', u'NOUN', 81)]
-[('olympic', 111), ('games', 102), ('skeleton', 98), ('luge', 91), ('women', 86)]
-It is a part of bobsleigh_luge. a german military think the german luge 
-Cluster 4
-----------
-Top 10 words for cluster: 
 []
 []
-It is a part of unknown. a late luge told a british prison 
-            S1	      S0	   TOTAL	
-  C0:      367	      36	     403	(35.85)
-  C1:      227	     494	     721	(64.15)
- TOTAL     594	     530	    1124
-         (52.85)    (47.15) 
-Precision = 76.60(861/1124)
-Recall = 76.60(861/1124+0)
-F-Measure = 76.60
+Something you do with unknown. the the 
+--End--
+
+
+            S0	      S1	   TOTAL	
+  C0:      426	     178	     604	(53.74)
+  C1:      104	     416	     520	(46.26)
+ TOTAL     530	     594	    1124
+         (47.15)    (52.85) 
+Precision = 74.91(842/1124)
+Recall = 74.91(842/1124+0)
+F-Measure = 74.91
 
 Legend of Sense Tags
 S0 = xyz.n.1
@@ -389,25 +423,28 @@ S1 = xyz.n.2
 Cluster 0
 ----------
 Top 10 words for cluster: 
-[('eating', u'VERB', 25), ('water', u'NOUN', 22), ('safety', u'NOUN', 20), ('health', u'NOUN', 20), ('local', u'ADJ', 20), ('make', u'VERB', 19), ('high', u'ADJ', 19), ('eat', u'VERB', 18), ('prices', u'NOUN', 16), ('united', u'NOUN', 16)]
-[('water', 21), ('health', 19), ('safety', 16), ('united', 16), ('security', 15)]
-It is a part of heath. the local security buy the local water 
+[('show', u'NOUN', 39), ('tv', u'NOUN', 37), ('going', u'VERB', 26), ('watching', u'VERB', 25), ('cable', u'NOUN', 25), ('news', u'NOUN', 24), ('radio', u'NOUN', 24), ('america', u'NOUN', 23), ('father', u'NOUN', 23), ('network', u'NOUN', 22)]
+[('show', 35), ('tv', 33), ('cable', 25), ('america', 23), ('news', 23)]
+It is a part of TV. a high news eat the big tv 
 Cluster 1
 ----------
 Top 10 words for cluster: 
-[('show', u'NOUN', 45), ('tv', u'NOUN', 38), ('going', u'VERB', 33), ('watching', u'VERB', 32), ('children', u'NOUN', 31), ('radio', u'NOUN', 30), ('eat', u'VERB', 29), ('cable', u'NOUN', 27), ('media', u'NOUN', 26), ('family', u'NOUN', 26)]
-[('show', 41), ('tv', 34), ('children', 29), ('cable', 27), ('media', 26)]
-It is a part of TV. a high children going the higher water 
+[('children', u'NOUN', 33), ('eating', u'VERB', 30), ('eat', u'VERB', 26), ('water', u'NOUN', 24), ('health', u'NOUN', 22), ('local', u'ADJ', 21), ('high', u'ADJ', 21), ('safety', u'NOUN', 20), ('united', u'NOUN', 19), ('took', u'VERB', 18)]
+[('children', 29), ('water', 23), ('health', 21), ('united', 18), ('security', 17)]
+Something you do with heath. a higher health eat a high water 
+--End--
 
-            S4	      S5	      S3	      S0#	      S1#	      S2#	   TOTAL	
-  C0:     1854	      38	     201	       7	     109	      79	    2288	(55.19)
-  C1:      355	     364	     214	     355	     262	     268	    1818	(43.85)
-  C2:        8	       2	      14	      11	       3	       2	      40	(0.96)
- TOTAL    2217	     404	     429	     373	     374	     349	    4146
-         (53.47)    (9.74)    (10.35)    (9.00)    (9.02)    (8.42) 
-Precision = 53.84(2232/4146)
-Recall = 53.84(2232/4146+0)
-F-Measure = 53.84
+
+            S5	      S4	      S3	      S0	      S1#	      S2#	   TOTAL	
+  C0:      374	     470	     245	     358	     292	     280	    2019	(48.70)
+  C1:       23	    1229	     135	       3	      75	      65	    1530	(36.90)
+  C2:        5	     510	      35	       1	       4	       2	     557	(13.43)
+  C3:        2	       8	      14	      11	       3	       2	      40	(0.96)
+ TOTAL     404	    2217	     429	     373	     374	     349	    4146
+         (9.74)    (53.47)    (10.35)    (9.00)    (9.02)    (8.42) 
+Precision = 39.77(1649/4146)
+Recall = 39.77(1649/4146+0)
+F-Measure = 39.77
 
 Legend of Sense Tags
 S0 = line.n.1
@@ -420,18 +457,27 @@ S5 = line.n.6
 Cluster 0
 ----------
 Top 10 words for cluster: 
-[('company', u'NOUN', 400), ('products', u'NOUN', 336), ('million', u'NUM', 273), ('sales', u'NOUN', 254), ('computers', u'NOUN', 241), ('ibm', u'NOUN', 237), ('business', u'NOUN', 221), ('market', u'NOUN', 196), ('computer', u'NOUN', 184), ('personal', u'ADJ', 150)]
-[('company', 375), ('products', 312), ('sales', 230), ('computers', 223), ('business', 208)]
-It is a part of businesses. the low computers including the high company 
+[('telephone', u'NOUN', 61), ('fine', u'ADJ', 50), ('called', u'VERB', 46), ('car', u'NOUN', 44), ('end', u'NOUN', 44), ('boat', u'NOUN', 44), ('draw', u'VERB', 43), ('president', u'NOUN', 41), ('cars', u'NOUN', 40), ('york', u'NOUN', 38)]
+[('telephone', 56), ('end', 44), ('president', 40), ('car', 38), ('boat', 38)]
+It is a part of vehicle. a dead car draw a american boat 
 Cluster 1
 ----------
 Top 10 words for cluster: 
-[('telephone', u'NOUN', 47), ('fine', u'ADJ', 47), ('boat', u'NOUN', 43), ('draw', u'VERB', 41), ('called', u'VERB', 38), ('end', u'NOUN', 38), ('president', u'NOUN', 36), ('water', u'NOUN', 34), ('waiting', u'VERB', 31), ('women', u'NOUN', 31)]
-[('telephone', 45), ('end', 38), ('boat', 37), ('president', 35), ('water', 32)]
-It is a part of phone. the open boat draw a small computers 
+[('company', u'NOUN', 326), ('products', u'NOUN', 266), ('million', u'NUM', 262), ('sales', u'NOUN', 218), ('market', u'NOUN', 151), ('business', u'NOUN', 138), ('telephone', u'NOUN', 73), ('food', u'NOUN', 68), ('unit', u'NOUN', 67), ('including', u'VERB', 66)]
+[('company', 305), ('products', 244), ('sales', 197), ('market', 142), ('business', 127)]
+Something you do with markets. a strong business selling the higher business 
 Cluster 2
+----------
+Top 10 words for cluster: 
+[('ibm', u'NOUN', 234), ('computers', u'NOUN', 218), ('computer', u'NOUN', 171), ('personal', u'ADJ', 134), ('machines', u'NOUN', 114), ('business', u'NOUN', 70), ('software', u'NOUN', 70), ('products', u'NOUN', 62), ('company', u'NOUN', 61), ('international', u'NOUN', 54)]
+[('computers', 200), ('ibm', 185), ('computer', 154), ('machines', 105), ('business', 69)]
+Something you do with PCs. the personal computer make the high business 
+Cluster 3
 ----------
 Top 10 words for cluster: 
 []
 []
-It is a part of unknown. a major draw a big company 
+Something you do with unknown. the the 
+--End--
+
+

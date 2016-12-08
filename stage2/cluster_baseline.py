@@ -156,8 +156,8 @@ def cluster_tfidfs(file_name, model, pref=None):
 
     final_clusters = get_clusters(final_cluster)
     #defgen_model = Word2Vec.load('models/3_parts_of_wiki_lowercase')
-    definition = Definition(model, pos)
     for i, cluster in enumerate(final_clusters):
+        definition = Definition(model, pos)
         print "Cluster " + str(i)
         print "----------"
         word_counts = defaultdict(int)
@@ -180,6 +180,8 @@ def cluster_tfidfs(file_name, model, pref=None):
         print word_counts_list[:10]
         defPhrase = definition.process(word_counts_list, doc_counts)
         print defPhrase
+    print "--End--\n"
+
     sys.stdout.flush()
 
 if __name__ == '__main__':
