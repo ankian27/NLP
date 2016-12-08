@@ -136,6 +136,12 @@ class Definition(object):
 	def process(self, ctxes, doc_counts):
 		'''Section IV:
 			#Author: Sandeep Vuppula
+			The function takes the ctxes and doc_counts as the parameters. The doc_counts is a dictionary in the format (word,pos)->count. 
+			We will sort the doc_counts and then separate nouns, verbs, adjectives into their respective lists. Then we use them to create 
+			two parts of the definition. 
+				Part 1: Using most_similar word from Word2Vec using topmost nouns(upto 5)
+				Part 2: Sentence using the CFG grammar.
+			Concatenate Part 1 and Part 2 and return the complete definition.
 			Args: 
 				param 1 (ctxes):  List of tuples of the form (word, pos, count) for all the contexts in the cluster
 				param 2 (doc_counts): Dictionary of the form (word,pos)->count. Count is the number of number of times the 
@@ -199,7 +205,7 @@ class Definition(object):
 		#Author: Ankit Anand Gupta
 			This function is the core part for first part of definition generation. We take the top most occurring 5 nouns and then get the 
 			most similar word which is related to those words from Word2Vec.
-			If there are no nouns at all (possible if cluster formed has very less instances) then we return 'unknown'
+			If there are no nouns at all (possible if cluster formed has very less number of instances) then we return 'unknown'
 		Args:
 			param 1 (nouns): list of top most nouns
 			param 2 (verbs): list of top most verbs
