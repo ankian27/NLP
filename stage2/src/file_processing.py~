@@ -95,3 +95,5 @@ def make_answers(labels, target_word, pos):
     with open('senseclusters_scorer/answers', 'w+') as ans_ref:
         for i, label in enumerate(labels):
             ans_ref.write(thing + " " + thing + "." + str(i) + " " + thing + "." + str(label + 1) + "\n")
+
+

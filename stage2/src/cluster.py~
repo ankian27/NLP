@@ -78,6 +78,7 @@ Calculates tfidf weights for a list of contexts.
 @param ctxes: a list of contexts where each context is a list of words (strings)
 @return: the same list of contexts, but with each word replaced by a pair which contains
          the original word and the word's tfidf weight
+ctxes should be the raw ctxes
 """
 def tf_idfs(ctxes):
     N, wcs, doc_counts = word_stats_lists(ctxes)
