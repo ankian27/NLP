@@ -158,11 +158,14 @@ def cluster_tfidfs(file_name, model, pref=None):
     defgen_model = Word2Vec.load('models/3_parts_of_wiki_lowercase')
     definition = Definition(defgen_model, pos)
     for i, cluster in enumerate(final_clusters):
+        print "Cluster " + str(i)
+        print "----------"
         word_counts = defaultdict(int)
         doc_counts = defaultdict(int)
         for instance_id in cluster:
             # word is the (word, pos) tuple
             seen = set()
+            print "ID: " + str(instance_id) + " " + ' '.join('(' + word + ',' + str(tfidf) + ')' for word, tfidf in final_ctxes[instance_id])
             for word in pos_ctxes[instance_id]:
                 if word[0] in defgen_model:
                     word_counts[word] += 1
@@ -173,6 +176,8 @@ def cluster_tfidfs(file_name, model, pref=None):
         for (word, pos), count in word_counts.iteritems():
             word_counts_list.append((word, pos, count))
         word_counts_list = sorted(word_counts_list, key=lambda x: x[2], reverse=True)
+        print "Top 10 words for cluster: "
+        print word_counts_list[:10]
         defPhrase = definition.process(word_counts_list, doc_counts)
         print defPhrase
     sys.stdout.flush()

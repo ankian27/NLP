@@ -1,8 +1,5 @@
 ClusterID -> SenseID
-C0 -> line.n.2
-C1 -> line.n.1
-C2 -> line.n.5
-C3 -> line.n.3
-C4 -> line.n.6
-C7 -> line.n.4
-Score = 33.62
+C0 -> line.n.5
+C1 -> line.n.6
+C2 -> line.n.4
+Score = 53.84

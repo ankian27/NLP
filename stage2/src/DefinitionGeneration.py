@@ -187,11 +187,12 @@ class Definition(object):
 
 		# Different form of sentences are to be formed, based on whether a particular target word is noun/verb.
 		# Two parts of the definition are retrieved, concatenated and returned.
+		print nouns[:5]
 		if "noun" in self.pos:
 			ret = 'It is a part of ' + self.createPartOne(nouns, verbs, adjectives) + '. ' + self.generate_Definition(nounString, verbString, adjString)
-        else:
-            ret = 'Something you do with ' + self.createPartOne(nouns, verbs, adjectives) + '. ' + self.generate_Definition(nounString, verbString, adjString)
-        return ret
+        	else:
+            		ret = 'Something you do with ' + self.createPartOne(nouns, verbs, adjectives) + '. ' + self.generate_Definition(nounString, verbString, adjString)
+        	return ret
 
 	def createPartOne(self, nouns, verbs, adjectives):
 		'''
@@ -230,7 +231,7 @@ class Definition(object):
 		'''
 
 		# Removes the target word from the set of topic words. As the definition should not contain the word itself.
-        # topics = filter(lambda topic: target not in topic, topics)
+        	# topics = filter(lambda topic: target not in topic, topics)
  		# Get the seperated Nouns, Verbs, Adjectives
  		# self.noun, self.verb ,self.adj= self.get_Noun_Verb(topics)
  		# Represent CFG rules in python
