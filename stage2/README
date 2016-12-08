@@ -1,0 +1,234 @@
+________________________________________________________________
+
+		    Team - Red Project Stage II  
+		Word sense disambiguation based on Word2Vec
+________________________________________________________________
+
+Authors :  Ankit Anand Gupta
+		Brandon Paulsen
+		Sai Ram Kowshik Vattipally
+		Sandeep Vuppula		
+
+*************
+CONTRIBUTIONS
+*************
+Ankit Anand Gupta : 
+Brandon Paulsen : 
+Sai Ram Kowshik Vattipally : 
+Sandeep Vuppula : 
+********
+CONTENTS
+********
+
+Contents in the Directory:
+* install.sh
+* runit.sh
+* runall.sh
+* README
+* RESULTS
+* postProcessing.py
+* def_gen.py
+* stopwords.txt (The list of stop words we are excluding)
+* senseclusters_scorer
+* src
+	DefinitionGeneration.py
+	cluster.py
+	file_processing.py
+	sensesample.py
+	sentenceIter.py
+	tokenizing.py
+* output
+* input
+	abandon-verb-pauls658.xml
+	racket-noun-pauls658.xml
+	sidewalk-furnace-pauls658.xml
+	
+	wear-verb-vuppu008.xml
+	plot-noun-vuppu008.xml
+	television-food-vuppu008.xml
+
+	strike-verb-gupta299.xml
+	bat-noun-gupta299.xml
+	banana-wall-gupta299.xml
+
+	shoot-verb-vatti001.xml
+	date-noun-vatti001.xml
+	pigeon-car-vatti001-1.xml
+
+	line-noun-6sense.xml
+	pmss-noun-4senses.txt
+
+********************
+PROBLEM AND SOLUTION
+********************
+The problem we are trying to solve is to create a definitions for the different senses of a target word, given several instances of the target word. This also includes discovering how many senses of the target word are present in the given instances. The system takes a XML file containing a list of contexts each of which contain the target word within a <head></head> tag. Each instance is a sentence or a group of sentences that surround the target word which we intend to find the meaning of in the given context. The system we design is intended to group these contexts based on the sense of the target word in that particular context. Each of the resultant cluster will contain contexts where the target word is used in same sense. This step is called clustering.
+
+To perform clustering, we use an algorithm called Affinity Propogation. Affinity propogation is one of the few clustering algorithms that do not require the user to pre define the number of clusters that needs to be formed. 
+
+--------
+Word2Vec
+--------
+Word2Vec is a set of models that are used to produce word embeddings. Word embeddings is a representation of a raw text in some mathematical format, usually vectors. Word2vec models take a corpus of text as input and produces a vector spaces containing one vector for each word. The words that are close in context to each other are placed close to each other in the vector space as well. Hence similarity between two words can be measured by measuring the distance between them in the vector space. 
+
+Word2Vec was created by a Tomas Mikolov et al. at Google.
+
+
+From these topic words we generate sentences which are the definitions of the target word in each cluster. The core of our definition generation system is a context free grammar created by ankit which defines a simple sentence structure. We then take the topic words from hdp-wsi, POS tag them, and then generate random sentences using our context free grammar. These sentences are then joined together with conjuctions until we have at least a 10 word definition.
+
+The input file may be of 2 kinds. The first one has only one target word which is either a noun or verb which has multiple senses. The second kind is where there are contexts that uses two different words that are conflated into a single word. In the first kind, we try to cluster the contexts based on various senses the target word we have. In the second one, we try to assign a sense to the conflated word and try to group the contexts into clusters such that each cluster might have same sense as each word that the conflated word is formed from. Note that we might generate more or less clusters than the number of words used for conflating the word.
+
+
+
+---------------------------------
+Clustering - Affinity Propogation
+---------------------------------
+Affinity propogation is a clustering algorithm based on the property of message passing between data points. It doesn't require a pre-defined number of clusters for clustering unlike algorithms like k-means.
+
+Assume data points d_1 through d_n. Affinity propogation uses a similarity function S such that 
+	
+			S(d_i,d_j) > S(d_i,d_k) 
+	is true only when d_i is more similar to d_j than d_k.
+
+Affinity propagation finds exemplars from data points and forms clusters by gathering data points around these exemplars. An exemplar is any data point which is a representative of cluster. Initially all the data points are considered as potential clusters. One data point is formed from one context. These data points are then matched to a closest exemplar based on some kind of similarity function using the distance between the points to perform clustering. 
+
+The algorithm initializes and updates two matrices as it works. Both the matrices are initialized to all zeroes initially.
+1) A responsibility matrix R ,and
+2) An availability matrix A
+
+R has values r(x,y) which reresents how well suited the data point d_x is for d_y comared to other exemplars.
+
+A has values a(x,y) which represent how well suited is d_x as an exemplar for d_y considering the preference of other data points preference for d_y as an exemplar.
+
+Preference value: The preference value of data point d_i is the suitability of that point to become a exemplar(origin of a cluster). Hence the higher the preference value the higher the probability that it becomes a exemplar. We can set a global preference value for all the data points together instead of using a local preference value for each data point. The higher this preference value, the higher the number of clusters that are likely to form. In our imlementation we used a part of our data as training data to find an optimal preference value and used it as our standard global preference value.
+
+
+
+To perform clustering, we use a sci-kit learn's implementation of Affinity Propogation.
+
+**********
+HOW TO RUN
+**********
+
+1) In terminal, navigate to the directory of project.
+2) Run install.sh as "./install.sh". This simply installs all the necessary packages for running
+3) To run word sense induction on a single senseval2 xml file, simply execute:
+	./runit.sh <senseval2-xml-file>
+
+Eg: To run our project on the file "date-noun-vatti001.xml", run as 
+	./runit.sh input/date-noun-vatti001.xml
+
+- You can also run the tool on every file in the input directory with the following command:
+	./runall.sh
+
+4) The reults of cluster creation, assigment of contexts to clusters, and the definitions generated for each cluster will be written in files in the output directory. See the section on output file format for an explanation of the format
+
+
+********
+EXAMPLES
+********
+-----------------
+INPUT FILE FORMAT
+-----------------
+
+The input files are taken from the directory: ./input/
+
+The input can be a file either of the following two kinds:
+
+1)An XML with a single Noun or Verb tagged: (single word used in multiple senses)
+
+Example file format:
+--------------------
+
+<corpus lang="english">
+<lexelt item="line">
+<instance id="1">
+<answer instance="1" senseid="photograph or videograph a scene or a movie"/>
+<context>
+, " he says of his subjects. " When they look back, it's more than a portrait of them, it's a moment in place and time. " # As for Leon Borenzstein, he tells people who simply want to look good to go someplace else. But that doesn't stop him from getting clients. # " People are tired of sterile portraits, " he says. " They want something more creative. " # Whether they know it or not, apparently. When San Francisco fashion executive Naomi Mann hired Margretta Mitchell to <head>shoot</head> a family portrait, she asked for a couple of relatively straightforward photographs posed in the living room and garden. But Mitchell happened to snap the five Mann children grouped around a staircase while wearing big grins and goofy hats, and Mann liked it so much she bought that one instead. # " Even if you don't know our family, it speaks to you about who we are, " she says. " It's playful. It's funny. When I saw it, I said,
+</context>
+</instance>
+<instance id="2">
+<answer instance="2" senseid="photograph or videograph a scene or a movie"/>
+<context>
+o, Lesley Gore, fabulous woman, passed away over the weekend. And we also lost Louis Jourdan. Now do you remember a film called " Gigi? " Yes, and also was it " Octopussy, " was he also in that? Yes, he's, he was an amazing Frenchman. We also lost him this weekend. But the good news here is that Naya and Ryan, you both have a lot going on right now. Naya first, what's going on? Well, I am after this going to go and <head>shoot</head> a couple episodes of Lifetime's " Devious Maids. " So I'm excited about that, and it'll be cool to do something different, and all the ladies seem awesome. So I'm really looking forward to it. Yeah, they're all good girls. And what about you, Ryan? You can catch me on " General Hospital " as detective Nathan West. It's February, it's GH Fan February, so if you're a fan of the show, anything you
+</context>
+</instance>
+
+
+2) An XML with a Name-conflate pair: (two words conflated into one used in two different senses)
+
+
+Example file format:
+--------------------
+
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<corpus lang='english'>
+
+<lexelt item="p_c">
+
+<instance id="1">
+<answer instance="1" senseid="pigeon"/>
+<context>
+ the genome and tissues, as well as the potential parenting, of the band-tailed <head>p_c</head> Patagioenas fasciata. # I've joined forces with a sweep of other interested scientists    fixed. But it is getting prettier. Now traveling under the name of 
+</context>
+</instance>
+
+<instance id="2">
+<answer instance="2" senseid="pigeon"/>
+<context>
+to beat either in the field or for dollar value -- and splice them into the genome of a stem cell from a common rock <head>p_c</head> # Rock pigeon stem cells containing this doctored genome could be transformed into germ    , and I know they are coming in on my frequency 
+</context>
+</instance>
+
+
+******************
+OUTPUT FILE FORMAT
+******************
+
+The output files are saved in the following directory: ./output/
+
+runit.sh will generate two output files for a given input file: one that shows the assignments of contexts into clusters, and one that shows the definition for each cluster. The assignment file should be named <target-word>-<pos>-assignments.xml. This is a senseval2 formatted file which is basically a list of instances where each instance has a context, and a cluster ID. The output file is identical to the input file, except that the senseid attributes for each instance have been replaced with a number which denotes membership to a specific cluster. The number is the ID of the cluster that the context belongs to. In addition, the instance's retain the same ID as the had in the original input file. In the following example, the instance with id=2 in the input file has been assigned to cluster 1.
+
+<corpus lang="english">
+<lexelt item="LEXELT">
+<instance id="2">
+<answer instance="2" senseid="1"/>
+<context>
+I used to draw a comparison between him and Hindley Earnshaw, and perplex myself to explain satisfactorily why their conduct was so opposite in similar circumstances.  They had both been fond husbands, and were both attached to their children; and I could not see how they shouldn't both have taken the same road, for good or evil.  But, I thought in my mind, Hindley, with apparently the stronger head, has shown himself sadly the worse and the weaker man.  When his ship struck, the captain <head>abandoned</head> his post; and the crew, instead of trying to save her, rushed into riot and confusion, leaving no hope for their luckless vessel.  Linton, on the contrary, displayed the true courage of a loyal and faithful soul: he trusted God; and God comforted him.  One hoped, and the other despaired: they chose their own lots, and were righteously doomed to endure them. But you'll not want to hear my moralising, Mr. Lockwood; you'll judge, as well as I can, all these things: at least, you'll think you will, and that's the same.  The end of Earnshaw was what might have been expected; it followed fast on his sister's: there were scarcely six months between them.  We, at the Grange, never got a very succinct account of his state preceding it; all that I did learn was on occasion of going to aid in the preparations for the funeral.  Mr. Kenneth came to announce the event to my master.
+</context>
+</instance>
+
+The defintions file should be named <target-word>-<pos>.defs. This file contains the definition generated for each cluster. In the following example, cluster 1 has the definition "a land england with a hands and a death want with is john", and so on. The number next to the word represents the cluster ID, so going back to the previous example, the definition of the sense of abandon being used in instance 2 corresponds to the previously mentioned definition. 
+
+
+*********
+CITATIONS
+*********
+1) The main idea for Word2Vec is based on the following paper by by Tomas Mikolov, Ilya Sutskever, Kai Chen, Greg Corrado and Jeffrey Dean: Distributed representations of words and phrases and their compositionality (https://arxiv.org/pdf/1310.4546.pdf)
+
+@inproceedings{mikolov2013distributed,
+  title={Distributed representations of words and phrases and their compositionality},
+  author={Mikolov, Tomas and Sutskever, Ilya and Chen, Kai and Corrado, Greg S and Dean, Jeff},
+  booktitle={Advances in neural information processing systems},
+  pages={3111--3119},
+  year={2013}
+}
+
+
+2)Our main idea for clustering uses Affinity Propogation:(http://www.icmla-conference.org/icmla07/FreyDueckScience07.pdf)
+
+@article{frey2007clustering,
+  title={Clustering by passing messages between data points},
+  author={Frey, Brendan J and Dueck, Delbert},
+  journal={science},
+  volume={315},
+  number={5814},
+  pages={972--976},
+  year={2007},
+  publisher={American Association for the Advancement of Science}
+}
+
+
+
+
+
