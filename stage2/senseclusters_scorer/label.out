@@ -1,6 +1,6 @@
 ClusterID -> SenseID
-C0 -> line.n.6
-C1 -> line.n.5
-C2 -> line.n.4
-C3 -> line.n.1
+C0 -> line.n.0
+C3 -> line.n.3
+C4 -> line.n.2
+C5 -> line.n.1
 Score = 39.77

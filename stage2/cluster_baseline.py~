@@ -180,7 +180,7 @@ def cluster_tfidfs(file_name, model, pref=None):
         print word_counts_list[:10]
         defPhrase = definition.process(word_counts_list, doc_counts)
         print defPhrase
-    print "--End--"
+    print "--End--\n"
 
     sys.stdout.flush()
 

@@ -1,3 +1,7 @@
+"""
+Author: Brandon Paulsen
+"""
+
 import nltk, re
 from file_processing import *
 

@@ -1,3 +1,7 @@
+"""
+Author: Brandon Paulsen
+"""
+
 import sys, os, math, traceback, copy, random
 from src.file_processing import *
 from src.tokenizing import *

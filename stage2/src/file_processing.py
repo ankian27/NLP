@@ -1,5 +1,7 @@
 import re
-#@author Brandon Paulsen
+"""
+@author Brandon Paulsen
+"""
 
 """
 A function to extract all the instances from a sense2val file. Not used by the clustering routine.

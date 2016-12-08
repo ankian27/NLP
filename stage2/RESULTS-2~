@@ -1,0 +1,113 @@
+Author: Brandon Paulsen
+
+===================================================
+NOTE: confusion matrixes are in the OUTPUT file!!!|
+===================================================
+
+
+TABLE
+-----
+
+         ------------------------------------------------------------------------------------
+         | sidewalk-furnace | banana-wall | strike-verb | shoot-noun | wear-verb | bat-noun |
+---------------------------------------------------------------------------------------------
+|Stage 2 | 88.17            | 71.53       | 47.0        | 81.0       | 88.0      | 61.00    |
+---------------------------------------------------------------------------------------------
+|Stage 1 | 67.79            | 73.48       | 56.0        | 76.0       | 80.0      | 52.0     |
+---------------------------------------------------------------------------------------------
+
+         -------------------------------------------------------------------------------------
+         | racket-noun | pigeon-car | plot-noun | date-noun | abandon-verb | television-food | 
+----------------------------------------------------------------------------------------------
+|Stage 2 | 77.27       | 52.32      | 80.0      | 80.0      | 47.0         | 74.91           |
+----------------------------------------------------------------------------------------------
+|Stage 1 | 51.82       | 84.87      | 60.0      | 70.0      | 45.0         | 50.98           |
+----------------------------------------------------------------------------------------------
+
+         -------------
+         | line-noun | 
+----------------------
+|Stage 2 | 39.77     | 
+----------------------
+|Stage 1 | 69.30     |
+----------------------
+
+OVERALL PERFORMANCE
+-------------------
+Out the 14 total data sets, our clustering passed the base line for 11 of them. 8 out the 14 were had over 70% recall/precision, and 5 out 14 had better than 80% precision/recall. In stage 1, we had 11 out of 13 break the base line, 6 out 13 break 70%, and 2 out 13 break 80%. Some notable differences between the two are:
+- From the perspecitive of breaking baseline, topic modeling seems to perform more reliably. While both methods failed to break baseline on strike and abandon, the first method performed decently on line (recall: 69%), but our second method did poorly (recall: 39%). 
+- Our stage 2 implementation excelled more often than stage 1 according to the number of words that exceeded 80% recall
+Our stage 2 results generally matched the stage 1 results or considerably outperformed it with the exception of the pigeon-car data and the line data. We believe this is because the approach in stage 2 excels on "easier" words. For example, the word "wear" has two senses: 1) having a piece of clothing on, and 1) damaging slowly over time. The second sense is very often proceeded by the word "tear", and the first sense nearly always has a reference to a piece of clothing. While topic modeling did fairly well on wear (recall: 80%), it could not recognize that different items of clothing are related, so it initially gave us 2 clusters for the first sense. We can see this if we look back at the topic words for wear in stage 1. Cluster 0 has shirt, uniform, and dress as topic words, and cluster 2 has these same topic words, but it also has shoes. Because topic modeling couldn't infer the relationship between shoes and the other items of clothing, it created this cluster 2. This was a theme throughout our topic modeling approach, and we had to solve it by manually combining clusters with overlapping topic words. Manually combining clusters based on topic word overlap also had limitations though since we were still limited in our knowledge of the relationships between specific words.
+Representing words and contexts as vectors in stage 2 made this inference possible. The word embedding approach was able to accurately infer the relationship between different items of clothing without any manual clustering. In addition, we knew that frequently occuring words were often indicative of a sense, and we were able to include this information in our cluster by weighting word vectors with a tfidf-like weight. Looking at the word vectors in the OUTPUT file, we can see that tear was consistently the highest weighted word for all of our contexts. This was not possible (or at least no obvious way presented itself to us) with topic modeling.
+
+BEST PERFORMANCE
+----------------
+The best performing word for stage 2 was the sidewalk-furnace conflate pair with a recall of 88.17%. We believe the clustering performed well for the same reason that our word wear performed well. Both sidewalk and furnace are generally used in one distinct context each, so there are often a few, frequent keywords that "give away" the sense. As previously mentioned, we generally assign higher weights to frequent words, so our approach capitalizes on these few and frequent keywords. The word sidewalk is often used when discussing something pertaining to an urban environment, and the word furnace is often used when discussing things pertaining to metal working. 
+In the output file, we printed out the top 10 words for each cluster. Examining these top words reveals that this is indeed the case. Street, city, road, traffic, pedestrian, and avenue were among the top 10 words for sidewalk, and iron, blast, steel, temperature, and heat were among the top 10 words for furnace.
+
+Correct assignments
+-------------------
+1) This is again confirmed by examining a few of the context vectors used for clustering. For the furnace cluster, we see that instance 1176 was assigned to the correct cluster. Examining the context words and the weights for each word, we can see why it was placed in the furnace cluster. The words iron, blast, coal, and ore were all included in this context's vector with very high weights. The context words are printed below:
+ID: 1176 (iron,11.7096445795) (blast,11.08790779) (pig,10.4419369242) (coal,10.3713507356) (ore,10.3432771035) (ore,10.3432771035) (bottom,8.78912741905) (mill,8.64505211954) (limestone,8.4248025209) (rolling,8.27738675754) (due,7.92815233691) (melt,7.19735950535) (huge,6.86545331511) (bars,6.46346110016) (crowbars,4.40023481279)
+2) For the sidewalk cluster, we see that instance 1167 Was correctly assigned. The reason is similar to the previous example. We note though that the sidewalk sense was probably more difficult to detect than the furnace sense. In the furnace sense, each context generally had several words which indicated the correct sense, however the sidewalk sense usually only had one or two words which strongly indicated a sense. In instance 1167, those words were city and house. The weighting helped to offset the lack of indicative words though. Looking at the context words, we see that city and house had the highest weights. 
+ID: 1167 (city,10.5795628274) (houses,8.1129807746) (plants,7.92815233691) (passed,7.718389155) (fine,6.86545331511) (opera,5.30836381271) (enter,5.30836381271) (chorus,4.40023481279) (royal,4.40023481279) (diversified,2.98489715885) (conservatory,2.98489715885) (peasantry,2.98489715885) (fro,2.98489715885) (pasturage,2.98489715885)
+
+Incorrect assignments
+---------------------
+1) For sidewalk-furnace, words were incorrectly assigned often due to the imperfect nature of affinity propogation. In the case of instance 997, we clearly had context words which were strongly related to the top words of the sidewalk sense, however it was put in the furnace cluster because affinity propogation was not perfect. When we compare the top 10 words of the sidewalk cluster to the context words used for instance 997, we can clearly see it should be more similar to the sidewalk sense. Instance 997 has 3 context words (city, roads, houses) which overlap with the top 10 words of the sidewalk cluster.
+ID: 997 (city,10.5795628274) (buildings,9.65658647108) (roads,9.60537342397) (problem,8.76184696944) (wood,8.59784828973) (wood,8.59784828973) (houses,8.1129807746) (chicago,7.6050299468) (tar,5.30836381271) (rain,5.30836381271) (topped,4.40023481279) (highly,4.40023481279) (shingle,4.40023481279) (inch,4.40023481279) (flammable,2.98489715885)
+2) The other case where words were incorrectly assigned was because we didn't have enough context words. This was the case for both instance 273 and instance 1143. These words were assigned to their own separate cluster.
+
+AVERAGE PERFORMANCE
+-------------------
+Our recalls ranged from 39% to 88%. Our bat instances performed in the middle with 61%. This is slightly better than our stage 1 results. In stage 1, topic modeling had trouble detecting more than one sense of the word, putting 98 instances into 1 cluster, and the remaining 2 into another cluster. In stage 2 our results were more distributed, with 3 clusters of size 43, 48, and 9. The actual two senses appear in the second and third clusters, but our clustering method seems to have discovered a third sense related to houses and body parts. Some of the top words for the first cluster are hand, house, room, and arms. None of the top words for this cluster indicate either of the two senses of bat. We hypothesize this is because the two senses are not always used in distinct contexts like sidewalk and furnace. For example, the animal sense of bat is used in the phrase "bat out of hell", which has no correlations with contexts where the mammal itself is being discussed. In addition, the piece of sports equipment bat isn't always used in contexts discussing baseball. Still, many of our contexts involved discussing baseball or discussing mammals, so we were able to group some of the contexts well.
+
+Correct Assignments
+-------------------
+We consider clusters 2 and 3 to be the actual clusters because their top words indicate one of the senses of bat.
+1) Contexts that were discussing baseball usually clustered well. For example, instance  was correctly placed in the sports equipment sense because of it's context words. In particular, our clustering found that the word game is strongly associated with a sense. We can see this in examining instance 97. The word game has the highest weight.
+ID: 97 (game,5.14397734946) (game,5.14397734946) (contact,4.57420326503) (ball,4.57420326503) (catch,4.2647231241) (baseball,4.09074873796) (consecutive,3.24184167477) (evolved,3.24184167477) (difference,3.24184167477) (fly,2.25403246174) (balls,2.25403246174) (won,2.25403246174) (surprisingly,2.25403246174) (include,2.25403246174) (football,2.25403246174)
+2) Several of our mammal sense contexts discussed bats in a biological context. These contexts usually contained the word species and viruses, which lead to the creation of cluster 3. Looking at all of the contexts words for instances placed in cluster 3, we see that species and virus appeared in all of these. Instance 5 is shown below.
+ID: 5 (species,4.81365671032) (host,4.09074873796) (host,4.09074873796) (genetic,3.24184167477) (low,3.24184167477) (form,3.24184167477) (two,3.24184167477) (system,3.24184167477) (diversity,2.25403246174) (bottleneck,2.25403246174) (mammal,2.25403246174) (infected,2.25403246174) (intermittently,2.25403246174) (bitten,2.25403246174) (insect,2.25403246174)
+
+Incorrect assignments
+---------------------
+Incorrect assignments only occurred in clusters 1 and 2. The main reason for incorrect assigments is the versatile use of the bat for both senses.
+1) Instance 0 was incorrectly clustered because it is using bat in the phrase "bat out of hell". This phrase is versatile in the way that it can be used in discussing many topics. We can see from the context words that nothing indicated the mammal sense.
+ID: 0 (need,4.57420326503) (hell,4.57420326503) (small,4.57420326503) (reach,3.84663441849) (highway,3.24184167477) (drive,3.24184167477) (rain,3.24184167477) (form,3.24184167477) (bouncing,3.24184167477) (motorcar,2.25403246174) (salesman,2.25403246174) (miles,2.25403246174) (hour,2.25403246174) (sold,2.25403246174) (imagine,2.25403246174)
+2) Similarly, bat is also used in the mammal sense for metaphors. Instance 12 is an example of this. In 12, a scruffy man with black eyes is being compared to a bat in a cave. This is an uncommon way of using bat in the mammal sense, so our algorithm doesn't know where to put it.
+ID: 12 (red,4.81365671032) (small,4.57420326503) (nose,4.57420326503) (eyes,4.46580426352) (black,4.2647231241) (looked,4.2647231241) (face,3.84663441849) (arms,3.84663441849) (cave,3.24184167477) (huge,3.24184167477) (skin,2.25403246174) (showing,2.25403246174) (peering,2.25403246174) (hair,2.25403246174) (terrific,2.25403246174)
+
+WORST PERFORMANCE
+-----------------
+The worst performing word both relative to the baseline and in terms of recall was the line data. Only one of our clusters consistently captures a single sense, specifically the product sense, and this cluster only contains about 1/5 of all the instances that were the product sense. This cluster was created from the line instances that discussed a line of ibm computers. We say this because the word 'ibm' appears 234 times and 'computers' appears 218 times. As mentioned before, our algorithm tends to cluster based on words that occur frequently because they often indicate a sense. Even though this worked for part of line's product sense, this technique did not fair well for anything else. Our other clusters contain a wide mix of all the other senses. We consider this partial cluster of the product sense to be the only correct cluster.
+
+Correct Assignments
+-------------------
+The clusters that were assigned correctly were the ones referring to a line of computers. The instances in this cluster were grouped together primarily because they all had words like 'ibm' and 'computers' in them. We can see how these words often appear together by examing some of the instances of the product sense. Instance 3709 discusses ibm's earnings on a specific line of computer that they sell.
+
+<s> But IBM posted an earnings gain of 39%; the rise was just 8% after adjusting the year-earlier results for a restructuring charge and a gain on a sale. </s> <@> <s> IBM had its first significant revenue g      ain in the U.S. in years, and got a strong performance from its AS/400 minicomputer  <head>line</head>  -- which wasn't yet introduced a year earlier. </s>
+
+We can see the same pattern in instance 3552.
+
+ <s> Yesterday, IBM stock rose 12.5 cents to close at $116.125 a share, while Baxter International common closed unchanged at $22.25, both in New York Stock Exchange composite trading. </s> <@> </p> <@> <p> <      @> <s> Separately, IBM announced that it had authorized the opening of 41 new dealerships that will sell its PS/2 personal computer  <head>line</head> , marking the end of a moratorium it declared four years       ago. </s>
+
+In addition, if we look at the context words used for clustering, we can see that the words ibm, computer, and other related words had the highest weights.
+
+ID: 3709 (ibm,13.5240049232) (introduced,12.7909435656) (earlier,12.3121224148) (strong,12.0977167335) (sale,11.9739125821) (revenue,11.4847371402) (performance,11.3413935819) (significant,10.5916593587) (minicomputer,10.3952843686) (gain,9.41234720539)
+
+ID: 3552 (ibm,13.5240049232) (computer,13.2352764052) (personal,13.116652989) (end,12.7589247503) (sell,12.5713999346) (ago,12.3165573244) (opening,10.917375722) (announced,10.5916593587) (separately,9.21252324935) (authorized,5.92178304626) (dealerships,4.88635805399) (marking,4.88635805399) (declared,4.88635805399) (moratorium,3.29160677563)
+
+Incorrect Assignments
+---------------------
+Other instances which discussed companies or computers were incorrectly assigned to cluster 2. For example, instance 4095 is discussing a magazine company, and the word company appears several times. When using the product sense of line, a company is often referenced (and therefore the word company is used). This is likely why 4095 was put in the product cluster.
+
+<s> After a slick redesign, the two-year-old magazine has been relaunched this month by its parent company, Keizaikai Corp., the Tokyo-based company with interests that include financial services, book publi      shing and a tourist agency. </s> <@> <s> Printed in the U.S. and carrying the  <head>line</head>  "The Insider's Japan," Business Tokyo's October cover story was "The World's No. 1 Customer" -- Japanese wome      n. </s>
+
+ID: 4095 (business,13.1349115951) (services,12.0969964716) (women,11.9192475865) (include,11.8816592221) (financial,11.2832036449) (japanese,11.1776500904) (customer,11.0543252436) (agency,10.9025156879) (japan,10.8898095392) (publishing,10.2070951387) (cover,10.1692985767) (book,9.90560974132) (story,9.68429408129) (october,9.41234720539) (tokyo,9.09891495323)
+
+Instance 4049 was also a text sense which was clustered with the product senses. 4049 discusses a court case document which, to a human, would strongly suggest the text sense. However, our algorithm probably put it in the product sense because of the strong weight we put on the word computer.
+
+<s> Philip Reiss, an attorney for WPP, said the memo was found late Tuesday in the files of several of the departed directors. </s> <@> </p> <@> <p> <@> <s> The document, which appears to be a computer print      out and isn't dated, has a  <head>line</head>  at the top stating it is from Ed Yaconetti, the former chief operating officer of Lord Geller, to the agency's management committee. </s>
+
+ID: 4049 (computer,13.2352764052) (top,11.7557644141) (operating,11.5277914181) (chief,11.1707379252) (agency,10.9025156879) (officer,10.7642492682) (appears,9.21252324935) (files,6.67389607404) (directors,6.67389607404) (document,6.67389607404) (ed,6.67389607404) (lord,5.92178304626) (dated,4.88635805399) (departed,3.29160677563) (printout,3.29160677563)
