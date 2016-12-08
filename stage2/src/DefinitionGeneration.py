@@ -14,13 +14,18 @@ from nltk import word_tokenize # Function to split string of words into individu
 from nltk.util import ngrams #Function to return the ngrams generated.
 from collections import defaultdict #Creates a default dictionary which gives a default value for non-existent key.
 import random #Randomly choose an item from a list of items.
-import gensim
-import operator
+import gensim #Python library for vector space modelling and toolkit modelling
+import operator # Has set of functions corresponding to intrinsic operators of python
 
 class Definition(object):
 	def __init__(self,model,pos):
-		""" The function __init__ is a constructor in python which accepts the instance of a class of the object itself as a parameter.
+		""" 
+		#Author: Ankit Anand Gupta
+		The function __init__ is a constructor in python which accepts the instance of a class of the object itself as a parameter.
 		The constructur is used to initialize the cfgRule(Context Free Grammar rules), nouns, verbs and adjectives for each instance.
+		Args:
+			param1 (model): The pre-loaded Google model is sent as a parameter for defintion generation instead of reloading it.
+			param2 (pos): The parts of speech of the target word.
 		"""
 
 		# Create default dictionary
@@ -129,15 +134,27 @@ class Definition(object):
 		return definition
 
 	def process(self, ctxes, doc_counts):
-		print self.pos
+		'''Section IV:
+			#Author: Sandeep Vuppula
+			Args: 
+				param 1 (ctxes):  List of tuples of the form (word, pos, count) for all the contexts in the cluster
+				param 2 (doc_counts): Dictionary of the form (word,pos)->count. Count is the number of number of times the 
+									  (word,pos) pair appeared in all the contexts in a cluster(even though a pair appears many times in a 
+									  single context, it is counted as 1)
+			Returns: The generated Definition of the sentence.
+
+		'''
+		# Sort the dictionary doc_counts {(word,pos)->count} in descending order.
 		doc_counts = sorted(doc_counts.items(), key=operator.itemgetter(1),reverse=True)
+		#The noun, verb, adj variables with 'String' suffixes are for generating the definitions using Context Free Grammars
+		#The noun, verb, adjectives lists are for forming the definition using the words obtained from most_similar function in Word2Vec.
 		nounString = ''
 		verbString = ''
 		adjString = ''
 		nouns = []
 		verbs = []
 		adjectives = []
-
+		# Separating the (word,pos) into their respective classes of NOUN, VERB, ADJECTIVE and storing just the (word,count)
 		for (word,pos), count in doc_counts	:
 			if pos == "NOUN":
 				nouns.append((word,count))
@@ -147,11 +164,12 @@ class Definition(object):
 				adjectives.append((word,count))
 			else:
 				continue
-
-		nouns.sort(key=lambda tup: tup[1], reverse = True) #word, count
+		# Sorting the nouns, verbs, adjectives in reverse order
+		nouns.sort(key=lambda tup: tup[1], reverse = True) 
 		verbs.sort(key=lambda tup: tup[1], reverse = True)
 		adjectives.sort(key=lambda tup: tup[1], reverse = True)
 		
+		# Considering only top 5 words in list of nouns/verbs/adjectives for forming the sentences using CFG.
 		for i,noun in enumerate(nouns):
 			if i>4: break
 			nounString += noun[0] + '|'
@@ -162,57 +180,57 @@ class Definition(object):
 			if i>4: break
 			adjString += adj[0] + '|'
 
+		# Stripping the additional '|'
 		nounString =nounString[:-1]		
 		verbString=verbString[:-1]
 		adjString=adjString[:-1]
 
-		# nounList = []
-		# verbList =[]
-		# adjList = []
-		# for word,count in nouns:
-		# 	nounList.append(word)
-		# for word,count in adjectives:
-		# 	adjList.append(word)
-		# for word,count in verbs:
-		# 	verbList.append(word)
-
-		# print("*****")
-		# print (self.createPartOne(nouns[0][0], verbs[0][0], adjectives[0][0]))
-		# print (self.generate_Definition(nounString, verbString, adjString))
-		# print("*****")
-		# self.createPartOne(nouns[0][0], verbs[0][0], adjectives[0][0])
-		# print [nouns[0][0], nouns[1][0], nouns[2][0], nouns[3][0], nouns[4][0]]
-		# print [verbs[0][0], verbs[1][0], verbs[3][0]]
-
-                if "noun" in self.pos:
-                    ret = 'It is a part of ' + self.createPartOne(nouns, verbs, adjectives) + '. ' + self.generate_Definition(nounString, verbString, adjString)
-                else:
-                    ret = 'Something you do with ' + self.createPartOne(nouns, verbs, adjectives) + '. ' + self.generate_Definition(nounString, verbString, adjString)
-                return ret
+		# Different form of sentences are to be formed, based on whether a particular target word is noun/verb.
+		# Two parts of the definition are retrieved, concatenated and returned.
+		if "noun" in self.pos:
+			ret = 'It is a part of ' + self.createPartOne(nouns, verbs, adjectives) + '. ' + self.generate_Definition(nounString, verbString, adjString)
+        else:
+            ret = 'Something you do with ' + self.createPartOne(nouns, verbs, adjectives) + '. ' + self.generate_Definition(nounString, verbString, adjString)
+        return ret
 
 	def createPartOne(self, nouns, verbs, adjectives):
+		'''
+		Section V:
+		#Author: Ankit Anand Gupta
+			This function is the core part for first part of definition generation. We take the top most occurring 5 nouns and then get the 
+			most similar word which is related to those words from Word2Vec.
+			If there are no nouns at all (possible if cluster formed has very less instances) then we return 'unknown'
+		Args:
+			param 1 (nouns): list of top most nouns
+			param 2 (verbs): list of top most verbs
+			param 3 (adjectives): set of top most adjectives.
+
+		Return:
+			The most similar word retrieved from Word2Vec using the top 5(or less) nouns.
+		'''
+		# If the list of nouns is empty, return "unknown"
 		if not nouns:
 			return 'unknown'
+		#Get the topmost similar word from Word2Vec.
 		word = self.model.most_similar(positive=[noun[0] for noun in nouns[:5]], topn = 1)
-
-		# print nouns[0][0], nouns[1][0], nouns[2][0]
 
 		return word[0][0]
 
 	# def generate_Definition(self, topics, target):
 	def generate_Definition(self, nounString, verbString, adjString):
-		'''Section IV:
+		'''Section VI:
 		#Author: Ankit Anand Gupta
-		This function which is control the flow of program. It makes calls to the functions to produce the CFG rules and to generate the definition of the cluster
+		This function is the core for second part of the definition generation. It makes calls to the functions to produce the CFG rules and to generate the definition of the cluster
 		Args:
-			param1 (set) : Set of topic words
-			param2 (string): The target word for which the definition has to be generated.
+			param1 (nounString) : String of nouns, separated by '|'
+			param2 (verbStrting): String of verbs, separated by '|'
+			param3 (adjStrting)	: String of adjectives, separated by '|'
 		Returns:
-			The definition of the target word adhering to the english grammar rules and it is longer than 10 words.
+			The definition formed by applying CFG rules to the noun/verb/adjective Strings.
 		'''
 
 		# Removes the target word from the set of topic words. As the definition should not contain the word itself.
-                # topics = filter(lambda topic: target not in topic, topics)
+        # topics = filter(lambda topic: target not in topic, topics)
  		# Get the seperated Nouns, Verbs, Adjectives
  		# self.noun, self.verb ,self.adj= self.get_Noun_Verb(topics)
  		# Represent CFG rules in python
