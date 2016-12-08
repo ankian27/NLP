@@ -76,6 +76,29 @@ Point-by-point outline of execution
 -----------------------------------
 
 
+Definition Generation:
+In src/DefinitionGeneration.py file:
+
+Section I : get_Noun_Verb()
+			Used for Stage I
+			The function is used to seperate the Nouns, Verbs and Adjectives in the given set of topic words.
+			We use the Parts of Speech Tagger from the Natural Language Toolkit to tag the POS for each word in the set of topic words.
+			It takes a set of topic words, assigns respective POS tags to each of those words. And then for each tag(Noun/Verb/Adjective), it forms a string of  words seperated by '|'
+Section II: cfg_rule()
+			The function is used to map the Context Free Grammar production rules for the english grammar to python representation.
+			It takes a rule of the form "PRO  -> with | to" and splits the rules on the right hand side based on "|". Then it appends the rules present on the right side to the rule present on the left.
+Section III: gen_def()
+			The function is used to generate the definition of a sentence recursively using the CFG rules. It chooses a production rule randomly from the list and then recursively gen_def() function is called. In order to avoid the same word being picked twice, we remove the word from the list of Nouns/Verbs/Adjectives once it is used.			
+Section IV:	process()
+			The function takes the ctxes and doc_counts as the parameters. The doc_counts is a dictionary in the format (word,pos)->count. We will sort the doc_counts and then separate nouns, verbs, adjectives into their respective lists. Then we use them to create two parts of the definition. 
+				Part 1: Using most_similar word from Word2Vec using topmost nouns(upto 5)
+				Part 2: Sentence using the CFG grammar.
+			Concatenate Part 1 and Part 2 and return the complete definition.
+Section V : createPartOne()
+			This function is the core part for first part of definition generation. We take the top most occurring 5 nouns and then get the most similar word which is related to those words from Word2Vec. If there are no nouns at all (possible if cluster formed has very less number of instances) then we return 'unknown'
+Section IV: generate_Definition()
+			This is the main class which drives the definition generation. First it takes a list of topic words and removes the target word from the list. Later it retrieves the Noun/Verb/Adjective words in the form of concatenated string separated by "|".  Then it takes the production rules and maps them as Array item -> set of tuples. Then gen_def() function proceeds to generate the definition based on the set of topic words.
+
 
 --------
 Word2Vec
@@ -125,6 +148,54 @@ We use each of these values as our preference value in each iteration and examin
 
 
 To perform clustering, we use a sci-kit learn's implementation of Affinity Propogation.
+
+---------------------
+Definition generation
+---------------------
+
+Our previous approach to definition generation was to select the topic word that hdp-wsi gave us. The we used CFG rules to make a sentence that was our definition for it. Since in the stage-2 of our project, we use Word2Vec model for our clustering and not hdp-wsi. We decided  to use the vector addition feature of Word2Vec. Our intention was to pick upto 5 highest occuring Nouns, Adjectives and Verbs from context generated for every sense cluster generated for each word, and then generate the definition.
+
+Our definition has two parts now, The first part is a mostly hardcoded sentence that tries to use the hypernym(ideally) of the highest occuring 5 nouns(or less if there are not enough nouns). We did this to get the overall meaning of the word and use it in the definition. For example the definition of 'dog' given as an example had the word 'canine' in it which is actually a hypernym for 'dog' just like the word 'hound' . Then the second part is similar to our approach in the stage-1 of our project. We use some of the highest occuring words(Nouns, Adjectives and Verbs) and make a sentence from it using CFG rules. 
+
+Vector addition and subtraction of words could be used to get different Hypernyms or Hyponyms of those words. We wanted to add the top nouns that we got to get their hypernym, so that it could be used in the first half of the definition, the reason for this is explained in the previous paragraph.
+
+Initially we were using all the words from the clusters towards the total frequency counts. This gave us slightly poor results as some instances had multiple occurences of an irrelevant word, and that word was being selected as our top word for the vector summation. An example of this is the word 'colbert' in one cluster of the word 'wear'. It was occuring 4 times in one instance and hence was one of the most occurring noun, but was totally irrelevant. So we got an idea from the sentiment analysis video, where it was mentioned that he frequency of a word within an instance was irrelevant, the useful piece of information was if that word existed or not. So we decided that the frequency count for each word would be increased by max 1 for each instance. This approach gave us better definitions.
+
+In our clustering results We got varying cluster sizes. In one case the cluster was only two instances so the context words for that cluster didn't have any nouns whatsoever. So it was not possible to generate the word for the first part of the definition through the vector sum process. So the word 'unknown' was used instead, this approach is justified as the cluster with only 2 instances is definitely an erroneous one and therefore that word sense mostly doesn't exist and hence should not have any definition.        
+
+The basic idea for second part of definition generation of a word is to use the context words of the sentence in which the word is used. We use the Context Free Grammars(CFG) to generate the definition of the words. The CFGs have a set of recursively defined rules(productions) to generate string patterns.
+
+The Context Free Grammar Rules used are:
+
+S 	-> S1
+S1 	-> NP VP
+NP 	-> Det ADJ N
+VP 	-> V NP
+Det -> a | the | is
+N 	-> Noun words list
+V 	-> Verb words list
+ADJ -> Adjective words list
+
+
+We use the Context Free Grammar rules to preserve the syntactic structure of the English grammar. The English grammar has rules such as, Noun phrase should be followed by a Verb Phrase, 'a', 'an', 'the' are Determiners and so on. To preserve such rules and to use them during the sentence generation, we use the Context Free Grammars. The CFG rules are recursively applied to the topic words to generate the definition of the topic words. 
+
+Firstly, we derive the Parts of Speech for each of the topic words and then seperate the words into different sets of Noun/Verb/Adjective based on the dervied Parts of Speech tags.
+
+We iterate over each of the symbols(Terminal symbol) and choose a Non-Terminal or Terminal symbol based on the production rule to generate the definition. 
+
+Examples of Terminal Symbols: S, S1,, NP, VP, Det, N, V, ADJ
+Non-Terminal Symbols : Nouns, verbs, adjectives, determiners
+
+Example:
+
+Noun Words	: [('gun', 10), 
+			   ('rifle', 6), 
+			   ('times', 5), 
+			   ('deer', 4), 
+			   ('guy', 4)]
+
+Definition  : the young times kill the dead deer 
+
 
 **********
 HOW TO RUN
