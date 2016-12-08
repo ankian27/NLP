@@ -3,16 +3,6 @@ from file_processing import *
 
 """
 Convert the contexts in a sense2val file into a tokenized list. Also returns the senses associated with each context for debugging/development.
-This functions performs several pre-processing steps. Specifically, it removes any tokens that have the target word or conflate words in them.
-This is the purpose of taking the target word and the conflate words. It also removes the stopwords specified by the stopwords param. In
-addition, we do the POS tagging in this step while we have the complete contexts. 
-@param file_name: a string path to a sense2val file
-@param target_word: the word being disambiguated
-@param stopwords: a set or list of stopwords
-@param window_size: the number of context words before and after to include
-@param conflate_word1: the first conflated word
-@param conflate_word2: the second conflated word
-@return: a list of tokenized contexts where each context is a list of pairs of the form (token, POS)
 """
 def tokenize_ctxes(file_name, target_word, stopwords, window_size, conflate_word1=None, conflate_word2=None):
     rename_re = re.compile(r'<head>(.*?)</head>')

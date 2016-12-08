@@ -1,1 +1,0 @@
-- remove words with low PPMI (or PMI, not sure yet) AND not a low count.
