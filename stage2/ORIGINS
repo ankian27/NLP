@@ -1,5 +1,56 @@
-GenSim Word2Vec
+/**
+@Author:Sai Ram Kowshik Vattipally
+*/
 
-Scikit Learn Affinity propogation 
+Gensim Word2Vec:
+
+We use the Gensim implementaion of the Word2Vec for our system:
+(https://radimrehurek.com/gensim/models/word2vec.html)
+
+@inproceedings{rehurek_lrec,
+      title = {{Software Framework for Topic Modelling with Large Corpora}},
+      author = {Radim {\v R}eh{\r u}{\v r}ek and Petr Sojka},
+      booktitle = {{Proceedings of the LREC 2010 Workshop on New
+           Challenges for NLP Frameworks}},
+      pages = {45--50},
+      year = 2010,
+      month = May,
+      day = 22,
+      publisher = {ELRA},
+      address = {Valletta, Malta},
+      note={\url{http://is.muni.cz/publication/884893/en}},
+      language={English}
+}
+
+It is based on the original word2vec implementation at https://code.google.com/p/word2vec/ based on the paper by Tomas Mikolov, Ilya Sutskever, Kai Chen, Greg Corrado and Jeffrey Dean(https://arxiv.org/pdf/1310.4546.pdf).
+
+@inproceedings{mikolov2013distributed,
+  title={Distributed representations of words and phrases and their compositionality},
+  author={Mikolov, Tomas and Sutskever, Ilya and Chen, Kai and Corrado, Greg S and Dean, Jeff},
+  booktitle={Advances in neural information processing systems},
+  pages={3111--3119},
+  year={2013}
+}
+
+----------
+Clustering
+----------
+We use sci-kit learn's implementaion of affinity propogation for clustering:
+
+Affinity Propogation is a clustering algorithm first developed by Brendan J. Frey and Delbert Dueck in the following paper.
+Clustering by Passing Messages Between Data Points(http://www.icmla-conference.org/icmla07/FreyDueckScience07.pdf)
+
+@article{frey2007clustering,
+  title={Clustering by passing messages between data points},
+  author={Frey, Brendan J and Dueck, Delbert},
+  journal={science},
+  volume={315},
+  number={5814},
+  pages={972--976},
+  year={2007},
+  publisher={American Association for the Advancement of Science}
+}
+
+
 
 
