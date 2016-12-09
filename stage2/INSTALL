@@ -1,0 +1,12 @@
+There is no installation necessary. All of the required packes are either in /scratch, or /home/csugrads/pauls658/ which are accessible by anyone. To do a full run:
+
+1) navigate to /scratch/NLP_red
+	cd /scratch/NLP_red
+2) Start up the python virtual environment. Execute the command
+	source bin/activate.csh
+3) navigate to the project directory
+	cd /scratch/NLP_red/NLP/stage2
+4) execute the command
+	python cluster_baseline.py
+
+This will run clustering on all of the file in the input directory

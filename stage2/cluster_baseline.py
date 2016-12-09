@@ -162,8 +162,8 @@ def cluster_tfidfs(file_name, model, pref=None):
     #defgen_model = Word2Vec.load('models/3_parts_of_wiki_lowercase')
     for i, cluster in enumerate(final_clusters):
         definition = Definition(model, pos)
-        print "Cluster " + str(i)
-        print "----------"
+        #print "Cluster " + str(i)
+        #print "----------"
         word_counts = defaultdict(int)
         doc_counts = defaultdict(int)
         for instance_id in cluster:
@@ -180,16 +180,16 @@ def cluster_tfidfs(file_name, model, pref=None):
         for (word, pos), count in word_counts.iteritems():
             word_counts_list.append((word, pos, count))
         word_counts_list = sorted(word_counts_list, key=lambda x: x[2], reverse=True)
-        print "Top 10 words for cluster: "
-        print word_counts_list[:10]
+        #print "Top 10 words for cluster: "
+        #print word_counts_list[:10]
         defPhrase = definition.process(word_counts_list, doc_counts)
         print defPhrase
-    print "--End--\n"
+    #print "--End--\n"
 
     sys.stdout.flush()
 
 if __name__ == '__main__':
-
+    nltk.data.path.append('/home/csugrads/pauls658/nltk_data')
     print "Loading model"
     model = Word2Vec.load_word2vec_format(model_file, binary=True)
     print "Model loaded"
