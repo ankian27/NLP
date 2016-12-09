@@ -1,8 +1,10 @@
 Author: Brandon Paulsen
-
-===================================================
+==========
+CLUSTERING
+==========
+---------------------------------------------------
 NOTE: confusion matrixes are in the OUTPUT file!!!|
-===================================================
+---------------------------------------------------
 
 
 TABLE
@@ -111,6 +113,56 @@ Instance 4049 was also a text sense which was clustered with the product senses.
 <s> Philip Reiss, an attorney for WPP, said the memo was found late Tuesday in the files of several of the departed directors. </s> <@> </p> <@> <p> <@> <s> The document, which appears to be a computer print      out and isn't dated, has a  <head>line</head>  at the top stating it is from Ed Yaconetti, the former chief operating officer of Lord Geller, to the agency's management committee. </s>
 
 ID: 4049 (computer,13.2352764052) (top,11.7557644141) (operating,11.5277914181) (chief,11.1707379252) (agency,10.9025156879) (officer,10.7642492682) (appears,9.21252324935) (files,6.67389607404) (directors,6.67389607404) (document,6.67389607404) (ed,6.67389607404) (lord,5.92178304626) (dated,4.88635805399) (departed,3.29160677563) (printout,3.29160677563)
+
+=====================
+DEFINITION GENERATION
+=====================
+
+Method:
+-------
+
+Our previous approach to definition generation was to select the topic word that hdp-wsi gave us. The we used CFG rules to make a sentence that was our definition for it. Since in the stage-2 of our project, we use Word2Vec model for our clustering and not hdp-wsi. We decided  to use the vector addition feature of Word2Vec. Our intention was to pick upto 5 highest occuring Nouns, Adjectives and Verbs from context generated for every sense cluster generated for each word, and then generate the definition.
+
+Our definition has two parts now, The first part is a mostly hardcoded sentence that tries to use the hypernym(ideally) of the highest occuring 5 nouns(or less if there are not enough nouns). We did this to get the overall meaning of the word and use it in the definition. For example the definition of 'dog' given as an example had the word 'canine' in it which is actually a hypernym for 'dog' just like the word 'hound' . Then the second part is similar to our approach in the stage-1 of our project. We use some of the highest occuring words(Nouns, Adjectives and Verbs) and make a sentence from it using CFG rules. 
+
+Vector addition and subtraction of words could be used to get different Hypernyms or Hyponyms of those words. We wanted to add the top nouns that we got to get their hypernym, so that it could be used in the first half of the definition, the reason for this is explained in the previous paragraph.
+
+Initially we were using all the words from the clusters towards the total frequency counts. This gave us slightly poor results as some instances had multiple occurences of an irrelevant word, and that word was being selected as our top word for the vector summation. An example of this is the word 'colbert' in one cluster of the word 'wear'. It was occuring 4 times in one instance and hence was one of the most occurring noun, but was totally irrelevant. So we got an idea from the sentiment analysis video, where it was mentioned that he frequency of a word within an instance was irrelevant, the useful piece of information was if that word existed or not. So we decided that the frequency count for each word would be increased by max 1 for each instance. This approach gave us better definitions.
+
+In our clustering results We got varying cluster sizes. In one case the cluster was only two instances so the context words for that cluster didn't have any nouns whatsoever. So it was not possible to generate the word for the first part of the definition through the vector sum process. So the word 'unknown' was used instead, this approach is justified as the cluster with only 2 instances is definitely an erroneous one and therefore that word sense mostly doesn't exist and hence should not have any definition.        
+
+The basic idea for second part of definition generation of a word is to use the context words of the sentence in which the word is used. We use the Context Free Grammars(CFG) to generate the definition of the words. The CFGs have a set of recursively defined rules(productions) to generate string patterns.
+
+The Context Free Grammar Rules used are:
+
+S 	-> S1
+S1 	-> NP VP
+NP 	-> Det ADJ N
+VP 	-> V NP
+Det -> a | the | is
+N 	-> Noun words list
+V 	-> Verb words list
+ADJ -> Adjective words list
+
+
+We use the Context Free Grammar rules to preserve the syntactic structure of the English grammar. The English grammar has rules such as, Noun phrase should be followed by a Verb Phrase, 'a', 'an', 'the' are Determiners and so on. To preserve such rules and to use them during the sentence generation, we use the Context Free Grammars. The CFG rules are recursively applied to the topic words to generate the definition of the topic words. 
+
+Firstly, we derive the Parts of Speech for each of the topic words and then seperate the words into different sets of Noun/Verb/Adjective based on the dervied Parts of Speech tags.
+
+We iterate over each of the symbols(Terminal symbol) and choose a Non-Terminal or Terminal symbol based on the production rule to generate the definition. 
+
+Examples of Terminal Symbols: S, S1,, NP, VP, Det, N, V, ADJ
+Non-Terminal Symbols : Nouns, verbs, adjectives, determiners
+
+Example:
+
+Noun Words	: [('gun', 10), 
+			   ('rifle', 6), 
+			   ('times', 5), 
+			   ('deer', 4), 
+			   ('guy', 4)]
+
+Definition  : the young times kill the dead deer 
 
 
 Definitions Generated:
