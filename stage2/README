@@ -21,23 +21,18 @@ CONTENTS
 ********
 
 Contents in the Directory:
-* install.sh
-* runit.sh
-* runall.sh
 * README
-* RESULTS
-* postProcessing.py
-* def_gen.py
+* RESULTS-2
 * stopwords.txt (The list of stop words we are excluding)
 * senseclusters_scorer
+* ORIGINS
+* OUTPUT
+* defs (The Final output that contains confusion matrices and definitions)
 * src
 	DefinitionGeneration.py
 	cluster.py
 	file_processing.py
-	sensesample.py
-	sentenceIter.py
 	tokenizing.py
-* output
 * input
 	abandon-verb-pauls658.xml
 	racket-noun-pauls658.xml
