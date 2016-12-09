@@ -1,5 +1,7 @@
 import re
-#@author Brandon Paulsen
+"""
+@author Brandon Paulsen
+"""
 
 """
 A function to extract all the instances from a sense2val file. Not used by the clustering routine.
@@ -90,8 +92,15 @@ Creates an answer file from a list of labels. Outputs the answer file in sensecl
 @param target_word: the target word that was clustered
 @param pos: the part of speech as a string
 """
-def make_answers(labels, target_word, pos):
+def make_answers(file_name, labels, target_word, pos):
     thing = target_word + '.' + pos[0].lower()
     with open('senseclusters_scorer/answers', 'w+') as ans_ref:
         for i, label in enumerate(labels):
             ans_ref.write(thing + " " + thing + "." + str(i) + " " + thing + "." + str(label + 1) + "\n")
+    header, instances, trailer = get_instances(file_name)
+    with open('output/' + target_word + '-' + pos + '-assignmnets.xml', 'w+') as f_ref:
+        f_ref.write('<corpus lang="english">\n<lexelt item="LEXELT">\n')
+        rep_re = re.compile(r'senseid="[^"]+"')
+        for i, label in enumerate(labels):
+            f_ref.write(rep_re.sub(instances[i], 'senseid="' + str(label) + '"') + '\n')
+        f_ref.write('</lexelt>\n</corpus>')

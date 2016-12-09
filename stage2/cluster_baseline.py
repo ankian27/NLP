@@ -55,9 +55,12 @@ A short function to score our clusters.
 @param target_word: the target word
 @param pos: the part of speech of the target word
 """
-def score_cluster(cluster, answer_file, target_word, pos):
+def score_cluster(cluster, answer_file, target_word, pos, conf_word1, conf_word2):
     os.system('rm senseclusters_scorer/answers*; rm senseclusters_scorer/key*')
-    make_answers(cluster, target_word, pos)
+    if conf_word1 and conf_word2:
+        make_answers(answer_file, cluster, conf_word1 + '-' + conf_word2, pos)
+    else:
+        make_answers(answer_file, cluster, target_word, pos)
     make_key(answer_file, target_word, pos)
     os.system('cd senseclusters_scorer; ./senseclusters_scorer.sh answers key; cd ..')
     os.system('cat senseclusters_scorer/report.out')
@@ -72,6 +75,7 @@ propogation takes these similarities and creates clusters based on them.
 @param pref: hard-coded prefernce value for affinity propogation. Only used for debugging/fine-tuning.
 """
 def cluster_tfidfs(file_name, model, pref=None):
+    print "Processing: " + file_name
     target_word, pos, conflate_word1, conflate_word2 = do_filename(file_name)
     stopwords = set(line.strip() for line in open('stopwords.txt', 'r'))
 
@@ -156,7 +160,7 @@ def cluster_tfidfs(file_name, model, pref=None):
     else:
         final_cluster = best_cluster
 
-    score_cluster(final_cluster, file_name, target_word, pos)
+    score_cluster(final_cluster, file_name, target_word, pos, conflate_word1, conflate_word2)
 
     final_clusters = get_clusters(final_cluster)
     #defgen_model = Word2Vec.load('models/3_parts_of_wiki_lowercase')
@@ -169,7 +173,7 @@ def cluster_tfidfs(file_name, model, pref=None):
         for instance_id in cluster:
             # word is the (word, pos) tuple
             seen = set()
-            print "ID: " + str(instance_id) + " " + ' '.join('(' + word + ',' + str(tfidf) + ')' for word, tfidf in final_ctxes[instance_id])
+            #print "ID: " + str(instance_id) + " " + ' '.join('(' + word + ',' + str(tfidf) + ')' for word, tfidf in final_ctxes[instance_id])
             for word in pos_ctxes[instance_id]:
                 if word[0] in model:
                     word_counts[word] += 1

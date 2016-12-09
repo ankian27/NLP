@@ -1,3 +1,7 @@
+"""
+Author: Brandon Paulsen
+"""
+
 import sys, os, math, traceback, copy, random
 from src.file_processing import *
 from src.tokenizing import *
@@ -51,9 +55,12 @@ A short function to score our clusters.
 @param target_word: the target word
 @param pos: the part of speech of the target word
 """
-def score_cluster(cluster, answer_file, target_word, pos):
+def score_cluster(cluster, answer_file, target_word, pos, conf_word1, conf_word2):
     os.system('rm senseclusters_scorer/answers*; rm senseclusters_scorer/key*')
-    make_answers(cluster, target_word, pos)
+    if conf_word1 and conf_word2:
+        make_answers(answer_file, cluster, conf_word1 + '-' + conf_word2, pos)
+    else:
+        make_answers(answer_file, cluster, target_word, pos)
     make_key(answer_file, target_word, pos)
     os.system('cd senseclusters_scorer; ./senseclusters_scorer.sh answers key; cd ..')
     os.system('cat senseclusters_scorer/report.out')
@@ -152,20 +159,20 @@ def cluster_tfidfs(file_name, model, pref=None):
     else:
         final_cluster = best_cluster
 
-    score_cluster(final_cluster, file_name, target_word, pos)
+    score_cluster(final_cluster, file_name, target_word, pos, conflate_word1, conflate_word2)
 
     final_clusters = get_clusters(final_cluster)
     #defgen_model = Word2Vec.load('models/3_parts_of_wiki_lowercase')
     for i, cluster in enumerate(final_clusters):
         definition = Definition(model, pos)
-        print "Cluster " + str(i)
-        print "----------"
+        #print "Cluster " + str(i)
+        #print "----------"
         word_counts = defaultdict(int)
         doc_counts = defaultdict(int)
         for instance_id in cluster:
             # word is the (word, pos) tuple
             seen = set()
-            print "ID: " + str(instance_id) + " " + ' '.join('(' + word + ',' + str(tfidf) + ')' for word, tfidf in final_ctxes[instance_id])
+            #print "ID: " + str(instance_id) + " " + ' '.join('(' + word + ',' + str(tfidf) + ')' for word, tfidf in final_ctxes[instance_id])
             for word in pos_ctxes[instance_id]:
                 if word[0] in model:
                     word_counts[word] += 1
@@ -176,16 +183,16 @@ def cluster_tfidfs(file_name, model, pref=None):
         for (word, pos), count in word_counts.iteritems():
             word_counts_list.append((word, pos, count))
         word_counts_list = sorted(word_counts_list, key=lambda x: x[2], reverse=True)
-        print "Top 10 words for cluster: "
-        print word_counts_list[:10]
+        #print "Top 10 words for cluster: "
+        #print word_counts_list[:10]
         defPhrase = definition.process(word_counts_list, doc_counts)
         print defPhrase
-    print "--End--\n"
+    #print "--End--\n"
 
     sys.stdout.flush()
 
 if __name__ == '__main__':
-
+    nltk.data.path.append('/home/csugrads/pauls658/nltk_data')
     print "Loading model"
     model = Word2Vec.load_word2vec_format(model_file, binary=True)
     print "Model loaded"

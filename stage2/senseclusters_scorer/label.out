@@ -1,4 +1,5 @@
 ClusterID -> SenseID
-C0 -> xyz.n.2
-C1 -> xyz.n.1
-Score = 89.86
+C0 -> plot.n.1
+C1 -> plot.n.2
+C2 -> plot.n.3
+Score = 80.00
