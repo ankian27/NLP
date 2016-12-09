@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 sidewalk-furnace
 ----------------
@@ -500,8 +501,17 @@ Something you do with unknown. the the
 Author: Brandon Paulsen
 
 ===================================================
+=======
+Author: Ankit Anand Gupta
+	Brandon Paulsen
+	Sandeep Vuppula
+==========
+CLUSTERING
+==========
+---------------------------------------------------
+>>>>>>> 85d00654cb2f8ad7d058b01743c06aadcbe16c62
 NOTE: confusion matrixes are in the OUTPUT file!!!|
-===================================================
+---------------------------------------------------
 
 
 TABLE
@@ -610,3 +620,542 @@ Instance 4049 was also a text sense which was clustered with the product senses.
 <s> Philip Reiss, an attorney for WPP, said the memo was found late Tuesday in the files of several of the departed directors. </s> <@> </p> <@> <p> <@> <s> The document, which appears to be a computer print      out and isn't dated, has a  <head>line</head>  at the top stating it is from Ed Yaconetti, the former chief operating officer of Lord Geller, to the agency's management committee. </s>
 
 ID: 4049 (computer,13.2352764052) (top,11.7557644141) (operating,11.5277914181) (chief,11.1707379252) (agency,10.9025156879) (officer,10.7642492682) (appears,9.21252324935) (files,6.67389607404) (directors,6.67389607404) (document,6.67389607404) (ed,6.67389607404) (lord,5.92178304626) (dated,4.88635805399) (departed,3.29160677563) (printout,3.29160677563)
+
+=====================
+DEFINITION GENERATION
+=====================
+
+Method:
+-------
+
+Our previous approach to definition generation was to select the topic word that hdp-wsi gave us. The we used CFG rules to make a sentence that was our definition for it. Since in the stage-2 of our project, we use Word2Vec model for our clustering and not hdp-wsi. We decided  to use the vector addition feature of Word2Vec. Our intention was to pick upto 5 highest occuring Nouns, Adjectives and Verbs from context generated for every sense cluster generated for each word, and then generate the definition.
+
+Our definition has two parts now, The first part is a mostly hardcoded sentence that tries to use the hypernym(ideally) of the highest occuring 5 nouns(or less if there are not enough nouns). We did this to get the overall meaning of the word and use it in the definition. For example the definition of 'dog' given as an example had the word 'canine' in it which is actually a hypernym for 'dog' just like the word 'hound' . Then the second part is similar to our approach in the stage-1 of our project. We use some of the highest occuring words(Nouns, Adjectives and Verbs) and make a sentence from it using CFG rules. 
+
+Vector addition and subtraction of words could be used to get different Hypernyms or Hyponyms of those words. We wanted to add the top nouns that we got to get their hypernym, so that it could be used in the first half of the definition, the reason for this is explained in the previous paragraph.
+
+Initially we were using all the words from the clusters towards the total frequency counts. This gave us slightly poor results as some instances had multiple occurences of an irrelevant word, and that word was being selected as our top word for the vector summation. An example of this is the word 'colbert' in one cluster of the word 'wear'. It was occuring 4 times in one instance and hence was one of the most occurring noun, but was totally irrelevant. So we got an idea from the sentiment analysis video, where it was mentioned that he frequency of a word within an instance was irrelevant, the useful piece of information was if that word existed or not. So we decided that the frequency count for each word would be increased by max 1 for each instance. This approach gave us better definitions.
+
+In our clustering results We got varying cluster sizes. In one case the cluster was only two instances so the context words for that cluster didn't have any nouns whatsoever. So it was not possible to generate the word for the first part of the definition through the vector sum process. So the word 'unknown' was used instead, this approach is justified as the cluster with only 2 instances is definitely an erroneous one and therefore that word sense mostly doesn't exist and hence should not have any definition.        
+
+The basic idea for second part of definition generation of a word is to use the context words of the sentence in which the word is used. We use the Context Free Grammars(CFG) to generate the definition of the words. The CFGs have a set of recursively defined rules(productions) to generate string patterns.
+
+The Context Free Grammar Rules used are:
+
+S 	-> S1
+S1 	-> NP VP
+NP 	-> Det ADJ N
+VP 	-> V NP
+Det -> a | the | is
+N 	-> Noun words list
+V 	-> Verb words list
+ADJ -> Adjective words list
+
+
+We use the Context Free Grammar rules to preserve the syntactic structure of the English grammar. The English grammar has rules such as, Noun phrase should be followed by a Verb Phrase, 'a', 'an', 'the' are Determiners and so on. To preserve such rules and to use them during the sentence generation, we use the Context Free Grammars. The CFG rules are recursively applied to the topic words to generate the definition of the topic words. 
+
+Firstly, we derive the Parts of Speech for each of the topic words and then seperate the words into different sets of Noun/Verb/Adjective based on the dervied Parts of Speech tags.
+
+We iterate over each of the symbols(Terminal symbol) and choose a Non-Terminal or Terminal symbol based on the production rule to generate the definition. 
+
+Examples of Terminal Symbols: S, S1,, NP, VP, Det, N, V, ADJ
+Non-Terminal Symbols : Nouns, verbs, adjectives, determiners
+
+Example:
+
+Noun Words	: [('gun', 10), 
+			   ('rifle', 6), 
+			   ('times', 5), 
+			   ('deer', 4), 
+			   ('guy', 4)]
+
+Definition  : the young times kill the dead deer 
+
+
+Definitions Generated:
+----------------------
+Below is the list of definitions generated for each word (conflate/noun/verb). For each word, the set of NOUNS which are used to retrieve the definition are also mentioned for each cluster.
+
+SideWalk-Furnace:
+Cluster 0:
+[('street', 77), ('city', 53), ('streets', 31), ('front', 26), ('road', 25)]
+It is a part of sidewalk. the pedestrian front called the white street 
+Cluster 1:
+[('iron', 121), ('blast', 114), ('steel', 78), ('production', 45), ('process', 44)]
+Something you do with open_hearth_furnace. the electric blast produce the industrial blast 
+Cluster 2:
+[]
+Something you do with unknown. the a 
+--End--
+
+Banana-Wall:
+Cluster 0:
+[('cream', 32), ('butter', 29), ('ice', 27), ('chocolate', 22), ('milk', 21)]
+It is a part of chocolate_morsels. a fat milk put a fat chocolate 
+Cluster 1:
+[('street', 117), ('republic', 55), ('room', 37), ('journal', 31), ('door', 29)]
+Something you do with doorway. a big journal want the flat republic 
+--End--
+
+Strike:
+Cluster 0:
+[('tomorrow', 5), ('night', 4), ('zone', 3), ('game', 3), ('arm', 3)]
+Something you do with tonight. a white zone think a single tomorrow 
+Cluster 1:
+[('union', 9), ('iran', 4), ('west', 3), ('jobs', 3), ('students', 3)]
+Something you do with EMMC_nurses. a nuclear union killed a local iran 
+--End--
+
+Shoot:
+Cluster 0:
+[('film', 12), ('movie', 9), ('lot', 7), ('scene', 5), ('video', 4)]
+Something you do with movies. a hour film asked a hour film 
+Cluster 1:
+[('gun', 10), ('rifle', 6), ('times', 5), ('deer', 4), ('guy', 4)]
+Something you do with pistol. the young times kill the dead deer 
+--End--
+
+Wear:
+Cluster 0:
+[('dress', 6), ('shirt', 5), ('uniform', 4), ('kind', 3), ('jeans', 3)]
+Something you do with Ralph_Lauren_polo_shirt. a white jeans look a sure kind 
+Cluster 1:
+[('tear', 22), ('technology', 3), ('wood', 3), ('study', 3), ('power', 3)]
+Something you do with Aluminium_smelting. a tear wood suffer the tear power 
+--End--
+
+Bat:
+Cluster 0:
+[('hand', 5), ('house', 4), ('room', 4), ('arms', 3), ('voice', 3)]
+It is a part of upstairs. a nose house walked the small arms 
+Cluster 1:
+[('contact', 5), ('game', 5), ('head', 5), ('player', 4), ('ball', 4)]
+Something you do with play. the tight game hit the real player 
+Cluster 2:
+[('species', 2), ('host', 2), ('plants', 2), ('system', 2), ('viruses', 2)]
+Something you do with insect_vectors. a only plants infect the genetic viruses 
+--End--
+
+Racket:
+Cluster 0:
+[('protection', 7), ('numbers', 3), ('gangster', 3), ('government', 3), ('police', 3)]
+It is a part of cops. the early protection govern a early numbers 
+Cluster 1:
+[('tennis', 17), ('grip', 8), ('players', 7), ('player', 7), ('ball', 7)]
+Something you do with game. the common ball known a common grip 
+Cluster 2:
+[('night', 4), ('thing', 3), ('colonel', 3), ('heart', 3), ('father', 3)]
+Something you do with dad. the big colonel make the lower heart 
+--End--
+
+Pigeon-Car:
+Cluster 0:
+[('voiceover', 24), ('head', 20), ('mr', 19), ('part', 14), ('story', 12)]
+It is a part of Mrs._Northman. a true voiceover make the true voiceover 
+Cluster 1:
+[('bird', 74), ('birds', 63), ('passenger', 44), ('droppings', 30), ('peas', 24)]
+Something you do with geese. the tiny peas lost a high bird 
+Cluster 2:
+[('night', 29), ('head', 22), ('street', 21), ('police', 20), ('heart', 18)]
+Something you do with Teenager_stabbed. a black police took a black heart 
+Cluster 3:
+[('passenger', 60), ('genome', 34), ('dna', 30), ('cells', 30), ('rock', 17)]
+Something you do with mitochondrial_genome. the passenger rock synthesize a band genome 
+--End--
+
+plot:
+Cluster 0:
+[('leader', 3), ('murder', 3), ('officials', 3), ('ambassador', 3), ('intelligence', 3)]
+It is a part of diplomat. the american murder killed a alleged intelligence 
+Cluster 1:
+[('land', 17), ('house', 7), ('plants', 5), ('garden', 4), ('city', 4)]
+Something you do with gardens. a acre garden lived a large plants 
+Cluster 2:
+[('interaction', 6), ('figure', 5), ('decline', 3), ('association', 3), ('results', 3)]
+Something you do with Bracketed_figures. a significant decline assessed the annual results 
+--End--
+
+Date:
+Cluster 0:
+[('studies', 4), ('study', 4), ('students', 3), ('department', 3), ('days', 3)]
+It is a part of undergraduates. a public study received the online studies 
+Cluster 1:
+[('woman', 5), ('hand', 4), ('night', 3), ('days', 3), ('side', 3)]
+Something you do with day. the married days going a married night 
+Cluster 2:
+[('palm', 18), ('tree', 4), ('trees', 3), ('palms', 3), ('night', 2)]
+Something you do with pine_trees. a striped tree houses a main tree 
+--End--
+
+Abandon:
+Cluster 0:
+[('mind', 5), ('mother', 4), ('country', 4), ('despair', 4), ('friends', 4)]
+Something you do with unconditional_Cam_Newton. a present country began a generous despair 
+Cluster 1:
+[('rights', 4), ('place', 4), ('john', 3), ('power', 3), ('union', 3)]
+Something you do with unions. the bad union assure a voluntary rights 
+--End--
+
+PMSS:
+Cluster 0:
+[('president', 444), ('sen', 411), ('military', 398), ('hun', 396), ('government', 393)]
+It is a part of By_Ko_Kyoung. a latin president called the latin president 
+Cluster 1:
+[('skeleton', 238), ('found', 222), ('bones', 156), ('city', 138), ('olympic', 115)]
+Something you do with luge_bobsleigh. the union bones found a european bones 
+Cluster 2:
+[('court', 649), ('case', 515), ('law', 266), ('lawyers', 264), ('plaintiff', 248)]
+Something you do with attorneys. the real law told a real plaintiff 
+Cluster 3:
+[]
+Something you do with unknown. the the 
+--End--
+
+Television-food:
+Cluster 0:
+[('show', 35), ('tv', 33), ('cable', 25), ('america', 23), ('news', 23)]
+It is a part of TV. a high news eat the big tv 
+Cluster 1:
+[('children', 29), ('water', 23), ('health', 21), ('united', 18), ('security', 17)]
+Something you do with heath. a higher health eat a high water 
+--End--
+
+Line:
+Cluster 0:
+[('telephone', 56), ('end', 44), ('president', 40), ('car', 38), ('boat', 38)]
+It is a part of vehicle. a dead car draw a american boat 
+Cluster 1:
+[('company', 305), ('products', 244), ('sales', 197), ('market', 142), ('business', 127)]
+Something you do with markets. a strong business selling the higher business 
+Cluster 2:
+[('computers', 200), ('ibm', 185), ('computer', 154), ('machines', 105), ('business', 69)]
+Something you do with PCs. the personal computer make the high business 
+Cluster 3:
+[]
+Something you do with unknown. the the 
+--End--
+
+
+------------------------------------
+Discussion of Definition Generation
+------------------------------------
+
+Discussion of definition generation as compared to dictionaries.
+
+The definitions that we used for comparison are from  
+1.DIC - Dictionary.com (http://www.dictionary.com/)
+2.MW - Merriam Webster(https://www.merriam-webster.com/)
+
+--------------------------------The way to read the the corresponding definitions is---------------------------------------
+For each word, the number before each sense correspond to the same number in front of  the definition in both the dictionaries and our system. eg.
+
+Word: Abandon
+
+Our original Definitions:
+1.surrender something
+corresponds to
+DIC:
+1. to give up; discontinue; withdraw from:
+
+MW:
+1. to give up to the control or influence of another person or agent
+
+
+Definitions from System:
+1. Something you do with unconditional_Cam_Newton. a present country began a generous despair
+and same with sense no 2 or 3 if they exist.
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+
+Word: Abandon
+
+Our original Definitions:
+1.surrender something
+2.desert
+3.give up on
+4.yield to emotion
+
+DIC:
+1. to give up; discontinue; withdraw from:
+2. to cast away, leave, or desert, as property or a child.
+3. to leave completely and finally; forsake utterly; desert:
+4. to yield (oneself) without restraint or moderation; give (oneself) over to natural impulses, usually without self-control:
+
+MW:
+1. to give up to the control or influence of another person or agent
+2. to withdraw from often in the face of danger or encroachment
+3. to withdraw protection, support, or help from 
+4. to give (oneself) over unrestrainedly
+
+
+Definitions from System:
+1. Something you do with unconditional_Cam_Newton. a present country began a generous despair
+2. Something you do with unions. the bad union assure a voluntary rights 
+
+
+
+----------------------------------------------------------------
+Word: Bat
+
+Our original Definitions:
+1.a wooden stick
+2.a flying mammal
+
+MW:
+1. a usually wooden implement used for hitting the ball in various games
+2. any of a widely distributed order (Chiroptera) of nocturnal usually frugivorous or insectivorous flying mammals that have wings formed from four elongated digits of the forelimb covered by a cutaneous membrane and that have adequate visual capabilities but often rely on echolocation
+
+DIC:
+1. The wooden club used in certain games, as baseball and cricket, to strike the ball.
+2. Any of numerous flying mammals of the order Chiroptera, of worldwide distribution in tropical and temperate regions, having modified forelimbs that serve as wings and are covered with a membranous skin extending to the hind limbs.
+
+Definitions from System:
+1. Something you do with play. the tight game hit the real player
+2. It is a part of upstairs. a nose house walked the small arms 
+
+
+----------------------------------------------------------------
+Word: Date
+
+Our original Definitions:
+1.The representaion of a day on a calender
+2.A meeting between a couple
+3.A fruit that grows on palm trees
+
+MW:
+1. the time at which an event occurs 
+2. an appointment to meet at a specified time; especially :  a social engagement between two persons that often has a romantic character
+3. the oblong edible fruit of a palm (Phoenix dactylifera)
+
+DIC:
+1. a particular month, day, and year at which some event happened or will happen
+2. a social appointment or engagement arranged beforehand with another person, especially when a romantic relationship exists or may develop
+3.the oblong, fleshy fruit of the date palm, a staple food in northern Africa, Arabia, etc., and an important export.
+
+Definitions from System:
+1. It is a part of undergraduates. a public study received the online studies
+2. Something you do with day. the married days going a married night
+3. Something you do with pine_trees. a striped tree houses a main tree 
+
+
+
+----------------------------------------------------------------
+Word: Plot
+
+Our original Definitions:
+1.secret plan or conspiracy or story line
+2.piece of land
+3.graph or chart with data points
+
+MW:
+1. a secret plan for accomplishing a usually evil or unlawful end 
+2. a measured piece of land 
+3.  a graphic representation (as a chart)
+
+DIC:
+1.a secret plan or scheme to accomplish some purpose, especially a hostile, unlawful, or evil purpose
+2.a measured piece or parcel of land
+3.a plan, map, diagram, or other graphic representation, as of land, a building, etc.
+
+Definitions from System:
+1. It is a part of diplomat. the american murder killed a alleged intelligence
+2. Something you do with gardens. a acre garden lived a large plants
+3. Something you do with Bracketed_figures. a significant decline assessed the annual results
+
+----------------------------------------------------------------
+Word: Racket
+
+Our original Definitions:
+1.criminal activity
+2.sports equipment
+3.noise
+
+MW:
+1.a fraudulent scheme, enterprise, or activity
+2.a piece of sports equipment consisting of a handle and a frame with strings stretched tightly across it
+3.confused clattering noise 
+
+DIC:
+1.an organized illegal activity, such as bootlegging or the extortion of money from legitimate business people by threat or violence.
+2.a light bat having a netting of catgut or nylon stretched in a more or less oval frame and used for striking the ball in tennis, the shuttlecock in badminton, etc.
+3.a loud noise or clamor, especially of a disturbing or confusing kind; din; uproar.
+
+Definitions from System:
+1. It is a part of cops. the early protection govern a early numbers
+2. Something you do with game. the common ball known a common grip
+3. Something you do with dad. the big colonel make the lower heart 
+
+----------------------------------------------------------------
+Word: Shoot
+
+Our original Definitions:
+1.photograph or videograph a scene or a movie
+2.Attack with a weapon such as gun, arrow or missile
+
+MW:
+1.the action or an instance of shooting with a camera :  a session or a series of sessions of photographing or filming 
+2. to remove or destroy by use of firearms 
+
+DIC:
+1.A photographic or movie-making session
+2.to hit, wound, damage, kill, or destroy with a missile discharged from a weapon.
+
+Definitions from System:
+1. Something you do with movies. a hour film asked a hour film 
+2. Something you do with pistol. the young times kill the dead deer
+
+
+
+----------------------------------------------------------------
+Word: Strike
+
+Our original Definitions:
+1.missing a baseball pitch
+2.sudden forced hit
+3.refusal to work
+
+MW:
+1.a baseball pitch that is not hit fair or that passes through a certain area over home plate 
+2.to aim and usually deliver a blow, stroke, or thrust (as with the hand, a weapon, or a tool)
+3. to stop work in order to force an employer to comply with demands
+
+DIC:
+1.a pitch that is swung at and missed by the batter.
+2.to deal a blow or stroke to (a person or thing), as with the fist, a weapon, or a hammer; hit.
+3.A concerted refusal by employees in a particular business or industry to work.
+
+Definitions from System:
+1. Something you do with tonight. a white zone think a single tomorrow
+2. N.A.
+3. Something you do with EMMC_nurses. a nuclear union killed a local iran
+
+
+
+----------------------------------------------------------------
+Word: Wear
+
+Our original Definitions:
+1.something you put on your body
+2.damaged due to regular use
+
+MW:
+1.to bear or have on the person 
+2.to cause to deteriorate by use
+
+DIC:
+1.to carry or have on the body or about the person as a covering, equipment, ornament, or the like
+2.to impair, deteriorate, or consume gradually by use or any continued process
+
+Definitions from System:
+1. Something you do with Ralph_Lauren_polo_shirt. a white jeans look a sure kind 
+2. Something you do with Aluminium_smelting. a tear wood suffer the tear power
+
+
+All the words we looked the definition for had multiple meanings and often the number of definitions given were more than the number of senses we chose for our data creation stage. So we had to select the definition that seemed to be closest to our senses. Then we went through the definitions generated for our clusters and matched it corresponding to the definitions of the two dictionaries as best as we could.
+
+The major difference which can be spotted easily is that the the dictionary definitions were more coherent than ours. For the definitions generated by our systems we used the words that were extracted from the context of the target words. Sometimes these were very accurate and useful but the other times not so much. So using only these words and the vector sums of the top nouns we tried to come up with our structured definitions.
+
+As it can be noted many of them have relevant terms that give us a good idea about what that sense means, but it's just not as specific and spot-on as all the words in dictionary definitions. This however was sort of bound to happen as the instances for a target word contains words that might hint towards the target word but not the words that totally define it. 
+
+For our definitions we have treated the nouns and verb definitions differently. The first part of the definition, that is the hard coded part has different sentence structure for both nouns and verbs definition based upon the general nature of these parts of speeches.
+
+The word vector summation strategy for the first part seemed to be working for most of the definitions as we do get good relevant words, but does not seem to be that effective for some words. The reason being the value of the resultant vector of the sum of the words we are using. If the words that we add are generally similar we get good resultant summation word vector, but if they are not we do get words that are not very representative of our sense. One such interesting example is
+
+Abandon:
+Cluster 0:
+[('mind', 5), ('mother', 4), ('country', 4), ('despair', 4), ('friends', 4)]
+Something you do with unconditional_Cam_Newton. a present country began a generous despair  
+
+Here we get the aforementioned words that when added together give the word 'unconditional_Cam_Newton'. This word seems to be totally unrelated to the sense we are talking about. We do not have much to comment on why the model gives us this result as we can see somehow the resultant vectors of these words point to 'unconditional_Cam_Newton', it's related to the word vector values within that model. In this case it is difficult to speculate why words like mother, country, mind. despair and friends would give us Cam Newton. What we did find was when we looked into the the compound nature of the word, I saw multiple news articles that had a term saying "My love for him is unconditional", Cam Newton said. Since Word2Vec model stores frequently occuring ngrams as compounded word vectors it did so with the Cam Newton instance here as it might have been trained on those news articles.  
+
+-------------------------------------------------
+Performance Evaluation (Best, Average and Worst):
+-------------------------------------------------
+
+BEST Performing: shoot
+-----------------------
+C0:
+[('film', 12), ('movie', 9), ('lot', 7), ('scene', 5), ('video', 4)]
+Something you do with movies. a hour film asked a hour film
+C1
+[('gun', 10), ('rifle', 6), ('times', 5), ('deer', 4), ('guy', 4)]
+Something you do with pistol. the young times kill the dead deer  
+
+I think the verb "shoot" was the best performing in terms of definition generation. The definitions generated clearly differentiate between the two sentences. Our original definitions are:
+1.photograph or videograph a scene or a movie
+2.Attack with a weapon such as gun, arrow or missile
+
+In cluster 0 : The noun words - film, movie, scene, video all are good context words. By looking at the words itself we can guess something about movies/films. Top 4 out of the 5 nouns imply the same sense. Thus, Word2Vec returned 'movies' as the most similar word. This gave us a clear picture that, given a set of close related words, Word2Vec for sure gives us the most_similar word, related to the same context.
+
+In cluster 1 : The noun words - gun, rifle, deer all incline towards hunting/shooting an animal. Any wild guess can reveal that the word is related to killing an animal with a weapon. Hence the most_similar word returned by Word2Vec is 'pistol' which makes a lot sense. And moreover, it is very close to the definition. 
+
+As it has been mentioned above that the resultant sum vector is only as good as the constituent vectors and it's relevance to our sense depends on how closely the constituent words are related to each other and the sense. The word shoot always had subject words that helped the clustering model to distinguish if the shoot was of a movie/video or from a weapon aimed at an entity. 
+
+Note: The word shoot stands out from the other words we chose, as even in the dictionary definitions it uses words similar to the context words we get from our instances. There are not many words that are used to explain the act of shooting. So because of having less number of words, we get good definition.
+
+Thus, we can say that due to the aforementioned reasons for the target word shoot, we get the best definitions.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+AVERAGE Performing:
+-------------------
+Wear:
+C0:
+[('dress', 6), ('shirt', 5), ('uniform', 4), ('kind', 3), ('jeans', 3)]
+Something you do with Ralph_Lauren_polo_shirt. a white jeans look a sure kind 
+
+C1
+[('tear', 22), ('technology', 3), ('wood', 3), ('study', 3), ('power', 3)]
+Something you do with Aluminium_smelting. a tear wood suffer the tear power 
+
+Our original Definitions are:
+1.something you put on your body
+2.damaged due to regular use
+
+Cluster 0: Although the words, dress, shirt, uniform, jeans indicate clothes, we were not expecting Ralph_Lauren_polo_shirt. Later, we understood that, actually the part of the concatenated word "Ralph_Lauren_polo"_shirt is a brand name which sells clothes, jeans, shoes or stuff that we wear. But in the definition of wear, we meant of something to put on our body. We are expecting this result but found a different one. As mentioned in the discussion section above for Definition Generation in ReadMe, we mentioned that the words that we get from the context of target words only indicate towards the target word but not exactly define it. 
+
+Cluster 1: As the original definition implies, we were looking for words which imply damage due to frequent usage.The relationship between our definition and original definition is farfetched. Because, Aluminium smelting is a process of extracting aluminium from its oxide say aluminium oxide. We hear aluminium oxide in terms of corrosion. The outer layer corrodes but corrosion does not enter into inner layers. We guess this process of corrosion is due to wear and tear. Thus, this relation between 'aluminium' and 'wear and tear' explains the vectos of added upto the most similar word - aluminium smelting. But the later part of definition, wood suffer the tear explains something damaged due to using frequently.
+
+
+Note: This example reveals one more interesting facts about Word2Vec that, if the word is a brand name, it has a different way to 		  combine it. For example, the brand- Ralph Lauren polo, is concatenated to Ralph_Lauren_polo.
+	  We confirm that N-grams of related words(such as brand names) are stored as words concatenated with underscore.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+WORST Performing:
+-----------------
+Strike:
+C0:
+[('tomorrow', 5), ('night', 4), ('zone', 3), ('game', 3), ('arm', 3)]
+Something you do with tonight. a white zone think a single tomorrow 
+C1:
+[('union', 9), ('iran', 4), ('west', 3), ('jobs', 3), ('students', 3)]
+Something you do with EMMC_nurses. a nuclear union killed a local iran 
+
+Our original Definitions are:
+1.missing a baseball pitch
+2.sudden forced hit
+3.refusal to work
+
+Cluster 0:
+One of the instance (taken as is from the context): "It was Monday night. With luck, and presuming the train workers didn't go on <head>strike</head> between here and Calais, she might be home by this time tomorrow."
+
+As we can see, the words, such as 'night', 'tomorrow' are part of the context. Similarly they were repeated many times in different contexts. Although, the words, 'game', 'arm' may imply hitting, the combination does not produce a good word similar to our context.
+But the word 'tonight' is similar to tomorrow and night as returned by the google. It is even hard to draw an inference from the generated definition to the original ones. Hence, we think strike has one of the worst definitions.
+
+Cluster 1:
+One of the instance (taken as is from the context): "You know, if you think historically things that union employees have stayed out on a <head>strike</head> longer for -- things like pension benefits, for example, or seniority"
+
+Most of the time the word strike is used in the context of "not willing to work". This word is used if, unions are refusing to work, teachers refusing to strike for not getting a new contract and so on. With the word strike being used in these kind of references, it is hard to get the meaning from them. We think that, although the words, union, iran, west, jobs may some what be related to strike but the word 'students' is altering the context by huge extent. 
+The word EMMC_nurses refers to the nurses of Eastern Maine Medical Center (frequently shorted to Eastern Maine or simply EMMC). It is a hospital located in Bangor, Maine. The word, 'west' indicates directions hence the possible inference of choosing 'Eastern'. And our analysis of EMMC in wiki revealed that, in 2010-2012 there were nursing strikes(https://en.wikipedia.org/wiki/Eastern_Maine_Medical_Center). We then thought that these words may seem related for google vectors but the actual definition of strike is very farly related to it.
+
+In general, the word 'strike' is used in very generalized context. It can be used anywhere where people are not willing to do work and refusing to do any more work. It can be used with students, teachers, job professionals, unions etc. Also the word is used in many different kinds of games baseball, cricket, bowling etc. More over, the word strike is used as a metaphor too. It can be used in terms of lightning (eg. there were lightning strikes yesterday). So these kind of generalized usage of the word gave us contexts and words which are not close enough. All theses contexts were not inclining towards the word meaning itself. Hence we confirm that due to these reasons, the definition for the word STRIKE was one of the worst performing.
+
+
+Note: Some of the definitions we generated were empty. For example in cluster 2 of sidewalk-furnace name-conflate pair, the definition ----- was:"Something you do with unknown. the a ". This happened for the following reason:
+	  When we checked the number of instances in the cluster, there were only 2 instances. And there were no nouns in it. The nouns list was empty([]). Hence there was no good definition generated. And we returned the word 'unknown'
+
+References:
+------------
+http://eli.thegreenplace.net/2010/01/28/generating-random-sentences-from-a-context-free-grammar
