@@ -1,8 +1,515 @@
-Author: Brandon Paulsen
+sidewalk-furnace
+----------------
+            S1	      S0	   TOTAL	
+  C0:      597	      83	     680	(57.48)
+  C1:       55	     446	     501	(42.35)
+  C2:*       1	       1	       2	(0.17)
+ TOTAL     653	     530	    1183
+         (55.20)    (44.80) 
+Precision = 88.31(1043/1181)
+Recall = 88.17(1043/1183+0)
+F-Measure = 88.24
+
+Legend of Sense Tags
+S0 = xyz.n.1
+S1 = xyz.n.2
+Loading model
+Model loaded
+
+Cluster 0
+----------
+Top 10 words for cluster: 
+[('street', u'NOUN', 93), ('city', u'NOUN', 56), ('streets', u'NOUN', 34), ('road', u'NOUN', 30), ('house', u'NOUN', 29), ('traffic', u'NOUN', 27), ('pedestrian', u'ADJ', 26), ('front', u'NOUN', 26), ('creek', u'NOUN', 25), ('avenue', u'NOUN', 24)]
+[('street', 77), ('city', 53), ('streets', 31), ('front', 26), ('road', 25)]
+It is a part of sidewalk. the pedestrian front called the white street 
+Cluster 1
+----------
+Top 10 words for cluster: 
+[('iron', u'NOUN', 192), ('blast', u'NOUN', 132), ('steel', u'NOUN', 101), ('electric', u'ADJ', 62), ('production', u'NOUN', 54), ('process', u'NOUN', 52), ('temperature', u'NOUN', 46), ('coke', u'NOUN', 46), ('heat', u'NOUN', 45), ('air', u'NOUN', 44)]
+[('iron', 121), ('blast', 114), ('steel', 78), ('production', 45), ('process', 44)]
+Something you do with open_hearth_furnace. the electric blast produce the industrial blast 
+Cluster 2
+----------
+Top 10 words for cluster: 
+[]
+[]
+Something you do with unknown. the a 
+--End--
+
+banana-wall
+-----------
+            S0	      S1	   TOTAL	
+  C0:      241	       3	     244	(22.55)
+  C1:      305	     533	     838	(77.45)
+ TOTAL     546	     536	    1082
+         (50.46)    (49.54) 
+Precision = 71.53(774/1082)
+Recall = 71.53(774/1082+0)
+F-Measure = 71.53
+
+Legend of Sense Tags
+S0 = xyz.n.1
+S1 = xyz.n.2
+
+Cluster 0
+----------
+Top 10 words for cluster: 
+[('cream', u'NOUN', 35), ('butter', u'NOUN', 31), ('ice', u'NOUN', 28), ('chips', u'NOUN', 24), ('fruit', u'NOUN', 23), ('milk', u'NOUN', 23), ('apple', u'NOUN', 22), ('chocolate', u'NOUN', 22), ('cup', u'NOUN', 20), ('make', u'VERB', 18)]
+[('cream', 32), ('butter', 29), ('ice', 27), ('chocolate', 22), ('milk', 21)]
+It is a part of chocolate_morsels. a fat milk put a fat chocolate 
+Cluster 1
+----------
+Top 10 words for cluster: 
+[('street', u'NOUN', 122), ('republic', u'NOUN', 62), ('room', u'NOUN', 38), ('journal', u'NOUN', 31), ('door', u'NOUN', 30), ('night', u'NOUN', 27), ('today', u'NOUN', 27), ('floor', u'NOUN', 26), ('end', u'NOUN', 26), ('want', u'VERB', 25)]
+[('street', 117), ('republic', 55), ('room', 37), ('journal', 31), ('door', 29)]
+Something you do with doorway. a big journal want the flat republic 
+--End--
+
+strike
+------
+            S2	      S1	      S0#	   TOTAL	
+  C0:       13	      22	      10	      45	(45.00)
+  C1:       21	      34	       0	      55	(55.00)
+ TOTAL      34	      56	      10	     100
+         (34.00)    (56.00)    (10.00) 
+Precision = 47.00(47/100)
+Recall = 47.00(47/100+0)
+F-Measure = 47.00
+
+Legend of Sense Tags
+S0 = strike.v.1
+S1 = strike.v.2
+S2 = strike.v.3
+
+Cluster 0
+----------
+Top 10 words for cluster: 
+[('tomorrow', u'NOUN', 5), ('night', u'NOUN', 4), ('things', u'NOUN', 4), ('wide', u'ADJ', 4), ('think', u'VERB', 4), ('biri', u'NOUN', 3), ('zone', u'NOUN', 3), ('getting', u'VERB', 3), ('told', u'VERB', 3), ('game', u'NOUN', 3)]
+[('tomorrow', 5), ('night', 4), ('zone', 3), ('game', 3), ('arm', 3)]
+Something you do with tonight. a white zone think a single tomorrow 
+Cluster 1
+----------
+Top 10 words for cluster: 
+[('union', u'NOUN', 11), ('iran', u'NOUN', 8), ('nuclear', u'ADJ', 6), ('military', u'ADJ', 6), ('jobs', u'NOUN', 5), ('security', u'NOUN', 5), ('students', u'NOUN', 4), ('teachers', u'NOUN', 4), ('today', u'NOUN', 4), ('forces', u'NOUN', 4)]
+[('union', 9), ('iran', 4), ('west', 3), ('jobs', 3), ('students', 3)]
+Something you do with EMMC_nurses. a nuclear union killed a local iran 
+--End--
+
+shoot
+-----
+            S0	      S1	   TOTAL	
+  C0:       37	       6	      43	(43.00)
+  C1:       13	      44	      57	(57.00)
+ TOTAL      50	      50	     100
+         (50.00)    (50.00) 
+Precision = 81.00(81/100)
+Recall = 81.00(81/100+0)
+F-Measure = 81.00
+
+Legend of Sense Tags
+S0 = shoot.v.1
+S1 = shoot.v.2
+
+Cluster 0
+----------
+Top 10 words for cluster: 
+[('film', u'NOUN', 14), ('movie', u'NOUN', 13), ('lot', u'NOUN', 10), ('going', u'VERB', 10), ('photo', u'NOUN', 5), ('place', u'NOUN', 5), ('scene', u'NOUN', 5), ('make', u'VERB', 5), ('video', u'NOUN', 4), ('color', u'NOUN', 4)]
+[('film', 12), ('movie', 9), ('lot', 7), ('scene', 5), ('video', 4)]
+Something you do with movies. a hour film asked a hour film 
+Cluster 1
+----------
+Top 10 words for cluster: 
+[('gun', u'NOUN', 10), ('going', u'VERB', 9), ('rifle', u'NOUN', 8), ('killed', u'VERB', 6), ('guy', u'NOUN', 6), ('deer', u'NOUN', 5), ('kill', u'VERB', 5), ('police', u'NOUN', 5), ('times', u'NOUN', 5), ('commercial', u'ADJ', 4)]
+[('gun', 10), ('rifle', 6), ('times', 5), ('deer', 4), ('guy', 4)]
+Something you do with pistol. the young times kill the dead deer 
+--End--
+
+
+wear
+----
+            S0	      S1	   TOTAL	
+  C0:       44	       6	      50	(50.00)
+  C1:        6	      44	      50	(50.00)
+ TOTAL      50	      50	     100
+         (50.00)    (50.00) 
+Precision = 88.00(88/100)
+Recall = 88.00(88/100+0)
+F-Measure = 88.00
+
+Legend of Sense Tags
+S0 = wear.v.1
+S1 = wear.v.2
+
+Cluster 0
+----------
+Top 10 words for cluster: 
+[('dress', u'NOUN', 9), ('shirt', u'NOUN', 6), ('want', u'VERB', 5), ('uniform', u'NOUN', 5), ('makes', u'VERB', 5), ('red', u'ADJ', 4), ('jeans', u'NOUN', 4), ('cap', u'NOUN', 4), ('wanted', u'VERB', 4), ('color', u'NOUN', 4)]
+[('dress', 6), ('shirt', 5), ('uniform', 4), ('kind', 3), ('jeans', 3)]
+Something you do with Ralph_Lauren_polo_shirt. a white jeans look a sure kind 
+Cluster 1
+----------
+Top 10 words for cluster: 
+[('tear', u'NOUN', 22), ('tear', u'VERB', 19), ('normal', u'ADJ', 4), ('need', u'VERB', 4), ('high', u'ADJ', 4), ('sports', u'NOUN', 4), ('save', u'VERB', 3), ('suffer', u'VERB', 3), ('reach', u'VERB', 3), ('technology', u'NOUN', 3)]
+[('tear', 22), ('technology', 3), ('wood', 3), ('study', 3), ('power', 3)]
+Something you do with Aluminium_smelting. a tear wood suffer the tear power 
+--End--
+
+bat
+---
+            S0	      S1	   TOTAL	
+  C0:       27	      16	      43	(43.00)
+  C1:       14	      34	      48	(48.00)
+  C2:*       9	       0	       9	(9.00)
+ TOTAL      50	      50	     100
+         (50.00)    (50.00) 
+Precision = 67.03(61/91)
+Recall = 61.00(61/100+0)
+F-Measure = 63.87
+
+Legend of Sense Tags
+S0 = bat.n.1
+S1 = bat.n.2
+
+Cluster 0
+----------
+Top 10 words for cluster: 
+[('hand', u'NOUN', 7), ('house', u'NOUN', 5), ('room', u'NOUN', 5), ('walked', u'VERB', 4), ('looked', u'VERB', 4), ('took', u'VERB', 4), ('small', u'ADJ', 4), ('red', u'ADJ', 3), ('arms', u'NOUN', 3), ('vera', u'NOUN', 3)]
+[('hand', 5), ('house', 4), ('room', 4), ('arms', 3), ('voice', 3)]
+It is a part of upstairs. a nose house walked the small arms 
+Cluster 1
+----------
+Top 10 words for cluster: 
+[('game', u'NOUN', 6), ('hit', u'VERB', 6), ('contact', u'NOUN', 5), ('head', u'NOUN', 5), ('player', u'NOUN', 4), ('swing', u'VERB', 4), ('ball', u'NOUN', 4), ('hell', u'NOUN', 4), ('going', u'VERB', 4), ('getting', u'VERB', 3)]
+[('contact', 5), ('game', 5), ('head', 5), ('player', 4), ('ball', 4)]
+Something you do with play. the tight game hit the real player 
+Cluster 2
+----------
+Top 10 words for cluster: 
+[('plants', u'NOUN', 5), ('viruses', u'NOUN', 3), ('species', u'NOUN', 2), ('infect', u'VERB', 2), ('species', u'VERB', 2), ('host', u'NOUN', 2), ('harbor', u'VERB', 2), ('genetic', u'ADJ', 2), ('told', u'VERB', 2), ('system', u'NOUN', 2)]
+[('species', 2), ('host', 2), ('plants', 2), ('system', 2), ('viruses', 2)]
+Something you do with insect_vectors. a only plants infect the genetic viruses 
+--End--
+
+racket
+------
+            S0	      S1	      S2	   TOTAL	
+  C0:       22	       1	       6	      29	(26.36)
+  C1:        0	      30	       1	      31	(28.18)
+  C2:        8	       9	      33	      50	(45.45)
+ TOTAL      30	      40	      40	     110
+         (27.27)    (36.36)    (36.36) 
+Precision = 77.27(85/110)
+Recall = 77.27(85/110+0)
+F-Measure = 77.27
+
+Legend of Sense Tags
+S0 = racket.n.1
+S1 = racket.n.2
+S2 = racket.n.3
+
+Cluster 0
+----------
+Top 10 words for cluster: 
+[('protection', u'NOUN', 8), ('enterprise', u'NOUN', 6), ('politicians', u'NOUN', 4), ('numbers', u'NOUN', 4), ('oscar', u'NOUN', 4), ('police', u'NOUN', 4), ('tapes', u'NOUN', 3), ('ui', u'NOUN', 3), ('rise', u'NOUN', 3), ('gangster', u'NOUN', 3)]
+[('protection', 7), ('numbers', 3), ('gangster', 3), ('government', 3), ('police', 3)]
+It is a part of cops. the early protection govern a early numbers 
+Cluster 1
+----------
+Top 10 words for cluster: 
+[('tennis', u'NOUN', 23), ('ball', u'NOUN', 11), ('grip', u'NOUN', 9), ('players', u'NOUN', 9), ('player', u'NOUN', 7), ('table', u'ADJ', 6), ('modern', u'ADJ', 5), ('played', u'VERB', 5), ('court', u'NOUN', 5), ('borg', u'NOUN', 4)]
+[('tennis', 17), ('grip', 8), ('players', 7), ('player', 7), ('ball', 7)]
+Something you do with game. the common ball known a common grip 
+Cluster 2
+----------
+Top 10 words for cluster: 
+[('going', u'VERB', 8), ('make', u'VERB', 8), ('heard', u'VERB', 7), ('think', u'VERB', 6), ('louder', u'NOUN', 5), ('night', u'NOUN', 4), ('making', u'VERB', 4), ('trying', u'VERB', 4), ('father', u'NOUN', 4), ('terrible', u'ADJ', 4)]
+[('night', 4), ('thing', 3), ('colonel', 3), ('heart', 3), ('father', 3)]
+Something you do with dad. the big colonel make the lower heart 
+--End--
+
+pigeon-car
+----------
+            S0	      S1	   TOTAL	
+  C1:      369	      16	     385	(28.41)
+  C2:      119	     340	     459	(33.87)
+  C0:*     226	     189	     415	(30.63)
+  C3:*      94	       2	      96	(7.08)
+ TOTAL     808	     547	    1355
+         (59.63)    (40.37) 
+Precision = 84.00(709/844)
+Recall = 52.32(709/1355+0)
+F-Measure = 64.48
+
+Legend of Sense Tags
+S0 = xyz.n.1
+S1 = xyz.n.2
+
+Cluster 0
+----------
+Top 10 words for cluster: 
+[('voiceover', u'NOUN', 28), ('make', u'VERB', 23), ('head', u'NOUN', 20), ('mr', u'NOUN', 19), ('want', u'VERB', 19), ('called', u'VERB', 17), ('story', u'NOUN', 14), ('research', u'NOUN', 14), ('learn', u'VERB', 14), ('part', u'NOUN', 14)]
+[('voiceover', 24), ('head', 20), ('mr', 19), ('part', 14), ('story', 12)]
+It is a part of Mrs._Northman. a true voiceover make the true voiceover 
+Cluster 1
+----------
+Top 10 words for cluster: 
+[('bird', u'NOUN', 82), ('birds', u'NOUN', 71), ('passenger', u'NOUN', 50), ('white', u'ADJ', 34), ('peas', u'NOUN', 30), ('droppings', u'NOUN', 30), ('species', u'NOUN', 26), ('duck', u'NOUN', 20), ('chicken', u'NOUN', 19), ('side', u'NOUN', 18)]
+[('bird', 74), ('birds', 63), ('passenger', 44), ('droppings', 30), ('peas', 24)]
+Something you do with geese. the tiny peas lost a high bird 
+Cluster 2
+----------
+Top 10 words for cluster: 
+[('night', u'NOUN', 30), ('head', u'NOUN', 22), ('heart', u'NOUN', 22), ('street', u'NOUN', 21), ('city', u'NOUN', 21), ('police', u'NOUN', 20), ('caught', u'VERB', 20), ('white', u'ADJ', 20), ('miles', u'NOUN', 18), ('ace', u'NOUN', 18)]
+[('night', 29), ('head', 22), ('street', 21), ('police', 20), ('heart', 18)]
+Something you do with Teenager_stabbed. a black police took a black heart 
+Cluster 3
+----------
+Top 10 words for cluster: 
+[('passenger', u'NOUN', 76), ('cells', u'NOUN', 36), ('genome', u'NOUN', 34), ('dna', u'NOUN', 32), ('stem', u'NOUN', 20), ('rock', u'NOUN', 17), ('museum', u'NOUN', 16), ('cell', u'NOUN', 14), ('band', u'ADJ', 14), ('tailed', u'ADJ', 14)]
+[('passenger', 60), ('genome', 34), ('dna', 30), ('cells', 30), ('rock', 17)]
+Something you do with mitochondrial_genome. the passenger rock synthesize a band genome 
+--End--
+
+plot
+----
+            S0	      S1	      S2	   TOTAL	
+  C0:       35	       0	       2	      37	(37.00)
+  C1:       15	      29	       2	      46	(46.00)
+  C2:        0	       1	      16	      17	(17.00)
+ TOTAL      50	      30	      20	     100
+         (50.00)    (30.00)    (20.00) 
+Precision = 80.00(80/100)
+Recall = 80.00(80/100+0)
+F-Measure = 80.00
+
+Legend of Sense Tags
+S0 = plot.n.1
+S1 = plot.n.2
+S2 = plot.n.3
+
+Cluster 0
+----------
+Top 10 words for cluster: 
+[('kill', u'VERB', 12), ('officials', u'NOUN', 4), ('qaeda', u'NOUN', 3), ('support', u'NOUN', 3), ('leader', u'NOUN', 3), ('john', u'NOUN', 3), ('murder', u'NOUN', 3), ('husband', u'NOUN', 3), ('matt', u'NOUN', 3), ('blow', u'VERB', 3)]
+[('leader', 3), ('murder', 3), ('officials', 3), ('ambassador', 3), ('intelligence', 3)]
+It is a part of diplomat. the american murder killed a alleged intelligence 
+Cluster 1
+----------
+Top 10 words for cluster: 
+[('land', u'NOUN', 19), ('small', u'ADJ', 9), ('house', u'NOUN', 7), ('plants', u'NOUN', 6), ('garden', u'NOUN', 5), ('grow', u'VERB', 5), ('called', u'VERB', 5), ('cabin', u'NOUN', 4), ('acre', u'ADJ', 4), ('wanted', u'VERB', 4)]
+[('land', 17), ('house', 7), ('plants', 5), ('garden', 4), ('city', 4)]
+Something you do with gardens. a acre garden lived a large plants 
+Cluster 2
+----------
+Top 10 words for cluster: 
+[('interaction', u'NOUN', 7), ('figure', u'NOUN', 5), ('results', u'NOUN', 4), ('significant', u'ADJ', 4), ('number', u'NOUN', 4), ('decline', u'NOUN', 3), ('student', u'NOUN', 3), ('association', u'NOUN', 3), ('table', u'ADJ', 3), ('spectrum', u'NOUN', 3)]
+[('interaction', 6), ('figure', 5), ('decline', 3), ('association', 3), ('results', 3)]
+Something you do with Bracketed_figures. a significant decline assessed the annual results 
+--End--
+
+date
+----
+            S0	      S1	      S2	   TOTAL	
+  C0:       29	       1	       4	      34	(34.00)
+  C1:       10	      28	       3	      41	(41.00)
+  C2:        1	       1	      23	      25	(25.00)
+ TOTAL      40	      30	      30	     100
+         (40.00)    (30.00)    (30.00) 
+Precision = 80.00(80/100)
+Recall = 80.00(80/100+0)
+F-Measure = 80.00
+
+Legend of Sense Tags
+S0 = date.n.1
+S1 = date.n.2
+S2 = date.n.3
+
+Cluster 0
+----------
+Top 10 words for cluster: 
+[('rti', u'NOUN', 5), ('fluency', u'NOUN', 5), ('health', u'NOUN', 4), ('provided', u'VERB', 4), ('students', u'NOUN', 4), ('studies', u'NOUN', 4), ('construction', u'NOUN', 4), ('study', u'NOUN', 4), ('proposed', u'VERB', 4), ('published', u'VERB', 4)]
+[('studies', 4), ('study', 4), ('students', 3), ('department', 3), ('days', 3)]
+It is a part of undergraduates. a public study received the online studies 
+Cluster 1
+----------
+Top 10 words for cluster: 
+[('make', u'VERB', 6), ('woman', u'NOUN', 5), ('thought', u'VERB', 4), ('want', u'VERB', 4), ('knew', u'VERB', 4), ('asked', u'VERB', 4), ('play', u'VERB', 4), ('hand', u'NOUN', 4), ('ask', u'VERB', 4), ('think', u'VERB', 4)]
+[('woman', 5), ('hand', 4), ('night', 3), ('days', 3), ('side', 3)]
+Something you do with day. the married days going a married night 
+Cluster 2
+----------
+Top 10 words for cluster: 
+[('palm', u'NOUN', 20), ('tree', u'NOUN', 6), ('sweet', u'ADJ', 4), ('trees', u'NOUN', 3), ('endured', u'VERB', 3), ('seeds', u'NOUN', 3), ('palms', u'NOUN', 3), ('bowl', u'NOUN', 3), ('warm', u'ADJ', 3), ('transmission', u'NOUN', 2)]
+[('palm', 18), ('tree', 4), ('trees', 3), ('palms', 3), ('night', 2)]
+Something you do with pine_trees. a striped tree houses a main tree 
+--End--
+
+abandon
+-------
+            S1	      S2	      S0#	      S3#	   TOTAL	
+  C0:       27	      14	       6	       8	      55	(55.00)
+  C1:       16	      20	       9	       0	      45	(45.00)
+ TOTAL      43	      34	      15	       8	     100
+         (43.00)    (34.00)    (15.00)    (8.00) 
+Precision = 47.00(47/100)
+Recall = 47.00(47/100+0)
+F-Measure = 47.00
+
+Legend of Sense Tags
+S0 = abandon.v.1
+S1 = abandon.v.2
+S2 = abandon.v.3
+S3 = abandon.v.4
+
+Cluster 0
+----------
+Top 10 words for cluster: 
+[('mind', u'NOUN', 5), ('left', u'VERB', 5), ('live', u'VERB', 5), ('mother', u'NOUN', 5), ('hands', u'NOUN', 4), ('country', u'NOUN', 4), ('despair', u'NOUN', 4), ('friends', u'NOUN', 4), ('began', u'VERB', 4), ('home', u'NOUN', 3)]
+[('mind', 5), ('mother', 4), ('country', 4), ('despair', 4), ('friends', 4)]
+Something you do with unconditional_Cam_Newton. a present country began a generous despair 
+Cluster 1
+----------
+Top 10 words for cluster: 
+[('john', u'NOUN', 5), ('rights', u'NOUN', 4), ('place', u'NOUN', 4), ('child', u'NOUN', 4), ('direction', u'NOUN', 3), ('india', u'NOUN', 3), ('liberty', u'NOUN', 3), ('justice', u'NOUN', 3), ('voluntary', u'ADJ', 3), ('side', u'NOUN', 3)]
+[('rights', 4), ('place', 4), ('john', 3), ('power', 3), ('union', 3)]
+Something you do with unions. the bad union assure a voluntary rights 
+--End--
+
+PMSS
+----
+            S3	      S2	      S1	      S0	   TOTAL	
+  C0:     2115	     240	     133	    1288	    3776	(37.76)
+  C1:      210	    2163	     223	     426	    3022	(30.22)
+  C2:      175	      97	    2143	     785	    3200	(32.00)
+  C3:        0	       0	       1	       1	       2	(0.02)
+ TOTAL    2500	    2500	    2500	    2500	   10000
+         (25.00)    (25.00)    (25.00)    (25.00) 
+Precision = 64.22(6422/10000)
+Recall = 64.22(6422/10000+0)
+F-Measure = 64.22
+
+Legend of Sense Tags
+S0 = pmss.n.1
+S1 = pmss.n.2
+S2 = pmss.n.3
+S3 = pmss.n.4
+
+Cluster 0
+----------
+Top 10 words for cluster: 
+[('president', u'NOUN', 470), ('sen', u'NOUN', 454), ('hun', u'NOUN', 443), ('military', u'NOUN', 434), ('government', u'NOUN', 419), ('country', u'NOUN', 272), ('minister', u'NOUN', 267), ('party', u'NOUN', 264), ('power', u'NOUN', 261), ('marcos', u'NOUN', 212)]
+[('president', 444), ('sen', 411), ('military', 398), ('hun', 396), ('government', 393)]
+It is a part of By_Ko_Kyoung. a latin president called the latin president 
+Cluster 1
+----------
+Top 10 words for cluster: 
+[('skeleton', u'NOUN', 246), ('found', u'NOUN', 244), ('bones', u'NOUN', 168), ('city', u'NOUN', 148), ('women', u'NOUN', 145), ('olympic', u'NOUN', 131), ('games', u'NOUN', 120), ('million', u'NOUN', 112), ('human', u'NOUN', 110), ('museum', u'NOUN', 109)]
+[('skeleton', 238), ('found', 222), ('bones', 156), ('city', 138), ('olympic', 115)]
+Something you do with luge_bobsleigh. the union bones found a european bones 
+Cluster 2
+----------
+Top 10 words for cluster: 
+[('court', u'NOUN', 773), ('case', u'NOUN', 574), ('law', u'NOUN', 298), ('plaintiff', u'NOUN', 296), ('lawyers', u'NOUN', 294), ('judge', u'NOUN', 262), ('lawyer', u'NOUN', 256), ('death', u'NOUN', 250), ('lawsuit', u'NOUN', 243), ('attorney', u'NOUN', 234)]
+[('court', 649), ('case', 515), ('law', 266), ('lawyers', 264), ('plaintiff', 248)]
+Something you do with attorneys. the real law told a real plaintiff 
+Cluster 3
+----------
+Top 10 words for cluster: 
+[]
+[]
+Something you do with unknown. the the 
+--End--
+
+television-food
+---------------
+            S0	      S1	   TOTAL	
+  C0:      426	     178	     604	(53.74)
+  C1:      104	     416	     520	(46.26)
+ TOTAL     530	     594	    1124
+         (47.15)    (52.85) 
+Precision = 74.91(842/1124)
+Recall = 74.91(842/1124+0)
+F-Measure = 74.91
+
+Legend of Sense Tags
+S0 = xyz.n.1
+S1 = xyz.n.2
+
+Cluster 0
+----------
+Top 10 words for cluster: 
+[('show', u'NOUN', 39), ('tv', u'NOUN', 37), ('going', u'VERB', 26), ('watching', u'VERB', 25), ('cable', u'NOUN', 25), ('news', u'NOUN', 24), ('radio', u'NOUN', 24), ('america', u'NOUN', 23), ('father', u'NOUN', 23), ('network', u'NOUN', 22)]
+[('show', 35), ('tv', 33), ('cable', 25), ('america', 23), ('news', 23)]
+It is a part of TV. a high news eat the big tv 
+Cluster 1
+----------
+Top 10 words for cluster: 
+[('children', u'NOUN', 33), ('eating', u'VERB', 30), ('eat', u'VERB', 26), ('water', u'NOUN', 24), ('health', u'NOUN', 22), ('local', u'ADJ', 21), ('high', u'ADJ', 21), ('safety', u'NOUN', 20), ('united', u'NOUN', 19), ('took', u'VERB', 18)]
+[('children', 29), ('water', 23), ('health', 21), ('united', 18), ('security', 17)]
+Something you do with heath. a higher health eat a high water 
+--End--
+
+line
+----
+            S5	      S4	      S3	      S0	      S1#	      S2#	   TOTAL	
+  C0:      374	     470	     245	     358	     292	     280	    2019	(48.70)
+  C1:       23	    1229	     135	       3	      75	      65	    1530	(36.90)
+  C2:        5	     510	      35	       1	       4	       2	     557	(13.43)
+  C3:        2	       8	      14	      11	       3	       2	      40	(0.96)
+ TOTAL     404	    2217	     429	     373	     374	     349	    4146
+         (9.74)    (53.47)    (10.35)    (9.00)    (9.02)    (8.42) 
+Precision = 39.77(1649/4146)
+Recall = 39.77(1649/4146+0)
+F-Measure = 39.77
+
+Legend of Sense Tags
+S0 = line.n.1
+S1 = line.n.2
+S2 = line.n.3
+S3 = line.n.4
+S4 = line.n.5
+S5 = line.n.6
+
+Cluster 0
+----------
+Top 10 words for cluster: 
+[('telephone', u'NOUN', 61), ('fine', u'ADJ', 50), ('called', u'VERB', 46), ('car', u'NOUN', 44), ('end', u'NOUN', 44), ('boat', u'NOUN', 44), ('draw', u'VERB', 43), ('president', u'NOUN', 41), ('cars', u'NOUN', 40), ('york', u'NOUN', 38)]
+[('telephone', 56), ('end', 44), ('president', 40), ('car', 38), ('boat', 38)]
+It is a part of vehicle. a dead car draw a american boat 
+Cluster 1
+----------
+Top 10 words for cluster: 
+[('company', u'NOUN', 326), ('products', u'NOUN', 266), ('million', u'NUM', 262), ('sales', u'NOUN', 218), ('market', u'NOUN', 151), ('business', u'NOUN', 138), ('telephone', u'NOUN', 73), ('food', u'NOUN', 68), ('unit', u'NOUN', 67), ('including', u'VERB', 66)]
+[('company', 305), ('products', 244), ('sales', 197), ('market', 142), ('business', 127)]
+Something you do with markets. a strong business selling the higher business 
+Cluster 2
+----------
+Top 10 words for cluster: 
+[('ibm', u'NOUN', 234), ('computers', u'NOUN', 218), ('computer', u'NOUN', 171), ('personal', u'ADJ', 134), ('machines', u'NOUN', 114), ('business', u'NOUN', 70), ('software', u'NOUN', 70), ('products', u'NOUN', 62), ('company', u'NOUN', 61), ('international', u'NOUN', 54)]
+[('computers', 200), ('ibm', 185), ('computer', 154), ('machines', 105), ('business', 69)]
+Something you do with PCs. the personal computer make the high business 
+Cluster 3
+----------
+Top 10 words for cluster: 
+[]
+[]
+Something you do with unknown. the the 
+--End--
 
 ===================================================
+=======
+Author: Ankit Anand Gupta
+	Brandon Paulsen
+	Sai Ram Kowshik Vattipally
+	Sandeep Vuppula
+
+==========
+CLUSTERING
+==========
+
+---------------------------------------------------
 NOTE: confusion matrixes are in the OUTPUT file!!!|
-===================================================
+---------------------------------------------------
 
 
 TABLE
@@ -24,13 +531,13 @@ TABLE
 |Stage 1 | 51.82       | 84.87      | 60.0      | 70.0      | 45.0         | 50.98           |
 ----------------------------------------------------------------------------------------------
 
-         -------------
-         | line-noun | 
-----------------------
-|Stage 2 | 39.77     | 
-----------------------
-|Stage 1 | 69.30     |
-----------------------
+         --------------------
+         | line-noun | PMSS |
+-----------------------------
+|Stage 2 | 39.77     | 64.22|
+-----------------------------
+|Stage 1 | 69.30     |      |
+-----------------------------
 
 OVERALL PERFORMANCE
 -------------------
@@ -111,3 +618,542 @@ Instance 4049 was also a text sense which was clustered with the product senses.
 <s> Philip Reiss, an attorney for WPP, said the memo was found late Tuesday in the files of several of the departed directors. </s> <@> </p> <@> <p> <@> <s> The document, which appears to be a computer print      out and isn't dated, has a  <head>line</head>  at the top stating it is from Ed Yaconetti, the former chief operating officer of Lord Geller, to the agency's management committee. </s>
 
 ID: 4049 (computer,13.2352764052) (top,11.7557644141) (operating,11.5277914181) (chief,11.1707379252) (agency,10.9025156879) (officer,10.7642492682) (appears,9.21252324935) (files,6.67389607404) (directors,6.67389607404) (document,6.67389607404) (ed,6.67389607404) (lord,5.92178304626) (dated,4.88635805399) (departed,3.29160677563) (printout,3.29160677563)
+
+=====================
+DEFINITION GENERATION
+=====================
+
+Method:
+-------
+
+Our previous approach to definition generation was to select the topic word that hdp-wsi gave us. The we used CFG rules to make a sentence that was our definition for it. Since in the stage-2 of our project, we use Word2Vec model for our clustering and not hdp-wsi. We decided  to use the vector addition feature of Word2Vec. Our intention was to pick upto 5 highest occuring Nouns, Adjectives and Verbs from context generated for every sense cluster generated for each word, and then generate the definition.
+
+Our definition has two parts now, The first part is a mostly hardcoded sentence that tries to use the hypernym(ideally) of the highest occuring 5 nouns(or less if there are not enough nouns). We did this to get the overall meaning of the word and use it in the definition. For example the definition of 'dog' given as an example had the word 'canine' in it which is actually a hypernym for 'dog' just like the word 'hound' . Then the second part is similar to our approach in the stage-1 of our project. We use some of the highest occuring words(Nouns, Adjectives and Verbs) and make a sentence from it using CFG rules. 
+
+Vector addition and subtraction of words could be used to get different Hypernyms or Hyponyms of those words. We wanted to add the top nouns that we got to get their hypernym, so that it could be used in the first half of the definition, the reason for this is explained in the previous paragraph.
+
+Initially we were using all the words from the clusters towards the total frequency counts. This gave us slightly poor results as some instances had multiple occurences of an irrelevant word, and that word was being selected as our top word for the vector summation. An example of this is the word 'colbert' in one cluster of the word 'wear'. It was occuring 4 times in one instance and hence was one of the most occurring noun, but was totally irrelevant. So we got an idea from the sentiment analysis video, where it was mentioned that he frequency of a word within an instance was irrelevant, the useful piece of information was if that word existed or not. So we decided that the frequency count for each word would be increased by max 1 for each instance. This approach gave us better definitions.
+
+In our clustering results We got varying cluster sizes. In one case the cluster was only two instances so the context words for that cluster didn't have any nouns whatsoever. So it was not possible to generate the word for the first part of the definition through the vector sum process. So the word 'unknown' was used instead, this approach is justified as the cluster with only 2 instances is definitely an erroneous one and therefore that word sense mostly doesn't exist and hence should not have any definition.        
+
+The basic idea for second part of definition generation of a word is to use the context words of the sentence in which the word is used. We use the Context Free Grammars(CFG) to generate the definition of the words. The CFGs have a set of recursively defined rules(productions) to generate string patterns.
+
+The Context Free Grammar Rules used are:
+
+S 	-> S1
+S1 	-> NP VP
+NP 	-> Det ADJ N
+VP 	-> V NP
+Det -> a | the | is
+N 	-> Noun words list
+V 	-> Verb words list
+ADJ -> Adjective words list
+
+
+We use the Context Free Grammar rules to preserve the syntactic structure of the English grammar. The English grammar has rules such as, Noun phrase should be followed by a Verb Phrase, 'a', 'an', 'the' are Determiners and so on. To preserve such rules and to use them during the sentence generation, we use the Context Free Grammars. The CFG rules are recursively applied to the topic words to generate the definition of the topic words. 
+
+Firstly, we derive the Parts of Speech for each of the topic words and then seperate the words into different sets of Noun/Verb/Adjective based on the dervied Parts of Speech tags.
+
+We iterate over each of the symbols(Terminal symbol) and choose a Non-Terminal or Terminal symbol based on the production rule to generate the definition. 
+
+Examples of Terminal Symbols: S, S1,, NP, VP, Det, N, V, ADJ
+Non-Terminal Symbols : Nouns, verbs, adjectives, determiners
+
+Example:
+
+Noun Words	: [('gun', 10), 
+			   ('rifle', 6), 
+			   ('times', 5), 
+			   ('deer', 4), 
+			   ('guy', 4)]
+
+Definition  : the young times kill the dead deer 
+
+
+Definitions Generated:
+----------------------
+Below is the list of definitions generated for each word (conflate/noun/verb). For each word, the set of NOUNS which are used to retrieve the definition are also mentioned for each cluster.
+
+SideWalk-Furnace:
+Cluster 0:
+[('street', 77), ('city', 53), ('streets', 31), ('front', 26), ('road', 25)]
+It is a part of sidewalk. the pedestrian front called the white street 
+Cluster 1:
+[('iron', 121), ('blast', 114), ('steel', 78), ('production', 45), ('process', 44)]
+Something you do with open_hearth_furnace. the electric blast produce the industrial blast 
+Cluster 2:
+[]
+Something you do with unknown. the a 
+--End--
+
+Banana-Wall:
+Cluster 0:
+[('cream', 32), ('butter', 29), ('ice', 27), ('chocolate', 22), ('milk', 21)]
+It is a part of chocolate_morsels. a fat milk put a fat chocolate 
+Cluster 1:
+[('street', 117), ('republic', 55), ('room', 37), ('journal', 31), ('door', 29)]
+Something you do with doorway. a big journal want the flat republic 
+--End--
+
+Strike:
+Cluster 0:
+[('tomorrow', 5), ('night', 4), ('zone', 3), ('game', 3), ('arm', 3)]
+Something you do with tonight. a white zone think a single tomorrow 
+Cluster 1:
+[('union', 9), ('iran', 4), ('west', 3), ('jobs', 3), ('students', 3)]
+Something you do with EMMC_nurses. a nuclear union killed a local iran 
+--End--
+
+Shoot:
+Cluster 0:
+[('film', 12), ('movie', 9), ('lot', 7), ('scene', 5), ('video', 4)]
+Something you do with movies. a hour film asked a hour film 
+Cluster 1:
+[('gun', 10), ('rifle', 6), ('times', 5), ('deer', 4), ('guy', 4)]
+Something you do with pistol. the young times kill the dead deer 
+--End--
+
+Wear:
+Cluster 0:
+[('dress', 6), ('shirt', 5), ('uniform', 4), ('kind', 3), ('jeans', 3)]
+Something you do with Ralph_Lauren_polo_shirt. a white jeans look a sure kind 
+Cluster 1:
+[('tear', 22), ('technology', 3), ('wood', 3), ('study', 3), ('power', 3)]
+Something you do with Aluminium_smelting. a tear wood suffer the tear power 
+--End--
+
+Bat:
+Cluster 0:
+[('hand', 5), ('house', 4), ('room', 4), ('arms', 3), ('voice', 3)]
+It is a part of upstairs. a nose house walked the small arms 
+Cluster 1:
+[('contact', 5), ('game', 5), ('head', 5), ('player', 4), ('ball', 4)]
+Something you do with play. the tight game hit the real player 
+Cluster 2:
+[('species', 2), ('host', 2), ('plants', 2), ('system', 2), ('viruses', 2)]
+Something you do with insect_vectors. a only plants infect the genetic viruses 
+--End--
+
+Racket:
+Cluster 0:
+[('protection', 7), ('numbers', 3), ('gangster', 3), ('government', 3), ('police', 3)]
+It is a part of cops. the early protection govern a early numbers 
+Cluster 1:
+[('tennis', 17), ('grip', 8), ('players', 7), ('player', 7), ('ball', 7)]
+Something you do with game. the common ball known a common grip 
+Cluster 2:
+[('night', 4), ('thing', 3), ('colonel', 3), ('heart', 3), ('father', 3)]
+Something you do with dad. the big colonel make the lower heart 
+--End--
+
+Pigeon-Car:
+Cluster 0:
+[('voiceover', 24), ('head', 20), ('mr', 19), ('part', 14), ('story', 12)]
+It is a part of Mrs._Northman. a true voiceover make the true voiceover 
+Cluster 1:
+[('bird', 74), ('birds', 63), ('passenger', 44), ('droppings', 30), ('peas', 24)]
+Something you do with geese. the tiny peas lost a high bird 
+Cluster 2:
+[('night', 29), ('head', 22), ('street', 21), ('police', 20), ('heart', 18)]
+Something you do with Teenager_stabbed. a black police took a black heart 
+Cluster 3:
+[('passenger', 60), ('genome', 34), ('dna', 30), ('cells', 30), ('rock', 17)]
+Something you do with mitochondrial_genome. the passenger rock synthesize a band genome 
+--End--
+
+plot:
+Cluster 0:
+[('leader', 3), ('murder', 3), ('officials', 3), ('ambassador', 3), ('intelligence', 3)]
+It is a part of diplomat. the american murder killed a alleged intelligence 
+Cluster 1:
+[('land', 17), ('house', 7), ('plants', 5), ('garden', 4), ('city', 4)]
+Something you do with gardens. a acre garden lived a large plants 
+Cluster 2:
+[('interaction', 6), ('figure', 5), ('decline', 3), ('association', 3), ('results', 3)]
+Something you do with Bracketed_figures. a significant decline assessed the annual results 
+--End--
+
+Date:
+Cluster 0:
+[('studies', 4), ('study', 4), ('students', 3), ('department', 3), ('days', 3)]
+It is a part of undergraduates. a public study received the online studies 
+Cluster 1:
+[('woman', 5), ('hand', 4), ('night', 3), ('days', 3), ('side', 3)]
+Something you do with day. the married days going a married night 
+Cluster 2:
+[('palm', 18), ('tree', 4), ('trees', 3), ('palms', 3), ('night', 2)]
+Something you do with pine_trees. a striped tree houses a main tree 
+--End--
+
+Abandon:
+Cluster 0:
+[('mind', 5), ('mother', 4), ('country', 4), ('despair', 4), ('friends', 4)]
+Something you do with unconditional_Cam_Newton. a present country began a generous despair 
+Cluster 1:
+[('rights', 4), ('place', 4), ('john', 3), ('power', 3), ('union', 3)]
+Something you do with unions. the bad union assure a voluntary rights 
+--End--
+
+PMSS:
+Cluster 0:
+[('president', 444), ('sen', 411), ('military', 398), ('hun', 396), ('government', 393)]
+It is a part of By_Ko_Kyoung. a latin president called the latin president 
+Cluster 1:
+[('skeleton', 238), ('found', 222), ('bones', 156), ('city', 138), ('olympic', 115)]
+Something you do with luge_bobsleigh. the union bones found a european bones 
+Cluster 2:
+[('court', 649), ('case', 515), ('law', 266), ('lawyers', 264), ('plaintiff', 248)]
+Something you do with attorneys. the real law told a real plaintiff 
+Cluster 3:
+[]
+Something you do with unknown. the the 
+--End--
+
+Television-food:
+Cluster 0:
+[('show', 35), ('tv', 33), ('cable', 25), ('america', 23), ('news', 23)]
+It is a part of TV. a high news eat the big tv 
+Cluster 1:
+[('children', 29), ('water', 23), ('health', 21), ('united', 18), ('security', 17)]
+Something you do with heath. a higher health eat a high water 
+--End--
+
+Line:
+Cluster 0:
+[('telephone', 56), ('end', 44), ('president', 40), ('car', 38), ('boat', 38)]
+It is a part of vehicle. a dead car draw a american boat 
+Cluster 1:
+[('company', 305), ('products', 244), ('sales', 197), ('market', 142), ('business', 127)]
+Something you do with markets. a strong business selling the higher business 
+Cluster 2:
+[('computers', 200), ('ibm', 185), ('computer', 154), ('machines', 105), ('business', 69)]
+Something you do with PCs. the personal computer make the high business 
+Cluster 3:
+[]
+Something you do with unknown. the the 
+--End--
+
+
+------------------------------------
+Discussion of Definition Generation
+------------------------------------
+
+Discussion of definition generation as compared to dictionaries.
+
+The definitions that we used for comparison are from  
+1.DIC - Dictionary.com (http://www.dictionary.com/)
+2.MW - Merriam Webster(https://www.merriam-webster.com/)
+
+--------------------------------The way to read the the corresponding definitions is---------------------------------------
+For each word, the number before each sense correspond to the same number in front of  the definition in both the dictionaries and our system. eg.
+
+Word: Abandon
+
+Our original Definitions:
+1.surrender something
+corresponds to
+DIC:
+1. to give up; discontinue; withdraw from:
+
+MW:
+1. to give up to the control or influence of another person or agent
+
+
+Definitions from System:
+1. Something you do with unconditional_Cam_Newton. a present country began a generous despair
+and same with sense no 2 or 3 if they exist.
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+
+Word: Abandon
+
+Our original Definitions:
+1.surrender something
+2.desert
+3.give up on
+4.yield to emotion
+
+DIC:
+1. to give up; discontinue; withdraw from:
+2. to cast away, leave, or desert, as property or a child.
+3. to leave completely and finally; forsake utterly; desert:
+4. to yield (oneself) without restraint or moderation; give (oneself) over to natural impulses, usually without self-control:
+
+MW:
+1. to give up to the control or influence of another person or agent
+2. to withdraw from often in the face of danger or encroachment
+3. to withdraw protection, support, or help from 
+4. to give (oneself) over unrestrainedly
+
+
+Definitions from System:
+1. Something you do with unconditional_Cam_Newton. a present country began a generous despair
+2. Something you do with unions. the bad union assure a voluntary rights 
+
+
+
+----------------------------------------------------------------
+Word: Bat
+
+Our original Definitions:
+1.a wooden stick
+2.a flying mammal
+
+MW:
+1. a usually wooden implement used for hitting the ball in various games
+2. any of a widely distributed order (Chiroptera) of nocturnal usually frugivorous or insectivorous flying mammals that have wings formed from four elongated digits of the forelimb covered by a cutaneous membrane and that have adequate visual capabilities but often rely on echolocation
+
+DIC:
+1. The wooden club used in certain games, as baseball and cricket, to strike the ball.
+2. Any of numerous flying mammals of the order Chiroptera, of worldwide distribution in tropical and temperate regions, having modified forelimbs that serve as wings and are covered with a membranous skin extending to the hind limbs.
+
+Definitions from System:
+1. Something you do with play. the tight game hit the real player
+2. It is a part of upstairs. a nose house walked the small arms 
+
+
+----------------------------------------------------------------
+Word: Date
+
+Our original Definitions:
+1.The representaion of a day on a calender
+2.A meeting between a couple
+3.A fruit that grows on palm trees
+
+MW:
+1. the time at which an event occurs 
+2. an appointment to meet at a specified time; especially :  a social engagement between two persons that often has a romantic character
+3. the oblong edible fruit of a palm (Phoenix dactylifera)
+
+DIC:
+1. a particular month, day, and year at which some event happened or will happen
+2. a social appointment or engagement arranged beforehand with another person, especially when a romantic relationship exists or may develop
+3.the oblong, fleshy fruit of the date palm, a staple food in northern Africa, Arabia, etc., and an important export.
+
+Definitions from System:
+1. It is a part of undergraduates. a public study received the online studies
+2. Something you do with day. the married days going a married night
+3. Something you do with pine_trees. a striped tree houses a main tree 
+
+
+
+----------------------------------------------------------------
+Word: Plot
+
+Our original Definitions:
+1.secret plan or conspiracy or story line
+2.piece of land
+3.graph or chart with data points
+
+MW:
+1. a secret plan for accomplishing a usually evil or unlawful end 
+2. a measured piece of land 
+3.  a graphic representation (as a chart)
+
+DIC:
+1.a secret plan or scheme to accomplish some purpose, especially a hostile, unlawful, or evil purpose
+2.a measured piece or parcel of land
+3.a plan, map, diagram, or other graphic representation, as of land, a building, etc.
+
+Definitions from System:
+1. It is a part of diplomat. the american murder killed a alleged intelligence
+2. Something you do with gardens. a acre garden lived a large plants
+3. Something you do with Bracketed_figures. a significant decline assessed the annual results
+
+----------------------------------------------------------------
+Word: Racket
+
+Our original Definitions:
+1.criminal activity
+2.sports equipment
+3.noise
+
+MW:
+1.a fraudulent scheme, enterprise, or activity
+2.a piece of sports equipment consisting of a handle and a frame with strings stretched tightly across it
+3.confused clattering noise 
+
+DIC:
+1.an organized illegal activity, such as bootlegging or the extortion of money from legitimate business people by threat or violence.
+2.a light bat having a netting of catgut or nylon stretched in a more or less oval frame and used for striking the ball in tennis, the shuttlecock in badminton, etc.
+3.a loud noise or clamor, especially of a disturbing or confusing kind; din; uproar.
+
+Definitions from System:
+1. It is a part of cops. the early protection govern a early numbers
+2. Something you do with game. the common ball known a common grip
+3. Something you do with dad. the big colonel make the lower heart 
+
+----------------------------------------------------------------
+Word: Shoot
+
+Our original Definitions:
+1.photograph or videograph a scene or a movie
+2.Attack with a weapon such as gun, arrow or missile
+
+MW:
+1.the action or an instance of shooting with a camera :  a session or a series of sessions of photographing or filming 
+2. to remove or destroy by use of firearms 
+
+DIC:
+1.A photographic or movie-making session
+2.to hit, wound, damage, kill, or destroy with a missile discharged from a weapon.
+
+Definitions from System:
+1. Something you do with movies. a hour film asked a hour film 
+2. Something you do with pistol. the young times kill the dead deer
+
+
+
+----------------------------------------------------------------
+Word: Strike
+
+Our original Definitions:
+1.missing a baseball pitch
+2.sudden forced hit
+3.refusal to work
+
+MW:
+1.a baseball pitch that is not hit fair or that passes through a certain area over home plate 
+2.to aim and usually deliver a blow, stroke, or thrust (as with the hand, a weapon, or a tool)
+3. to stop work in order to force an employer to comply with demands
+
+DIC:
+1.a pitch that is swung at and missed by the batter.
+2.to deal a blow or stroke to (a person or thing), as with the fist, a weapon, or a hammer; hit.
+3.A concerted refusal by employees in a particular business or industry to work.
+
+Definitions from System:
+1. Something you do with tonight. a white zone think a single tomorrow
+2. N.A.
+3. Something you do with EMMC_nurses. a nuclear union killed a local iran
+
+
+
+----------------------------------------------------------------
+Word: Wear
+
+Our original Definitions:
+1.something you put on your body
+2.damaged due to regular use
+
+MW:
+1.to bear or have on the person 
+2.to cause to deteriorate by use
+
+DIC:
+1.to carry or have on the body or about the person as a covering, equipment, ornament, or the like
+2.to impair, deteriorate, or consume gradually by use or any continued process
+
+Definitions from System:
+1. Something you do with Ralph_Lauren_polo_shirt. a white jeans look a sure kind 
+2. Something you do with Aluminium_smelting. a tear wood suffer the tear power
+
+
+All the words we looked the definition for had multiple meanings and often the number of definitions given were more than the number of senses we chose for our data creation stage. So we had to select the definition that seemed to be closest to our senses. Then we went through the definitions generated for our clusters and matched it corresponding to the definitions of the two dictionaries as best as we could.
+
+The major difference which can be spotted easily is that the the dictionary definitions were more coherent than ours. For the definitions generated by our systems we used the words that were extracted from the context of the target words. Sometimes these were very accurate and useful but the other times not so much. So using only these words and the vector sums of the top nouns we tried to come up with our structured definitions.
+
+As it can be noted many of them have relevant terms that give us a good idea about what that sense means, but it's just not as specific and spot-on as all the words in dictionary definitions. This however was sort of bound to happen as the instances for a target word contains words that might hint towards the target word but not the words that totally define it. 
+
+For our definitions we have treated the nouns and verb definitions differently. The first part of the definition, that is the hard coded part has different sentence structure for both nouns and verbs definition based upon the general nature of these parts of speeches.
+
+The word vector summation strategy for the first part seemed to be working for most of the definitions as we do get good relevant words, but does not seem to be that effective for some words. The reason being the value of the resultant vector of the sum of the words we are using. If the words that we add are generally similar we get good resultant summation word vector, but if they are not we do get words that are not very representative of our sense. One such interesting example is
+
+Abandon:
+Cluster 0:
+[('mind', 5), ('mother', 4), ('country', 4), ('despair', 4), ('friends', 4)]
+Something you do with unconditional_Cam_Newton. a present country began a generous despair  
+
+Here we get the aforementioned words that when added together give the word 'unconditional_Cam_Newton'. This word seems to be totally unrelated to the sense we are talking about. We do not have much to comment on why the model gives us this result as we can see somehow the resultant vectors of these words point to 'unconditional_Cam_Newton', it's related to the word vector values within that model. In this case it is difficult to speculate why words like mother, country, mind. despair and friends would give us Cam Newton. What we did find was when we looked into the the compound nature of the word, I saw multiple news articles that had a term saying "My love for him is unconditional", Cam Newton said. Since Word2Vec model stores frequently occuring ngrams as compounded word vectors it did so with the Cam Newton instance here as it might have been trained on those news articles.  
+
+-------------------------------------------------
+Performance Evaluation (Best, Average and Worst):
+-------------------------------------------------
+
+BEST Performing: shoot
+-----------------------
+C0:
+[('film', 12), ('movie', 9), ('lot', 7), ('scene', 5), ('video', 4)]
+Something you do with movies. a hour film asked a hour film
+C1
+[('gun', 10), ('rifle', 6), ('times', 5), ('deer', 4), ('guy', 4)]
+Something you do with pistol. the young times kill the dead deer  
+
+I think the verb "shoot" was the best performing in terms of definition generation. The definitions generated clearly differentiate between the two sentences. Our original definitions are:
+1.photograph or videograph a scene or a movie
+2.Attack with a weapon such as gun, arrow or missile
+
+In cluster 0 : The noun words - film, movie, scene, video all are good context words. By looking at the words itself we can guess something about movies/films. Top 4 out of the 5 nouns imply the same sense. Thus, Word2Vec returned 'movies' as the most similar word. This gave us a clear picture that, given a set of close related words, Word2Vec for sure gives us the most_similar word, related to the same context.
+
+In cluster 1 : The noun words - gun, rifle, deer all incline towards hunting/shooting an animal. Any wild guess can reveal that the word is related to killing an animal with a weapon. Hence the most_similar word returned by Word2Vec is 'pistol' which makes a lot sense. And moreover, it is very close to the definition. 
+
+As it has been mentioned above that the resultant sum vector is only as good as the constituent vectors and it's relevance to our sense depends on how closely the constituent words are related to each other and the sense. The word shoot always had subject words that helped the clustering model to distinguish if the shoot was of a movie/video or from a weapon aimed at an entity. 
+
+Note: The word shoot stands out from the other words we chose, as even in the dictionary definitions it uses words similar to the context words we get from our instances. There are not many words that are used to explain the act of shooting. So because of having less number of words, we get good definition.
+
+Thus, we can say that due to the aforementioned reasons for the target word shoot, we get the best definitions.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+AVERAGE Performing:
+-------------------
+Wear:
+C0:
+[('dress', 6), ('shirt', 5), ('uniform', 4), ('kind', 3), ('jeans', 3)]
+Something you do with Ralph_Lauren_polo_shirt. a white jeans look a sure kind 
+
+C1
+[('tear', 22), ('technology', 3), ('wood', 3), ('study', 3), ('power', 3)]
+Something you do with Aluminium_smelting. a tear wood suffer the tear power 
+
+Our original Definitions are:
+1.something you put on your body
+2.damaged due to regular use
+
+Cluster 0: Although the words, dress, shirt, uniform, jeans indicate clothes, we were not expecting Ralph_Lauren_polo_shirt. Later, we understood that, actually the part of the concatenated word "Ralph_Lauren_polo"_shirt is a brand name which sells clothes, jeans, shoes or stuff that we wear. But in the definition of wear, we meant of something to put on our body. We are expecting this result but found a different one. As mentioned in the discussion section above for Definition Generation in ReadMe, we mentioned that the words that we get from the context of target words only indicate towards the target word but not exactly define it. 
+
+Cluster 1: As the original definition implies, we were looking for words which imply damage due to frequent usage.The relationship between our definition and original definition is farfetched. Because, Aluminium smelting is a process of extracting aluminium from its oxide say aluminium oxide. We hear aluminium oxide in terms of corrosion. The outer layer corrodes but corrosion does not enter into inner layers. We guess this process of corrosion is due to wear and tear. Thus, this relation between 'aluminium' and 'wear and tear' explains the vectos of added upto the most similar word - aluminium smelting. But the later part of definition, wood suffer the tear explains something damaged due to using frequently.
+
+
+Note: This example reveals one more interesting facts about Word2Vec that, if the word is a brand name, it has a different way to 		  combine it. For example, the brand- Ralph Lauren polo, is concatenated to Ralph_Lauren_polo.
+	  We confirm that N-grams of related words(such as brand names) are stored as words concatenated with underscore.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+WORST Performing:
+-----------------
+Strike:
+C0:
+[('tomorrow', 5), ('night', 4), ('zone', 3), ('game', 3), ('arm', 3)]
+Something you do with tonight. a white zone think a single tomorrow 
+C1:
+[('union', 9), ('iran', 4), ('west', 3), ('jobs', 3), ('students', 3)]
+Something you do with EMMC_nurses. a nuclear union killed a local iran 
+
+Our original Definitions are:
+1.missing a baseball pitch
+2.sudden forced hit
+3.refusal to work
+
+Cluster 0:
+One of the instance (taken as is from the context): "It was Monday night. With luck, and presuming the train workers didn't go on <head>strike</head> between here and Calais, she might be home by this time tomorrow."
+
+As we can see, the words, such as 'night', 'tomorrow' are part of the context. Similarly they were repeated many times in different contexts. Although, the words, 'game', 'arm' may imply hitting, the combination does not produce a good word similar to our context.
+But the word 'tonight' is similar to tomorrow and night as returned by the google. It is even hard to draw an inference from the generated definition to the original ones. Hence, we think strike has one of the worst definitions.
+
+Cluster 1:
+One of the instance (taken as is from the context): "You know, if you think historically things that union employees have stayed out on a <head>strike</head> longer for -- things like pension benefits, for example, or seniority"
+
+Most of the time the word strike is used in the context of "not willing to work". This word is used if, unions are refusing to work, teachers refusing to strike for not getting a new contract and so on. With the word strike being used in these kind of references, it is hard to get the meaning from them. We think that, although the words, union, iran, west, jobs may some what be related to strike but the word 'students' is altering the context by huge extent. 
+The word EMMC_nurses refers to the nurses of Eastern Maine Medical Center (frequently shorted to Eastern Maine or simply EMMC). It is a hospital located in Bangor, Maine. The word, 'west' indicates directions hence the possible inference of choosing 'Eastern'. And our analysis of EMMC in wiki revealed that, in 2010-2012 there were nursing strikes(https://en.wikipedia.org/wiki/Eastern_Maine_Medical_Center). We then thought that these words may seem related for google vectors but the actual definition of strike is very farly related to it.
+
+In general, the word 'strike' is used in very generalized context. It can be used anywhere where people are not willing to do work and refusing to do any more work. It can be used with students, teachers, job professionals, unions etc. Also the word is used in many different kinds of games baseball, cricket, bowling etc. More over, the word strike is used as a metaphor too. It can be used in terms of lightning (eg. there were lightning strikes yesterday). So these kind of generalized usage of the word gave us contexts and words which are not close enough. All theses contexts were not inclining towards the word meaning itself. Hence we confirm that due to these reasons, the definition for the word STRIKE was one of the worst performing.
+
+
+Note: Some of the definitions we generated were empty. For example in cluster 2 of sidewalk-furnace name-conflate pair, the definition ----- was:"Something you do with unknown. the a ". This happened for the following reason:
+	  When we checked the number of instances in the cluster, there were only 2 instances. And there were no nouns in it. The nouns list was empty([]). Hence there was no good definition generated. And we returned the word 'unknown'
+
+References:
+------------
+http://eli.thegreenplace.net/2010/01/28/generating-random-sentences-from-a-context-free-grammar
