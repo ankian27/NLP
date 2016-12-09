@@ -66,6 +66,7 @@ def score_cluster(cluster, answer_file, target_word, pos, conf_word1, conf_word2
     os.system('cat senseclusters_scorer/report.out')
 
 """
+Section IIV
 The main clustering function. Takes the path to a single sense2val file and outputs clusters
 in sensecluster_scorer/. Clustering is done using affinity propogation, and a Word2Vec model.
 The Word2Vec model is used to calculate similarity scores between separate instances. Affinity
@@ -79,6 +80,7 @@ def cluster_tfidfs(file_name, model, pref=None):
     target_word, pos, conflate_word1, conflate_word2 = do_filename(file_name)
     stopwords = set(line.strip() for line in open('stopwords.txt', 'r'))
 
+    # Section XYZ
     # ctxes is a list of lists of tokens
     # senses is a list sense strings, where sense[i] is the sense of
     # ctxes[i]
@@ -88,17 +90,25 @@ def cluster_tfidfs(file_name, model, pref=None):
     for ctx in pos_ctxes:
         raw_ctxes.append([word for word, _ in ctx])
     
+    # Section ABC
+    # Calculate the weights for each context word
     # ctxes_tfidf is already sorted by tfidf
     ctxes_tfidf = tf_idfs(raw_ctxes)
     
     for i in range(len(ctxes_tfidf)):
         ctxes_tfidf[i] = filter(lambda x: x[0] in model, ctxes_tfidf[i])
 
+    # Limit each context to WORD_VEC_SIZE words
     final_ctxes = []
     for ctx in ctxes_tfidf:
         final_ctxes.append(ctx[:WORD_VEC_SIZE])
 
+    # Section DEF
+    # Convert each context to a single vector
     ctx_vecs = make_context_vecs_tfidf(final_ctxes, model)
+        
+    # Section JFK
+    # Calculate the preference values we want to run AP with
     prefs = []
     if not pref:
         pref = np.max(pdist(ctx_vecs))
@@ -117,6 +127,8 @@ def cluster_tfidfs(file_name, model, pref=None):
     else:
         priming_sample = ctx_vecs
 
+    # Section GHI
+    # Run the clustering
     ch_scores = []
     all_clusters = []
     for ferp in prefs:
@@ -137,6 +149,8 @@ def cluster_tfidfs(file_name, model, pref=None):
     instance_clusters = get_clusters(best_cluster)
     final_cluster = []
     if len(priming_sample) != len(ctx_vecs):
+        # Section LMAO
+        # We need to put the remaining contexts into clusters
         # keep track of the contexts we clustered already
         # index in ctx_vecs -> cluster label
         assigned = {ii:best_cluster[li] for li, ii in enumerate(best_cluster)}
@@ -162,8 +176,9 @@ def cluster_tfidfs(file_name, model, pref=None):
 
     score_cluster(final_cluster, file_name, target_word, pos, conflate_word1, conflate_word2)
 
+    # Section PQR
+    # Finally generate definitions from the clusters we obtained
     final_clusters = get_clusters(final_cluster)
-    #defgen_model = Word2Vec.load('models/3_parts_of_wiki_lowercase')
     for i, cluster in enumerate(final_clusters):
         definition = Definition(model, pos)
         #print "Cluster " + str(i)
@@ -193,6 +208,7 @@ def cluster_tfidfs(file_name, model, pref=None):
     sys.stdout.flush()
 
 if __name__ == '__main__':
+    # ENTRY
     nltk.data.path.append('/home/csugrads/pauls658/nltk_data')
     print "Loading model"
     model = Word2Vec.load_word2vec_format(model_file, binary=True)
