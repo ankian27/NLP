@@ -26,7 +26,9 @@ Contents in the Directory:
 * stopwords.txt (The list of stop words we are excluding)
 * senseclusters_scorer
 * ORIGINS
+* INSTALL (Instructions on how to run the system)
 * OUTPUT
+* cluster_baseline.py
 * src
 	DefinitionGeneration.py
 	cluster.py
