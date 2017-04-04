@@ -1,4 +1,4 @@
-#Author: Ankit Anand Gupta, Sandeep Vuppula
+
 #This class is used to generate the defitions for each cluster. The idea of definiton generation is that, we can derive the definition of a word by using the context words neighbouring the target word in a given context. The topics are given by the hdp are used to get the topic words. The topic words along with the target_word(the noun/verb/nameconflate pair) is given as input to the program and the output is a sentence generated using those topic words. The sentence gerneated using our approach adheres to the syntactic structure of the enlgish grammar and is more than 10 words. The syntactic structure of the english grammar is represented here in the form of Context Free Grammars(CFG). A CFG is a set of recursive rules(or productions) which are used to generate string patterns. We give the target word as one of the input because if the target word is present in the set of topic words  we want to remove it from the defintion. The execution of the program is as follows:
 
 # Input : Topic words, Target word
@@ -20,7 +20,7 @@ import operator # Has set of functions corresponding to intrinsic operators of p
 class Definition(object):
 	def __init__(self,model,pos):
 		""" 
-		#Author: Ankit Anand Gupta
+		
 		The function __init__ is a constructor in python which accepts the instance of a class of the object itself as a parameter.
 		The constructur is used to initialize the cfgRule(Context Free Grammar rules), nouns, verbs and adjectives for each instance.
 		Args:
@@ -39,7 +39,7 @@ class Definition(object):
 
 	def get_Noun_Verb(self, topics):
 		"""Section I:
-		Author: Ankit Anand Gupta
+		
 		The function is used to seperate the Nouns, Verbs and Adjectives in the given set of topic words.
 		We use the Parts of Speech Tagger from the Natural Language Toolkit to tag the POS for each word in the set of topic words.
 		Args:
@@ -78,7 +78,7 @@ class Definition(object):
 
 	def cfg_rule(self,left,right):
 		'''Section II:
-		#Authour: Sandeep Vuppula
+		
 		The function is used to map the Context Free Grammar production rules for the english grammar to python representation
 		Args:
 			param1 (string) : Non-terminal String present on the left side of the production
@@ -93,7 +93,7 @@ class Definition(object):
 
 	def gen_def(self, symbol):
 		'''Section III:
-		#Author: Sandeep Vuppula
+		
 		The function is used to generate the definition of a sentence recursively using the CFG rules
 		Args:
 			param1 (string): Start symbol of the CFG rule
@@ -135,7 +135,7 @@ class Definition(object):
 
 	def process(self, ctxes, doc_counts):
 		'''Section IV:
-			#Author: Sandeep Vuppula
+			
 			The function takes the ctxes and doc_counts as the parameters. The doc_counts is a dictionary in the format (word,pos)->count. 
 			We will sort the doc_counts and then separate nouns, verbs, adjectives into their respective lists. Then we use them to create 
 			two parts of the definition. 
@@ -203,7 +203,7 @@ class Definition(object):
 	def createPartOne(self, nouns, verbs, adjectives):
 		'''
 		Section V:
-		#Author: Ankit Anand Gupta
+		
 			This function is the core part for first part of definition generation. We take the top most occurring 5 nouns and then get the 
 			most similar word which is related to those words from Word2Vec.
 			If there are no nouns at all (possible if cluster formed has very less number of instances) then we return 'unknown'
