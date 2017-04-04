@@ -1,26 +1,3 @@
-____________________________________________________________________
-
-		    Team - Red Project Stage I  
-	Word sense disambiguation based on co-occurence matrices
-____________________________________________________________________
-
-Authors :  	Ankit Anand Gupta 
-		Brandon Paulsen 
-		Sai Ram Kowshik Vattipally 
-		Sandeep Vuppula 
-		
-
-
-*************
-CONTRIBUTIONS
-*************
-Ankit Anand Gupta : Came up with the idea for context free grammar for definition generation. Wrote the code in src/DefinitionGenerator.py in collaboration with Sandeep. Implemented and tried the k-means clustering approach and worked on tf-idf implementation with Sandeep.
-
-Brandon Paulsen : Wrote the majority of the code in writeToHDP.py, postProcessing.py, and corp.py. In addition, figured out how to work with the hdp-wsi tool.
-
-Sai Ram Kowshik Vattipally : Wrote most of the README, including the parts that describe how HDP works, and the instructions for use. He also wrote most of the install.sh and runall.sh. He also installed the Testbed for testing our project on Debian VM.
-
-Sandeep Vuppula : Worked on DefinitionGeneration.py in collaboration with Ankit. Also tested other tools which we decided to not use because hdp-wsi was giving us better results. Implemented and tried the HCA algorithm and worked on tf-idf with Ankit. Came up with N-Gram approach for definition genration which was later found to be relatively ineffective.
 
 ********
 CONTENTS
