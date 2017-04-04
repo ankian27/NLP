@@ -6,7 +6,7 @@ import re
 Contains the utility functions for processing contexts pulled from
 senseval2 formatted files.
 
-@AUTHOR: Brandon Paulsen
+
 """
 
 # read the stopwords into set
