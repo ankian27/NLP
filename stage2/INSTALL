@@ -1,6 +1,6 @@
 
 
-There is no installation necessary. All of the required packages are either in /scratch, or /home/csugrads/pauls658/ on akka which are accessible by anyone. To do a full run:
+There is no installation necessary. All of the required packages are either in /scratch, or on akka which are accessible by anyone. To do a full run:
 1) Sign in to akka
 2) navigate to /scratch/NLP_red
 	cd /scratch/NLP_red
