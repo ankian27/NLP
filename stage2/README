@@ -1,21 +1,3 @@
-________________________________________________________________
-
-		    Team - Red Project Stage II  
-		Word sense disambiguation based on Word2Vec
-________________________________________________________________
-
-Authors :  	Ankit Anand Gupta
-		Brandon Paulsen
-		Sai Ram Kowshik Vattipally
-		Sandeep Vuppula		
-
-*************
-CONTRIBUTIONS
-*************
-Ankit Anand Gupta :  Wrote the writeup for discussion of Definition generation results in RESULTS-2. Co-authored the file DefinitionGeneration.py along with Sandeep. Came up with an idea to find the subject of a verb and use it for definition generation but we couldn't use the idea since the subjects we picked weren't good.
-Brandon Paulsen : Wrote most of the code in cluster_baseline.py, cluster.py, file_processing.py and tokenizing.py. Experimented with various word2vec  models that we used for testing our system and finally decided to use the google model. Tested the system 
-Sai Ram Kowshik Vattipally : Wrote most of this README, including how Affinity propogation and Word2Vec works. Studied various clustering algorithms before deciding to use Affinity Propogation. Author of ORIGINS, Co-authored the clustering part of RESULTS-2 along with Brandon. 
-Sandeep Vuppula : Wrote the writeup discussing the best, worst and average definitions generated in RESULTS-2. Co-authored the file DefinitionGeneration.py along with Ankit. Came up with the idea to use most frequent bigrams and trigrams in definition generation but we couldn't use the idea since the n-grams we were picking weren't the represntaives of the potential definitions we were expecting. 
 ********
 CONTENTS
 ********
