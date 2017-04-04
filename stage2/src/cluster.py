@@ -1,6 +1,4 @@
-"""
-Author: Brandon Paulsen
-"""
+
 
 from collections import defaultdict
 import math
